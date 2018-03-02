@@ -1,0 +1,823 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500&subset=cyrillic');
+
+@mixin br($radius) {
+  -webkit-border-radius:$radius;
+  -moz-border-radius:$radius;
+  border-radius:$radius;
+}
+
+@mixin cover-background($img-uri, $background-top:"center", $background-left:"center", $background-attachment:"fixed") {
+  background: url($img-uri) no-repeat unquote($background-top) unquote($background-left) unquote($background-attachment);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+// Mixin itself
+@mixin clearfix() {
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a:link, a:visited, a:hover, a:focus, a:active {
+  outline: none;
+}
+
+button:link, button:visited, button:hover, button:focus, button:active {
+  outline: none;
+}
+
+
+*:focus {outline: none;}
+
+@font-face
+{
+  font-family:"AcrobatLight";
+  src:url(../fonts/Akrobat-Light.otf);
+}
+
+@font-face
+{
+  font-family:"AcrobatReg";
+  src:url(../fonts/Akrobat-Regular.otf);
+}
+
+
+body {
+  font: 14px/21px "Open Sans", sans-serif;
+  font-size: 13px;
+  background: #f1f3f3 none repeat scroll 0 0;
+  color: #000;
+  line-height: 1.3em;
+  margin: 0;
+  padding: 0
+}
+
+h1 {
+  margin: 1em 0 0.5em 0;
+  font-weight: 600;
+  font-family: 'Titillium Web', sans-serif;
+  position: relative;
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.4);
+  font-size: 25px;
+  line-height: 40px;
+  color: #20A64F;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(53,86,129, 0.3);
+}
+
+.no_padding {
+  padding: 0!important;
+}
+
+.paddding_for_tab {
+  padding-left: 7px;
+  padding-right: 15px;
+}
+
+/* Header */
+
+.navbar {
+  height: 80px;
+}
+
+.navbar-nav {
+  align-items: center;
+}
+
+nav li  {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+#navbarNav {
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.def-nav {
+  color: #1a1a1a;
+  margin: 0 15px;
+  .nav-link {
+    padding: 0 0 3px 0!important;
+  }
+}
+
+nav .active > a, nav .def-nav > a:hover {
+  background-color: transparent;
+  color: #1a1a1a;
+  box-shadow: 0 2px #1a1a1a;
+}
+
+.drop-nav {
+  color: #1a1a1a;
+  border: solid 1px #e6e6e6;
+  border-radius: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 20px;
+}
+
+.dropdown-menu {
+  width: 100%;
+}
+
+.add-nav {
+  margin-left: 20px;
+  border-radius: 15px;
+  background-color: #a5c715;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.add-nav a {
+  color: #fff!important;
+}
+
+#header-pic {
+  height: 372px;
+  background-image: url("../images/bg.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Filter */
+
+#filter {
+  height: 70px;
+  background-color: #fff;
+  border-color: #e1e3e5;
+  border-width: 1px 0;
+  padding-top: 20px;
+  @include clearfix;
+}
+
+.filter-title {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: #808080;
+  float: left;
+  padding-top: 5px;
+}
+
+.filter-but {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 15px;
+  background-color: #1689c7;
+  color: #fff;
+  width: 135px;
+  float: left;
+  margin-left: 15px;
+  text-align: center;
+}
+
+#drop-filter {
+  width: 30px;
+  height: 30px;
+  padding: 5px 10px;
+  border-radius: 15px;
+  float: left;
+  margin-left: 15px;
+  background-image: url("../images/drop_filter.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.filter-week {
+  margin-left: 10px; /* Обнуляем значение отступов */
+  padding: 5px; /* Значение полей */
+}
+
+.filter-week li {
+  display: inline; /* Отображать как строчный элемент */
+  margin-left: 10px; /* Отступ слева */
+  padding: 10px 12px; /* Поля вокруг текста */
+  border-radius: 50px;
+  background-color: transparent;
+  border: #919191 1px solid;
+  color: #919191;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.filter-week li:hover {
+  background-color: #1689c7;
+  color: #fff;
+  border: transparent 1px solid;
+}
+
+.filter-week .active {
+  border: transparent 1px solid;
+  background-color: #a5c715;
+  color: #fff;
+}
+
+/* Content */
+
+#main_container {
+  margin-top: 25px;
+  min-height: 1500px;
+}
+
+/* Таблица с серверами */
+
+.margin-tab {
+  margin-left: 15px;
+}
+
+.servers-tab {
+  border-radius: 10px;
+  background-color: #f5f7fa;
+  min-height: 200px;
+  float: left;
+  box-shadow: 0px 0px 8px -3px #404040;
+}
+
+.margin-tab .servers-tab:nth-child(n+2) {
+  margin-top: 15px;
+}
+
+.servers-tab > div {
+  float: left;
+  width: 100%;
+  height: 50px;
+  border: #e1e3e6 solid;
+  border-width: 0 0 1px 0;
+}
+
+.servers-tab > div:last-child {
+  float: left;
+  width: 100%;
+  height: 50px;
+  border-radius: 0 0 10px 10px;
+}
+
+.servers-tab-title {
+  background-color: transparent;
+  padding: 15px 25px;
+}
+
+.servers-tab-pre-title {
+  background-color: #f5f5f5;
+  padding: 15px 25px;
+}
+
+.servers-tab-title span {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #3c4152;
+  padding-left: 10px;
+  border: solid #1689c7;
+  border-width: 0 0 0 3px;
+}
+
+.servers-tab-pre-title span {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #3c4152;
+}
+
+/* VIP */
+
+.servers-tab-vip {
+  background-color: #5a6779;
+}
+
+.vip-img {
+  width: 10%;
+  padding: 10px 0;
+  float: left;
+}
+
+.vip-name {
+  width: 30%;
+  float: left;
+  padding: 15px 0 15px 0;
+}
+
+.vip-name span {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #fff;
+}
+
+.vip-reit {
+  width: 15%;
+  float: left;
+  padding: 15px 0 15px 0;
+}
+
+.vip-reit span {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #fff;
+}
+
+.vip-chronic {
+  width: 20%;
+  float: left;
+  padding: 15px 0 15px 0;
+}
+
+.vip-chronic span {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #fff;
+}
+
+.vip-date {
+  width: 15%;
+  float: left;
+  padding: 15px 0 15px 0;
+}
+
+.vip-date span {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #fff;
+}
+
+.vip-i {
+  width: 10%;
+  float: left;
+  padding: 15px 0 15px 10px;
+}
+
+.vip-i span {
+  font-family: "Times New Roman", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #ffdf41;
+  background-color: #46505e;
+  border-radius: 50%;
+  padding: 5px 13px;
+  cursor: pointer;
+}
+
+.vip-i span:hover {
+  background-color: #4f5b6b;
+  color: #e2e4e7;
+}
+
+/* PREM */
+
+.servers-tab-prem {
+  background-color: #ffffff;
+}
+
+.prem-img {
+  width: 10%;
+  padding: 10px 0;
+  float: left;
+}
+
+.prem-name {
+  width: 30%;
+  float: left;
+  padding: 15px 0 15px 0;
+}
+
+.prem-name span {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #3c4152;
+}
+
+.prem-reit {
+  width: 15%;
+  float: left;
+  padding: 15px 0 15px 0;
+}
+
+.prem-reit span {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #3c4152;
+}
+
+.prem-chronic {
+  width: 20%;
+  float: left;
+  padding: 15px 0 15px 0;
+}
+
+.prem-chronic span {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #3c4152;
+}
+
+.prem-date {
+  width: 15%;
+  float: left;
+  padding: 15px 0 15px 0;
+}
+
+.prem-date span {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #3c4152;
+}
+
+.prem-i {
+  width: 10%;
+  float: left;
+  padding: 15px 0 15px 10px;
+}
+
+.prem-i span {
+  font-family: "Times New Roman", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #a6a6a6;
+  background-color: #e6e6e6;
+  border-radius: 50%;
+  padding: 5px 13px;
+  cursor: pointer;
+}
+
+.prem-i span:hover {
+  background-color: #f2f2f2;
+}
+
+/* NORMAL */
+
+.servers-tab-norm {
+  background-color: #ffffff;
+}
+
+.norm-img {
+  width: 10%;
+  float: left;
+  padding: 15px 2px;
+}
+
+.norm-name {
+  width: 30%;
+  float: left;
+  padding: 15px 0 15px 0;
+}
+
+.norm-name span {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #3c4152;
+}
+
+.norm-reit {
+  width: 15%;
+  float: left;
+  padding: 15px 0 15px 0;
+}
+
+.norm-reit span {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #3c4152;
+}
+
+.norm-chronic {
+  width: 20%;
+  float: left;
+  padding: 15px 0 15px 0;
+}
+
+.norm-chronic span {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #3c4152;
+}
+
+.norm-date {
+  width: 15%;
+  float: left;
+  padding: 15px 0 15px 0;
+}
+
+.norm-date span {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #3c4152;
+}
+
+.norm-i {
+  width: 10%;
+  float: left;
+  padding: 15px 0 15px 10px;
+}
+
+.norm-i span {
+  font-family: "Times New Roman", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #e6e8ea;
+  background-color: transparent;
+  border-radius: 50%;
+  border: solid 1px #e6e8ea;
+  padding: 5px 13px;
+  cursor: pointer;
+}
+
+.norm-i span:hover {
+  color: #a6a6a6;
+  background-color: #e6e6e6;
+}
+
+/* Recommendation */
+
+.servers-tab {
+  border-radius: 10px;
+  background-color: #f5f7fa;
+  min-height: 200px;
+  float: left;
+  box-shadow: 0px 0px 8px -3px #404040;
+}
+
+.margin-tab .servers-tab:nth-child(n+2) {
+  margin-top: 15px;
+}
+
+.servers-tab > div {
+  float: left;
+  width: 100%;
+  height: 50px;
+  border: #e1e3e6 solid;
+  border-width: 0 0 1px 0;
+}
+
+.servers-tab > div:last-child {
+  float: left;
+  width: 100%;
+  height: 50px;
+  border-radius: 0 0 10px 10px;
+}
+
+.servers-tab-title {
+  background-color: transparent;
+  padding: 15px 25px;
+}
+
+
+.servers-tab-title span {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #3c4152;
+  padding-left: 10px;
+  border: solid #1689c7;
+  border-width: 0 0 0 3px;
+}
+
+.tab {
+  background-color: #f5f7fa;
+  border-radius: 10px;
+  min-height: 200px;
+  float: left;
+  border: solid 1px #f0f1f2;
+  box-shadow: 0px 0px 8px -3px #404040;
+}
+
+.tab:nth-child(n+2) {
+  margin-top: 15px;
+}
+
+
+.tab-title {
+  float: left;
+  width: 100%;
+  height: 50px;
+  background-color: transparent;
+  padding: 15px 25px;
+  border: #f0f1f2 solid;
+  border-width: 0 0 1px 0;
+}
+
+.tab-title span {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #3c4152;
+  padding-left: 10px;
+  border: solid #1689c7;
+  border-width: 0 0 0 3px;
+}
+
+.tab-recom {
+  float: left;
+  background-color: #fff;
+  height: 100px;
+  border: #f0f1f2 solid;
+  border-width: 0 0 1px 0;
+}
+
+.tab-recom:last-child {
+  border-radius: 0 0 10px 10px;
+}
+
+.recom_design_img {
+  float: left;
+  width: 25%;
+  height: 100%;
+  border: #f0f1f2 solid;
+  border-width: 0 1px 0 0;
+  background-image: url("../images/recom_design.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.recom_conc_img {
+  float: left;
+  width: 25%;
+  height: 100%;
+  border: #f0f1f2 solid;
+  border-width: 0 1px 0 0;
+  background-image: url("../images/recom_conc.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.recom_work_img {
+  float: left;
+  width: 25%;
+  height: 100%;
+  border: #f0f1f2 solid;
+  border-width: 0 1px 0 0;
+  background-image: url("../images/recom_work.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.recom_cont {
+  float: left;
+  width: 70%;
+  height: 100%;
+  text-align: center;
+  padding: 25px 0;
+}
+
+.recom_title {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #3c4152;
+}
+
+.recom_name {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #3c4152;
+}
+
+.reklama-img {
+  background: #fff;
+  padding: 15px 0;
+  border-radius: 0 0 10px 10px;
+}
+
+.partners {
+  background: #fff;
+  @include clearfix;
+}
+
+.partners-text {
+  padding: 20px 0;
+  hr {
+    margin:1em auto; border:none; height:1px; background:#ccc;
+  }
+}
+
+.our-partners {
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  color: #3c4152;
+}
+
+.footer {
+  @include clearfix;
+  background: #242930;
+}
+
+.footer-menu-block {
+ @include clearfix;
+  padding: 25px 0;
+}
+
+.footer-menu {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 5px;
+  color: #fff;
+}
+
+.soc {
+  float: right;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.vk {
+  padding: 8px 12px 10px 12px;
+}
+
+.face {
+  padding: 8px 14px 10px 14px;
+}
+
+.twitter {
+  padding: 8px 12px 10px 12px;
+}
+
+.soc span {
+  color: #1da1f3;
+  background-color: transparent;
+  border-radius: 50%;
+  border: solid 1px #2e343d;
+  cursor: pointer;
+}
+
+.soc span:hover {
+  color: #fff;
+  border: solid 1px #1da1f3;
+}
+
+.footer-info {
+  border-top: 1px solid #2e343d;
+  border-bottom: 1px solid #2e343d;
+  padding: 20px 0;
+  @include clearfix;
+}
+
+.info-top {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: #373f4a;
+  margin-bottom: 15px;
+}
+
+.info {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #373f4a;
+}
+
+.footer-copi {
+  padding: 20px 0;
+  @include clearfix;
+}
+
+.footer-logo {
+  float: left;
+  width: 161px;
+  height: 32px;
+  cursor: pointer;
+  background: url("../images/footer_logo.png") no-repeat center center;
+}
+
+.footer-logo:hover {
+  background: url("../images/footer_logo_hover.png") no-repeat center center;
+}
+
+.copi-text {
+  float: left;
+  padding: 10px 10px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #373f4a;
+}
