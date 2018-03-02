@@ -16,7 +16,7 @@
                 </div>
                 <div class="form-group">
                     <label for="server_id">Сервер</label>
-                    {!! Form::select('server_id', $inputs["servers"], isset($nomination->server->id)? $nomination->server->id : old("server_id"), ['id'=>'server_id', "class" => "js-select2 form-control", "required" => "", "data-placeholder" => 'Выберите сервер']) !!}
+                    {!! Form::select('server_id', $inputs["servers"], isset($nomination->server_id)? $nomination->server_id : old("server_id"), ['id'=>'server_id', "class" => "js-select2 form-control", "required" => "", "data-placeholder" => isset($nomination->server_id)? $nomination->server->name : 'Выберите сервер']) !!}
                 </div>
                 <div class="form-group">
                     <label class="col-12">Изображение</label>

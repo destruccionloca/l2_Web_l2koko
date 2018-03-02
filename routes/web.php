@@ -26,6 +26,10 @@ Route::group(['prefix' => 'dashboard','middleware' => ['auth']],function() {
     Route::resource('/page', 'Dashboard\PagesController');
     Route::resource('/server', 'Dashboard\ServersController');
     Route::resource('/nomination', 'Dashboard\NominationsController');
+    Route::resource('/application', 'Dashboard\ApplicationsController');
+    Route::put('/application/{application}/accept', ['uses' => 'Dashboard\ApplicationsController@toAccept', 'as' => 'application.accept']);
+    Route::delete('/application/{application}/accept', ['uses' => 'Dashboard\ApplicationsController@toDelete', 'as' => 'application.delete']);
+    Route::get('/applications/{nomination}', ['uses' => 'Dashboard\NominationsController@showApplications', 'as' => 'nomination.applications']);
     Route::resource('/rate', 'Dashboard\RatesController');
     Route::resource('/chronicle', 'Dashboard\ChroniclesController');
     Route::post('/rate/sort', ['uses' => 'Dashboard\RatesController@sort','as' => 'rate.sort']);

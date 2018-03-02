@@ -37,7 +37,7 @@
                                     <th>Дата открытия</th>
                                     <th class="d-none d-sm-table-cell">Хроники</th>
                                     <th class="d-none d-sm-table-cell">Рейты</th>
-                                    <th class="d-none d-sm-table-cell" style="width: 15%;">Тип</th>
+                                    <th class="d-none d-sm-table-cell" style="width: 15%;">Статус</th>
                                     <th class="text-center" style="width: 15%;">Действия</th>
                                 </tr>
                                 </thead>
@@ -50,7 +50,15 @@
                                         <td class="d-none d-sm-table-cell">{{ $server->chronicle->name }}</td>
                                         <td class="d-none d-sm-table-cell">{{ $server->rate->name }}</td>
                                         <td class="d-none d-sm-table-cell">
-                                            <span class="badge badge-danger">Disabled</span>
+                                            @if($server->status->name == "Free")
+                                                <span class="badge badge-secondary">{{$server->status->name}}</span>
+                                            @elseif($server->status->name == "Light")
+                                                <span class="badge badge-primary">{{$server->status->name}}</span>
+                                            @elseif($server->status->name == "Silver")
+                                                <span class="badge badge-info">{{$server->status->name}}</span>
+                                            @elseif($server->status->name == "Exlusive")
+                                                <span class="badge badge-success">{{$server->status->name}}</span>
+                                            @endif
                                         </td>
                                         <td class="text-center">
                                             <div class="btn-toolbar push" role="toolbar" aria-label="Toolbar with button groups">

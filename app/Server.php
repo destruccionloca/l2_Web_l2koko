@@ -45,4 +45,12 @@ class Server extends Model
     public function rate() {
         return $this->belongsTo('App\Rate');
     }
+
+    public function status() {
+        return $this->belongsTo('App\Status');
+    }
+
+    public function applications() {
+        return $this->hasMany('App\Application');
+    }
 }

@@ -43,6 +43,10 @@ class RouteServiceProvider extends ServiceProvider
             return \App\User::find($value);
         });
 
+        Route::bind('application', function ($value) {
+            return \App\Application::find($value);
+        });
+
     }
 
     /**

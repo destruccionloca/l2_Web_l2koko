@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Requests\NominationRequest;
+use App\Nomination;
 use Illuminate\Http\Request;
 use App\Repositories\NominationsRepository;
 
@@ -94,9 +95,26 @@ class NominationsController extends DashboardController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Nomination $nomination)
     {
-        //
+        $this->checkUser();
+        $servers = $this->ser_rep->get('*');
+        $inp_servers = array("" => "", "NULL" => "Без сервера");
+        foreach ($servers as $server) {
+            $inp_servers = array_add($inp_servers, $server->id, $server->name );
+        }
+        $this->inputs = array_add($this->inputs, "servers", $inp_servers);
+        $this->inc_js = "
+        <script>
+            jQuery(function () {
+                // Init page helpers (BS Datepicker + BS Colorpicker + BS Maxlength + Select2 + Masked Input + Range Sliders + Tags Inputs plugins)
+                Codebase.helpers(['select2']);
+            });
+        </script>
+        ";
+        $this->content = view("dashboard.nomination_create")->with(['inputs' => $this->inputs, 'nomination' => $nomination])->render();
+        $this->title = 'Редактирование номинации';
+        return $this->renderOutput();
     }
 
     /**
@@ -106,9 +124,17 @@ class NominationsController extends DashboardController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(NominationRequest $request, Nomination $nomination)
     {
-        //
+        $this->checkUser();
+//        if($this->user->cant('update', $object)) {
+//            return back()->with(array('error' => 'Доступ запрещен'));
+//        }
+        $result = $this->nom_rep->update($request, $nomination);
+        if(is_array($result) && !empty($result['error'])) {
+            return back()->with($result);
+        }
+        return redirect('/dashboard/nomination')->with($result);
     }
 
     /**
@@ -117,8 +143,25 @@ class NominationsController extends DashboardController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Nomination $nomination)
     {
-        //
+        $this->checkUser();
+//        if($this->user->cant('delete', $object)) {
+//            return back()->with(array('error' => 'Доступ запрещен'));
+//        }
+        if ($nomination->forceDelete()) {
+            return back()->with(['status' => 'Номинация удалена']);
+        } else {
+            return back()->with(['error' => 'Ошибка удаления']);
+        }
+    }
+
+    public function showApplications(Nomination $nomination)
+    {
+        $applications = $nomination->applications;
+        $this->content = view('dashboard.applications')->with(array("user" => $this->user, "applications" => $applications, 'nomination' => $nomination))->render();
+        $this->title = 'Заявки '. $nomination->name;
+        return $this->renderOutput();
+
     }
 }

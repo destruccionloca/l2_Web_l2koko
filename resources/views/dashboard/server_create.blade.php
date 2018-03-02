@@ -23,6 +23,10 @@
                     {!! Form::textarea('short_desc', isset($server->short_desc)? $server->short_desc : old("short_desc"), ['id'=>'short_desc', "class" => "form-control", "required" => ""]) !!}
                 </div>
                 <div class="form-group">
+                    <label for="status_id">Статус</label>
+                    {!! Form::select('status_id', $inputs["statuses"], isset($server->status_id)? $server->status_id : old("status_id"), ['id'=>'status_id', "class" => "form-control", "required" => ""]) !!}
+                </div>
+                <div class="form-group">
                     <label for="chronicle_id">Хроники</label>
                     {!! Form::select('chronicle_id', $inputs["rates"], isset($server->chronicle)? $server->chronicle : old("chronicle_id"), ['id'=>'chronicle_id', "class" => "form-control", "required" => ""]) !!}
                 </div>

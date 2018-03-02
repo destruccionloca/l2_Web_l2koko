@@ -37,6 +37,7 @@ class ServersRepository extends Repository
             $this->model->short_desc = $data["short_desc"];
             $this->model->start_at = Carbon::createFromFormat('d.m.Y H:i', $data['start_at']);
             $this->model->chronicle_id = $data["chronicle_id"];
+            $this->model->status_id = $data["status_id"];
             $this->model->rate_id = $data["rate_id"];
             $this->model->link = $data["link"];
             $this->model->email = $data["email"];
@@ -75,16 +76,19 @@ class ServersRepository extends Repository
             if(empty($data['alias'])) {
                 $data['alias'] = $this->transliterate($data['name']);
             }
-            if($this->one($data['alias'],FALSE)) {
+            $result = $this->one($data['alias'],FALSE);
+            if(isset($result->id) && ($result->id != $server->id)) {
                 $request->merge(array('alias' => $data['alias']));
                 $request->flash();
-                return ['error' => 'Сервер с таким названием уже существует'];
+
+                return ['error' => 'Статья с таким названием уже существует'];
             }
             $server->description = $data["description"];
             $server->short_desc = $data["short_desc"];
             $server->start_at = Carbon::createFromFormat( 'd.m.Y H:i' ,$data['start_at']);
             $server->chronicle_id = $data["chronicle_id"];
             $server->rate_id = $data["rate_id"];
+            $server->status_id = $data["status_id"];
             $server->link = $data["link"];
             $server->email = $data["email"];
             $server->social_vk = $data["vk"];

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Requests\ServerRequest;
+use App\Status;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Rate;
@@ -31,6 +32,7 @@ class ServersController extends DashboardController
      */
     public function index()
     {
+        $this->checkUser();
         $servers = $this->ser_rep->get('*');
         $this->content = view('dashboard.servers')->with(array("user" => $this->user, "servers" => $servers))->render();
         $this->title = 'Сервера';
@@ -42,20 +44,27 @@ class ServersController extends DashboardController
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Rate $rate, Chronicle $chronicle)
+    public function create(Rate $rate, Chronicle $chronicle, Status $status)
     {
+        $this->checkUser();
         $rates = $rate->get();
         $chronicles = $chronicle->get();
+        $statuses = $status->get();
         $inp_rates = array();
         $inp_chronicles = array();
+        $inp_statuses = array();
         foreach ($rates as $rate) {
             $inp_rates = array_add($inp_rates, $rate->id, $rate->name );
         }
         foreach ($chronicles as $chronicle) {
             $inp_chronicles = array_add($inp_chronicles, $chronicle->id, $chronicle->name );
         }
+        foreach ($statuses as $status) {
+            $inp_statuses = array_add($inp_statuses, $status->id, $status->name );
+        }
         $this->inputs = array_add($this->inputs, "rates", $inp_rates);
         $this->inputs = array_add($this->inputs, "chronicles", $inp_chronicles);
+        $this->inputs = array_add($this->inputs, "statuses", $inp_statuses);
         $this->content = view('dashboard.server_create')->with(array("user" => $this->user, "inputs" => $this->inputs))->render();
         $this->title = 'Добавление сервера';
         return $this->renderOutput();
@@ -95,7 +104,7 @@ class ServersController extends DashboardController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Server $server, Rate $rate, Chronicle $chronicle)
+    public function edit(Server $server, Rate $rate, Chronicle $chronicle, Status $status)
     {
         $this->checkUser();
 //        if($this->user->cant('update', $object)) {
@@ -103,16 +112,22 @@ class ServersController extends DashboardController
 //        }
         $rates = $rate->get();
         $chronicles = $chronicle->get();
+        $statuses = $status->get();
         $inp_rates = array();
         $inp_chronicles = array();
+        $inp_statuses = array();
         foreach ($rates as $rate) {
             $inp_rates = array_add($inp_rates, $rate->id, $rate->name );
         }
         foreach ($chronicles as $chronicle) {
             $inp_chronicles = array_add($inp_chronicles, $chronicle->id, $chronicle->name );
         }
+        foreach ($statuses as $status) {
+            $inp_statuses = array_add($inp_statuses, $status->id, $status->name );
+        }
         $this->inputs = array_add($this->inputs, "rates", $inp_rates);
         $this->inputs = array_add($this->inputs, "chronicles", $inp_chronicles);
+        $this->inputs = array_add($this->inputs, "statuses", $inp_statuses);
         $this->content = view('dashboard.server_create')->with(array("user" => $this->user, "inputs" => $this->inputs, "server" => $server))->render();
         $this->title = 'Редактирование сервера';
         return $this->renderOutput();
