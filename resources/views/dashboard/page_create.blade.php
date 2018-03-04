@@ -26,12 +26,14 @@
             <label for="text">Текст</label>
             {!! Form::textarea('text', isset($page->text)? $page->text : old("text"), ['id'=>'editor', "class" => "form-control", "required" => ""]) !!}
         </div>
+        <div class="form-group">
         @if (isset($page))
             <input type="hidden" name="_method" value="PUT">
             {!! Form::button('Сохранить', ['class' => 'btn btn-success','type'=>'submit']) !!}
         @else
             {!! Form::button('Добавить', ['class' => 'btn btn-success','type'=>'submit']) !!}
         @endif
+        </div>
     </div>
     {!! Form::close() !!}
 </div>

@@ -27,6 +27,7 @@ Route::group(['prefix' => 'dashboard','middleware' => ['auth']],function() {
     Route::resource('/server', 'Dashboard\ServersController');
     Route::resource('/nomination', 'Dashboard\NominationsController');
     Route::resource('/application', 'Dashboard\ApplicationsController');
+    Route::resource('/partner', 'Dashboard\PartnersController');
     Route::put('/application/{application}/accept', ['uses' => 'Dashboard\ApplicationsController@toAccept', 'as' => 'application.accept']);
     Route::delete('/application/{application}/accept', ['uses' => 'Dashboard\ApplicationsController@toDelete', 'as' => 'application.delete']);
     Route::get('/applications/{nomination}', ['uses' => 'Dashboard\NominationsController@showApplications', 'as' => 'nomination.applications']);
