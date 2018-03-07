@@ -9,7 +9,7 @@
         you can check out https://github.com/furf/jquery-ui-touch-punch/
     -->
         <div class="block-header block-header-default">
-            <h1>Рейты серверов <small>поменять порядок</small></h1>
+            <h1>Рейты серверов</h1>
             <h2 class="content-heading d-print-none">
                 <button type="button" class="btn btn-sm btn-rounded btn-success float-right" data-toggle="modal" data-target="#modal-popout">Добавить</button>
             </h2>

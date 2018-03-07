@@ -32,9 +32,9 @@
                     <div class="col-md-12 servers-tab-vip paddding_for_tab">
                         <div class="vip-img"><img src="images/vip.png"></div>
                         <div class="vip-name"><span>{{$server->name}}</span></div>
-                        <div class="vip-reit"><span>{{$server->rate}}</span></div>
-                        <div class="vip-chronic"><span>{{$server->chronicles}}</span></div>
-                        <div class="vip-date"><span>{{$server->date_start->format('m.d')}}</span></div>
+                        <div class="vip-reit"><span>{{$server->rate->name}}</span></div>
+                        <div class="vip-chronic"><span>{{$server->chronicle->name}}</span></div>
+                        <div class="vip-date"><span>{{$server->start_at->format('m.d')}}</span></div>
                         <div class="vip-i"><span>i</span></div>
                     </div>
                 @endforeach
@@ -43,9 +43,9 @@
                     <div class="col-md-12 servers-tab-vip paddding_for_tab">
                         <div class="vip-img"><img src="images/vip.png"></div>
                         <div class="vip-name"><span>{{$server->name}}</span></div>
-                        <div class="vip-reit"><span>{{$server->rate}}</span></div>
-                        <div class="vip-chronic"><span>{{$server->chronicles}}</span></div>
-                        <div class="vip-date"><span>{{$server->date_start->format('m.d')}}</span></div>
+                        <div class="vip-reit"><span>{{$server->rate->name}}</span></div>
+                        <div class="vip-chronic"><span>{{$server->chronicle->name}}</span></div>
+                        <div class="vip-date"><span>{{$server->start_at->format('m.d')}}</span></div>
                         <div class="vip-i"><span>i</span></div>
                     </div>
                 @endforeach
@@ -58,9 +58,9 @@
                     <div class="col-md-12 servers-tab-vip paddding_for_tab">
                         <div class="vip-img"><img src="images/vip.png"></div>
                         <div class="vip-name"><span>{{$server->name}}</span></div>
-                        <div class="vip-reit"><span>{{$server->rate}}</span></div>
-                        <div class="vip-chronic"><span>{{$server->chronicles}}</span></div>
-                        <div class="vip-date"><span>{{$server->date_start->format('m.d')}}</span></div>
+                        <div class="vip-reit"><span>{{$server->rate->name}}</span></div>
+                        <div class="vip-chronic"><span>{{$server->chronicle->name}}</span></div>
+                        <div class="vip-date"><span>{{$server->start_at->format('m.d')}}</span></div>
                         <div class="vip-i"><span>i</span></div>
                     </div>
                 @endforeach
@@ -71,9 +71,9 @@
                     <div class="col-md-12 servers-tab-vip paddding_for_tab">
                         <div class="vip-img"><img src="images/vip.png"></div>
                         <div class="vip-name"><span>{{$server->name}}</span></div>
-                        <div class="vip-reit"><span>{{$server->rate}}</span></div>
-                        <div class="vip-chronic"><span>{{$server->chronicles}}</span></div>
-                        <div class="vip-date"><span>{{$server->date_start->format('m.d')}}</span></div>
+                        <div class="vip-reit"><span>{{$server->rate->name}}</span></div>
+                        <div class="vip-chronic"><span>{{$server->chronicle->name}}</span></div>
+                        <div class="vip-date"><span>{{$server->start_at->format('m.d')}}</span></div>
                         <div class="vip-i"><span>i</span></div>
                     </div>
                 @endforeach

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Repositories\SettingsRepository;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -37,7 +38,7 @@ class DashboardController extends Controller
 
     protected $vars;
 
-    public function __construct(ServersRepository $s_rep)
+    public function __construct(ServersRepository $s_rep, SettingsRepository $settings)
     {
         $this->ser_rep = $s_rep;
         $this->pub_path = asset("assets");
@@ -56,6 +57,10 @@ class DashboardController extends Controller
             'notify' => array('url' => '<script src="'.$this->pub_path.'/js/plugins/bootstrap-notify/bootstrap-notify.min.js"></script>'),
             'codebase' => array('url' => '<script src="'.$this->pub_path.'/js/codebase.js"></script>'),
         );
+        $settings_col = $settings->get(["name", "param"]);
+        foreach ($settings_col as $setting_col) {
+            $this->settings[$setting_col->name] = $setting_col->param;
+        }
     }
 
     public function checkUser() {
@@ -93,4 +98,5 @@ class DashboardController extends Controller
 
         return view($this->template)->with($this->vars);
     }
+
 }

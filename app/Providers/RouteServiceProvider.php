@@ -51,6 +51,10 @@ class RouteServiceProvider extends ServiceProvider
             return \App\Partner::find($value);
         });
 
+        Route::bind('ad', function ($value) {
+            return \App\Ad::find($value);
+        });
+
     }
 
     /**

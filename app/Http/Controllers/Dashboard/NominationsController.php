@@ -13,7 +13,7 @@ class NominationsController extends DashboardController
 
     public function __construct(NominationsRepository $nom_rep)
     {
-        parent::__construct(new \App\Repositories\ServersRepository(new \App\Server));
+        parent::__construct(new \App\Repositories\ServersRepository(new \App\Server), new \App\Repositories\SettingsRepository(new \App\Setting()));
         $this->inc_css_lib = array_add($this->inc_css_lib,  'select2', array('url' => '<link rel="stylesheet" href="'.$this->pub_path.'/js/plugins/select2/select2.min.css">'));
         $this->inc_css_lib = array_add($this->inc_css_lib,  'select2-bs', array('url' => '<link rel="stylesheet" href="'.$this->pub_path.'/js/plugins/select2/select2-bootstrap.min.css">'));
         $this->inc_js_lib = array_add($this->inc_js_lib,'select2',array('url' => '<script src="'.$this->pub_path.'/js/plugins/select2/select2.full.min.js"></script>'));

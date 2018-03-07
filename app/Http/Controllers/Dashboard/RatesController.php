@@ -12,7 +12,7 @@ class RatesController extends DashboardController
 
     public function __construct()
     {
-        parent::__construct(new \App\Repositories\ServersRepository(new \App\Server));
+        parent::__construct(new \App\Repositories\ServersRepository(new \App\Server), new \App\Repositories\SettingsRepository(new \App\Setting()));
         $this->template = 'dashboard.index';
         $this->inc_js_lib = array_add($this->inc_js_lib,'jq-ui',array('url' => '<script src='.$this->pub_path.'/js/plugins/jquery-ui/jquery-ui.min.js></script>'));
     }
@@ -55,7 +55,7 @@ class RatesController extends DashboardController
             $model->sort = $i;
             $model->update();
         }
-        return back()->with(['status' => 'Страница добавлена']);
+        return back()->with(['status' => 'Порядок сохранен']);
     }
 
     /**
@@ -83,7 +83,7 @@ class RatesController extends DashboardController
             'sort' => $max_id
         ]);
 
-        return back()->with(['status' => 'Страница добавлена']);
+        return back()->with(['status' => 'Рейт добавлен']);
     }
 
     /**

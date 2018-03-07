@@ -38,6 +38,14 @@ class Server extends Model
         return $query->whereDate('start_at', ">", date("Y-m-d", strtotime( '-1 days' )))->whereDate('start_at', "<", date("Y-m-d", strtotime( '+8 days' )));
     }
 
+    public function scopeActive($query) {
+        return $query->whereModerated('1');
+    }
+
+    public function scopeModerating($query) {
+        return $query->whereModerated('0');
+    }
+
     public function chronicle() {
         return $this->belongsTo('App\Chronicle');
     }

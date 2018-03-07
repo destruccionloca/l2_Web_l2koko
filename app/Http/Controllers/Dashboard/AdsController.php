@@ -2,12 +2,23 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\ad;
+use App\Ad;
+use App\Http\Requests\AdRequest;
+use App\Repositories\AdsRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class AdsController extends Controller
+class AdsController extends DashboardController
 {
+    protected $ad_rep;
+
+    public function __construct(AdsRepository $ad_rep)
+    {
+        parent::__construct(new \App\Repositories\ServersRepository(new \App\Server), new \App\Repositories\SettingsRepository(new \App\Setting()));
+        $this->template = 'dashboard.index';
+        $this->ad_rep = $ad_rep;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +26,10 @@ class AdsController extends Controller
      */
     public function index()
     {
-        //
+        $ads = $this->ad_rep->get('*');
+        $this->content = view('dashboard.ads')->with(array("user" => $this->user, "ads" => $ads))->render();
+        $this->title = 'Партнеры';
+        return $this->renderOutput();
     }
 
     /**
@@ -25,7 +39,10 @@ class AdsController extends Controller
      */
     public function create()
     {
-        //
+        $this->checkUser();
+        $this->content = view("dashboard.ad_create")->render();
+        $this->title = 'Создание нового рекламного блока';
+        return $this->renderOutput();
     }
 
     /**
@@ -34,9 +51,15 @@ class AdsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdRequest $request)
     {
-        //
+        $this->checkUser();
+        $result = $this->ad_rep->add($request);
+        if(is_array($result) && !empty($result['error'])) {
+            return back()->with($result);
+        }
+
+        return redirect('dashboard/ad/')->with($result);
     }
 
     /**
@@ -56,9 +79,12 @@ class AdsController extends Controller
      * @param  \App\ad  $ad
      * @return \Illuminate\Http\Response
      */
-    public function edit(ad $ad)
+    public function edit(Ad $ad)
     {
-        //
+        $this->checkUser();
+        $this->content = view("dashboard.ad_create")->with(['ad' => $ad])->render();
+        $this->title = 'Редактирование рекламного блока ' . $ad->title;
+        return $this->renderOutput();
     }
 
     /**
@@ -68,9 +94,15 @@ class AdsController extends Controller
      * @param  \App\ad  $ad
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ad $ad)
+    public function update(AdRequest $request, ad $ad)
     {
-        //
+        $this->checkUser();
+        $result = $this->ad_rep->update($request, $ad);
+        if(is_array($result) && !empty($result['error'])) {
+            return back()->with($result);
+        }
+
+        return redirect('dashboard/ad/')->with($result);
     }
 
     /**
@@ -81,6 +113,14 @@ class AdsController extends Controller
      */
     public function destroy(ad $ad)
     {
-        //
+        $this->checkUser();
+//        if($this->user->cant('delete', $object)) {
+//            return back()->with(array('error' => 'Доступ запрещен'));
+//        }
+        if ($ad->forceDelete()) {
+            return back()->with(['status' => 'Блок удален']);
+        } else {
+            return back()->with(['error' => 'Ошибка удаления']);
+        }
     }
 }

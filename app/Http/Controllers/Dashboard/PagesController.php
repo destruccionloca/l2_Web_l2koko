@@ -14,7 +14,7 @@ class PagesController extends DashboardController
 
     public function __construct(PagesRepository $p_rep)
     {
-        parent::__construct(new \App\Repositories\ServersRepository(new \App\Server));
+        parent::__construct(new \App\Repositories\ServersRepository(new \App\Server), new \App\Repositories\SettingsRepository(new \App\Setting()));
         $this->p_rep = $p_rep;
         $this->template = 'dashboard.index';
         $this->inc_js_lib = array_add($this->inc_js_lib,'ckeditor',array('url' => '<script src='.$this->pub_path.'/ckeditor/ckeditor.js></script>'));
@@ -90,6 +90,11 @@ class PagesController extends DashboardController
     public function edit(Page $page)
     {
         $this->checkUser();
+        $this->inc_js = "
+        <script>
+            CKEDITOR.replace( 'editor' );
+        </script>
+        ";
         $this->content = view('dashboard.page_create')->with(['page' => $page])->render();
         $this->title = $page->title;
         return $this->renderOutput();

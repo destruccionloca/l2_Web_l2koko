@@ -15,7 +15,7 @@ class PartnersController extends DashboardController
 
     public function __construct(PartnersRepository $par_rep)
     {
-        parent::__construct(new \App\Repositories\ServersRepository(new \App\Server));
+        parent::__construct(new \App\Repositories\ServersRepository(new \App\Server), new \App\Repositories\SettingsRepository(new \App\Setting()));
         $this->template = 'dashboard.index';
         $this->par_rep = $par_rep;
     }

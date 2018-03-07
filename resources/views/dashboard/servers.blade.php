@@ -8,13 +8,13 @@
 
                             <ul class="nav nav-pills push">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="javascript:void(0)">
-                                        Активные <span class="badge badge-pill badge-secondary ml-5">3</span>
+                                    <a class="nav-link {{ ($type == "active")? "active" : ""}}" href="{{route('dashboard.servers', ['type' => 'active'])}}">
+                                        Активные <span class="badge badge-pill badge-secondary ml-5">{{$count['active']}}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="javascript:void(0)">
-                                        На модерации <span class="badge badge-pill badge-secondary ml-5">1</span>
+                                    <a class="nav-link {{ ($type == "moderating")? "active" : ""}}" href="{{route('dashboard.servers', ['type' => 'moderating'])}}">
+                                        На модерации <span class="badge badge-pill badge-secondary ml-5">{{$count['moder']}}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -37,8 +37,8 @@
                                     <th>Дата открытия</th>
                                     <th class="d-none d-sm-table-cell">Хроники</th>
                                     <th class="d-none d-sm-table-cell">Рейты</th>
-                                    <th class="d-none d-sm-table-cell" style="width: 15%;">Статус</th>
-                                    <th class="text-center" style="width: 15%;">Действия</th>
+                                    <th class="d-none d-sm-table-cell" style="width: 5%;">Статус</th>
+                                    <th class="text-center" style="width: 20%;">Действия</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -83,7 +83,7 @@
                                                     </button>
                                                     </div>
                                                     {!! Form::close() !!}
-                                                    {!! Form::open(["url" => route('server.destroy',['$server'=>$server->alias]), 'method' => "POST"]) !!}
+                                                    {!! Form::open(["url" => route('server.destroy',['server'=>$server->alias]), 'method' => "POST"]) !!}
                                                     <div class="btn-group btn-group-sm" role="group" aria-label="Actions">
                                                     <button type="submit" class="btn btn-secondary" data-toggle="tooltip" title="Удалить">
                                                         <i class="fa fa-trash"></i>
@@ -91,6 +91,16 @@
                                                     </div>
                                                     {!! Form::hidden('_method', "DELETE") !!}
                                                     {!! Form::close() !!}
+                                                @if($type == 'moderating')
+                                                    {!! Form::open(["url" => route('server.active',['server'=>$server->alias]), 'method' => "POST"]) !!}
+                                                    <div class="btn-group btn-group-sm" role="group" aria-label="Actions">
+                                                        <button type="submit" class="btn btn-secondary" data-toggle="tooltip" title="Активировать">
+                                                            <i class="fa fa-check"></i>
+                                                        </button>
+                                                    </div>
+                                                    {!! Form::hidden('_method', "PUT") !!}
+                                                    {!! Form::close() !!}
+                                                @endif
                                             </div>
                                         </td>
                                     </tr>

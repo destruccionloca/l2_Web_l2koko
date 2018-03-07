@@ -9,13 +9,14 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Rate;
 use App\Chronicle;
 use App\Server;
+use Client;
 
 class ServersController extends DashboardController
 {
 
     public function __construct()
     {
-        parent::__construct(new \App\Repositories\ServersRepository(new \App\Server));
+        parent::__construct(new \App\Repositories\ServersRepository(new \App\Server), new \App\Repositories\SettingsRepository(new \App\Setting()));
         $this->template = 'dashboard.index';
         $this->inc_css_lib = array_add($this->inc_css_lib,  'dataTables', array('url' => '<link rel="stylesheet" href="'.$this->pub_path.'/js/plugins/datatables/dataTables.bootstrap4.min.css">'));
         $this->inc_css_lib = array_add($this->inc_css_lib,  'datapicker', array('url' => '<link rel="stylesheet" href="/css/datepicker.min.css">'));
@@ -30,11 +31,16 @@ class ServersController extends DashboardController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Server $server, $type = 'active')
     {
         $this->checkUser();
-        $servers = $this->ser_rep->get('*');
-        $this->content = view('dashboard.servers')->with(array("user" => $this->user, "servers" => $servers))->render();
+        if ($type == 'active') {
+            $servers = $server->Active()->get();
+        } else {
+            $servers = $server->Moderating()->get();
+        }
+        $count = ["active" => $server->Active()->count(), "moder" => $server->Moderating()->count()];
+        $this->content = view('dashboard.servers')->with(array("user" => $this->user, "servers" => $servers, "count" => $count, "type" => $type))->render();
         $this->title = 'Сервера';
         return $this->renderOutput();
     }
@@ -84,7 +90,7 @@ class ServersController extends DashboardController
             return back()->with($result);
         }
 
-        return redirect('/dashboard/server/')->with($result);
+        return redirect('/dashboard/servers/')->with($result);
     }
 
     /**
@@ -110,6 +116,12 @@ class ServersController extends DashboardController
 //        if($this->user->cant('update', $object)) {
 //            return back()->with(array('error' => 'Доступ запрещен'));
 //        }
+        $this->inc_js = "
+        <script>
+            var datepicker = $('#start_at').datepicker().data('datepicker');
+            datepicker.selectDate(new Date(" . $server->start_at->format('Y, m-1, d, H, i, s') . "));
+        </script>
+        ";
         $rates = $rate->get();
         $chronicles = $chronicle->get();
         $statuses = $status->get();
@@ -129,7 +141,7 @@ class ServersController extends DashboardController
         $this->inputs = array_add($this->inputs, "chronicles", $inp_chronicles);
         $this->inputs = array_add($this->inputs, "statuses", $inp_statuses);
         $this->content = view('dashboard.server_create')->with(array("user" => $this->user, "inputs" => $this->inputs, "server" => $server))->render();
-        $this->title = 'Редактирование сервера';
+        $this->title = 'Редактирование сервера' . $server->name;
         return $this->renderOutput();
     }
 
@@ -150,7 +162,7 @@ class ServersController extends DashboardController
         if(is_array($result) && !empty($result['error'])) {
             return back()->with($result);
         }
-        return redirect('/dashboard/server')->with($result);
+        return redirect('/dashboard/servers/')->with($result);
     }
 
     /**
@@ -170,5 +182,24 @@ class ServersController extends DashboardController
         } else {
             return back()->with(['error' => 'Ошибка удаления']);
         }
+    }
+
+    public function toActive(Server $server) {
+        $this->checkUser();
+        $server->moderated = true;
+        if ($server->update()) {
+            return back()->with(['status' => 'Сервер активирован']);
+        } else {
+            return back()->with(['error' => 'Ошибка активации']);
+        }
+    }
+
+    public function toPost(Server $server) {
+        $this->checkUser();
+        $api = new Client;
+        $api->setDefaultToken("98b459daf1861dd46d449822aa1bfedef14f94907b029028a99847d2fe908b2e894edadf8f3e6482fe375");
+        $response = $api->request('messages.send', ["user_id" => "15772751","message" => 'sadfsadfsadfsadf']);
+        dd($response);
+
     }
 }

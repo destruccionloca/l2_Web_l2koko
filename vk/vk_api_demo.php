@@ -19,3 +19,6 @@ if ($vkAPI->postToPublic($publicID, "Привет Хабр!", 'https://hydra-med
 
     echo "Фейл, пост не добавлен(( ищите ошибку\n";
 }
+
+
+https://l2oko.ru/images/bg.jpg?a86692fde6f0f4f214bb25021efa2e7c

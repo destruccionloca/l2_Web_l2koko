@@ -133,14 +133,14 @@ MAIN CONTENT LAYOUT
                 <div class="content-side content-side-full content-side-user px-10 align-parent">
                     <!-- Visible only in mini mode -->
                     <div class="sidebar-mini-visible-b align-v animated fadeIn">
-                        <img class="img-avatar img-avatar32" src="assets/img/avatars/avatar15.jpg" alt="">
+                        <img class="img-avatar img-avatar32" src="{{ asset('assets/img/avatars/avatar15.jpg') }}" alt="">
                     </div>
                     <!-- END Visible only in mini mode -->
 
                     <!-- Visible only in normal mode -->
                     <div class="sidebar-mini-hidden-b text-center">
-                        <a class="img-link" href="be_pages_generic_profile.html">
-                            <img class="img-avatar" src="assets/img/avatars/avatar15.jpg" alt="">
+                        <a class="img-link" href="#">
+                            <img class="img-avatar" src="{{ asset('assets/img/avatars/avatar15.jpg') }}" alt="">
                         </a>
                         <ul class="list-inline mt-10">
                             <li class="list-inline-item">
@@ -168,59 +168,56 @@ MAIN CONTENT LAYOUT
                 <div class="content-side content-side-full">
                     <ul class="nav-main">
                         <li class="nav-main-heading"><span class="sidebar-mini-visible">Мн</span><span class="sidebar-mini-hidden">Меню</span></li>
-                        <li class="open">
-                            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-doc"></i><span class="sidebar-mini-hide">Страницы</span></a>
-                            <ul>
-                                <li>
-                                    <a href="be_pages_generic_blank.html">Все страницы</a>
-                                </li>
-                                <li>
-                                    <a href="be_pages_generic_blank_block.html">Добавить новую</a>
-                                </li>
-                            </ul>
+                        <li>
+                            <a href="{{route('page.index')}}"><i class="si si-doc"></i><span class="sidebar-mini-hide">Страницы</span></a>
                         </li>
                         <li>
-                            <a href="bd_dashboard.html"><i class="si si-compass"></i><span class="sidebar-mini-hide">Шапка</span></a>
+                            <a href="{{route('rate.index')}}"><i class="si si-compass"></i><span class="sidebar-mini-hide">Рейты</span></a>
                         </li>
                         <li>
-                            <a href="bd_dashboard.html"><i class="si si-compass"></i><span class="sidebar-mini-hide">Рейты</span></a>
-                        </li>
-                        <li>
-                            <a href="bd_dashboard.html"><i class="si si-compass"></i><span class="sidebar-mini-hide">Хроники</span></a>
+                            <a href="{{route('chronicle.index')}}"><i class="si si-compass"></i><span class="sidebar-mini-hide">Хроники</span></a>
                         </li>
                         <li>
                             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-flag"></i><span class="sidebar-mini-hide">Сервера</span></a>
                             <ul>
                                 <li>
-                                    <a href="be_pages_error_all.html">Все сервера</a>
+                                    <a href="{{route('dashboard.servers')}}">Все сервера</a>
                                 </li>
                                 <li>
-                                    <a href="op_error_400.html">Добавить новый</a>
+                                    <a href="{{route('server.create')}}">Добавить новый</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-handbag"></i><span class="sidebar-mini-hide">Номинации</span></a>
-                            <ul>
-                                <li>
-                                    <a href="be_pages_ecom_dashboard.html">Редактировать</a>
-                                </li>
-                                <li>
-                                    <a href="be_pages_ecom_orders.html">Заявки</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="bd_dashboard.html"><i class="si si-compass"></i><span class="sidebar-mini-hide">Рекламный блок</span></a>
+                        <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-handbag"></i><span class="sidebar-mini-hide">Номинации</span></a>
+                        <ul>
+                            <li>
+                                <a href="{{route('nomination.index')}}">Все номинации</a>
+                            </li>
+                            <li>
+                                <a href="{{route('nomination.create')}}">Добавить новую</a>
+                            </li>
+                        </ul>
                         </li>
                         <li>
                             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-bubbles"></i><span class="sidebar-mini-hide">Партнеры</span></a>
                             <ul>
                                 <li>
-                                    <a href="be_pages_forum_categories.html">Все партнеры</a>
+                                    <a href="{{route('partner.index')}}">Все партнеры</a>
                                 </li>
                                 <li>
-                                    <a href="be_pages_forum_topics.html">Добавить нового</a>
+                                    <a href="{{route('partner.create')}}">Добавить нового</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fa fa-money"></i><span class="sidebar-mini-hide">Реклама</span></a>
+                            <ul>
+                                <li>
+                                    <a href="{{route('ad.index')}}">Все блоки</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('ad.create')}}">Добавить новый</a>
                                 </li>
                             </ul>
                         </li>
@@ -336,22 +333,11 @@ MAIN CONTENT LAYOUT
                         {{ Auth::user()->name }}<i class="fa fa-angle-down ml-5"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right min-width-150" aria-labelledby="page-header-user-dropdown">
-                        <a class="dropdown-item" href="be_pages_generic_profile.html">
-                            <i class="si si-user mr-5"></i> Profile
-                        </a>
-                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="be_pages_generic_inbox.html">
-                            <span><i class="si si-envelope-open mr-5"></i> Inbox</span>
-                            <span class="badge badge-primary">3</span>
-                        </a>
-                        <a class="dropdown-item" href="be_pages_generic_invoice.html">
-                            <i class="si si-note mr-5"></i> Invoices
-                        </a>
-                        <div class="dropdown-divider"></div>
 
                         <!-- Toggle Side Overlay -->
                         <!-- Layout API, functionality initialized in Codebase() -> uiApiLayout() -->
-                        <a class="dropdown-item" href="javascript:void(0)" data-toggle="layout" data-action="side_overlay_toggle">
-                            <i class="si si-wrench mr-5"></i> Settings
+                        <a class="dropdown-item" href="{{ route('settings') }}" data-toggle="layout" data-action="side_overlay_toggle">
+                            <i class="si si-wrench mr-5"></i> Настройки
                         </a>
                         <!-- END Side Overlay -->
 
