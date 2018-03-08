@@ -13,8 +13,8 @@
 
 
 Route::get('/', ['uses' => 'IndexController@index', 'as' => 'site.index']);
-Route::get('/addserver', ['uses' => 'ServerController@showAddServer', 'as' => 'site.addserverShow']);
-Route::post('/addserver', ['uses' => 'ServerController@addServer', 'as' => 'site.addserver']);
+Route::get('/addserver', ['uses' => 'ServerController@create', 'as' => 'site.server.create']);
+Route::post('/addserver', ['uses' => 'ServerController@store', 'as' => 'site.server.store']);
 
 Auth::routes();
 

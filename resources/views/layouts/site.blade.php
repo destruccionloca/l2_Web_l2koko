@@ -1,26 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Новые сервера л2 | L2OKO</title>
+    <title>{{ $title }}</title>
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <meta charset="utf-8">
-    <meta name="description" content="L2 OKO - это удобный сервис по поиску новых серверов Л2. Сервис помогает быть в курсе событий и начинать игру сразу после открытия новых серверов л2. 
-Функции кросс постинга в социальные сети позволяет игрокам быть в курсе открытия новых серверов л2 даже не заходя на сайт. Удобные фильтры позволяют в считанные секунды найти нужный сервер л2 по хроникам и рейтам." />
-    <meta name="keywords" content="" />
+    <meta name="description" content="{{ $description }}" />
+    <meta name="keywords" content="{{ $keywords }}" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--CSS-->
-    <!-- Bootsrap -->
-    {{--<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}">--}}
-    {{--<link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet" type="text/css">--}}
-    <link rel="stylesheet" href="{{ asset('css/animate.css') }}" type="text/css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="{{ asset('css/datepicker.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('css/style.min.css') }}" type="text/css">
+    <!-- Stylesheets -->
+    @yield('include_css_lib')
+    @yield('include_last_css_lib')
+    <!-- END Stylesheets -->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
@@ -42,35 +36,36 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active def-nav">
-                    <a class="nav-link" href="http://nbasece5.bget.ru/%D1%80%D0%B5%D0%BA%D0%BB%D0%B0%D0%BC%D0%B0.html" target="_blank">Реклама</a>
+                    <a class="nav-link" href="/">Главная</a>
                 </li>
-                <li class="nav-item def-nav">
-                    <a class="nav-link" href="http://nbasece5.bget.ru/%D1%80%D0%B5%D0%BA%D0%BB%D0%B0%D0%BC%D0%B0.html" target="_blank">Партнерам</a>
+                <li class="nav-item dropdown def-nav">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Реклама<span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        @foreach($pages as $page)
+                            <a class="dropdown-item" href="#">{{$page->title}}</a>
+                        @endforeach
+                    </div>
                 </li>
                 <li class="nav-item def-nav">
                     <a class="nav-link" href="#">Контакты</a>
                 </li>
-                <li class="nav-item dropdown drop-nav">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Личный кабинет<span class="caret"></span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
                 <li class="nav-item add-nav">
-                    <a class="nav-link" href="{{ route('site.addserverShow') }}" >Добавить сервер</a>
+                    <a class="nav-link" href="{{ route('site.server.create') }}" >Добавить сервер</a>
                 </li>
             </ul>
         </div>
     </nav>
 </div>
-<div class="contaner-fluid" id="header-pic">
+<div class="contaner-fluid" id="header-pic" style="background-image: url({{ asset("images/bg.jpg")}});">
     <div class="container">
-        <h1>Новые сервера л2</h1>
-        <p>Анонсы игровых серверов Lineage 2</p>
+        <div class="row header-pic-title justify-content-end align-items-center">
+            <div class="col-4">
+                <h1>Новые сервера л2</h1>
+                <p>Анонсы игровых серверов Lineage 2</p>
+            </div>
+        </div>
     </div>
 </div>
 <!-- START CONTENT -->
@@ -115,7 +110,7 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
                 <a href="http://nbasece5.bget.ru/%D1%80%D0%B5%D0%BA%D0%BB%D0%B0%D0%BC%D0%B0.html " target="_blank" class="footer-menu">Реклама</a>
                 <a href="http://nbasece5.bget.ru/%D1%80%D0%B5%D0%BA%D0%BB%D0%B0%D0%BC%D0%B0.html" target="_blank" class="footer-menu">Партнерам</a>
                 <a href="#" class="footer-menu">Контакты</a>
-                <a href="{{ route('site.addserverShow') }}"  class="footer-menu" >Добавить сервер</a>
+                <a href="{{ route('site.server.create') }}"  class="footer-menu" >Добавить сервер</a>
             </div>
             <div class="col-md-3">
                 <div class="soc">
@@ -196,8 +191,8 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
     </div>
 </div>
 <!--JS-->
-<!--JQ-->
-<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/datepicker.min.js') }}" ></script>
+@yield('include_js_lib')
+@yield('include_js')
+<!--END JS -->
 </body>
 </html>

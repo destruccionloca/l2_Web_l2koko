@@ -1,14 +1,14 @@
 <div class="contaner-fluid" id="filter">
     <div class="container">
         <div class="row main-filter">
-            <div class="col-md-6">
-                <div class="page-title"><hr><span>Регистрация:</span></div>
+            <div class="col-md-12">
+                <div class="page-title"><hr><span>Добавить сервер:</span></div>
             </div>
-            <div class="col-md-6">
-                <div class="page-but" data-toggle="modal" data-target="#myModal">Добавить услугу</div>
-                <div class="page-but">Наши услуги</div>
-                <div class="page-but">Заявка в "Наши рекомендации"</div>
-            </div>
+            {{--<div class="col-md-6">--}}
+                {{--<div class="page-but" data-toggle="modal" data-target="#myModal">Добавить услугу</div>--}}
+                {{--<div class="page-but">Наши услуги</div>--}}
+                {{--<div class="page-but">Заявка в "Наши рекомендации"</div>--}}
+            {{--</div>--}}
         </div>
     </div>
 </div>
@@ -19,7 +19,7 @@
                 <span class="unactive">Главная / </span><span class="active">Регистрация</span>
             </div>
         </div>
-        {!! Form::open(["url" => route('site.addserver'),  'method' => "POST"]) !!}
+        {!! Form::open(["url" => route('site.server.store'),  'method' => "POST", "files" => "true"]) !!}
         <div class="row page-content-row">
                 <div class="col-8">
                     <div class="row">
@@ -30,7 +30,7 @@
                         </div>
                         <div class="col-8">
                             <div class="form-input-block d-flex align-items-center">
-                                <input class="form-input" type="text" name="name">
+                                {!! Form::text('name', old("name"), ['id'=>'name', "class" => "form-input", "required" => ""]) !!}
                             </div>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="col-8">
                             <div class="form-input-block d-flex align-items-center">
-                                <input class="form-input" type="text" name="link">
+                                {!! Form::url('link', old("link"), ['id'=>'link', "class" => "form-input", "required" => ""]) !!}
                             </div>
                         </div>
                     </div>
@@ -54,18 +54,7 @@
                         </div>
                         <div class="col-8">
                             <div class="form-input-block d-flex align-items-center">
-                                <select class="form-select" name="chronic">
-                                    <option value="C4">C4</option>
-                                    <option value="Interlude">Interlude</option>
-                                    <option value="Gracia Final">Gracia Final</option>
-                                    <option value="Epilogue">Epilogue</option>
-                                    <option value="Freya">Freya</option>
-                                    <option value="High Five">High Five</option>
-                                    <option value="GOD">GOD</option>
-                                    <option value="Lindvior">Lindvior</option>
-                                    <option value="Ertheia">Ertheia</option>
-                                    <option value="Classic">Classic</option>
-                                </select>
+                                {!! Form::select('chronicle_id', $inputs["chronicles"], old("chronicle_id"), ['id'=>'chronicle_id', "class" => "form-select", "required" => ""]) !!}
                             </div>
                         </div>
                     </div>
@@ -77,7 +66,7 @@
                         </div>
                         <div class="col-8">
                             <div class="form-input-block d-flex align-items-center">
-                                <input class="form-input" type="text" name="rate">
+                                {!! Form::select('rate_id', $inputs["rates"], old("rate_id"), ['id'=>'rate_id', "class" => "form-select", "required" => ""]) !!}
                             </div>
                         </div>
                     </div>
@@ -89,7 +78,7 @@
                         </div>
                         <div class="col-8">
                             <div class="form-input-block d-flex align-items-center">
-                                <input class="form-input datepicker-here" data-timepicker="true" type="text" name="date">
+                                {!! Form::text('start_at', old("start_at"), ['id'=>'start_at', "class" => "form-input datepicker-here", "required" => "", "data-timepicker" => "true"]) !!}
                             </div>
                         </div>
                     </div>
@@ -101,14 +90,14 @@
                         </div>
                         <div class="col-8">
                             <div class="form-input-block d-flex align-items-center">
-                                <input class="form-input" type="email" name="email">
+                                {!! Form::email('email', old("email"), ['id'=>'email', "class" => "form-input", "required" => ""]) !!}
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-4">
                             <div class="form-input-block d-flex align-items-center">
-                                <span class="form-input-title">Профиль ВК</span>
+                                {!! Form::url('vk', old("vk"), ['id'=>'vk', "class" => "form-input", "required" => ""]) !!}
                             </div>
                         </div>
                         <div class="col-8">
