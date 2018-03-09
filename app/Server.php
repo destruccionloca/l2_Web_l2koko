@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Server extends Model
 {
@@ -28,6 +29,10 @@ class Server extends Model
 
     public function scopeOpen($query) {
         return $query->whereDate('start_at', "<", date("Y-m-d"));
+    }
+
+    public function scopeDay($query, $day, $month) {
+        return $query->whereDay('start_at', $day)->whereMonth('start_at', $month);
     }
 
     public function scopeWeek($query) {

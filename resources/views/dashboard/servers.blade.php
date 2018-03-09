@@ -38,7 +38,7 @@
                                     <th class="d-none d-sm-table-cell">Хроники</th>
                                     <th class="d-none d-sm-table-cell">Рейты</th>
                                     <th class="d-none d-sm-table-cell" style="width: 5%;">Статус</th>
-                                    <th class="text-center" style="width: 20%;">Действия</th>
+                                    <th class="text-center" style="width: 25%;">Действия</th>
                                 </tr>
                                 </thead>
                                 <tbody>

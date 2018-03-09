@@ -16,11 +16,22 @@
     <div class="container page-content clearboth">
         <div class="row">
             <div class="col-12 page-title-2 align-items-center d-flex">
-                <span class="unactive">Главная / </span><span class="active">Регистрация</span>
+                <span class="unactive">Главная / </span><span class="active ml-1">Добавить сервер</span>
             </div>
         </div>
         {!! Form::open(["url" => route('site.server.store'),  'method' => "POST", "files" => "true"]) !!}
         <div class="row page-content-row">
+            <!-- ERRORS -->
+            @if (count($errors) > 0)
+                    <div class="col-8">
+                            <ul class="list-group">
+                                @foreach ($errors->all() as $error)
+                                    <li class="list-group-item list-group-item-danger">{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                    </div>
+            @endif
+            <!-- END ERRORS -->
                 <div class="col-8">
                     <div class="row">
                         <div class="col-4">
@@ -97,12 +108,12 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-input-block d-flex align-items-center">
-                                {!! Form::url('vk', old("vk"), ['id'=>'vk', "class" => "form-input", "required" => ""]) !!}
+                                <span class="form-input-title">Вконтакте</span>
                             </div>
                         </div>
                         <div class="col-8">
                             <div class="form-input-block d-flex align-items-center">
-                                <input class="form-input" type="text" name="vk">
+                                {!! Form::url('vk', old("vk"), ['id'=>'vk', "class" => "form-input", "required" => ""]) !!}
                             </div>
                         </div>
                     </div>
@@ -111,7 +122,19 @@
             </div>
             <div class="row page-content-row">
                 <div class="col-8">
-                    <div class="row">
+                    <div class="row p-1">
+                        <div class="col-4">
+                            <div class="form-input-block d-flex align-items-center">
+                                <span class="form-input-title">Описание проекта:</span>
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="form-input-block d-flex align-items-center">
+                                {!! Form::textarea('description', isset($server->description)? $server->description : old("description"), ['id'=>'description', "class" => "form-textarea", "required" => ""]) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-1">
                         <div class="col-4">
                             <div class="form-input-block d-flex align-items-center">
                                 <span class="form-input-title">Кратное описание проекта:</span>
@@ -119,31 +142,19 @@
                         </div>
                         <div class="col-8">
                             <div class="form-input-block d-flex align-items-center">
-                                <textarea rows="8" class="form-textarea" name="desc"></textarea>
+                                {!! Form::textarea('short_desc', isset($server->short_desc)? $server->short_desc : old("short_desc"), ['id'=>'short_desc', "class" => "form-textarea", "required" => ""]) !!}
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-4">
                             <div class="form-input-block d-flex align-items-center">
-                                <span class="form-input-title">Группа ВК</span>
+                                <span class="form-input-title">Facebook</span>
                             </div>
                         </div>
                         <div class="col-8">
                             <div class="form-input-block d-flex align-items-center">
-                                <input class="form-input" type="text" name="vkgroup">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="form-input-block d-flex align-items-center">
-                                <span class="form-input-title">Группа Facebook</span>
-                            </div>
-                        </div>
-                        <div class="col-8">
-                            <div class="form-input-block d-flex align-items-center">
-                                <input class="form-input" type="text" name="fb">
+                                {!! Form::url('fb', old("fb"), ['id'=>'fb', "class" => "form-input", "required" => ""]) !!}
                             </div>
                         </div>
                     </div>
@@ -155,7 +166,7 @@
                         </div>
                         <div class="col-8">
                             <div class="form-input-block d-flex align-items-center">
-                                <input class="form-input" type="text" name="tw">
+                                {!! Form::url('tw', old("tw"), ['id'=>'tw', "class" => "form-input", "required" => ""]) !!}
                             </div>
                         </div>
                     </div>
@@ -167,7 +178,19 @@
                         </div>
                         <div class="col-8">
                             <div class="form-input-block d-flex align-items-center">
-                                <input class="form-input" type="text" name="icq">
+                                {!! Form::url('icq', old("icq"), ['id'=>'icq', "class" => "form-input", "required" => ""]) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-input-block d-flex align-items-center">
+                                <span class="form-input-title">Изображение</span>
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="form-input-block d-flex align-items-center">
+                                {!! Form::file('picture', old("picture"), ['id'=>'picture', "class" => "form-input"]) !!}
                             </div>
                         </div>
                     </div>

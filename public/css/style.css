@@ -10206,7 +10206,6 @@ nav .def-nav > a:hover {
   /* ╨Ю╤В╨╛╨▒╤А╨░╨╢╨░╤В╤М ╨║╨░╨║ ╤Б╤В╤А╨╛╤З╨╜╤Л╨╣ ╤Н╨╗╨╡╨╝╨╡╨╜╤В */
   margin-left: 10px;
   /* ╨Ю╤В╤Б╤В╤Г╨┐ ╤Б╨╗╨╡╨▓╨░ */
-  padding: 10px 12px;
   /* ╨Я╨╛╨╗╤П ╨▓╨╛╨║╤А╤Г╨│ ╤В╨╡╨║╤Б╤В╨░ */
   border-radius: 50px;
   background-color: transparent;
@@ -10608,15 +10607,25 @@ nav .def-nav > a:hover {
   border-radius: 0 0 10px 10px;
 }
 
-.recom_design_img {
+.recom_img {
   float: left;
   width: 25%;
   height: 100%;
   border: #f0f1f2 solid;
   border-width: 0 1px 0 0;
-  background-image: url(/images/recom_design.png?afa6366a04153b45cf0324490f702785);
-  background-repeat: no-repeat;
-  background-position: center center;
+}
+
+.recom_img img {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  margin: 3px;
+  -webkit-box-shadow: 0 0 0 1px #4ca4d4;
+  box-shadow: 0 0 0 1px #4ca4d4;
+}
+
+.text-center {
+  text-align: center !important;
 }
 
 .recom_conc_img {

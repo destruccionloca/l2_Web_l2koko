@@ -44,7 +44,7 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         @foreach($pages as $page)
-                            <a class="dropdown-item" href="#">{{$page->title}}</a>
+                            <a class="dropdown-item" href="{{route("site.page.show", ["page" => $page->alias])}}">{{$page->title}}</a>
                         @endforeach
                     </div>
                 </li>
@@ -140,59 +140,40 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
         </div>
     </div>
 </div>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title-my" id="exampleModalLabel">Дата открытия серверов: <span class="modal-mes">Декабрь</span> <span class="modal-day">20</span></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <div >&times;</div>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-servers-tab">
-                    <div class="col-md-12 servers-tab-vip paddding_for_tab">
-                        <div class="vip-img"><img src="images/vip.png"></div>
-                        <div class="vip-name"><span>Eternal.ms</span></div>
-                        <div class="vip-reit"><span><9999</span></div>
-                        <div class="vip-chronic"><span>Interlude</span></div>
-                        <div class="vip-date"><span>04.01.17</span></div>
-                        <div class="vip-i"><span>i</span></div>
-                    </div>
-                    <div class="col-md-12 servers-tab-vip paddding_for_tab">
-                        <div class="vip-img"><img src="images/vip.png"></div>
-                        <div class="vip-name"><span>Eternal.ms</span></div>
-                        <div class="vip-reit"><span><9999</span></div>
-                        <div class="vip-chronic"><span>Interlude</span></div>
-                        <div class="vip-date"><span>04.01.17</span></div>
-                        <div class="vip-i"><span>i</span></div>
-                    </div>
-                    <div class="col-md-12 servers-tab-prem paddding_for_tab">
-                        <div class="prem-img"><img src="images/prem.png"></div>
-                        <div class="prem-name"><span>Eternal.ms</span></div>
-                        <div class="prem-reit"><span><9999</span></div>
-                        <div class="prem-chronic"><span>Interlude</span></div>
-                        <div class="prem-date"><span>04.01.17</span></div>
-                        <div class="prem-i"><span>i</span></div>
-                    </div>
-                    <div class="col-md-12 servers-tab-prem paddding_for_tab">
-                        <div class="prem-img"><img src="images/prem.png"></div>
-                        <div class="prem-name"><span>Eternal.ms</span></div>
-                        <div class="prem-reit"><span><9999</span></div>
-                        <div class="prem-chronic"><span>Interlude</span></div>
-                        <div class="prem-date"><span>04.01.17</span></div>
-                        <div class="prem-i"><span>i</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <!--JS-->
 @yield('include_js_lib')
 @yield('include_js')
 <!--END JS -->
+
+@if (session('status'))
+    <script>
+        $(document).ready(function() {
+            $.notify({
+                icon: 'fa fa-check',
+                title: '<strong>Успешно</strong>',
+                message: '{{ session('status') }}'
+            }, {
+                type: 'success'
+            });
+        });
+    </script>
+@endif
+@if (session('error'))
+    <script>
+        $(document).ready(function() {
+            $.notify({
+                icon: 'fa fa-warning',
+                title: '<strong>Ошибка</strong>',
+                url: '{{session('url')}}',
+                message: '{{session('error')}}'
+            }, {
+                type: 'danger',
+                timer: 100000,
+                url_target: '_blank'
+            });
+        });
+    </script>
+@endif
+
 </body>
 </html>

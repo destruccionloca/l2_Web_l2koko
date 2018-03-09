@@ -20,7 +20,7 @@ class ServersRepository extends Repository
         $this->model = $server;
     }
 
-    public function add($request) {
+    public function add($request, $from = "back_side") {
         if ($request->has("name")) {
             $data = $request->all();
             $this->model->name = $data["name"];
@@ -37,7 +37,13 @@ class ServersRepository extends Repository
             $this->model->short_desc = $data["short_desc"];
             $this->model->start_at = Carbon::createFromFormat('d.m.Y H:i', $data['start_at']);
             $this->model->chronicle_id = $data["chronicle_id"];
-            $this->model->status_id = $data["status_id"];
+            if ($from == "front_side") {
+                $this->model->status_id = 1;
+                $this->model->moderated = 0;
+            } else {
+                $this->model->status_id = $data["status_id"];
+                $this->model->moderated = 1;
+            }
             $this->model->rate_id = $data["rate_id"];
             $this->model->link = $data["link"];
             $this->model->email = $data["email"];

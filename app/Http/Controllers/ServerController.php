@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Chronicle;
+use App\Http\Requests\ServerRequest;
 use App\Rate;
 use Illuminate\Http\Request;
 use App\Server;
@@ -37,24 +38,13 @@ class ServerController extends SiteController
         return $this->renderOutput();
     }
 
-    public function store(Request $request, Server $server) {
-        $data = $request->all();
-        $server->create([
-            'unumber' => $this->generateRandStr(10),
-            'link' => $data['link'],
-            'chronicles' => $data['chronic'],
-            'date_start' => Carbon::createFromFormat( 'd.m.Y H:i' ,$data['date']),
-            'rate' => $data['rate'],
-            'email' => $data['email'],
-            'social_vk' => $data['vk'],
-            'description' => $data['desc'],
-            'social_groupvk' => $data['vkgroup'],
-            'social_groupfb' => $data['fb'],
-            'social_grouptw' => $data['tw'],
-            'social_groupicq' => $data['icq'],
-            'name' => $data['name'],
-        ]);
-        return redirect('/');
+    public function store(ServerRequest $request) {
+        $result = $this->ser_rep->add($request, "front_side");
+        if(is_array($result) && (!empty($result['error']) || !empty($result['errors']))) {
+            return back()->with($result);
+        }
+
+        return redirect('/')->with($result);
     }
 
     public function generateRandStr($length = 8){

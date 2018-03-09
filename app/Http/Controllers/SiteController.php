@@ -57,6 +57,7 @@ class SiteController extends Controller
         $this->inc_js_lib = array(
             'app' => array('url' => '<script src="'.asset('js/app.js').'"></script>'),
             'data-picker' => array('url' => '<script src="'.asset('js/datepicker.min.js').'"></script>'),
+            'bootstrap-notify' => array('url' => '<script src="'.asset('js/bootstrap-notify.min.js').'"></script>'),
         );
         $settings_col = $settings->get(["name", "param"]);
         foreach ($settings_col as $setting_col) {
