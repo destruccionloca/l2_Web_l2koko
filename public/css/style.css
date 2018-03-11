@@ -10172,7 +10172,6 @@ nav .def-nav > a:hover {
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
   font-size: 12px;
-  padding: 5px 10px;
   border-radius: 15px;
   background-color: #1689c7;
   color: #fff;
@@ -10182,7 +10181,12 @@ nav .def-nav > a:hover {
   text-align: center;
 }
 
-#drop-filter {
+.filter-sub {
+  float: left;
+  margin-left: 15px;
+}
+
+.drop-filter {
   width: 30px;
   height: 30px;
   padding: 5px 10px;
@@ -10303,78 +10307,78 @@ nav .def-nav > a:hover {
 
 /* VIP */
 
-.servers-tab-vip {
+.servers-tab-exlusive {
   background-color: #5a6779;
 }
 
-.vip-img {
+.servers-tab-exlusive .img {
   width: 10%;
   padding: 10px 0;
   float: left;
 }
 
-.vip-name {
+.servers-tab-exlusive .name {
   width: 30%;
   float: left;
   padding: 15px 0 15px 0;
 }
 
-.vip-name span {
+.servers-tab-exlusive .name span {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 12px;
   color: #fff;
 }
 
-.vip-reit {
+.servers-tab-exlusive .reit {
   width: 15%;
   float: left;
   padding: 15px 0 15px 0;
 }
 
-.vip-reit span {
+.servers-tab-exlusive .reit span {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 12px;
   color: #fff;
 }
 
-.vip-chronic {
+.servers-tab-exlusive .chronic {
   width: 20%;
   float: left;
   padding: 15px 0 15px 0;
 }
 
-.vip-chronic span {
+.servers-tab-exlusive .chronic span {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 12px;
   color: #fff;
 }
 
-.vip-date {
+.servers-tab-exlusive .date {
   width: 15%;
   float: left;
   padding: 15px 0 15px 0;
 }
 
-.vip-date span {
+.servers-tab-exlusive .date span {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 9px;
   color: #fff;
 }
 
-.vip-i {
+.servers-tab-exlusive .i {
   width: 10%;
   float: left;
   padding: 15px 0 15px 10px;
 }
 
-.vip-i span {
+.servers-tab-exlusive .i span {
   font-family: "Times New Roman", sans-serif;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 18px;
   color: #ffdf41;
   background-color: #46505e;
   border-radius: 50%;
@@ -10382,85 +10386,85 @@ nav .def-nav > a:hover {
   cursor: pointer;
 }
 
-.vip-i span:hover {
+.servers-tab-exlusive .i span:hover {
   background-color: #4f5b6b;
   color: #e2e4e7;
 }
 
 /* PREM */
 
-.servers-tab-prem {
+.servers-tab-silver {
   background-color: #ffffff;
 }
 
-.prem-img {
+.servers-tab-silver .img {
   width: 10%;
   padding: 10px 0;
   float: left;
 }
 
-.prem-name {
+.servers-tab-silver .name {
   width: 30%;
   float: left;
   padding: 15px 0 15px 0;
 }
 
-.prem-name span {
+.servers-tab-silver .name span {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 12px;
   color: #3c4152;
 }
 
-.prem-reit {
+.servers-tab-silver .reit {
   width: 15%;
   float: left;
   padding: 15px 0 15px 0;
 }
 
-.prem-reit span {
+.servers-tab-silver .reit span {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 12px;
   color: #3c4152;
 }
 
-.prem-chronic {
+.servers-tab-silver .chronic {
   width: 20%;
   float: left;
   padding: 15px 0 15px 0;
 }
 
-.prem-chronic span {
+.servers-tab-silver .chronic span {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 12px;
   color: #3c4152;
 }
 
-.prem-date {
+.servers-tab-silver .date {
   width: 15%;
   float: left;
   padding: 15px 0 15px 0;
 }
 
-.prem-date span {
+.servers-tab-silver .date span {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 9px;
   color: #3c4152;
 }
 
-.prem-i {
+.servers-tab-silver .i {
   width: 10%;
   float: left;
   padding: 15px 0 15px 10px;
 }
 
-.prem-i span {
+.servers-tab-silver .i span {
   font-family: "Times New Roman", sans-serif;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 18px;
   color: #a6a6a6;
   background-color: #e6e6e6;
   border-radius: 50%;
@@ -10468,84 +10472,84 @@ nav .def-nav > a:hover {
   cursor: pointer;
 }
 
-.prem-i span:hover {
+.servers-tab-silver .i span:hover {
   background-color: #f2f2f2;
 }
 
 /* NORMAL */
 
-.servers-tab-norm {
+.servers-tab-light {
   background-color: #ffffff;
 }
 
-.norm-img {
+.servers-tab-light .img {
   width: 10%;
   float: left;
-  padding: 15px 2px;
+  padding: 10px 0;
 }
 
-.norm-name {
+.servers-tab-light .name {
   width: 30%;
   float: left;
   padding: 15px 0 15px 0;
 }
 
-.norm-name span {
+.servers-tab-light .name span {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 12px;
   color: #3c4152;
 }
 
-.norm-reit {
+.servers-tab-light .reit {
   width: 15%;
   float: left;
   padding: 15px 0 15px 0;
 }
 
-.norm-reit span {
+.servers-tab-light .reit span {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 12px;
   color: #3c4152;
 }
 
-.norm-chronic {
+.servers-tab-light .chronic {
   width: 20%;
   float: left;
   padding: 15px 0 15px 0;
 }
 
-.norm-chronic span {
+.servers-tab-light .chronic span {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 12px;
   color: #3c4152;
 }
 
-.norm-date {
+.servers-tab-light .date {
   width: 15%;
   float: left;
   padding: 15px 0 15px 0;
 }
 
-.norm-date span {
+.servers-tab-light .date span {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 9px;
   color: #3c4152;
 }
 
-.norm-i {
+.servers-tab-light .i {
   width: 10%;
   float: left;
   padding: 15px 0 15px 10px;
 }
 
-.norm-i span {
+.servers-tab-light .i span {
   font-family: "Times New Roman", sans-serif;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 18px;
   color: #e6e8ea;
   background-color: transparent;
   border-radius: 50%;
@@ -10554,7 +10558,94 @@ nav .def-nav > a:hover {
   cursor: pointer;
 }
 
-.norm-i span:hover {
+.servers-tab-light .i span:hover {
+  color: #a6a6a6;
+  background-color: #e6e6e6;
+}
+
+/* Free */
+
+.servers-tab-free {
+  background-color: #ffffff;
+}
+
+.servers-tab-free .img {
+  width: 10%;
+  float: left;
+  padding: 10px 0;
+}
+
+.servers-tab-free .name {
+  width: 30%;
+  float: left;
+  padding: 15px 0 15px 0;
+}
+
+.servers-tab-free .name span {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #3c4152;
+}
+
+.servers-tab-free .reit {
+  width: 15%;
+  float: left;
+  padding: 15px 0 15px 0;
+}
+
+.servers-tab-free .reit span {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #3c4152;
+}
+
+.servers-tab-free .chronic {
+  width: 20%;
+  float: left;
+  padding: 15px 0 15px 0;
+}
+
+.servers-tab-free .chronic span {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #3c4152;
+}
+
+.servers-tab-free .date {
+  width: 15%;
+  float: left;
+  padding: 15px 0 15px 0;
+}
+
+.servers-tab-free .date span {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 9px;
+  color: #3c4152;
+}
+
+.servers-tab-free .i {
+  width: 10%;
+  float: left;
+  padding: 15px 0 15px 10px;
+}
+
+.servers-tab-free .i span {
+  font-family: "Times New Roman", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #e6e8ea;
+  background-color: transparent;
+  border-radius: 50%;
+  border: solid 1px #e6e8ea;
+  padding: 5px 13px;
+  cursor: pointer;
+}
+
+.servers-tab-free .i span:hover {
   color: #a6a6a6;
   background-color: #e6e6e6;
 }
@@ -10672,10 +10763,10 @@ nav .def-nav > a:hover {
   color: #3c4152;
 }
 
-.reklama-img {
-  background: #fff;
-  padding: 15px 0;
-  border-radius: 0 0 10px 10px;
+.ad-img img {
+  border-radius: 10px;
+  height: 110px;
+  width: 280px;
 }
 
 .partners {
@@ -10690,6 +10781,12 @@ nav .def-nav > a:hover {
 
 .partners-text {
   padding: 20px 0;
+}
+
+.partner-img img {
+  border-radius: 10px;
+  height: 90px;
+  width: 280px;
 }
 
 .partners-text hr {
@@ -10986,7 +11083,6 @@ nav .def-nav > a:hover {
   border-radius: 10px;
   background-color: #f5f7fa;
   min-height: 200px;
-  float: left;
   -webkit-box-shadow: 0px 0px 8px -3px #404040;
           box-shadow: 0px 0px 8px -3px #404040;
 }

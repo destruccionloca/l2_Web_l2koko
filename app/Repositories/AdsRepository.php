@@ -40,7 +40,7 @@ class AdsRepository extends Repository
                             return ['status' => 'Партнер добавлен без изображения'];
                         }
                         $id = $this->model->id;
-                        $img->save($storeFolder . "ad-" . $id . $img_type);
+                        $img->fit(280, 110)->save($storeFolder . "ad-" . $id . $img_type);
                         $this->model->picture = $img_type;
                         $this->model->update();
                     }

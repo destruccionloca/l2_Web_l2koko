@@ -114,6 +114,7 @@ nav .active > a, nav .def-nav > a:hover {
   border-color: #e1e3e5;
   border-width: 1px 0;
   padding-top: 20px; }
+
 #filter::after {
   display: block;
   content: "";
@@ -131,7 +132,6 @@ nav .active > a, nav .def-nav > a:hover {
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
   font-size: 12px;
-  padding: 5px 10px;
   border-radius: 15px;
   background-color: #1689c7;
   color: #fff;
@@ -140,7 +140,12 @@ nav .active > a, nav .def-nav > a:hover {
   margin-left: 15px;
   text-align: center; }
 
-#drop-filter {
+.filter-sub {
+  float: left;
+  margin-left: 15px;
+}
+
+.drop-filter {
   width: 30px;
   height: 30px;
   padding: 5px 10px;
@@ -198,7 +203,8 @@ nav .active > a, nav .def-nav > a:hover {
   background-color: #f5f7fa;
   //float: left;
   box-shadow: 0px 0px 8px -3px #404040;
-  @include clearfix;}
+  @include clearfix;
+}
 
 .margin-tab .servers-tab:nth-child(n+2) {
   margin-top: 15px; }
@@ -240,221 +246,343 @@ nav .active > a, nav .def-nav > a:hover {
   color: #3c4152; }
 
 /* VIP */
-.servers-tab-vip {
-  background-color: #5a6779; }
+.servers-tab-exlusive {
+  background-color: #5a6779;
+  .img {
+    width: 10%;
+    padding: 10px 0;
+    float: left;
+  }
 
-.vip-img {
-  width: 10%;
-  padding: 10px 0;
-  float: left; }
+  .name {
+    width: 30%;
+    float: left;
+    padding: 15px 0 15px 0;
+  }
 
-.vip-name {
-  width: 30%;
-  float: left;
-  padding: 15px 0 15px 0; }
+  .name span {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: #fff;
+  }
 
-.vip-name span {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  color: #fff; }
+  .reit {
+    width: 15%;
+    float: left;
+    padding: 15px 0 15px 0;
+  }
 
-.vip-reit {
-  width: 15%;
-  float: left;
-  padding: 15px 0 15px 0; }
+  .reit span {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: #fff;
+  }
 
-.vip-reit span {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  color: #fff; }
+  .chronic {
+    width: 20%;
+    float: left;
+    padding: 15px 0 15px 0;
+  }
 
-.vip-chronic {
-  width: 20%;
-  float: left;
-  padding: 15px 0 15px 0; }
+  .chronic span {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: #fff;
+  }
 
-.vip-chronic span {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  color: #fff; }
+  .date {
+    width: 15%;
+    float: left;
+    padding: 15px 0 15px 0;
+  }
 
-.vip-date {
-  width: 15%;
-  float: left;
-  padding: 15px 0 15px 0; }
+  .date span {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 9px;
+    color: #fff;
+  }
 
-.vip-date span {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  color: #fff; }
+  .i {
+    width: 10%;
+    float: left;
+    padding: 15px 0 15px 10px;
+  }
 
-.vip-i {
-  width: 10%;
-  float: left;
-  padding: 15px 0 15px 10px; }
+  .i span {
+    font-family: "Times New Roman", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #ffdf41;
+    background-color: #46505e;
+    border-radius: 50%;
+    padding: 5px 13px;
+    cursor: pointer;
+  }
 
-.vip-i span {
-  font-family: "Times New Roman", sans-serif;
-  font-weight: 600;
-  font-size: 20px;
-  color: #ffdf41;
-  background-color: #46505e;
-  border-radius: 50%;
-  padding: 5px 13px;
-  cursor: pointer; }
-
-.vip-i span:hover {
-  background-color: #4f5b6b;
-  color: #e2e4e7; }
+  .i span:hover {
+    background-color: #4f5b6b;
+    color: #e2e4e7;
+  }
+}
 
 /* PREM */
-.servers-tab-prem {
-  background-color: #ffffff; }
+.servers-tab-silver {
+  background-color: #ffffff;
 
-.prem-img {
-  width: 10%;
-  padding: 10px 0;
-  float: left; }
+  .img {
+    width: 10%;
+    padding: 10px 0;
+    float: left;
+  }
 
-.prem-name {
-  width: 30%;
-  float: left;
-  padding: 15px 0 15px 0; }
+  .name {
+    width: 30%;
+    float: left;
+    padding: 15px 0 15px 0;
+  }
 
-.prem-name span {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  color: #3c4152; }
+  .name span {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: #3c4152;
+  }
 
-.prem-reit {
-  width: 15%;
-  float: left;
-  padding: 15px 0 15px 0; }
+  .reit {
+    width: 15%;
+    float: left;
+    padding: 15px 0 15px 0;
+  }
 
-.prem-reit span {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  color: #3c4152; }
+  .reit span {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: #3c4152;
+  }
 
-.prem-chronic {
-  width: 20%;
-  float: left;
-  padding: 15px 0 15px 0; }
+  .chronic {
+    width: 20%;
+    float: left;
+    padding: 15px 0 15px 0;
+  }
 
-.prem-chronic span {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  color: #3c4152; }
+  .chronic span {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: #3c4152;
+  }
 
-.prem-date {
-  width: 15%;
-  float: left;
-  padding: 15px 0 15px 0; }
+  .date {
+    width: 15%;
+    float: left;
+    padding: 15px 0 15px 0;
+  }
 
-.prem-date span {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  color: #3c4152; }
+  .date span {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 9px;
+    color: #3c4152;
+  }
 
-.prem-i {
-  width: 10%;
-  float: left;
-  padding: 15px 0 15px 10px; }
+  .i {
+    width: 10%;
+    float: left;
+    padding: 15px 0 15px 10px;
+  }
 
-.prem-i span {
-  font-family: "Times New Roman", sans-serif;
-  font-weight: 600;
-  font-size: 20px;
-  color: #a6a6a6;
-  background-color: #e6e6e6;
-  border-radius: 50%;
-  padding: 5px 13px;
-  cursor: pointer; }
+  .i span {
+    font-family: "Times New Roman", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #a6a6a6;
+    background-color: #e6e6e6;
+    border-radius: 50%;
+    padding: 5px 13px;
+    cursor: pointer;
+  }
 
-.prem-i span:hover {
-  background-color: #f2f2f2; }
-
+  .i span:hover {
+    background-color: #f2f2f2;
+  }
+}
 /* NORMAL */
-.servers-tab-norm {
-  background-color: #ffffff; }
+.servers-tab-light {
+  background-color: #ffffff;
 
-.norm-img {
-  width: 10%;
-  float: left;
-  padding: 15px 2px; }
+  .img {
+    width: 10%;
+    float: left;
+    padding: 10px 0;
+  }
 
-.norm-name {
-  width: 30%;
-  float: left;
-  padding: 15px 0 15px 0; }
+  .name {
+    width: 30%;
+    float: left;
+    padding: 15px 0 15px 0;
+  }
 
-.norm-name span {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  color: #3c4152; }
+  .name span {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: #3c4152;
+  }
 
-.norm-reit {
-  width: 15%;
-  float: left;
-  padding: 15px 0 15px 0; }
+  .reit {
+    width: 15%;
+    float: left;
+    padding: 15px 0 15px 0;
+  }
 
-.norm-reit span {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  color: #3c4152; }
+  .reit span {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: #3c4152;
+  }
 
-.norm-chronic {
-  width: 20%;
-  float: left;
-  padding: 15px 0 15px 0; }
+  .chronic {
+    width: 20%;
+    float: left;
+    padding: 15px 0 15px 0;
+  }
 
-.norm-chronic span {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  color: #3c4152; }
+  .chronic span {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: #3c4152;
+  }
 
-.norm-date {
-  width: 15%;
-  float: left;
-  padding: 15px 0 15px 0; }
+  .date {
+    width: 15%;
+    float: left;
+    padding: 15px 0 15px 0;
+  }
 
-.norm-date span {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  color: #3c4152; }
+  .date span {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 9px;
+    color: #3c4152;
+  }
 
-.norm-i {
-  width: 10%;
-  float: left;
-  padding: 15px 0 15px 10px; }
+  .i {
+    width: 10%;
+    float: left;
+    padding: 15px 0 15px 10px;
+  }
 
-.norm-i span {
-  font-family: "Times New Roman", sans-serif;
-  font-weight: 600;
-  font-size: 20px;
-  color: #e6e8ea;
-  background-color: transparent;
-  border-radius: 50%;
-  border: solid 1px #e6e8ea;
-  padding: 5px 13px;
-  cursor: pointer; }
+  .i span {
+    font-family: "Times New Roman", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #e6e8ea;
+    background-color: transparent;
+    border-radius: 50%;
+    border: solid 1px #e6e8ea;
+    padding: 5px 13px;
+    cursor: pointer;
+  }
 
-.norm-i span:hover {
-  color: #a6a6a6;
-  background-color: #e6e6e6; }
+  .i span:hover {
+    color: #a6a6a6;
+    background-color: #e6e6e6;
+  }
+}
 
+/* Free */
+.servers-tab-free {
+  background-color: #ffffff;
+
+  .img {
+    width: 10%;
+    float: left;
+    padding: 10px 0;
+  }
+
+  .name {
+    width: 30%;
+    float: left;
+    padding: 15px 0 15px 0;
+  }
+
+  .name span {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: #3c4152;
+  }
+
+  .reit {
+    width: 15%;
+    float: left;
+    padding: 15px 0 15px 0;
+  }
+
+  .reit span {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: #3c4152;
+  }
+
+  .chronic {
+    width: 20%;
+    float: left;
+    padding: 15px 0 15px 0;
+  }
+
+  .chronic span {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: #3c4152;
+  }
+
+  .date {
+    width: 15%;
+    float: left;
+    padding: 15px 0 15px 0;
+  }
+
+  .date span {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 9px;
+    color: #3c4152;
+  }
+
+  .i {
+    width: 10%;
+    float: left;
+    padding: 15px 0 15px 10px;
+  }
+
+  .i span {
+    font-family: "Times New Roman", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #e6e8ea;
+    background-color: transparent;
+    border-radius: 50%;
+    border: solid 1px #e6e8ea;
+    padding: 5px 13px;
+    cursor: pointer;
+  }
+
+  .i span:hover {
+    color: #a6a6a6;
+    background-color: #e6e6e6;
+  }
+}
 /* Recommendation */
 
 .tab {
@@ -554,10 +682,13 @@ nav .active > a, nav .def-nav > a:hover {
   font-size: 16px;
   color: #3c4152; }
 
-.reklama-img {
-  background: #fff;
-  padding: 15px 0;
-  border-radius: 0 0 10px 10px; }
+.ad-img {
+  img {
+    border-radius: 10px;
+    height: 110px;
+    width: 280px;
+  }
+}
 
 .partners {
   background: #fff; }
@@ -568,6 +699,15 @@ nav .active > a, nav .def-nav > a:hover {
 
 .partners-text {
   padding: 20px 0; }
+
+.partner-img {
+  img {
+    border-radius: 10px;
+    height: 90px;
+    width: 280px;
+  }
+}
+
 .partners-text hr {
   margin: 1em auto;
   border: none;
@@ -830,7 +970,6 @@ nav .active > a, nav .def-nav > a:hover {
   border-radius: 10px;
   background-color: #f5f7fa;
   min-height: 200px;
-  float: left;
   box-shadow: 0px 0px 8px -3px #404040; }
 
 .modal-servers-tab > div {

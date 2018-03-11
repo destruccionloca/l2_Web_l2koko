@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Page;
 use App\Repositories\PagesRepository;
+use App\Repositories\PartnersRepository;
 use App\Repositories\ServersRepository;
 use App\Repositories\SettingsRepository;
 use Illuminate\Http\Request;
@@ -17,6 +18,8 @@ class SiteController extends Controller
     protected $ser_rep;
 
     protected $page_rep;
+
+    protected $par_rep;
 
     protected $inputs = array();
 
@@ -44,10 +47,11 @@ class SiteController extends Controller
 
     protected $vars;
 
-    public function __construct(ServersRepository $s_rep, SettingsRepository $settings, PagesRepository $page_rep)
+    public function __construct(ServersRepository $s_rep, SettingsRepository $settings, PagesRepository $page_rep, PartnersRepository $par_rep)
     {
         $this->ser_rep = $s_rep;
         $this->page_rep = $page_rep;
+        $this->par_rep = $par_rep;
         $this->inc_css_lib = array(
             'animate' => array('url' => '<link rel="stylesheet" href="'.asset("css/animate.css").'">'),
             'font-awesome' => array('url' => '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">'),
@@ -78,6 +82,7 @@ class SiteController extends Controller
         $this->vars = array_add($this->vars,'keywords',$this->keywords);
         $this->vars = array_add($this->vars, 'user', $this->user);
         $this->vars = array_add($this->vars, 'pages', $this->page_rep->get('*'));
+        $this->vars = array_add($this->vars, 'partners', $this->par_rep->get('*'));
 //
         if($this->content) {
             $this->vars = array_add($this->vars,'content',$this->content);

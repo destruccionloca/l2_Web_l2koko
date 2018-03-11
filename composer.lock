@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6ed090bba01e5742fd93881bcab9d3f5",
+    "content-hash": "b691d853bfe23d79f241c2373b01a86d",
     "packages": [
         {
             "name": "atehnix/vk-client",
@@ -49,6 +49,53 @@
                 "vkontakte"
             ],
             "time": "2017-10-04T13:49:21+00:00"
+        },
+        {
+            "name": "bocharsky-bw/vkontakte-php-sdk",
+            "version": "v2.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bocharsky-bw/vkontakte-php-sdk.git",
+                "reference": "d7e221ef3a0b02a97854af5e9b64e79e87989f6d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bocharsky-bw/vkontakte-php-sdk/zipball/d7e221ef3a0b02a97854af5e9b64e79e87989f6d",
+                "reference": "d7e221ef3a0b02a97854af5e9b64e79e87989f6d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bocharsky Victor",
+                    "homepage": "https://github.com/bocharsky-bw"
+                }
+            ],
+            "description": "Vkontakte PHP SDK",
+            "homepage": "https://github.com/bocharsky-bw/vkontakte-php-sdk",
+            "keywords": [
+                "api",
+                "oauth",
+                "php",
+                "sdk",
+                "vk",
+                "vkontakte"
+            ],
+            "time": "2016-06-07T11:46:13+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

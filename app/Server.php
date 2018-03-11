@@ -24,15 +24,15 @@ class Server extends Model
     ];
 
     public function scopeYesterday($query) {
-        return $query->whereDay('start_at', date('d', strtotime( '-1 days' )));
+        return $query->whereDate('start_at', date('Y-m-d', strtotime( '-1 days' )));
     }
 
     public function scopeOpen($query) {
         return $query->whereDate('start_at', "<", date("Y-m-d"));
     }
 
-    public function scopeDay($query, $day, $month) {
-        return $query->whereDay('start_at', $day)->whereMonth('start_at', $month);
+    public function scopeDay($query, $date) {
+        return $query->whereDate('start_at', $date);
     }
 
     public function scopeWeek($query) {
@@ -41,6 +41,14 @@ class Server extends Model
 
     public function scopeSevenDays($query) {
         return $query->whereDate('start_at', ">", date("Y-m-d", strtotime( '-1 days' )))->whereDate('start_at', "<", date("Y-m-d", strtotime( '+8 days' )));
+    }
+
+    public function scopeRate($query, $rate){
+        return $query->where("rate_id", $rate);
+    }
+
+    public function scopeChronicle($query, $chronicle) {
+        return $query->where("chronicle_id", $chronicle);
     }
 
     public function scopeActive($query) {

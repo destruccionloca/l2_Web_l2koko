@@ -9,7 +9,12 @@ class Pagescontroller extends SiteController
 {
     public function __construct()
     {
-        parent::__construct(new \App\Repositories\ServersRepository(new \App\Server), new \App\Repositories\SettingsRepository(new \App\Setting()), new \App\Repositories\PagesRepository(new \App\Page()));
+        parent::__construct(
+            new \App\Repositories\ServersRepository(new \App\Server),
+            new \App\Repositories\SettingsRepository(new \App\Setting()),
+            new \App\Repositories\PagesRepository(new \App\Page()),
+            new \App\Repositories\PartnersRepository(new \App\Partner())
+        );
         $this->template = 'index';
         $this->title = $this->settings['title'];
         $this->description = $this->settings['description'];

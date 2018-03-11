@@ -9,7 +9,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Rate;
 use App\Chronicle;
 use App\Server;
-use Client;
+use \BW\Vkontakte as Vk;
 
 class ServersController extends DashboardController
 {
@@ -196,10 +196,18 @@ class ServersController extends DashboardController
 
     public function toPost(Server $server) {
         $this->checkUser();
-        $api = new Client;
-        $api->setDefaultToken("98b459daf1861dd46d449822aa1bfedef14f94907b029028a99847d2fe908b2e894edadf8f3e6482fe375");
-        $response = $api->request('messages.send', ["user_id" => "15772751","message" => 'sadfsadfsadfsadf']);
-        dd($response);
+        $accessToken = 'bdba04ef52bbed8d4f26b0f2a0f4cabd5089f8ffe237379dc54c6c02bfee0c8a13da06606bb4f870b11be';
+        $vkAPI = new Vk(['access_token' => $accessToken]);
+
+        if ($vkAPI->postToPublic(73236822, "Привет Хабр!", '/tmp/habr.png', ['вконтакте api', 'автопостинг', 'первые шаги'])) {
+
+            dd("Ура! Всё работает, пост добавлен\n");
+
+        } else {
+
+            dd("Фейл, пост не добавлен(( ищите ошибку\n");
+        }
+
 
     }
 }

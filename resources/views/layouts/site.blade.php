@@ -78,28 +78,12 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
             <span class="col-auto our-partners">Наши партнеры</span>
             <hr class="col col-lg-2">
         </div>
-        <div class="row justify-content-center partners-text">
-            <div class="col">
-                <img class="img-fluid" src="{{ asset('images/kassa.png') }}">
-            </div>
-            <div class="col">
-                <img class="img-fluid" src="{{ asset('images/kassa.png') }}">
-            </div>
-            <div class="col">
-                <img class="img-fluid" src="{{ asset('images/kassa.png') }}">
-            </div>
-            <div class="col">
-                <img class="img-fluid" src="{{ asset('images/kassa.png') }}">
-            </div>
-            <div class="col">
-                <img class="img-fluid" src="{{ asset('images/kassa.png') }}">
-            </div>
-            <div class="col">
-                <img class="img-fluid" src="{{ asset('images/kassa.png') }}">
-            </div>
-            <div class="col">
-                <img class="img-fluid" src="{{ asset('images/kassa.png') }}">
-            </div>
+        <div class="row justify-content-start partners-text">
+            @foreach($partners as $partner)
+                <div class="col-3 partner-img">
+                    <a href="{{$partner->link}}" target="_blank"><img class="img-fluid" src="/uploads/partners/partner-{{$partner->id}}{{$partner->picture}}"></a>
+                </div>
+            @endforeach
         </div>
     </div>
 </div>
@@ -131,7 +115,7 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
         </div>
         <div class="row footer-copi">
             <div class="col-10">
-                <div class="footer-logo"></div><br>
+                <div class="footer-logo"></div>
                 <span class="copi-text">L2oko.ru — новые сервера Lineage 2 © 2016 - 2018 </span>
             </div>
             <div class="col-2">
