@@ -27,6 +27,8 @@ class PartnerRequest extends FormRequest
             'title' => 'required|max:190',
             'link' => 'required|max:190|url',
             'alt' => 'required|max:190',
+            'token' => 'required|max:190',
+            'group_id' => 'required|max:190',
             'picture' => 'file|image'
         ];
     }

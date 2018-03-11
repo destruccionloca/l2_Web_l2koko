@@ -27,6 +27,8 @@ class PartnersRepository extends Repository
             $this->model->title = $data["title"];
             $this->model->link = $data["link"];
             $this->model->alt = $data["alt"];
+            $this->model->token = $data["token"];
+            $this->model->group_id = $data["group_id"];
 
             if ($this->model->save()) {
                 if ($request->hasFile('picture')) {
@@ -60,6 +62,8 @@ class PartnersRepository extends Repository
             $partner->title = $data["title"];
             $partner->link = $data["link"];
             $partner->alt = $data["alt"];
+            $partner->token = $data["token"];
+            $partner->group_id = $data["group_id"];
 
             if ($partner->update()) {
                 if ($request->hasFile('picture')) {

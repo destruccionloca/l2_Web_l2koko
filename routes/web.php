@@ -41,7 +41,7 @@ Route::group(['prefix' => 'dashboard','middleware' => ['auth']],function() {
 
     Route::group(['prefix' => 'action'],function() {
         Route::put('/{server}/active',['uses'=>'Dashboard\ServersController@toActive','as'=>'server.active']);
-        Route::get('/vk',['uses'=>'Dashboard\ServersController@toPost','as'=>'server.post']);
+        Route::get('/vk/{server}/{partner?}',['uses'=>'Dashboard\ServersController@toPost','as'=>'server.post']);
     });
 
     Route::group(['prefix' => 'image'],function() {

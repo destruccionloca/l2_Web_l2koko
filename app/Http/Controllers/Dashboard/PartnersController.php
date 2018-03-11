@@ -12,11 +12,13 @@ class PartnersController extends DashboardController
 {
 
     protected $par_rep;
+    protected $token_get_link;
 
     public function __construct(PartnersRepository $par_rep)
     {
         parent::__construct(new \App\Repositories\ServersRepository(new \App\Server), new \App\Repositories\SettingsRepository(new \App\Setting()));
         $this->template = 'dashboard.index';
+        $this->token_get_link = "https://oauth.vk.com/authorize?client_id=".$this->settings["vk_app_id"]."&scope=groups,wall,offline,photos&redirect_uri=https://oauth.vk.com/blank.html&display=page&v=5.73&response_type=token";
         $this->par_rep = $par_rep;
     }
 
@@ -41,7 +43,7 @@ class PartnersController extends DashboardController
     public function create()
     {
         $this->checkUser();
-        $this->content = view("dashboard.partner_create")->render();
+        $this->content = view("dashboard.partner_create")->with(["token_get_link" => $this->token_get_link])->render();
         $this->title = 'Создание нового партнера';
         return $this->renderOutput();
     }
@@ -83,7 +85,7 @@ class PartnersController extends DashboardController
     public function edit(Partner $partner)
     {
         $this->checkUser();
-        $this->content = view("dashboard.partner_create")->with(['partner' => $partner])->render();
+        $this->content = view("dashboard.partner_create")->with(['partner' => $partner, "token_get_link" => $this->token_get_link])->render();
         $this->title = 'Редактирование партнера ' . $partner->title;
         return $this->renderOutput();
     }

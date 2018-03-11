@@ -100,6 +100,21 @@
                                                     </div>
                                                     {!! Form::hidden('_method', "PUT") !!}
                                                     {!! Form::close() !!}
+                                                @else
+                                                    <div class="btn-group btn-group-sm">
+                                                        <button type="button" class="btn btn-secondary btm-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fa fa-retweet"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu">
+                                                            @foreach($partners as $partner)
+                                                                @if(isset($partner->token))
+                                                                    <a class="dropdown-item" href="{{route("server.post", ["server" => $server->alias, "partner" => $partner->id])}}">{{$partner->title}}</a>
+                                                                @endif
+                                                            @endforeach
+                                                            <div class="dropdown-divider"></div>
+                                                            <a class="dropdown-item" href="{{route("server.post", ["server" => $server->alias])}}">В свою группу</a>
+                                                        </div>
+                                                    </div>
                                                 @endif
                                             </div>
                                         </td>

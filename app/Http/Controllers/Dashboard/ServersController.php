@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Requests\ServerRequest;
+use App\Partner;
 use App\Status;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Dashboard\DashboardController;
@@ -34,13 +35,14 @@ class ServersController extends DashboardController
     public function index(Server $server, $type = 'active')
     {
         $this->checkUser();
+        $partners = Partner::get();
         if ($type == 'active') {
             $servers = $server->Active()->get();
         } else {
             $servers = $server->Moderating()->get();
         }
         $count = ["active" => $server->Active()->count(), "moder" => $server->Moderating()->count()];
-        $this->content = view('dashboard.servers')->with(array("user" => $this->user, "servers" => $servers, "count" => $count, "type" => $type))->render();
+        $this->content = view('dashboard.servers')->with(array("user" => $this->user, "servers" => $servers, "count" => $count, "type" => $type, "partners" => $partners))->render();
         $this->title = 'Сервера';
         return $this->renderOutput();
     }
@@ -141,7 +143,7 @@ class ServersController extends DashboardController
         $this->inputs = array_add($this->inputs, "chronicles", $inp_chronicles);
         $this->inputs = array_add($this->inputs, "statuses", $inp_statuses);
         $this->content = view('dashboard.server_create')->with(array("user" => $this->user, "inputs" => $this->inputs, "server" => $server))->render();
-        $this->title = 'Редактирование сервера' . $server->name;
+        $this->title = 'Редактирование сервера ' . $server->name;
         return $this->renderOutput();
     }
 
@@ -187,6 +189,7 @@ class ServersController extends DashboardController
     public function toActive(Server $server) {
         $this->checkUser();
         $server->moderated = true;
+        $result_cross = $this->crossPost($server, $this->settings["token"], $this->settings["group_id"]);
         if ($server->update()) {
             return back()->with(['status' => 'Сервер активирован']);
         } else {
@@ -194,20 +197,30 @@ class ServersController extends DashboardController
         }
     }
 
-    public function toPost(Server $server) {
+    public function toPost(Server $server, $partner = "default") {
         $this->checkUser();
-        $accessToken = 'bdba04ef52bbed8d4f26b0f2a0f4cabd5089f8ffe237379dc54c6c02bfee0c8a13da06606bb4f870b11be';
-        $vkAPI = new Vk(['access_token' => $accessToken]);
+        if($partner != "default") {
+            $result = $this->crossPost($server, $partner->token, $partner->group_id);
+        } else {
+            $result = $this->crossPost($server, $this->settings["token"], $this->settings["group_id"]);
+        }
+        if(is_array($result) && !empty($result['error'])) {
+            return back()->with($result);
+        }
+        return redirect('/dashboard/servers/')->with($result);
+    }
 
-        if ($vkAPI->postToPublic(73236822, "Привет Хабр!", '/tmp/habr.png', ['вконтакте api', 'автопостинг', 'первые шаги'])) {
+    private function crossPost($server, $token, $group_id, $tags = array()) {
+        $vkAPI = new Vk();
+        $vkAPI->setAccessToken(["access_token" => $token]);
+        $text = $server->name. "\n" . $server->chronicle->name . "\n" . $server->rate->name . "\n" . $server->link. "\nОткрытие " . $server->start_at;
+        if ($vkAPI->postToPublic($group_id, $text, '/var/www/alexroot/data/www/l2oko.ru/public/uploads/servers/server-'. $server->id . $server->picture, $tags)) {
 
-            dd("Ура! Всё работает, пост добавлен\n");
+            return ['status' => 'Кросспостинг завершен успешно'];
 
         } else {
 
-            dd("Фейл, пост не добавлен(( ищите ошибку\n");
+            return ['error' => 'Кросспостинг прерван с ошибкой'];
         }
-
-
     }
 }

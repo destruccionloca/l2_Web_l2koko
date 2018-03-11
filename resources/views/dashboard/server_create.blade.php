@@ -2,7 +2,7 @@
     <div class="block">
         <div class="block-header block-header-default">
             @if (isset($server))
-                <h1 class="block-title">{{ $server->title }}</h1>
+                <h1 class="block-title">{{ $server->name }}</h1>
             @else
                 <h1 class="block-title">Добавление нового сервера</h1>
             @endif
