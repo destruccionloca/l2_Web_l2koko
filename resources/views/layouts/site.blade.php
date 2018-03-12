@@ -48,9 +48,6 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
                         @endforeach
                     </div>
                 </li>
-                <li class="nav-item def-nav">
-                    <a class="nav-link" href="#">Контакты</a>
-                </li>
                 <li class="nav-item add-nav">
                     <a class="nav-link" href="{{ route('site.server.create') }}" >Добавить сервер</a>
                 </li>
@@ -93,7 +90,6 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
             <div class="col-md-9">
                 <a href="http://nbasece5.bget.ru/%D1%80%D0%B5%D0%BA%D0%BB%D0%B0%D0%BC%D0%B0.html " target="_blank" class="footer-menu">Реклама</a>
                 <a href="http://nbasece5.bget.ru/%D1%80%D0%B5%D0%BA%D0%BB%D0%B0%D0%BC%D0%B0.html" target="_blank" class="footer-menu">Партнерам</a>
-                <a href="#" class="footer-menu">Контакты</a>
                 <a href="{{ route('site.server.create') }}"  class="footer-menu" >Добавить сервер</a>
             </div>
             <div class="col-md-3">

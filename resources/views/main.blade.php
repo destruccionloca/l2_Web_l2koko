@@ -41,8 +41,8 @@
                                                     <div class="name"><span>{{$day_server->name}}</span></div>
                                                     <div class="reit"><span>{{$day_server->rate->name}}</span></div>
                                                     <div class="chronic"><span>{{$day_server->chronicle->name}}</span></div>
-                                                    <div class="date"><span>{{$day_server->start_at->format('m.d')}}</span></div>
-                                                    <div class="i"><span>i</span></div>
+                                                    <div class="date"><span>{{$day_server->start_at->format('m.d h:m')}}</span></div>
+                                                        <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
                                                 </div>
                                             @endforeach
                                         </div>
@@ -59,6 +59,7 @@
 </div>
 <div class="contaner-fluid">
     <div class="container d-flex justify-content-between flex-column flex-wrap flex-lg-row" id="main_container">
+        @if($servers["seven_days"]->count() > 0 || $servers["week"]->count() > 0)
         <div class="col-lg-4 no_padding margin-tab">
             <div class="col-md-12 servers-tab no_padding">
                 <div class="col-md-12 servers-tab-title"><span>Скоро откроются</span></div>
@@ -76,8 +77,8 @@
                         <div class="name"><span>{{$server->name}}</span></div>
                         <div class="reit"><span>{{$server->rate->name}}</span></div>
                         <div class="chronic"><span>{{$server->chronicle->name}}</span></div>
-                        <div class="date"><span>{{$server->start_at->format('m.d')}}</span></div>
-                        <div class="i"><span>i</span></div>
+                        <div class="date"><span>{{$server->start_at->format('m.d h:m')}}</span></div>
+                            <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
                     </div>
                 @endforeach
                 <div class="col-md-12 servers-tab-pre-title"><span>Через неделю и более:</span></div>
@@ -95,34 +96,37 @@
                         <div class="name"><span>{{$server->name}}</span></div>
                         <div class="reit"><span>{{$server->rate->name}}</span></div>
                         <div class="chronic"><span>{{$server->chronicle->name}}</span></div>
-                        <div class="date"><span>{{$server->start_at->format('m.d')}}</span></div>
-                        <div class="i"><span>i</span></div>
+                        <div class="date"><span>{{$server->start_at->format('m.d h:m')}}</span></div>
+                            <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
                     </div>
                 @endforeach
             </div>
         </div>
+        @endif
         <div class="col-lg-4 no_padding margin-tab">
-            <div class="col-md-12 servers-tab no_padding">
-                <div class="col-md-12 servers-tab-title"><span>Открылись вчера</span></div>
-                @foreach($servers["yesterday"] as $server)
-                    <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
-                        @if($server->status->name == "Exlusive")
-                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
-                        @elseif($server->status->name == "Silver")
-                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
-                        @elseif($server->status->name == "Light")
-                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
-                        @elseif($server->status->name == "Free")
-                            <div class="img"></div>
-                        @endif
-                        <div class="name"><span>{{$server->name}}</span></div>
-                        <div class="reit"><span>{{$server->rate->name}}</span></div>
-                        <div class="chronic"><span>{{$server->chronicle->name}}</span></div>
-                        <div class="date"><span>{{$server->start_at->format('m.d')}}</span></div>
-                        <div class="i"><span>i</span></div>
-                    </div>
-                @endforeach
-            </div>
+            @if($servers["yesterday"]->count() > 0)
+                <div class="col-md-12 servers-tab no_padding">
+                        <div class="col-md-12 servers-tab-title"><span>Открылись вчера</span></div>
+                        @foreach($servers["yesterday"] as $server)
+                            <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
+                                @if($server->status->name == "Exlusive")
+                                    <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                @elseif($server->status->name == "Silver")
+                                    <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                @elseif($server->status->name == "Light")
+                                    <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                @elseif($server->status->name == "Free")
+                                    <div class="img"></div>
+                                @endif
+                                <div class="name"><span>{{$server->name}}</span></div>
+                                <div class="reit"><span>{{$server->rate->name}}</span></div>
+                                <div class="chronic"><span>{{$server->chronicle->name}}</span></div>
+                                <div class="date"><span>{{$server->start_at->format('m.d h:m')}}</span></div>
+                                    <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
+                            </div>
+                        @endforeach
+                </div>
+            @endif
             <div class="col-md-12 servers-tab no_padding">
                 <div class="col-md-12 servers-tab-title"><span>Уже открылись</span></div>
                 @foreach($servers["opened"] as $server)
@@ -139,8 +143,8 @@
                         <div class="name"><span>{{$server->name}}</span></div>
                         <div class="reit"><span>{{$server->rate->name}}</span></div>
                         <div class="chronic"><span>{{$server->chronicle->name}}</span></div>
-                        <div class="date"><span>{{$server->start_at->format('m.d')}}</span></div>
-                        <div class="i"><span>i</span></div>
+                        <div class="date"><span>{{$server->start_at->format('m.d h:m')}}</span></div>
+                        <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
                     </div>
                 @endforeach
             </div>

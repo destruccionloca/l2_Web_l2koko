@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Requests\ServerRequest;
+use App\Http\Requests\ServerUpdRequest;
 use App\Partner;
 use App\Status;
 use Illuminate\Http\Request;
@@ -154,7 +155,7 @@ class ServersController extends DashboardController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ServerRequest $request, Server $server)
+    public function update(ServerUpdRequest $request, Server $server)
     {
         $this->checkUser();
 //        if($this->user->cant('update', $object)) {

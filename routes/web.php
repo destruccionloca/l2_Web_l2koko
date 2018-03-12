@@ -15,6 +15,7 @@
 Route::get('/', ['uses' => 'IndexController@index', 'as' => 'site.index']);
 Route::get('/page/{page}', ['uses' => 'PagesController@show', 'as' => 'site.page.show']);
 Route::get('/addserver', ['uses' => 'ServerController@create', 'as' => 'site.server.create']);
+Route::get('/server/{server}', ['uses' => 'ServerController@show', 'as' => 'site.server.show']);
 Route::post('/addserver', ['uses' => 'ServerController@store', 'as' => 'site.server.store']);
 Route::post('/application/{nomination}', ['uses' => 'ApplicationsController@store', 'as' => 'site.application.store']);
 
@@ -46,6 +47,7 @@ Route::group(['prefix' => 'dashboard','middleware' => ['auth']],function() {
 
     Route::group(['prefix' => 'image'],function() {
         Route::post('/page',['uses'=>'StorageController@UploadImage','as'=>'dashboard.page.store.image']);
+        Route::post('/post',['uses'=>'StorageController@UploadImage','as'=>'dashboard.page.store.image']);
     });
 
 });

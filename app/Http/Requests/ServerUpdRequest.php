@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ServerRequest extends FormRequest
+class ServerUpdRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,6 +23,8 @@ class ServerRequest extends FormRequest
      */
     public function rules()
     {
+        $server = $this->route('server');
+
         return [
             'name' => 'required|max:190',
             'description' => 'required',
@@ -31,13 +33,11 @@ class ServerRequest extends FormRequest
             'rate_id' => 'required',
             'start_at' => 'required|date',
             'link' => 'required|url|max:190',
-            'email' => 'required|email|max:190|unique:servers,email',
+            'email' => 'required|email|max:190|unique:servers,email,' . $server->id,
             'vk' => 'required|url|max:190',
             'fb' => 'url|max:190',
             'tw' => 'url|max:190',
             'picture' => 'file|image'
         ];
     }
-
-
 }

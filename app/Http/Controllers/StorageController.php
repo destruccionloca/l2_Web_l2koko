@@ -28,7 +28,7 @@ class StorageController extends Controller
             else{
                 $ROOT = $_SERVER['DOCUMENT_ROOT'];
                 $img = Image::make($image);
-                $storeFolder = $ROOT . '/uploads/post/';   //2
+                $storeFolder = $ROOT . '/public/uploads/post/';   //2
                 if (!file_exists($storeFolder)) {
                     mkdir($storeFolder, 0777);
                 }

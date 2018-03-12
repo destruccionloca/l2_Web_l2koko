@@ -10,6 +10,7 @@ namespace App\Repositories;
 
 use App\Nomination;
 use Image;
+use File;
 
 
 class NominationsRepository extends Repository
@@ -49,7 +50,10 @@ class NominationsRepository extends Repository
                             return ['status' => 'Номинация добавлена без изображениея'];
                         }
                         $id = $this->model->id;
-                        $img->save($storeFolder . "nomination-" . $id . $img_type);
+                        if(file_exists($storeFolder . "nomination-" . $id . $img_type)) {
+                            unlink($storeFolder . "nomination-" . $id . $img_type);
+                        }
+                        $img->fit(54,54)->save($storeFolder . "nomination-" . $id . $img_type);
                         $this->model->picture = $img_type;
                         $this->model->update();
                     }
@@ -77,7 +81,12 @@ class NominationsRepository extends Repository
                 return ['error' => 'Статья с таким названием уже существует'];
             }
 
-            $nomination->server_id = $data["server_id"];
+            if($data["server_id"] == "null") {
+                $nomination->server_id = null;
+            } else {
+                $nomination->server_id = $data["server_id"];
+            }
+
             $nomination->alias = $data["alias"];
             if ($nomination->update()) {
                 if ($request->hasFile('picture')) {
@@ -90,7 +99,10 @@ class NominationsRepository extends Repository
                             return ['status' => 'Номинация обновлена без изображения'];
                         }
                         $id = $nomination->id;
-                        $img->save($storeFolder . "nomination-" . $id . $img_type);
+                        if(file_exists($storeFolder . "nomination-" . $id . $img_type)) {
+                           unlink($storeFolder . "nomination-" . $id . $img_type);
+                        }
+                        $img->fit(54,54)->save($storeFolder . "nomination-" . $id . $img_type);
                         $nomination->picture = $img_type;
                         $nomination->update();
                     }

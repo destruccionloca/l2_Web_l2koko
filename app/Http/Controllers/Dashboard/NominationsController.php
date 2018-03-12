@@ -42,7 +42,7 @@ class NominationsController extends DashboardController
     public function create()
     {
         $this->checkUser();
-        $servers = $this->ser_rep->get('*');
+        $servers = $this->ser_rep->get('*',false, false, ["moderated", "1"]);
         $inp_servers = array("" => "", "null" => "Без сервера");
         foreach ($servers as $server) {
             $inp_servers = array_add($inp_servers, $server->id, $server->name );
@@ -98,8 +98,8 @@ class NominationsController extends DashboardController
     public function edit(Nomination $nomination)
     {
         $this->checkUser();
-        $servers = $this->ser_rep->get('*');
-        $inp_servers = array("" => "", "NULL" => "Без сервера");
+        $servers = $this->ser_rep->get('*',false, false, ["moderated", "1"]);
+        $inp_servers = array("" => "", "null" => "Без сервера");
         foreach ($servers as $server) {
             $inp_servers = array_add($inp_servers, $server->id, $server->name );
         }

@@ -53,6 +53,12 @@ class ServerController extends SiteController
         return redirect('/')->with($result);
     }
 
+    public function show(Server $server) {
+        $this->title = $server->name;
+        $this->content = view('server_show')->with(["server" => $server])->render();
+        return $this->renderOutput();
+    }
+
     public function generateRandStr($length = 8){
         $chars = 'abdefhiknrstyzABDEFGHKNQRSTYZ23456789';
         $numChars = strlen($chars);

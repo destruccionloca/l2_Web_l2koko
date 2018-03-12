@@ -2,10 +2,10 @@
 <div class="content">
     <div class="block">
         <div class="block-header block-header-default">
-            <h3 class="block-title">Blank <small>Get Started</small></h3>
+            <h3 class="block-title">L2 oko Servers <small>Admin Panel</small></h3>
         </div>
         <div class="block-content">
-            <p>Create your own awesome project!</p>
+            <p>Добро пожаловать</p>
         </div>
     </div>
 </div>
