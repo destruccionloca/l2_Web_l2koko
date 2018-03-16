@@ -28,6 +28,7 @@
   --warning: #ffc107;
   --danger: #dc3545;
   --light: #f8f9fa;
+
   --dark: #343a40;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
@@ -10126,21 +10127,23 @@ nav .def-nav > a:hover {
 }
 
 .header-pic-title {
-  height: 372px;
+  height: 285px;
 }
 
 .header-pic-title h1 {
   font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  font-size: 20px;
+  font-weight: 200;
+  font-size: 26px;
   color: #fff;
+  line-height: 29px;
 }
 
 .header-pic-title p {
   font-family: "Roboto", sans-serif;
   font-weight: 200;
-  font-size: 12px;
+  font-size: 14px;
   color: #fff;
+  line-height: 13px;
 }
 
 /* Filter */

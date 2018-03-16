@@ -41,7 +41,7 @@ class PartnersRepository extends Repository
                             return ['status' => 'Партнер добавлен без изображения'];
                         }
                         $id = $this->model->id;
-                        $img->save($storeFolder . "partner-" . $id . $img_type);
+                        $img->fit(255,90)->save($storeFolder . "partner-" . $id . $img_type);
                         $this->model->picture = $img_type;
                         $this->model->update();
                     }
@@ -76,7 +76,7 @@ class PartnersRepository extends Repository
                             return ['status' => 'Партнер добавлен без изображения'];
                         }
                         $id = $partner->id;
-                        $img->save($storeFolder . "partner-" . $id . $img_type);
+                        $img->fit(255,90)->save($storeFolder . "partner-" . $id . $img_type);
                         $partner->picture = $img_type;
                         $partner->update();
                     }

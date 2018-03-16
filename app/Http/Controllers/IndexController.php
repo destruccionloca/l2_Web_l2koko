@@ -34,8 +34,8 @@ class IndexController extends SiteController
     public function index(Server $server, Request $request) {
         $rate_id = isset($request->rate)? $request->rate : "all";
         $chronicle_id = isset($request->chronicle)? $request->chronicle : "all";
-        $rates = Rate::get();
-        $chronicles = Chronicle::get();
+        $rates = Rate::orderBy('sort')->get();
+        $chronicles = Chronicle::orderBy('sort')->get();
         $ads = Ad::get();
         $partners = Partner::get();
         $inp_rates = array("all" => "Все рейты");
@@ -48,7 +48,6 @@ class IndexController extends SiteController
         }
         $this->inputs = array_add($this->inputs, "rates", $inp_rates);
         $this->inputs = array_add($this->inputs, "chronicles", $inp_chronicles);
-        setlocale(LC_TIME, 'RU');
         $date = Carbon::now();
         $start_week = $date->copy()->startOfWeek();
         $date_week = [
@@ -61,6 +60,7 @@ class IndexController extends SiteController
             $start_week->addDay()->format('d') => $server->Day($start_week->toDateString())->Active()->get()
         ];
         $this_day = $date->format('d');
+        setlocale(LC_TIME, 'RU_ru');
         $this_month = iconv("cp1251", "UTF-8", $date->formatLocalized('%B'));
         $servers = [];
         $nominations = $this->nom_rep->get("*");

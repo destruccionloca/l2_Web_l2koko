@@ -19,7 +19,20 @@ Route::get('/server/{server}', ['uses' => 'ServerController@show', 'as' => 'site
 Route::post('/addserver', ['uses' => 'ServerController@store', 'as' => 'site.server.store']);
 Route::post('/application/{nomination}', ['uses' => 'ApplicationsController@store', 'as' => 'site.application.store']);
 
-Auth::routes();
+// Authentication Routes...
+$this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
+$this->post('login', 'Auth\LoginController@login');
+$this->post('logout', 'Auth\LoginController@logout')->name('logout');
+
+// Registration Routes...
+//$this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+//$this->post('register', 'Auth\RegisterController@register');
+//
+//// Password Reset Routes...
+//$this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+//$this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+//$this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+//$this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::group(['prefix' => 'dashboard','middleware' => ['auth']],function() {
     Route::get('/',['uses' => 'Dashboard\IndexController@index','as' => 'dashboard.index']);

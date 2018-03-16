@@ -35,7 +35,7 @@
                     {!! Form::text('group_id', isset($partner->group_id)? $partner->group_id : old("group_id"), ['id'=>'group_id', "class" => "form-control", "required" => ""]) !!}
                 </div>
                 <div class="form-group">
-                    <label class="col-12">Изображение</label>
+                    <label class="col-12">Изображение (255x90)</label>
                     @if(isset($partner->picture))
                         <div class="row items-push">
                             <div class="col-md-4 animated fadeIn">

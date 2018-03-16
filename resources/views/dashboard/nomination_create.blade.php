@@ -19,7 +19,7 @@
                     {!! Form::select('server_id', $inputs["servers"], isset($nomination->server_id)? $nomination->server_id : old("server_id"), ['id'=>'server_id', "class" => "js-select2 form-control", "required" => "", "data-placeholder" => isset($nomination->server_id)? $nomination->server->name : 'Выберите сервер']) !!}
                 </div>
                 <div class="form-group">
-                    <label class="col-12">Изображение</label>
+                    <label class="col-12">Изображение (54x54)</label>
                     @if(isset($nomination->picture))
                         <div class="row items-push">
                             <div class="col-md-4 animated fadeIn">

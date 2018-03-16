@@ -57,7 +57,7 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
 </div>
 <div class="contaner-fluid" id="header-pic" style="background-image: url({{ asset("images/bg.jpg")}});">
     <div class="container">
-        <div class="row header-pic-title justify-content-end align-items-center">
+        <div class="row header-pic-title justify-content-start align-items-end">
             <div class="col-4">
                 <h1>Новые сервера л2</h1>
                 <p>Анонсы игровых серверов Lineage 2</p>

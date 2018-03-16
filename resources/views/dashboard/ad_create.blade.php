@@ -23,7 +23,7 @@
                     {!! Form::text('alt', isset($ad->alt)? $ad->alt : old("alt"), ['id'=>'alt', "class" => "form-control", "required" => ""]) !!}
                 </div>
                 <div class="form-group">
-                    <label class="col-12">Изображение</label>
+                    <label class="col-12">Изображение (280x110)</label>
                     @if(isset($ad->picture))
                         <div class="row items-push">
                             <div class="col-md-4 animated fadeIn">

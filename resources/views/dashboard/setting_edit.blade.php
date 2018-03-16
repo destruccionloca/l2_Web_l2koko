@@ -16,7 +16,7 @@
                 </div>
                 @endforeach
                 <div class="form-group">
-                    <label class="col-12">Изображение на главной</label>
+                    <label class="col-12">Изображение на главной (1920x285)</label>
                         <div class="row items-push">
                             <div class="col-md-4 animated fadeIn">
                                 <div class="options-container fx-item-zoom-in">

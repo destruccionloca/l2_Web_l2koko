@@ -42,7 +42,7 @@
                                                     <div class="reit"><span>{{$day_server->rate->name}}</span></div>
                                                     <div class="chronic"><span>{{$day_server->chronicle->name}}</span></div>
                                                     <div class="date"><span>{{$day_server->start_at->format('m.d h:m')}}</span></div>
-                                                        <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
+                                                        <a href="{{route("site.server.show", ["server" => $day_server->alias])}}"> <div class="i"><span>i</span></div></a>
                                                 </div>
                                             @endforeach
                                         </div>

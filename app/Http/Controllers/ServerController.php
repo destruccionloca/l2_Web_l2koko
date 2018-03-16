@@ -27,9 +27,9 @@ class ServerController extends SiteController
 
     }
 
-    public function create(Rate $rate, Chronicle $chronicle) {
-        $rates = $rate->get();
-        $chronicles = $chronicle->get();
+    public function create() {
+        $rates = Rate::orderBy('sort')->get();
+        $chronicles = Chronicle::orderBy('sort')->get();
         $inp_rates = array();
         $inp_chronicles = array();
         foreach ($rates as $rate) {

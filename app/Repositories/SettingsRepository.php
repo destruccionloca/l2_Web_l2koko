@@ -31,7 +31,7 @@ class SettingsRepository extends Repository {
                 if($img_type == ".err") {
                     return ['status' => 'Настройки обновлены без изображениея'];
                 }
-                $img->fit(1920, 372)->save($storeFolder . "bg" . $img_type);
+                $img->fit(1920, 285)->save($storeFolder . "bg" . $img_type);
                 $setting->param = $img_type;
                 $setting->update();
             }
