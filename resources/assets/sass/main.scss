@@ -52,7 +52,7 @@ body {
 nav li {
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
-  font-size: 15px; }
+  font-size: 13px; }
 
 #navbarNav {
   flex-direction: row;
@@ -73,29 +73,30 @@ nav .active > a, nav .def-nav > a:hover {
   color: #1a1a1a;
   border: solid 1px #e6e6e6;
   border-radius: 15px;
-
+  font-size: 12px;
   margin-left: 20px; }
 
 .add-nav {
   margin-left: 20px;
-  border-radius: 15px;
+  border-radius: 50px;
+  padding: 0 10px;
   background-color: #a5c715;}
 
 .add-nav a {
   color: #fff !important; }
 
 #header-pic {
-  height: 372px;
+  height: 275px;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover; }
 
 .header-pic-title {
-  height: 285px;
+  height: 250px;
   h1 {
     font-family: "Roboto", sans-serif;
-    font-weight: 200;
-    font-size: 26px;
+    font-weight: 100;
+    font-size: 36px;
     color: #fff;
     line-height: 29px;
   }
@@ -250,6 +251,9 @@ nav .active > a, nav .def-nav > a:hover {
 /* VIP */
 .servers-tab-exlusive {
   background-color: #5a6779;
+  div {
+    height: 50px;
+  }
   .img {
     width: 10%;
     padding: 10px 0;
@@ -260,6 +264,7 @@ nav .active > a, nav .def-nav > a:hover {
     width: 30%;
     float: left;
     padding: 15px 0 15px 0;
+    overflow: hidden;
   }
 
   .name span {
@@ -334,7 +339,9 @@ nav .active > a, nav .def-nav > a:hover {
 /* PREM */
 .servers-tab-silver {
   background-color: #ffffff;
-
+  div {
+    height: 50px;
+  }
   .img {
     width: 10%;
     padding: 10px 0;
@@ -345,6 +352,7 @@ nav .active > a, nav .def-nav > a:hover {
     width: 30%;
     float: left;
     padding: 15px 0 15px 0;
+    overflow: hidden;
   }
 
   .name span {
@@ -417,7 +425,9 @@ nav .active > a, nav .def-nav > a:hover {
 /* NORMAL */
 .servers-tab-light {
   background-color: #ffffff;
-
+  div {
+    height: 50px;
+  }
   .img {
     width: 10%;
     float: left;
@@ -428,6 +438,7 @@ nav .active > a, nav .def-nav > a:hover {
     width: 30%;
     float: left;
     padding: 15px 0 15px 0;
+    overflow: hidden;
   }
 
   .name span {
@@ -503,7 +514,9 @@ nav .active > a, nav .def-nav > a:hover {
 /* Free */
 .servers-tab-free {
   background-color: #ffffff;
-
+  div {
+    height: 50px;
+  }
   .img {
     width: 10%;
     float: left;
@@ -514,6 +527,7 @@ nav .active > a, nav .def-nav > a:hover {
     width: 30%;
     float: left;
     padding: 15px 0 15px 0;
+    overflow: hidden;
   }
 
   .name span {
@@ -700,13 +714,13 @@ nav .active > a, nav .def-nav > a:hover {
   clear: both; }
 
 .partners-text {
-  padding: 20px 0; }
+  padding: 10px 0; }
 
 .partner-img {
   img {
     border-radius: 10px;
-    height: 90px;
-    width: 280px;
+    height: 30px;
+    width: 110px;
   }
 }
 
@@ -718,8 +732,8 @@ nav .active > a, nav .def-nav > a:hover {
 
 .our-partners {
   font-family: "Open Sans", sans-serif;
-  font-size: 20px;
-  color: #3c4152; }
+  font-size: 16px;
+  color: #a0a0a0; }
 
 .footer {
   background: #242930; }
@@ -1010,17 +1024,27 @@ nav .active > a, nav .def-nav > a:hover {
 }
 
 input[type=submit] {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans",sans-serif;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 12px;
   background-color: #a5c715;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  border:0 none;
-  cursor:pointer;
-  -webkit-border-radius: 15px;
-  border-radius: 15px;
+  cursor: pointer;
+  border-radius: 50px;
   color: #fff;
+  height: 32px;
+  width: 80px;
+  float: left;
+  margin-left: 15px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.badge-info {
+  color: #fff;
+  background-color: #17a2b8;
+  padding: 0 10px;
+  height: 15px;
+  line-height: inherit;
+  border-radius: 100px;
 }

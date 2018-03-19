@@ -7,7 +7,7 @@
             {!! Form::open(["url" => route('settings'), 'method' => "post", "id" => "settings", "files" => "true"]) !!}
             <div class="col-md-12">
                 @foreach($settings as $key => $value)
-                    @if($key == "main_pic")
+                    @if($key == "main_pic" || $key == "last_upd")
                         @continue
                     @endif
                 <div class="form-group">
@@ -20,7 +20,7 @@
                         <div class="row items-push">
                             <div class="col-md-4 animated fadeIn">
                                 <div class="options-container fx-item-zoom-in">
-                                    <img class="img-fluid options-item" src="/images/bg{{$settings['main_pic']}}" alt="">
+                                    <img class="img-fluid options-item" src="/images/bg_{{$settings['last_upd'] . $settings['main_pic']}}" alt="">
                                     <div class="options-overlay bg-black-op">
                                         <div class="options-overlay-content">
                                             <h3 class="h4 text-white mb-5">Шапка</h3>

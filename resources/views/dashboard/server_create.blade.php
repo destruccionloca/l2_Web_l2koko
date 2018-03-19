@@ -16,11 +16,11 @@
                 </div>
                 <div class="form-group">
                     <label for="description">Описание</label>
-                    {!! Form::textarea('description', isset($server->description)? $server->description : old("description"), ['id'=>'description', "class" => "form-control", "required" => ""]) !!}
+                    {!! Form::textarea('description', isset($server->description)? $server->description : old("description"), ['id'=>'description', "class" => "form-control"]) !!}
                 </div>
                 <div class="form-group">
                     <label for="short_desc">Краткое описание</label>
-                    {!! Form::textarea('short_desc', isset($server->short_desc)? $server->short_desc : old("short_desc"), ['id'=>'short_desc', "class" => "form-control", "required" => ""]) !!}
+                    {!! Form::textarea('short_desc', isset($server->short_desc)? $server->short_desc : old("short_desc"), ['id'=>'short_desc', "class" => "form-control"]) !!}
                 </div>
                 <div class="form-group">
                     <label for="status_id">Статус</label>
@@ -48,19 +48,19 @@
                 </div>
                 <div class="form-group">
                     <label for="vk">VK</label>
-                    {!! Form::url('vk', isset($server->social_vk)? $server->social_vk : old("vk"), ['id'=>'vk', "class" => "form-control", "required" => ""]) !!}
+                    {!! Form::url('vk', isset($server->social_vk)? $server->social_vk : old("vk"), ['id'=>'vk', "class" => "form-control"]) !!}
                 </div>
                 <div class="form-group">
                     <label for="fb">Facebook</label>
-                    {!! Form::url('fb', isset($server->social_fb)? $server->social_fb : old("fb"), ['id'=>'fb', "class" => "form-control", "required" => ""]) !!}
+                    {!! Form::url('fb', isset($server->social_fb)? $server->social_fb : old("fb"), ['id'=>'fb', "class" => "form-control"]) !!}
                 </div>
                 <div class="form-group">
                     <label for="tw">Twitter</label>
-                    {!! Form::url('tw', isset($server->social_tw)? $server->social_tw : old("tw"), ['id'=>'tw', "class" => "form-control", "required" => ""]) !!}
+                    {!! Form::url('tw', isset($server->social_tw)? $server->social_tw : old("tw"), ['id'=>'tw', "class" => "form-control"]) !!}
                 </div>
                 <div class="form-group">
                     <label for="icq">Icq</label>
-                    {!! Form::url('icq', isset($server->social_icq)? $server->social_icq : old("icq"), ['id'=>'icq', "class" => "form-control", "required" => ""]) !!}
+                    {!! Form::text('icq', isset($server->social_icq)? $server->social_icq : old("icq"), ['id'=>'icq', "class" => "form-control"]) !!}
                 </div>
                 <div class="form-group">
                     <label class="col-12">Изображение для кросспостинга</label>

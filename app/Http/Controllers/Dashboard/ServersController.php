@@ -214,8 +214,9 @@ class ServersController extends DashboardController
     private function crossPost($server, $token, $group_id, $tags = array()) {
         $vkAPI = new Vk();
         $vkAPI->setAccessToken(["access_token" => $token]);
+        isset($server->picture) ? $image = '/var/www/alexroot/data/www/l2oko.ru/public/uploads/servers/server-'. $server->id . $server->picture : $image = false;
         $text = $server->name. "\n" . $server->chronicle->name . "\n" . $server->rate->name . "\n" . $server->link. "\nОткрытие " . $server->start_at;
-        if ($vkAPI->postToPublic($group_id, $text, '/var/www/alexroot/data/www/l2oko.ru/public/uploads/servers/server-'. $server->id . $server->picture, $tags)) {
+        if ($vkAPI->postToPublic($group_id, $text, $image, $tags)) {
 
             return ['status' => 'Кросспостинг завершен успешно'];
 

@@ -59,7 +59,7 @@
 </div>
 <div class="contaner-fluid">
     <div class="container d-flex justify-content-between flex-column flex-wrap flex-lg-row" id="main_container">
-        @if($servers["seven_days"]->count() > 0 || $servers["week"]->count() > 0)
+
         <div class="col-lg-4 no_padding margin-tab">
             <div class="col-md-12 servers-tab no_padding">
                 <div class="col-md-12 servers-tab-title"><span>Скоро откроются</span></div>
@@ -102,7 +102,6 @@
                 @endforeach
             </div>
         </div>
-        @endif
         <div class="col-lg-4 no_padding margin-tab">
             @if($servers["yesterday"]->count() > 0)
                 <div class="col-md-12 servers-tab no_padding">
