@@ -41,7 +41,7 @@
                         </div>
                         <div class="col-8">
                             <div class="form-input-block d-flex align-items-center">
-                                {!! Form::text('name', old("name"), ['id'=>'name', "class" => "form-input", "required" => ""]) !!}
+                                {!! Form::text('name', old("name"), ['id'=>'name', "class" => "form-input", "required" => "", "placeholder" => "L2oko.ru"]) !!}
                             </div>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                         </div>
                         <div class="col-8">
                             <div class="form-input-block d-flex align-items-center">
-                                {!! Form::url('link', old("link"), ['id'=>'link', "class" => "form-input", "required" => ""]) !!}
+                                {!! Form::url('link', old("link"), ['id'=>'link', "class" => "form-input", "required" => "", "placeholder" => "http://l2oko.ru"]) !!}
                             </div>
                         </div>
                     </div>
@@ -101,7 +101,7 @@
                         </div>
                         <div class="col-8">
                             <div class="form-input-block d-flex align-items-center">
-                                {!! Form::email('email', old("email"), ['id'=>'email', "class" => "form-input", "required" => ""]) !!}
+                                {!! Form::email('email', old("email"), ['id'=>'email', "class" => "form-input", "required" => "", "placeholder" => "info@l2oko.ru"]) !!}
                             </div>
                         </div>
                     </div>
@@ -113,7 +113,7 @@
                         </div>
                         <div class="col-8">
                             <div class="form-input-block d-flex align-items-center">
-                                {!! Form::url('vk', old("vk"), ['id'=>'vk', "class" => "form-input"]) !!}
+                                {!! Form::url('vk', old("vk"), ['id'=>'vk', "class" => "form-input", "placeholder" => "https://vk.com/l2oko"]) !!}
                             </div>
                         </div>
                     </div>
@@ -154,7 +154,7 @@
                         </div>
                         <div class="col-8">
                             <div class="form-input-block d-flex align-items-center">
-                                {!! Form::url('fb', old("fb"), ['id'=>'fb', "class" => "form-input"]) !!}
+                                {!! Form::url('fb', old("fb"), ['id'=>'fb', "class" => "form-input", "placeholder" => "https://www.facebook.com/l2oko/"]) !!}
                             </div>
                         </div>
                     </div>
@@ -166,7 +166,7 @@
                         </div>
                         <div class="col-8">
                             <div class="form-input-block d-flex align-items-center">
-                                {!! Form::url('tw', old("tw"), ['id'=>'tw', "class" => "form-input"]) !!}
+                                {!! Form::url('tw', old("tw"), ['id'=>'tw', "class" => "form-input", "placeholder" => "https://twitter.com/l2oko/"]) !!}
                             </div>
                         </div>
                     </div>
@@ -178,7 +178,7 @@
                         </div>
                         <div class="col-8">
                             <div class="form-input-block d-flex align-items-center">
-                                {!! Form::text('icq', old("icq"), ['id'=>'icq', "class" => "form-input"]) !!}
+                                {!! Form::text('icq', old("icq"), ['id'=>'icq', "class" => "form-input", "placeholder" => "123521351265"]) !!}
                             </div>
                         </div>
                     </div>

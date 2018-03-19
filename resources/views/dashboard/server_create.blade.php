@@ -12,7 +12,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="name">Название проекта</label>
-                    {!! Form::text('name', isset($server->name)? $server->name : old("name"), ['id'=>'title', "class" => "form-control", "required" => ""]) !!}
+                    {!! Form::text('name', isset($server->name)? $server->name : old("name"), ['id'=>'title', "class" => "form-control", "required" => "", "placeholder" => "l2oko.ru"]) !!}
                 </div>
                 <div class="form-group">
                     <label for="description">Описание</label>
@@ -40,27 +40,27 @@
                 </div>
                 <div class="form-group">
                     <label for="link">Ссылка на проект</label>
-                    {!! Form::url('link', isset($server->link)? $server->link : old("link"), ['id'=>'link', "class" => "form-control", "required" => ""]) !!}
+                    {!! Form::url('link', isset($server->link)? $server->link : old("link"), ['id'=>'link', "class" => "form-control", "required" => "", "placeholder" => "http://l2oko.ru"]) !!}
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    {!! Form::email('email', isset($server->email)? $server->email : old("email"), ['id'=>'email', "class" => "form-control", "required" => ""]) !!}
+                    {!! Form::email('email', isset($server->email)? $server->email : old("email"), ['id'=>'email', "class" => "form-control", "required" => "", "placeholder" => "info@l2oko.ru"]) !!}
                 </div>
                 <div class="form-group">
                     <label for="vk">VK</label>
-                    {!! Form::url('vk', isset($server->social_vk)? $server->social_vk : old("vk"), ['id'=>'vk', "class" => "form-control"]) !!}
+                    {!! Form::url('vk', isset($server->social_vk)? $server->social_vk : old("vk"), ['id'=>'vk', "class" => "form-control", "placeholder" => "https://vk.com/l2oko"]) !!}
                 </div>
                 <div class="form-group">
                     <label for="fb">Facebook</label>
-                    {!! Form::url('fb', isset($server->social_fb)? $server->social_fb : old("fb"), ['id'=>'fb', "class" => "form-control"]) !!}
+                    {!! Form::url('fb', isset($server->social_fb)? $server->social_fb : old("fb"), ['id'=>'fb', "class" => "form-control", "placeholder" => "https://www.facebook.com/l2oko/"]) !!}
                 </div>
                 <div class="form-group">
                     <label for="tw">Twitter</label>
-                    {!! Form::url('tw', isset($server->social_tw)? $server->social_tw : old("tw"), ['id'=>'tw', "class" => "form-control"]) !!}
+                    {!! Form::url('tw', isset($server->social_tw)? $server->social_tw : old("tw"), ['id'=>'tw', "class" => "form-control", "placeholder" => "https://twitter.com/l2oko/"]) !!}
                 </div>
                 <div class="form-group">
                     <label for="icq">Icq</label>
-                    {!! Form::text('icq', isset($server->social_icq)? $server->social_icq : old("icq"), ['id'=>'icq', "class" => "form-control"]) !!}
+                    {!! Form::text('icq', isset($server->social_icq)? $server->social_icq : old("icq"), ['id'=>'icq', "class" => "form-control", "placeholder" => "2346223453"]) !!}
                 </div>
                 <div class="form-group">
                     <label class="col-12">Изображение для кросспостинга</label>
