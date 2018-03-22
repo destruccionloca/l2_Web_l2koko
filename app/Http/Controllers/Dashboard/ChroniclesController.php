@@ -124,8 +124,13 @@ class ChroniclesController extends DashboardController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Chronicle $chronicle)
     {
-        //
+        $this->checkUser();
+        if ($chronicle->forceDelete()) {
+            return back()->with(['status' => 'Хроника удалена']);
+        } else {
+            return back()->with(['error' => 'Ошибка удаления']);
+        }
     }
 }

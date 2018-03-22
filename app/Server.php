@@ -23,12 +23,22 @@ class Server extends Model
         'name'
     ];
 
+
+
     public function scopeYesterday($query) {
         return $query->whereDate('start_at', date('Y-m-d', strtotime( '-1 days' )));
     }
 
-    public function scopeOpen($query) {
+    public function scopeOpened($query) {
         return $query->whereDate('start_at', "<", date("Y-m-d"));
+    }
+
+    public function scopeOpenVip($query) {
+        return $query->whereDate('start_at', ">=", date("Y-m-d"))->whereModerated('1')->where("status_id", ">", "2");
+    }
+
+    public function scopeOpenedVip($query) {
+        return $query->whereDate('start_at', "<", date("Y-m-d"))->whereModerated('1')->where("status_id", ">", "2");
     }
 
     public function scopeDay($query, $date) {

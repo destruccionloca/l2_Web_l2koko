@@ -27,6 +27,9 @@
                                             <i class="si si-cursor-move"></i>
                                         </a>
                                     </div>
+                                    <a type="button" class="btn btn-sm btn-secondary" href="{{route("rate.delete", ["rate" => $rate->id])}}" data-toggle="tooltip" title="Удалить">
+                                        <i class="fa fa-times"></i>
+                                    </a>
                                 </div>
                             </li>
                         @endforeach

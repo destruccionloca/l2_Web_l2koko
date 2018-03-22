@@ -38,10 +38,16 @@
                                                     @elseif($day_server->status->name == "Free")
                                                         <div class="img"></div>
                                                     @endif
-                                                    <div class="name"><span>{{$day_server->name}}</span></div>
+                                                        <div class="name"><a target="_blank" href="{{$day_server->link}}"><span>{{$day_server->name}}</span></a></div>
                                                     <div class="reit"><span>{{$day_server->rate->name}}</span></div>
                                                     <div class="chronic"><span>{{$day_server->chronicle->name}}</span></div>
-                                                    <div class="date"><span>{{$day_server->start_at->format('m.d h:m')}}</span></div>
+                                                    @if($day_server->start_at->format('d-m-Y') == $today)
+                                                        <div class="date"><span>Сегодня</span></div>
+                                                    @elseif($day_server->start_at->format('d-m-Y') == $yesterday)
+                                                        <div class="date"><span>Вчера</span></div>
+                                                    @else
+                                                        <div class="date"><span>{{$day_server->start_at->format('m.d h:m')}}</span></div>
+                                                    @endif
                                                         <a href="{{route("site.server.show", ["server" => $day_server->alias])}}"> <div class="i"><span>i</span></div></a>
                                                 </div>
                                             @endforeach
@@ -61,52 +67,44 @@
     <div class="container d-flex justify-content-between flex-column flex-wrap flex-lg-row" id="main_container">
 
         <div class="col-lg-4 no_padding margin-tab">
+            @if($servers["vipOpen"]->count() > 0)
+                <div class="col-md-12 servers-tab no_padding">
+                    <div class="col-md-12 servers-tab-title"><span>VIP Скоро откроются</span></div>
+                    @for($i = 4; $i >= 0; $i--)
+                        @if(isset($servers["vipOpen"][$i]))
+                            @foreach($servers["vipOpen"][$i] as $server)
+                                <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
+                                    @if($server->status->name == "Exlusive")
+                                        <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                    @elseif($server->status->name == "Silver")
+                                        <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                    @elseif($server->status->name == "Light")
+                                        <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                    @elseif($server->status->name == "Free")
+                                        <div class="img"></div>
+                                    @endif
+                                    <div class="name"><a target="_blank" href="{{$server->link}}"><span>{{$server->name}}</span></a></div>
+                                    <div class="reit"><span>{{$server->rate->name}}</span></div>
+                                    <div class="chronic"><span>{{$server->chronicle->name}}</span></div>
+                                    @if($server->start_at->format('d-m-Y') == $today)
+                                        <div class="date"><span>Сегодня</span></div>
+                                    @elseif($server->start_at->format('d-m-Y') == $yesterday)
+                                        <div class="date"><span>Вчера</span></div>
+                                    @else
+                                        <div class="date"><span>{{$server->start_at->format('m.d h:m')}}</span></div>
+                                    @endif
+                                    <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
+                                </div>
+                            @endforeach
+                        @endif
+                    @endfor
+                </div>
+            @endif
             <div class="col-md-12 servers-tab no_padding">
                 <div class="col-md-12 servers-tab-title"><span>Скоро откроются</span></div>
-                @foreach($servers["seven_days"] as $server)
-                    <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
-                        @if($server->status->name == "Exlusive")
-                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
-                        @elseif($server->status->name == "Silver")
-                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
-                        @elseif($server->status->name == "Light")
-                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
-                        @elseif($server->status->name == "Free")
-                            <div class="img"></div>
-                        @endif
-                        <div class="name"><span>{{$server->name}}</span></div>
-                        <div class="reit"><span>{{$server->rate->name}}</span></div>
-                        <div class="chronic"><span>{{$server->chronicle->name}}</span></div>
-                        <div class="date"><span>{{$server->start_at->format('m.d h:m')}}</span></div>
-                            <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
-                    </div>
-                @endforeach
-                <div class="col-md-12 servers-tab-pre-title"><span>Через неделю и более:</span></div>
-                @foreach($servers["week"] as $server)
-                    <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
-                        @if($server->status->name == "Exlusive")
-                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
-                        @elseif($server->status->name == "Silver")
-                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
-                        @elseif($server->status->name == "Light")
-                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
-                        @elseif($server->status->name == "Free")
-                            <div class="img"></div>
-                        @endif
-                        <div class="name"><span>{{$server->name}}</span></div>
-                        <div class="reit"><span>{{$server->rate->name}}</span></div>
-                        <div class="chronic"><span>{{$server->chronicle->name}}</span></div>
-                        <div class="date"><span>{{$server->start_at->format('m.d h:m')}}</span></div>
-                            <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-        <div class="col-lg-4 no_padding margin-tab">
-            @if($servers["yesterday"]->count() > 0)
-                <div class="col-md-12 servers-tab no_padding">
-                        <div class="col-md-12 servers-tab-title"><span>Открылись вчера</span></div>
-                        @foreach($servers["yesterday"] as $server)
+                @for($i = 4; $i >= 0; $i--)
+                    @if(isset($servers["seven_days"][$i]))
+                        @foreach($servers["seven_days"][$i] as $server)
                             <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
                                 @if($server->status->name == "Exlusive")
                                     <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
@@ -117,35 +115,149 @@
                                 @elseif($server->status->name == "Free")
                                     <div class="img"></div>
                                 @endif
-                                <div class="name"><span>{{$server->name}}</span></div>
+                                <div class="name"><a target="_blank" href="{{$server->link}}"><span>{{$server->name}}</span></a></div>
                                 <div class="reit"><span>{{$server->rate->name}}</span></div>
                                 <div class="chronic"><span>{{$server->chronicle->name}}</span></div>
-                                <div class="date"><span>{{$server->start_at->format('m.d h:m')}}</span></div>
-                                    <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
+                                @if($server->start_at->format('d-m-Y') == $today)
+                                    <div class="date"><span>Сегодня</span></div>
+                                @elseif($server->start_at->format('d-m-Y') == $yesterday)
+                                    <div class="date"><span>Вчера</span></div>
+                                @else
+                                    <div class="date"><span>{{$server->start_at->format('m.d h:m')}}</span></div>
+                                @endif
+                                <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
                             </div>
                         @endforeach
+                    @endif
+                @endfor
+                <div class="col-md-12 servers-tab-pre-title"><span>Через неделю и более:</span></div>
+                @for($i = 4; $i >= 0; $i--)
+                    @if(isset($servers["week"][$i]))
+                        @foreach($servers["week"][$i] as $server)
+                            <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
+                                @if($server->status->name == "Exlusive")
+                                    <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                @elseif($server->status->name == "Silver")
+                                    <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                @elseif($server->status->name == "Light")
+                                    <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                @elseif($server->status->name == "Free")
+                                    <div class="img"></div>
+                                @endif
+                                    <div class="name"><a target="_blank" href="{{$server->link}}"><span>{{$server->name}}</span></a></div>
+                                <div class="reit"><span>{{$server->rate->name}}</span></div>
+                                <div class="chronic"><span>{{$server->chronicle->name}}</span></div>
+                                    @if($server->start_at->format('d-m-Y') == $today)
+                                        <div class="date"><span>Сегодня</span></div>
+                                    @elseif($server->start_at->format('d-m-Y') == $yesterday)
+                                        <div class="date"><span>Вчера</span></div>
+                                    @else
+                                        <div class="date"><span>{{$server->start_at->format('m.d h:m')}}</span></div>
+                                    @endif
+                                <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
+                            </div>
+                        @endforeach
+                    @endif
+                @endfor
+            </div>
+        </div>
+        <div class="col-lg-4 no_padding margin-tab">
+            @if($servers["vipOpened"]->count() > 0)
+                <div class="col-md-12 servers-tab no_padding">
+                    <div class="col-md-12 servers-tab-title"><span>VIP Открылись</span></div>
+                    @for($i = 4; $i >= 0; $i--)
+                        @if(isset($servers["vipOpened"][$i]))
+                            @foreach($servers["vipOpened"][$i] as $server)
+                                <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
+                                    @if($server->status->name == "Exlusive")
+                                        <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                    @elseif($server->status->name == "Silver")
+                                        <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                    @elseif($server->status->name == "Light")
+                                        <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                    @elseif($server->status->name == "Free")
+                                        <div class="img"></div>
+                                    @endif
+                                    <div class="name"><a target="_blank" href="{{$server->link}}"><span>{{$server->name}}</span></a></div>
+                                    <div class="reit"><span>{{$server->rate->name}}</span></div>
+                                    <div class="chronic"><span>{{$server->chronicle->name}}</span></div>
+                                    @if($server->start_at->format('d-m-Y') == $today)
+                                        <div class="date"><span>Сегодня</span></div>
+                                    @elseif($server->start_at->format('d-m-Y') == $yesterday)
+                                        <div class="date"><span>Вчера</span></div>
+                                    @else
+                                        <div class="date"><span>{{$server->start_at->format('m.d h:m')}}</span></div>
+                                    @endif
+                                    <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
+                                </div>
+                            @endforeach
+                        @endif
+                    @endfor
+                </div>
+            @endif
+            @if($servers["yesterday"]->count() > 0)
+                <div class="col-md-12 servers-tab no_padding">
+                        <div class="col-md-12 servers-tab-title"><span>Открылись вчера</span></div>
+                        @for($i = 4; $i >= 0; $i--)
+                            @if(isset($servers["yesterday"][$i]))
+                                @foreach($servers["yesterday"][$i] as $server)
+                                    <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
+                                        @if($server->status->name == "Exlusive")
+                                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                        @elseif($server->status->name == "Silver")
+                                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                        @elseif($server->status->name == "Light")
+                                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                        @elseif($server->status->name == "Free")
+                                            <div class="img"></div>
+                                        @endif
+                                            <div class="name"><a target="_blank" href="{{$server->link}}"><span>{{$server->name}}</span></a></div>
+                                        <div class="reit"><span>{{$server->rate->name}}</span></div>
+                                        <div class="chronic"><span>{{$server->chronicle->name}}</span></div>
+                                            @if($server->start_at->format('d-m-Y') == $today)
+                                                <div class="date"><span>Сегодня</span></div>
+                                            @elseif($server->start_at->format('d-m-Y') == $yesterday)
+                                                <div class="date"><span>Вчера</span></div>
+                                            @else
+                                                <div class="date"><span>{{$server->start_at->format('m.d h:m')}}</span></div>
+                                            @endif
+                                        <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
+                                    </div>
+                                @endforeach
+                            @endif
+                        @endfor
                 </div>
             @endif
             <div class="col-md-12 servers-tab no_padding">
                 <div class="col-md-12 servers-tab-title"><span>Уже открылись</span></div>
-                @foreach($servers["opened"] as $server)
-                    <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
-                        @if($server->status->name == "Exlusive")
-                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
-                        @elseif($server->status->name == "Silver")
-                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
-                        @elseif($server->status->name == "Light")
-                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
-                        @elseif($server->status->name == "Free")
-                            <div class="img"></div>
-                        @endif
-                        <div class="name"><span>{{$server->name}}</span></div>
-                        <div class="reit"><span>{{$server->rate->name}}</span></div>
-                        <div class="chronic"><span>{{$server->chronicle->name}}</span></div>
-                        <div class="date"><span>{{$server->start_at->format('m.d h:m')}}</span></div>
-                        <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
-                    </div>
-                @endforeach
+                @for($i = 4; $i >= 0; $i--)
+                    @if(isset($servers["opened"][$i]))
+                        @foreach($servers["opened"][$i] as $server)
+                            <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
+                                @if($server->status->name == "Exlusive")
+                                    <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                @elseif($server->status->name == "Silver")
+                                    <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                @elseif($server->status->name == "Light")
+                                    <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                @elseif($server->status->name == "Free")
+                                    <div class="img"></div>
+                                @endif
+                                    <div class="name"><a target="_blank" href="{{$server->link}}"><span>{{$server->name}}</span></a></div>
+                                <div class="reit"><span>{{$server->rate->name}}</span></div>
+                                <div class="chronic"><span>{{$server->chronicle->name}}</span></div>
+                                    @if($server->start_at->format('d-m-Y') == $today)
+                                        <div class="date"><span>Сегодня</span></div>
+                                    @elseif($server->start_at->format('d-m-Y') == $yesterday)
+                                        <div class="date"><span>Вчера</span></div>
+                                    @else
+                                        <div class="date"><span>{{$server->start_at->format('m.d h:m')}}</span></div>
+                                    @endif
+                                <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
+                            </div>
+                        @endforeach
+                    @endif
+                @endfor
             </div>
         </div>
         <div class="col-lg-3 no_padding margin-tab">
