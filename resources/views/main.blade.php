@@ -7,7 +7,7 @@
                 {!! Form::select('rate', $inputs["rates"], old("rate"), ['id'=>'rate', "class" => "custom-select filter-but", "required" => ""]) !!}
                 {!! Form::select('chronicle', $inputs["chronicles"], old("chronicle"), ['id'=>'chronicle', "class" => "custom-select filter-but", "required" => ""]) !!}
                 <div class="drop-filter"></div>
-                {!! Form::submit("Поиск", ['class' => 'filter-sub p-2']) !!}
+                {!! Form::submit("Поиск", ['class' => 'custom-select filter-but']) !!}
                 {!! Form::close() !!}
             </div>
             <div class="col-md-6">
