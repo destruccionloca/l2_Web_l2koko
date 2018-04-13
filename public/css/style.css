@@ -10069,8 +10069,8 @@ body {
 }
 
 nav li {
-  font-family: "Roboto", sans-serif;
-  font-weight: 600;
+  font-family: "Roboto";
+  font-weight: 400;
   font-size: 13px;
 }
 
@@ -10111,7 +10111,7 @@ nav .def-nav > a:hover {
 
 .add-nav {
   margin-left: 20px;
-  border-radius: 50px;
+  border-radius: 7px;
   padding: 0 10px;
   background-color: #a5c715;
 }
@@ -10132,17 +10132,17 @@ nav .def-nav > a:hover {
 }
 
 .header-pic-title h1 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Thin";
   font-weight: 100;
-  font-size: 36px;
+  font-size: 40px;
   color: #fff;
   line-height: 29px;
 }
 
 .header-pic-title p {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Thin";
   font-weight: 200;
-  font-size: 14px;
+  font-size: 19px;
   color: #fff;
   line-height: 13px;
 }
@@ -10164,8 +10164,8 @@ nav .def-nav > a:hover {
 }
 
 .filter-title {
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
+  font-family: "Roboto";
+  font-weight: 700;
   font-size: 13px;
   color: #808080;
   float: left;
@@ -10173,10 +10173,10 @@ nav .def-nav > a:hover {
 }
 
 .filter-but {
-  font-family: "Roboto", sans-serif;
-  font-weight: 600;
+  font-family: "Roboto";
+  font-weight: 700;
   font-size: 12px;
-  border-radius: 15px;
+  border-radius: 7px;
   background-color: #1689c7;
   color: #fff;
   width: 135px;
@@ -10294,8 +10294,8 @@ nav .def-nav > a:hover {
 }
 
 .servers-tab-title span {
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
+  font-family: "Roboto";
+  font-weight: 700;
   font-size: 16px;
   color: #3c4152;
   padding-left: 10px;
@@ -10304,7 +10304,7 @@ nav .def-nav > a:hover {
 }
 
 .servers-tab-pre-title span {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto";
   font-weight: 400;
   font-size: 12px;
   color: #3c4152;
@@ -10327,17 +10327,17 @@ nav .def-nav > a:hover {
 }
 
 .servers-tab-exlusive .name {
-  width: 30%;
+  width: 36%;
   float: left;
   padding: 15px 0 15px 0;
   overflow: hidden;
 }
 
 .servers-tab-exlusive .name span {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-size: 12px;
-  color: #fff;
+  font-family: "Roboto";
+  font-weight: 700;
+  font-size: 11px;
+  color: #ffe040;
 }
 
 .servers-tab-exlusive .reit {
@@ -10347,42 +10347,42 @@ nav .def-nav > a:hover {
 }
 
 .servers-tab-exlusive .reit span {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto";
   font-weight: 400;
-  font-size: 12px;
-  color: #fff;
+  font-size: 11px;
+  color: #ffe040;
 }
 
 .servers-tab-exlusive .chronic {
-  width: 20%;
+  width: 17%;
   float: left;
   padding: 15px 0 15px 0;
 }
 
 .servers-tab-exlusive .chronic span {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto";
   font-weight: 400;
-  font-size: 12px;
-  color: #fff;
+  font-size: 11px;
+  color: #ffe040;
 }
 
 .servers-tab-exlusive .date {
-  width: 15%;
+  width: 12%;
   float: left;
-  padding: 15px 0 15px 0;
+  padding: 5px 15px 0;
 }
 
 .servers-tab-exlusive .date span {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto";
   font-weight: 400;
-  font-size: 9px;
-  color: #fff;
+  font-size: 10px;
+  color: #ffe040;
 }
 
 .servers-tab-exlusive .i {
   width: 10%;
   float: left;
-  padding: 15px 0 15px 10px;
+  padding: 15px 11px 10px;
 }
 
 .servers-tab-exlusive .i span {
@@ -10418,16 +10418,16 @@ nav .def-nav > a:hover {
 }
 
 .servers-tab-silver .name {
-  width: 30%;
+  width: 36%;
   float: left;
   padding: 15px 0 15px 0;
   overflow: hidden;
 }
 
 .servers-tab-silver .name span {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-size: 12px;
+  font-family: "Roboto";
+  font-weight: 700;
+  font-size: 11px;
   color: #3c4152;
 }
 
@@ -10438,35 +10438,35 @@ nav .def-nav > a:hover {
 }
 
 .servers-tab-silver .reit span {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto";
   font-weight: 400;
-  font-size: 12px;
+  font-size: 11px;
   color: #3c4152;
 }
 
 .servers-tab-silver .chronic {
-  width: 20%;
+  width: 17%;
   float: left;
   padding: 15px 0 15px 0;
 }
 
 .servers-tab-silver .chronic span {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto";
   font-weight: 400;
-  font-size: 12px;
+  font-size: 11px;
   color: #3c4152;
 }
 
 .servers-tab-silver .date {
-  width: 15%;
+  width: 12%;
   float: left;
-  padding: 15px 0 15px 0;
+  padding: 5px 15px 0;
 }
 
 .servers-tab-silver .date span {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto";
   font-weight: 400;
-  font-size: 9px;
+  font-size: 10px;
   color: #3c4152;
 }
 
@@ -10508,14 +10508,14 @@ nav .def-nav > a:hover {
 }
 
 .servers-tab-light .name {
-  width: 30%;
+  width: 36%;
   float: left;
   padding: 15px 0 15px 0;
   overflow: hidden;
 }
 
 .servers-tab-light .name span {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto";
   font-weight: 400;
   font-size: 12px;
   color: #3c4152;
@@ -10528,35 +10528,35 @@ nav .def-nav > a:hover {
 }
 
 .servers-tab-light .reit span {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto";
   font-weight: 400;
-  font-size: 12px;
+  font-size: 11px;
   color: #3c4152;
 }
 
 .servers-tab-light .chronic {
-  width: 20%;
-  float: left;
-  padding: 15px 0 15px 0;
-}
-
-.servers-tab-light .chronic span {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-size: 12px;
-  color: #3c4152;
-}
-
-.servers-tab-light .date {
   width: 15%;
   float: left;
   padding: 15px 0 15px 0;
 }
 
-.servers-tab-light .date span {
-  font-family: "Roboto", sans-serif;
+.servers-tab-light .chronic span {
+  font-family: "Roboto";
   font-weight: 400;
-  font-size: 9px;
+  font-size: 11px;
+  color: #3c4152;
+}
+
+.servers-tab-light .date {
+  width: 12%;
+  float: left;
+  padding: 5px 15px 0;
+}
+
+.servers-tab-light .date span {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 10px;
   color: #3c4152;
 }
 
@@ -10600,16 +10600,16 @@ nav .def-nav > a:hover {
 }
 
 .servers-tab-free .name {
-  width: 30%;
+  width: 36%;
   float: left;
   padding: 15px 0 15px 0;
   overflow: hidden;
 }
 
 .servers-tab-free .name span {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto";
   font-weight: 400;
-  font-size: 12px;
+  font-size: 11px;
   color: #3c4152;
 }
 
@@ -10620,35 +10620,35 @@ nav .def-nav > a:hover {
 }
 
 .servers-tab-free .reit span {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto";
   font-weight: 400;
-  font-size: 12px;
+  font-size: 11px;
   color: #3c4152;
 }
 
 .servers-tab-free .chronic {
-  width: 20%;
+  width: 17%;
   float: left;
   padding: 15px 0 15px 0;
 }
 
 .servers-tab-free .chronic span {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto";
   font-weight: 400;
-  font-size: 12px;
+  font-size: 11px;
   color: #3c4152;
 }
 
 .servers-tab-free .date {
-  width: 15%;
+  width: 12%;
   float: left;
-  padding: 15px 0 15px 0;
+  padding: 5px 15px 0;
 }
 
 .servers-tab-free .date span {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto";
   font-weight: 400;
-  font-size: 9px;
+  font-size: 10px;
   color: #3c4152;
 }
 
@@ -10782,10 +10782,10 @@ nav .def-nav > a:hover {
 }
 
 .recom_name {
-  font-family: "Roboto", sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  color: #3c4152;
+  font-family: "Roboto";
+  font-weight: 700;
+  font-size: 15px;
+  color: #1789c7;
 }
 
 .ad-img img {
@@ -10848,8 +10848,8 @@ nav .def-nav > a:hover {
 }
 
 .footer-menu {
-  font-family: "Roboto", sans-serif;
-  font-weight: 600;
+  font-family: "Roboto";
+  font-weight: 400;
   font-size: 16px;
   padding: 5px;
   color: #fff;
@@ -10927,7 +10927,7 @@ nav .def-nav > a:hover {
 .footer-logo {
   float: left;
   width: 161px;
-  height: 32px;
+  height: 44px;
   cursor: pointer;
   background: url(/images/footer_logo.png?d1a7b6968487f107aad251db17206f9c) no-repeat center center;
 }
@@ -10938,7 +10938,7 @@ nav .def-nav > a:hover {
 
 .copi-text {
   float: left;
-  padding: 10px 10px;
+  padding: 17px 10px;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 12px;
@@ -10961,8 +10961,8 @@ nav .def-nav > a:hover {
 .page-title span {
   float: left;
   margin-top: 10px;
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
+  font-family: "Roboto";
+  font-weight: 700;
   font-size: 16px;
   color: #3c4152;
   padding-left: 10px;
@@ -11017,9 +11017,9 @@ nav .def-nav > a:hover {
 }
 
 .form-input-title {
-  font-family: "Roboto", sans-serif;
-  font-weight: 600;
-  font-size: 15px;
+  font-family: "Roboto";
+  font-weight: 700;
+  font-size: 14px;
   color: #3c4152;
 }
 
@@ -11028,10 +11028,10 @@ nav .def-nav > a:hover {
   border-radius: 15px;
   height: 30px;
   width: 300px;
-  padding-left: 5px;
+  padding-left: 10px;
   padding-right: 5px;
-  font-family: "Roboto", sans-serif;
-  font-weight: 600;
+  font-family: "Roboto";
+  font-weight: 300;
   font-size: 15px;
   color: #3c4152;
 }
@@ -11149,12 +11149,12 @@ nav .def-nav > a:hover {
 }
 
 input[type=submit] {
-  font-family: "Roboto",sans-serif;
-  font-weight: 600;
+  font-family: "Roboto";
+  font-weight: 700;
   font-size: 12px;
   background-color: #a5c715;
   cursor: pointer;
-  border-radius: 50px;
+  border-radius: 7px;
   color: #fff;
   height: 32px;
   width: 80px;
@@ -11167,7 +11167,7 @@ input[type=submit] {
 
 .badge-info {
   color: #fff;
-  background-color: #17a2b8;
+  background-color: #e41212;
   padding: 0 10px;
   height: 15px;
   line-height: inherit;
