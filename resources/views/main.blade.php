@@ -6,7 +6,7 @@
                 <span class="filter-title">Фильтр:</span>
                 {!! Form::select('rate', $inputs["rates"], old("rate"), ['id'=>'rate', "class" => "custom-select filter-but", "required" => ""]) !!}
                 {!! Form::select('chronicle', $inputs["chronicles"], old("chronicle"), ['id'=>'chronicle', "class" => "custom-select filter-but", "required" => ""]) !!}
-                <button class="drop-filter" type="reset"></button>
+                <div class="drop-filter"></div>
                 {!! Form::submit("Поиск", ['class' => 'filter-sub p-2']) !!}
                 {!! Form::close() !!}
             </div>
@@ -46,7 +46,7 @@
                                                     @elseif($day_server->start_at->format('d-m-Y') == $yesterday)
                                                         <div class="date"><span>Вчера</span></div>
                                                     @else
-                                                        <div class="date"><span>{{$day_server->start_at->format('m.d h:m')}}</span></div>
+                                                        <div class="date"><span>{{$day_server->start_at->format('d.m H:i')}}</span></div>
                                                     @endif
                                                         <a href="{{route("site.server.show", ["server" => $day_server->alias])}}"> <div class="i"><span>i</span></div></a>
                                                 </div>
@@ -91,7 +91,7 @@
                                     @elseif($server->start_at->format('d-m-Y') == $yesterday)
                                         <div class="date"><span>Вчера</span></div>
                                     @else
-                                        <div class="date"><span>{{$server->start_at->format('m.d h:m')}}</span></div>
+                                        <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
                                     @endif
                                     <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
                                 </div>
@@ -123,7 +123,7 @@
                                 @elseif($server->start_at->format('d-m-Y') == $yesterday)
                                     <div class="date"><span>Вчера</span></div>
                                 @else
-                                    <div class="date"><span>{{$server->start_at->format('m.d h:m')}}</span></div>
+                                    <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
                                 @endif
                                 <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
                             </div>
@@ -152,7 +152,7 @@
                                     @elseif($server->start_at->format('d-m-Y') == $yesterday)
                                         <div class="date"><span>Вчера</span></div>
                                     @else
-                                        <div class="date"><span>{{$server->start_at->format('m.d h:m')}}</span></div>
+                                        <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
                                     @endif
                                 <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
                             </div>
@@ -186,7 +186,7 @@
                                     @elseif($server->start_at->format('d-m-Y') == $yesterday)
                                         <div class="date"><span>Вчера</span></div>
                                     @else
-                                        <div class="date"><span>{{$server->start_at->format('m.d h:m')}}</span></div>
+                                        <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
                                     @endif
                                     <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
                                 </div>
@@ -219,7 +219,7 @@
                                             @elseif($server->start_at->format('d-m-Y') == $yesterday)
                                                 <div class="date"><span>Вчера</span></div>
                                             @else
-                                                <div class="date"><span>{{$server->start_at->format('m.d h:m')}}</span></div>
+                                                <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
                                             @endif
                                         <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
                                     </div>
@@ -251,7 +251,7 @@
                                     @elseif($server->start_at->format('d-m-Y') == $yesterday)
                                         <div class="date"><span>Вчера</span></div>
                                     @else
-                                        <div class="date"><span>{{$server->start_at->format('m.d h:m')}}</span></div>
+                                        <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
                                     @endif
                                 <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
                             </div>

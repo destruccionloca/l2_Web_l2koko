@@ -56,7 +56,7 @@ class SiteController extends Controller
             'animate' => array('url' => '<link rel="stylesheet" href="'.asset("css/animate.css").'">'),
             'font-awesome' => array('url' => '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">'),
             'data-picker' => array('url' => '<link rel="stylesheet" href="'.asset("css/datepicker.min.css").'">'),
-            'main-style' => array('url' => '<link rel="stylesheet" href="'.asset("css/style.min.css?ver=1.05").'">'),
+            'main-style' => array('url' => '<link rel="stylesheet" href="'.asset("css/style.min.css?ver=1.06").'">'),
         );
         $this->inc_js_lib = array(
             'app' => array('url' => '<script src="'.asset('js/app.js').'"></script>'),

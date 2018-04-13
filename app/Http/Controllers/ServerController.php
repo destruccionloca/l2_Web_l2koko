@@ -24,12 +24,27 @@ class ServerController extends SiteController
         $this->title = $this->settings['title'];
         $this->description = $this->settings['description'];
         $this->keywords = $this->settings['keywords'];
+        $this->inc_js_lib = array_add($this->inc_js_lib,'mask',array('url' => '<script src='.$this->pub_path.'/js/jquery.maskedinput.min.js></script>'));
 
     }
 
     public function create() {
         $rates = Rate::orderBy('sort')->get();
         $chronicles = Chronicle::orderBy('sort')->get();
+        $this->inc_js = "
+        <script>
+               $(function() {
+                   
+                    $(\"#rate\").mask(\"x9ZZZZZZZZ\");
+            
+//                    $(\"input\").blur(function() {
+//                        $(\"#info\").html(\"Unmasked value: \" + $(this).mask());
+//                    }).dblclick(function() {
+//                        $(this).unmask();
+//                    });
+                });
+        </script>
+        ";
         $inp_rates = array();
         $inp_chronicles = array();
         foreach ($rates as $rate) {

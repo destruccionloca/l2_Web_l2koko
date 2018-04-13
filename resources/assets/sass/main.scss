@@ -50,7 +50,7 @@ body {
   align-items: center; }
 
 nav li {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 13px; }
 
@@ -124,7 +124,7 @@ nav .active > a, nav .def-nav > a:hover {
   clear: both; }
 
 .filter-title {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-size: 13px;
   color: #808080;
@@ -132,7 +132,7 @@ nav .active > a, nav .def-nav > a:hover {
   padding-top: 5px; }
 
 .filter-but {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 12px;
   border-radius: 15px;
@@ -149,6 +149,7 @@ nav .active > a, nav .def-nav > a:hover {
 }
 
 .drop-filter {
+  cursor: pointer;
   width: 30px;
   height: 30px;
   padding: 5px 10px;
@@ -175,7 +176,7 @@ nav .active > a, nav .def-nav > a:hover {
   background-color: transparent;
   border: #919191 1px solid;
   color: #919191;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-size: 14px;
   cursor: pointer; }
@@ -243,7 +244,7 @@ nav .active > a, nav .def-nav > a:hover {
   border-width: 0 0 0 3px; }
 
 .servers-tab-pre-title span {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 12px;
   color: #3c4152; }
@@ -268,7 +269,7 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .name span {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 12px;
     color: #fff;
@@ -281,7 +282,7 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .reit span {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 12px;
     color: #fff;
@@ -294,7 +295,7 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .chronic span {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 12px;
     color: #fff;
@@ -307,7 +308,7 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .date span {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 9px;
     color: #fff;
@@ -356,7 +357,7 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .name span {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 12px;
     color: #3c4152;
@@ -369,7 +370,7 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .reit span {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 12px;
     color: #3c4152;
@@ -382,7 +383,7 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .chronic span {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 12px;
     color: #3c4152;
@@ -395,7 +396,7 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .date span {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 9px;
     color: #3c4152;
@@ -442,7 +443,7 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .name span {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 12px;
     color: #3c4152;
@@ -455,7 +456,7 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .reit span {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 12px;
     color: #3c4152;
@@ -468,7 +469,7 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .chronic span {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 12px;
     color: #3c4152;
@@ -481,7 +482,7 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .date span {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 9px;
     color: #3c4152;
@@ -531,7 +532,7 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .name span {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 12px;
     color: #3c4152;
@@ -544,7 +545,7 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .reit span {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 12px;
     color: #3c4152;
@@ -557,7 +558,7 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .chronic span {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 12px;
     color: #3c4152;
@@ -570,7 +571,7 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .date span {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 9px;
     color: #3c4152;
@@ -687,13 +688,13 @@ nav .active > a, nav .def-nav > a:hover {
   padding: 25px 0; }
 
 .recom_title {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 12px;
   color: #3c4152; }
 
 .recom_name {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 16px;
   color: #3c4152; }
@@ -731,7 +732,7 @@ nav .active > a, nav .def-nav > a:hover {
   background: #ccc; }
 
 .our-partners {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
   color: #a0a0a0; }
 
@@ -750,7 +751,7 @@ nav .active > a, nav .def-nav > a:hover {
   clear: both; }
 
 .footer-menu {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 16px;
   padding: 5px;
@@ -852,7 +853,7 @@ nav .active > a, nav .def-nav > a:hover {
   padding-left: 10px; }
 
 .page-but {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 12px;
   padding: 5px 10px;
@@ -899,7 +900,7 @@ nav .active > a, nav .def-nav > a:hover {
 }
 
 .form-input-title {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 15px;
   color: #3c4152; }
@@ -911,7 +912,7 @@ nav .active > a, nav .def-nav > a:hover {
   width: 300px;
   padding-left: 5px;
   padding-right: 5px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 15px;
   color: #3c4152; }
@@ -923,7 +924,7 @@ nav .active > a, nav .def-nav > a:hover {
   width: 300px;
   padding-left: 5px;
   padding-right: 15px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 15px;
   color: #3c4152; }
@@ -934,7 +935,7 @@ nav .active > a, nav .def-nav > a:hover {
   width: 300px;
   padding-left: 5px;
   padding-right: 15px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 15px;
   color: #3c4152; }
@@ -951,7 +952,7 @@ nav .active > a, nav .def-nav > a:hover {
 /** MODAL  **/
 
 .modal-title-my {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 14px;
   color: #979797;
@@ -1002,7 +1003,7 @@ nav .active > a, nav .def-nav > a:hover {
   border-radius: 50px;
   cursor: pointer;
   display: inline;
-  font-family: "Open Sans",sans-serif;
+  font-family: "Roboto",sans-serif;
   font-size: 14px;
   font-weight: 300;
   margin-left: 10px;
@@ -1012,7 +1013,7 @@ nav .active > a, nav .def-nav > a:hover {
 .form-submit {
   cursor: pointer;
   height: 30px;
-  font-family: "Open Sans",sans-serif;
+  font-family: "Roboto",sans-serif;
   font-size: 15px;
   font-weight: 600;
   margin-left: 20px;
@@ -1024,7 +1025,7 @@ nav .active > a, nav .def-nav > a:hover {
 }
 
 input[type=submit] {
-  font-family: "Open Sans",sans-serif;
+  font-family: "Roboto",sans-serif;
   font-weight: 600;
   font-size: 12px;
   background-color: #a5c715;

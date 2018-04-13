@@ -44,6 +44,16 @@ class IndexController extends SiteController
         $chronicles = Chronicle::orderBy('sort')->get();
         $ads = Ad::get();
         $partners = Partner::get();
+        $this->inc_js = "
+        <script>
+        jQuery(document).ready(function(){
+            $('.drop-filter').click(function(){
+                $('#rate').prop('selectedIndex',0);
+                $('#chronicle').prop('selectedIndex',0);
+            })
+        });
+        </script>
+        ";
         $inp_rates = array("all" => "Все рейты");
         $inp_chronicles = array("all" => "Все хроники");
         foreach ($rates as $rate) {
@@ -77,7 +87,6 @@ class IndexController extends SiteController
         $servers["opened"] = $this->getServers($server->Opened()->Active()->orderBy("start_at", "desc"), $rate_id, $chronicle_id);
         $servers["vipOpened"] = $this->getServers($server->OpenedVip()->orderBy("start_at", "desc"), $rate_id, $chronicle_id);
         $servers["vipOpen"] = $this->getServers($server->OpenVip()->orderBy("start_at", "desc"), $rate_id, $chronicle_id);
-
         $this->content = view('main')->with(["servers" => $servers, "nominations" => $nominations, "date_week" => $date_week, "this_day" => $this_day, "this_month" => $this_month, "inputs" => $this->inputs, "ads" => $ads, "today" => $this->today, "yesterday" => $this->yesterday])->render();
         return $this->renderOutput();
     }

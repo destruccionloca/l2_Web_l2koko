@@ -77,6 +77,7 @@
                         </div>
                         <div class="col-8">
                             <div class="form-input-block d-flex align-items-center">
+                                {{--{!! Form::text('rate', old("rate"), ['id'=>'rate', "class" => "form-input", "required" => ""]) !!}--}}
                                 {!! Form::select('rate_id', $inputs["rates"], old("rate_id"), ['id'=>'rate_id', "class" => "form-select", "required" => ""]) !!}
                             </div>
                         </div>

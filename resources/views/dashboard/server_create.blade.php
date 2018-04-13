@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group">
                     <label for="chronicle_id">Хроники</label>
-                    {!! Form::select('chronicle_id', $inputs["chronicles"], isset($server->chronicle)? $server->chronicle : old("chronicle_id"), ['id'=>'chronicle_id', "class" => "form-control", "required" => ""]) !!}
+                    {!! Form::select('chronicle_id', $inputs["chronicles"], isset($server->chronicle_id)? $server->chronicle_id : old("chronicle_id"), ['id'=>'chronicle_id', "class" => "form-control", "required" => ""]) !!}
                 </div>
                 <div class="form-group">
                     <label for="rate_id">Рейты</label>
