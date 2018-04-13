@@ -10132,7 +10132,7 @@ nav .def-nav > a:hover {
 }
 
 .header-pic-title h1 {
-  font-family: "Roboto Thin";
+  font-family: "Roboto";
   font-weight: 100;
   font-size: 40px;
   color: #fff;
@@ -10140,8 +10140,8 @@ nav .def-nav > a:hover {
 }
 
 .header-pic-title p {
-  font-family: "Roboto Thin";
-  font-weight: 200;
+  font-family: "Roboto";
+  font-weight: 100;
   font-size: 19px;
   color: #fff;
   line-height: 13px;
@@ -10535,7 +10535,7 @@ nav .def-nav > a:hover {
 }
 
 .servers-tab-light .chronic {
-  width: 15%;
+  width: 17%;
   float: left;
   padding: 15px 0 15px 0;
 }
@@ -10563,7 +10563,7 @@ nav .def-nav > a:hover {
 .servers-tab-light .i {
   width: 10%;
   float: left;
-  padding: 15px 0 15px 10px;
+  padding: 15px 11px 10px;
 }
 
 .servers-tab-light .i span {
