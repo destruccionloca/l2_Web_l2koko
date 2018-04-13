@@ -10174,7 +10174,7 @@ nav .def-nav > a:hover {
 
 .filter-but {
   font-family: "Roboto";
-  font-weight: 700;
+  font-weight: 300;
   font-size: 12px;
   border-radius: 7px;
   background-color: #1689c7;
@@ -10517,7 +10517,7 @@ nav .def-nav > a:hover {
 .servers-tab-light .name span {
   font-family: "Roboto";
   font-weight: 400;
-  font-size: 12px;
+  font-size: 11px;
   color: #3c4152;
 }
 
@@ -11043,8 +11043,8 @@ nav .def-nav > a:hover {
   width: 300px;
   padding-left: 5px;
   padding-right: 15px;
-  font-family: "Roboto", sans-serif;
-  font-weight: 600;
+  font-family: "Roboto";
+  font-weight: 300;
   font-size: 15px;
   color: #3c4152;
 }
@@ -11150,7 +11150,7 @@ nav .def-nav > a:hover {
 
 input[type=submit] {
   font-family: "Roboto";
-  font-weight: 700;
+  font-weight: 300;
   font-size: 12px;
   background-color: #a5c715;
   cursor: pointer;
