@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>{{ $title }}</title>
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/public/images/favicon.ico" type="image/x-icon">
     <meta charset="utf-8">
     <meta name="description" content="{{ $description }}" />
     <meta name="keywords" content="{{ $keywords }}" />
@@ -18,6 +18,15 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+	<!-- Global Site Tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+	<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-108132402-1');
+	</script>
 </head>
 <body class="animated fadeIn">
 <!--LiveInternet counter--><script type="text/javascript">
@@ -88,8 +97,8 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
     <div class="container">
         <div class="row footer-menu-block">
             <div class="col-md-9">
-                <a href="http://nbasece5.bget.ru/%D1%80%D0%B5%D0%BA%D0%BB%D0%B0%D0%BC%D0%B0.html " target="_blank" class="footer-menu">Реклама</a>
-                <a href="http://nbasece5.bget.ru/%D1%80%D0%B5%D0%BA%D0%BB%D0%B0%D0%BC%D0%B0.html" target="_blank" class="footer-menu">Партнерам</a>
+                <a href="https://l2oko.ru/page/uslugi " target="_blank" class="footer-menu">Реклама</a>
+                <a href="https://l2oko.ru/page/partneram" target="_blank" class="footer-menu">Партнерам</a>
                 <a href="{{ route('site.server.create') }}"  class="footer-menu" >Добавить сервер</a>
             </div>
             <div class="col-md-3">
@@ -111,8 +120,8 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
         </div>
         <div class="row footer-copi">
             <div class="col-10">
-                <div class="footer-logo"></div>
-                <span class="copi-text">L2oko.ru — новые сервера Lineage 2 © 2016 - 2018 </span>
+                <div class="footer-logo" src="{{ asset('images/footer_logo.png') }}"></div>
+                <span class="copi-text">L2OKO.RU — новые сервера Lineage 2 © 2017 - 2018 </span>
             </div>
             <div class="col-2">
                 <img class="img-fluid" src="{{ asset('images/mkarts.png') }}">
