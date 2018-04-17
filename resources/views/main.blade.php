@@ -4,8 +4,12 @@
             <div class="col-md-6">
                 {!! Form::open(["url" => route('site.index'), 'method' => "get"]) !!}
                 <span class="filter-title">Фильтр:</span>
-                {!! Form::select('rate', $inputs["rates"], old("rate"), ['id'=>'rate', "class" => "custom-select filter-but", "required" => ""]) !!}
-                {!! Form::select('chronicle', $inputs["chronicles"], old("chronicle"), ['id'=>'chronicle', "class" => "custom-select filter-but", "required" => ""]) !!}
+                <div class="custom-select oko-filter-div" style="width:130px;">
+                {!! Form::select('rate', $inputs["rates"], old("rate"), ['id'=>'rate', "class" => "", "required" => ""]) !!}
+                </div>
+                <div class="custom-select oko-filter-div" style="width:130px;">
+                {!! Form::select('chronicle', $inputs["chronicles"], old("chronicle"), ['id'=>'chronicle', "class" => "", "required" => ""]) !!}
+                </div>
                 <div class="drop-filter"></div>
                 {!! Form::submit("Поиск", ['class' => 'custom-select filter-but']) !!}
                 {!! Form::close() !!}
@@ -269,7 +273,7 @@
                         <div class="recom_cont"><span class="recom_title">{{$nomination->name}}:</span>
                             <br />
                             @if(isset($nomination->server))
-                                <span class="recom_name">{{$nomination->server->name}}</span>
+                                <a href="{{$nomination->server->link}}" target="_blank"><span class="recom_name">{{$nomination->server->name}}</span></a>
                             @else
                                 <span class="recom_name">Место свободно</span>
                                 <br />
