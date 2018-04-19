@@ -11226,6 +11226,8 @@ input[type=submit] {
   border: 1px solid transparent;
   border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
   cursor: pointer;
+  border-radius: 7px;
+  height: 32px;
 }
 
 /*style items (options):*/
