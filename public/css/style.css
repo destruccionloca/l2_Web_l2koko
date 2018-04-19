@@ -10227,7 +10227,7 @@ nav .def-nav > a:hover {
 }
 
 .filter-week li:hover {
-  background-color: #1689c7;
+  background-color: #1889c7;
   color: #fff;
   border: transparent 1px solid;
 }
@@ -11194,7 +11194,7 @@ input[type=submit] {
 }
 
 .select-selected {
-  background-color: DodgerBlue;
+  background-color: #1889c7;
 }
 
 /*style the arrow inside the select element:*/
@@ -11237,7 +11237,7 @@ input[type=submit] {
 
 .select-items {
   position: absolute;
-  background-color: DodgerBlue;
+  background-color: #1889c7;
   top: 100%;
   left: 0;
   right: 0;
