@@ -29,6 +29,10 @@ class Server extends Model
         return $query->whereDate('start_at', date('Y-m-d', strtotime( '-1 days' )));
     }
 
+    public function scopeToday($query) {
+        return $query->whereDate('start_at', date('Y-m-d'));
+    }
+
     public function scopeOpened($query) {
         return $query->whereDate('start_at', "<", date("Y-m-d"));
     }

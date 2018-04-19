@@ -28,11 +28,11 @@
                 </div>
                 <div class="form-group">
                     <label for="alt">Token</label>
-                    {!! Form::text('token', isset($partner->token)? $partner->token : old("token"), ['id'=>'alt', "class" => "form-control", "required" => ""]) !!}
+                    {!! Form::text('token', isset($partner->token)? $partner->token : old("token"), ['id'=>'alt', "class" => "form-control"]) !!}
                 </div>
                 <div class="form-group">
                     <label for="alt">Group ID</label>
-                    {!! Form::text('group_id', isset($partner->group_id)? $partner->group_id : old("group_id"), ['id'=>'group_id', "class" => "form-control", "required" => ""]) !!}
+                    {!! Form::text('group_id', isset($partner->group_id)? $partner->group_id : old("group_id"), ['id'=>'group_id', "class" => "form-control"]) !!}
                 </div>
                 <div class="form-group">
                     <label class="col-12">Изображение (255x90)</label>

@@ -49,6 +49,8 @@
                                                         <div class="date"><span>Сегодня</span></div>
                                                     @elseif($day_server->start_at->format('d-m-Y') == $yesterday)
                                                         <div class="date"><span>Вчера</span></div>
+                                                    @elseif($day_server->start_at->format('d-m-Y') == $tomorrow)
+                                                        <div class="date"><span>Завтра</span></div>
                                                     @else
                                                         <div class="date"><span>{{$day_server->start_at->format('d.m H:i')}}</span></div>
                                                     @endif
@@ -90,13 +92,15 @@
                                     <div class="name"><a target="_blank" href="{{$server->link}}"><span>{{$server->name}}</span></a></div>
                                     <div class="reit"><span>{{$server->rate->name}}</span></div>
                                     <div class="chronic"><span>{{$server->chronicle->name}}</span></div>
-                                    @if($server->start_at->format('d-m-Y') == $today)
-                                        <div class="date"><span>Сегодня</span></div>
-                                    @elseif($server->start_at->format('d-m-Y') == $yesterday)
-                                        <div class="date"><span>Вчера</span></div>
-                                    @else
-                                        <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
-                                    @endif
+                                        @if($server->start_at->format('d-m-Y') == $today)
+                                            <div class="date"><span>Сегодня</span></div>
+                                        @elseif($server->start_at->format('d-m-Y') == $yesterday)
+                                            <div class="date"><span>Вчера</span></div>
+                                        @elseif($server->start_at->format('d-m-Y') == $tomorrow)
+                                            <div class="date"><span>Завтра</span></div>
+                                        @else
+                                            <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
+                                        @endif
                                     <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
                                 </div>
                             @endforeach
@@ -104,6 +108,41 @@
                     @endfor
                 </div>
             @endif
+                @if($servers["today"]->count() > 0)
+                    <div class="col-md-12 servers-tab no_padding">
+                        <div class="col-md-12 servers-tab-title"><span>Открылись Сегодня</span></div>
+                        @for($i = 4; $i >= 0; $i--)
+                            @if(isset($servers["today"][$i]))
+                                @foreach($servers["today"][$i] as $server)
+                                    <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
+                                        @if($server->status->name == "Exlusive")
+                                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                        @elseif($server->status->name == "Silver")
+                                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                        @elseif($server->status->name == "Light")
+                                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                        @elseif($server->status->name == "Free")
+                                            <div class="img"></div>
+                                        @endif
+                                        <div class="name"><a target="_blank" href="{{$server->link}}"><span>{{$server->name}}</span></a></div>
+                                        <div class="reit"><span>{{$server->rate->name}}</span></div>
+                                        <div class="chronic"><span>{{$server->chronicle->name}}</span></div>
+                                        @if($server->start_at->format('d-m-Y') == $today)
+                                            <div class="date"><span>Сегодня</span></div>
+                                        @elseif($server->start_at->format('d-m-Y') == $yesterday)
+                                            <div class="date"><span>Вчера</span></div>
+                                        @elseif($server->start_at->format('d-m-Y') == $tomorrow)
+                                            <div class="date"><span>Завтра</span></div>
+                                        @else
+                                            <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
+                                        @endif
+                                        <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
+                                    </div>
+                                @endforeach
+                            @endif
+                        @endfor
+                    </div>
+                @endif
             <div class="col-md-12 servers-tab no_padding">
                 <div class="col-md-12 servers-tab-title"><span>Скоро откроются</span></div>
                 @for($i = 4; $i >= 0; $i--)
@@ -126,6 +165,8 @@
                                     <div class="date"><span>Сегодня</span></div>
                                 @elseif($server->start_at->format('d-m-Y') == $yesterday)
                                     <div class="date"><span>Вчера</span></div>
+                                @elseif($server->start_at->format('d-m-Y') == $tomorrow)
+                                    <div class="date"><span>Завтра</span></div>
                                 @else
                                     <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
                                 @endif
@@ -151,13 +192,15 @@
                                     <div class="name"><a target="_blank" href="{{$server->link}}"><span>{{$server->name}}</span></a></div>
                                 <div class="reit"><span>{{$server->rate->name}}</span></div>
                                 <div class="chronic"><span>{{$server->chronicle->name}}</span></div>
-                                    @if($server->start_at->format('d-m-Y') == $today)
-                                        <div class="date"><span>Сегодня</span></div>
-                                    @elseif($server->start_at->format('d-m-Y') == $yesterday)
-                                        <div class="date"><span>Вчера</span></div>
-                                    @else
-                                        <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
-                                    @endif
+                                @if($server->start_at->format('d-m-Y') == $today)
+                                    <div class="date"><span>Сегодня</span></div>
+                                @elseif($server->start_at->format('d-m-Y') == $yesterday)
+                                    <div class="date"><span>Вчера</span></div>
+                                @elseif($server->start_at->format('d-m-Y') == $tomorrow)
+                                    <div class="date"><span>Завтра</span></div>
+                                @else
+                                    <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
+                                @endif
                                 <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
                             </div>
                         @endforeach
@@ -189,6 +232,8 @@
                                         <div class="date"><span>Сегодня</span></div>
                                     @elseif($server->start_at->format('d-m-Y') == $yesterday)
                                         <div class="date"><span>Вчера</span></div>
+                                    @elseif($server->start_at->format('d-m-Y') == $tomorrow)
+                                        <div class="date"><span>Завтра</span></div>
                                     @else
                                         <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
                                     @endif
@@ -218,13 +263,15 @@
                                             <div class="name"><a target="_blank" href="{{$server->link}}"><span>{{$server->name}}</span></a></div>
                                         <div class="reit"><span>{{$server->rate->name}}</span></div>
                                         <div class="chronic"><span>{{$server->chronicle->name}}</span></div>
-                                            @if($server->start_at->format('d-m-Y') == $today)
-                                                <div class="date"><span>Сегодня</span></div>
-                                            @elseif($server->start_at->format('d-m-Y') == $yesterday)
-                                                <div class="date"><span>Вчера</span></div>
-                                            @else
-                                                <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
-                                            @endif
+                                        @if($server->start_at->format('d-m-Y') == $today)
+                                            <div class="date"><span>Сегодня</span></div>
+                                        @elseif($server->start_at->format('d-m-Y') == $yesterday)
+                                            <div class="date"><span>Вчера</span></div>
+                                        @elseif($server->start_at->format('d-m-Y') == $tomorrow)
+                                            <div class="date"><span>Завтра</span></div>
+                                        @else
+                                            <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
+                                        @endif
                                         <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
                                     </div>
                                 @endforeach
@@ -250,13 +297,15 @@
                                     <div class="name"><a target="_blank" href="{{$server->link}}"><span>{{$server->name}}</span></a></div>
                                 <div class="reit"><span>{{$server->rate->name}}</span></div>
                                 <div class="chronic"><span>{{$server->chronicle->name}}</span></div>
-                                    @if($server->start_at->format('d-m-Y') == $today)
-                                        <div class="date"><span>Сегодня</span></div>
-                                    @elseif($server->start_at->format('d-m-Y') == $yesterday)
-                                        <div class="date"><span>Вчера</span></div>
-                                    @else
-                                        <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
-                                    @endif
+                                @if($server->start_at->format('d-m-Y') == $today)
+                                    <div class="date"><span>Сегодня</span></div>
+                                @elseif($server->start_at->format('d-m-Y') == $yesterday)
+                                    <div class="date"><span>Вчера</span></div>
+                                @elseif($server->start_at->format('d-m-Y') == $tomorrow)
+                                    <div class="date"><span>Завтра</span></div>
+                                @else
+                                    <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
+                                @endif
                                 <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
                             </div>
                         @endforeach
@@ -278,7 +327,6 @@
                                 <span class="recom_name">Место свободно</span>
                                 <br />
                                 <span class="badge badge-info float-right mt-3" data-toggle="modal" data-target="#nomination-{{$nomination->id}}" style="cursor: pointer">Подать заявку</span>
-
                                 <!-- Modal app nomination -->
                                 <div class="modal fade" id="nomination-{{$nomination->id}}" tabindex="-1" role="dialog" aria-labelledby="nominationLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
@@ -331,7 +379,7 @@
                 </div>
             </div>
             <div class="col-md-12 tab no_padding">
-                <div class="col-md-12 servers-tab-title"><span>Реклама</span></div>
+                {{--<div class="col-md-12 servers-tab-title"><span>Реклама</span></div>--}}
                 @foreach($ads as $ad)
                 <div class="d-flex justify-content-center ad-img p-2 mb-2">
                     <a href="{{$ad->link}}" target="_blank"><img alt="{{$ad->alt}}" class="img-fluid" src="/uploads/ads/ad-{{$ad->id}}{{$ad->picture}}"></a>

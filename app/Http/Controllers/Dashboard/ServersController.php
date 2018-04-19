@@ -181,6 +181,11 @@ class ServersController extends DashboardController
 //            return back()->with(array('error' => 'Доступ запрещен'));
 //        }
         if ($server->forceDelete()) {
+            if(!is_null($server->applications)){
+                foreach ($server->applications as $application) {
+                  $application->forceDelete();
+                }
+            }
             return back()->with(['status' => 'Сервер удален']);
         } else {
             return back()->with(['error' => 'Ошибка удаления']);

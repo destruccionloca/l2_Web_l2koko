@@ -27,8 +27,8 @@ class PartnersRepository extends Repository
             $this->model->title = $data["title"];
             $this->model->link = $data["link"];
             $this->model->alt = $data["alt"];
-            $this->model->token = $data["token"];
-            $this->model->group_id = $data["group_id"];
+            $this->model->token = (isset($data["token"])) ? $data["token"] : null;
+            $this->model->group_id = (isset($data["group_id"])) ? $data["group_id"] : null;
 
             if ($this->model->save()) {
                 if ($request->hasFile('picture')) {

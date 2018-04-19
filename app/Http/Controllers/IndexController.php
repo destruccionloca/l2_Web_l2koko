@@ -17,6 +17,7 @@ class IndexController extends SiteController
 {
     protected $today;
     protected $yesterday;
+    protected $tomorrow;
     protected $nom_rep;
 
     public function __construct(NominationsRepository $nom_rep)
@@ -34,6 +35,7 @@ class IndexController extends SiteController
         $this->nom_rep = $nom_rep;
         $this->today = Carbon::now()->format('d-m-Y');
         $this->yesterday = Carbon::now()->subDay()->format('d-m-Y');
+        $this->tomorrow = Carbon::now()->addDay()->format('d-m-Y');
     }
 
     public function index(Server $server, Request $request)
@@ -82,12 +84,13 @@ class IndexController extends SiteController
         $this_month = $date->formatLocalized('%B');
         $nominations = $this->nom_rep->get("*");
         $servers["yesterday"] = $this->getServers($server->Yesterday()->Active()->orderBy("start_at", "desc"), $rate_id, $chronicle_id);
-        $servers["week"] = $this->getServers($server->Week()->Active()->orderBy("start_at", "desc"), $rate_id, $chronicle_id);
-        $servers["seven_days"] = $this->getServers($server->SevenDays()->Active()->orderBy("start_at", "desc"), $rate_id, $chronicle_id);
+        $servers["today"] = $this->getServers($server->Today()->Active()->orderBy("start_at"), $rate_id, $chronicle_id);
+        $servers["week"] = $this->getServers($server->Week()->Active()->orderBy("start_at"), $rate_id, $chronicle_id);
+        $servers["seven_days"] = $this->getServers($server->SevenDays()->Active()->orderBy("start_at"), $rate_id, $chronicle_id);
         $servers["opened"] = $this->getServers($server->Opened()->Active()->orderBy("start_at", "desc"), $rate_id, $chronicle_id);
         $servers["vipOpened"] = $this->getServers($server->OpenedVip()->orderBy("start_at", "desc"), $rate_id, $chronicle_id);
-        $servers["vipOpen"] = $this->getServers($server->OpenVip()->orderBy("start_at", "desc"), $rate_id, $chronicle_id);
-        $this->content = view('main')->with(["servers" => $servers, "nominations" => $nominations, "date_week" => $date_week, "this_day" => $this_day, "this_month" => $this_month, "inputs" => $this->inputs, "ads" => $ads, "today" => $this->today, "yesterday" => $this->yesterday])->render();
+        $servers["vipOpen"] = $this->getServers($server->OpenVip()->orderBy("start_at"), $rate_id, $chronicle_id);
+        $this->content = view('main')->with(["servers" => $servers, "nominations" => $nominations, "date_week" => $date_week, "this_day" => $this_day, "this_month" => $this_month, "inputs" => $this->inputs, "ads" => $ads, "today" => $this->today, "yesterday" => $this->yesterday, "tomorrow" => $this->tomorrow])->render();
         return $this->renderOutput();
     }
 
