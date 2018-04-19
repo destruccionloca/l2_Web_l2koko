@@ -11222,12 +11222,15 @@ input[type=submit] {
 .select-items div,
 .select-selected {
   color: #ffffff;
-  padding: 5px 16px;
+  padding: 6px 16px;
   border: 1px solid transparent;
   border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
   cursor: pointer;
   border-radius: 7px;
   height: 32px;
+  font-family: "Roboto";
+  font-weight: 700;
+  font-size: 12px;
 }
 
 /*style items (options):*/
