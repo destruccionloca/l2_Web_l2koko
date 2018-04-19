@@ -75,7 +75,7 @@
         <div class="col-lg-4 no_padding margin-tab">
             @if($servers["vipOpen"]->count() > 0)
                 <div class="col-md-12 servers-tab no_padding">
-                    <div class="col-md-12 servers-tab-title"><span>VIP Скоро откроются</span></div>
+                    <div class="col-md-12 servers-tab-title"><span>VIP | СКОРО ОТКРОЮТСЯ</span></div>
                     @for($i = 4; $i >= 0; $i--)
                         @if(isset($servers["vipOpen"][$i]))
                             @foreach($servers["vipOpen"][$i] as $server)
@@ -110,7 +110,7 @@
             @endif
                 @if($servers["today"]->count() > 0)
                     <div class="col-md-12 servers-tab no_padding">
-                        <div class="col-md-12 servers-tab-title"><span>Открылись Сегодня</span></div>
+                        <div class="col-md-12 servers-tab-title"><span>СЕГОДНЯ</span></div>
                         @for($i = 4; $i >= 0; $i--)
                             @if(isset($servers["today"][$i]))
                                 @foreach($servers["today"][$i] as $server)
@@ -144,7 +144,7 @@
                     </div>
                 @endif
             <div class="col-md-12 servers-tab no_padding">
-                <div class="col-md-12 servers-tab-title"><span>Скоро откроются</span></div>
+                <div class="col-md-12 servers-tab-title"><span>СКОРО ОТКРОЮТСЯ</span></div>
                 @for($i = 4; $i >= 0; $i--)
                     @if(isset($servers["seven_days"][$i]))
                         @foreach($servers["seven_days"][$i] as $server)
@@ -175,7 +175,7 @@
                         @endforeach
                     @endif
                 @endfor
-                <div class="col-md-12 servers-tab-pre-title"><span>Через неделю и более:</span></div>
+                <div class="col-md-12 servers-tab-pre-title"><span>ЧЕРЕЗ НЕДЕЛЮ И БОЛЕЕ:</span></div>
                 @for($i = 4; $i >= 0; $i--)
                     @if(isset($servers["week"][$i]))
                         @foreach($servers["week"][$i] as $server)
@@ -211,7 +211,7 @@
         <div class="col-lg-4 no_padding margin-tab">
             @if($servers["vipOpened"]->count() > 0)
                 <div class="col-md-12 servers-tab no_padding">
-                    <div class="col-md-12 servers-tab-title"><span>VIP Открылись</span></div>
+                    <div class="col-md-12 servers-tab-title"><span>VIP | УЖЕ ОТКРЫЛИСЬ</span></div>
                     @for($i = 4; $i >= 0; $i--)
                         @if(isset($servers["vipOpened"][$i]))
                             @foreach($servers["vipOpened"][$i] as $server)
@@ -246,7 +246,7 @@
             @endif
             @if($servers["yesterday"]->count() > 0)
                 <div class="col-md-12 servers-tab no_padding">
-                        <div class="col-md-12 servers-tab-title"><span>Открылись вчера</span></div>
+                        <div class="col-md-12 servers-tab-title"><span>ОТКРЫЛИСЬ ВЧЕРА</span></div>
                         @for($i = 4; $i >= 0; $i--)
                             @if(isset($servers["yesterday"][$i]))
                                 @foreach($servers["yesterday"][$i] as $server)
@@ -280,7 +280,7 @@
                 </div>
             @endif
             <div class="col-md-12 servers-tab no_padding">
-                <div class="col-md-12 servers-tab-title"><span>Уже открылись</span></div>
+                <div class="col-md-12 servers-tab-title"><span>УЖЕ ОТКРЫЛИСЬ</span></div>
                 @for($i = 4; $i >= 0; $i--)
                     @if(isset($servers["opened"][$i]))
                         @foreach($servers["opened"][$i] as $server)
@@ -315,7 +315,7 @@
         </div>
         <div class="col-lg-3 no_padding margin-tab">
             <div class="col-md-12 tab no_padding">
-                <div class="col-md-12 servers-tab-title"><span>Наши рекомендации</span></div>
+                <div class="col-md-12 servers-tab-title"><span>НАШИ РЕКОМЕНДАЦИИ</span></div>
                 @foreach($nominations as $nomination)
                     <div class="col-md-12 tab-recom no_padding text-center">
                         <div class="recom_img pt-3"><img src="/uploads/nominations/nomination-{{$nomination->id}}{{$nomination->picture}}"></div>
@@ -371,15 +371,10 @@
                         </div>
                     </div>
                 @endforeach
+
             </div>
             <div class="col-md-12 tab no_padding">
-                <div class="col-md-12 servers-tab-title"><span>Календарь</span></div>
-                <div class="d-flex justify-content-center m-2">
-                    <div class="datepicker-here"></div>
-                </div>
-            </div>
-            <div class="col-md-12 tab no_padding">
-                {{--<div class="col-md-12 servers-tab-title"><span>Реклама</span></div>--}}
+                <div class="col-md-12 servers-tab-title"><span>РЕКЛАМА</span></div>
                 @foreach($ads as $ad)
                 <div class="d-flex justify-content-center ad-img p-2 mb-2">
                     <a href="{{$ad->link}}" target="_blank"><img alt="{{$ad->alt}}" class="img-fluid" src="/uploads/ads/ad-{{$ad->id}}{{$ad->picture}}"></a>
