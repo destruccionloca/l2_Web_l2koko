@@ -10177,7 +10177,7 @@ nav .def-nav > a:hover {
   font-weight: 700;
   font-size: 12px;
   border-radius: 7px;
-  background-color: #1689c7;
+  background-color: #1789c7;
   color: #fff;
   width: 135px;
   float: left;
@@ -11215,6 +11215,13 @@ input[type=submit] {
 .select-selected.select-arrow-active:after {
   border-color: transparent transparent #fff transparent;
   top: 7px;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+
+.select-selected.select-border {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 /*style the items (options), including the selected item:*/

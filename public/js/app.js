@@ -10506,6 +10506,7 @@ for (i = 0; i < x.length; i++) {
         closeAllSelect(this);
         this.nextSibling.classList.toggle("select-hide");
         this.classList.toggle("select-arrow-active");
+        this.classList.toggle("select-border");
     });
 }
 function closeAllSelect(elmnt) {

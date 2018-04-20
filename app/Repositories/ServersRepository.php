@@ -63,7 +63,7 @@ class ServersRepository extends Repository
                             return ['status' => 'Сервер добавлен без изображениея'];
                         }
                         $id = $this->model->id;
-                        $img->save($storeFolder . "server-" . $id . $img_type);
+                        $img->fit(537,240)->save($storeFolder . "server-" . $id . $img_type);
                         $this->model->picture = $img_type;
                         $this->model->update();
                     }

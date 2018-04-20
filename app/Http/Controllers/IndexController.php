@@ -52,6 +52,8 @@ class IndexController extends SiteController
             $('.drop-filter').click(function(){
                 $('#rate').prop('selectedIndex',0);
                 $('#chronicle').prop('selectedIndex',0);
+                $('#div-chronicles .select-selected').html('Все хроники');
+                $('#div-rate .select-selected').html('Все рейты');
             })
         });
         </script>
@@ -90,6 +92,7 @@ class IndexController extends SiteController
         $servers["opened"] = $this->getServers($server->Opened()->Active()->orderBy("start_at", "desc"), $rate_id, $chronicle_id);
         $servers["vipOpened"] = $this->getServers($server->OpenedVip()->orderBy("start_at", "desc"), $rate_id, $chronicle_id);
         $servers["vipOpen"] = $this->getServers($server->OpenVip()->orderBy("start_at"), $rate_id, $chronicle_id);
+        $servers["seven_days"] = $this->deleteDublicate($servers["today"], $servers["seven_days"]);
         $this->content = view('main')->with(["servers" => $servers, "nominations" => $nominations, "date_week" => $date_week, "this_day" => $this_day, "this_month" => $this_month, "inputs" => $this->inputs, "ads" => $ads, "today" => $this->today, "yesterday" => $this->yesterday, "tomorrow" => $this->tomorrow])->render();
         return $this->renderOutput();
     }
@@ -129,6 +132,19 @@ class IndexController extends SiteController
         }
 
         return $group;
+    }
+
+    private function deleteDublicate($today, $open) {
+        for($i = 1; $i < 5; $i++) {
+            if (isset($open[$i]) && isset($today[$i])) {
+                foreach ($today[$i] as $server) {
+                    $open[$i] = $open[$i]->reject(function ($value, $key) use ($server) {
+                        return $value->id == $server->id;
+                    });
+                }
+            }
+        }
+        return $open;
     }
 
     private function getServers($query, $rate, $chronicle)

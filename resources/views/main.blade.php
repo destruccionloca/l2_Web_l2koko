@@ -4,10 +4,10 @@
             <div class="col-md-6">
                 {!! Form::open(["url" => route('site.index'), 'method' => "get"]) !!}
                 <span class="filter-title">Фильтр:</span>
-                <div class="custom-select oko-filter-div" style="width:130px;">
+                <div id="div-rate" class="custom-select oko-filter-div" style="width:130px;">
                 {!! Form::select('rate', $inputs["rates"], old("rate"), ['id'=>'rate', "class" => "", "required" => ""]) !!}
                 </div>
-                <div class="custom-select oko-filter-div" style="width:130px;">
+                <div id="div-chronicles" class="custom-select oko-filter-div" style="width:130px;">
                 {!! Form::select('chronicle', $inputs["chronicles"], old("chronicle"), ['id'=>'chronicle', "class" => "", "required" => ""]) !!}
                 </div>
                 <div class="drop-filter"></div>
