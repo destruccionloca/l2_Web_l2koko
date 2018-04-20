@@ -29,6 +29,10 @@ class Server extends Model
         return $query->whereDate('start_at', date('Y-m-d', strtotime( '-1 days' )));
     }
 
+    public function scopeTomorrow($query) {
+        return $query->whereDate('start_at', date('Y-m-d', strtotime( '+1 days' )));
+    }
+
     public function scopeToday($query) {
         return $query->whereDate('start_at', date('Y-m-d'));
     }
@@ -54,7 +58,7 @@ class Server extends Model
     }
 
     public function scopeSevenDays($query) {
-        return $query->whereDate('start_at', ">", date("Y-m-d", strtotime( '-1 days' )))->whereDate('start_at', "<", date("Y-m-d", strtotime( '+8 days' )));
+        return $query->whereDate('start_at', ">", date("Y-m-d", strtotime( '+1 days' )))->whereDate('start_at', "<", date("Y-m-d", strtotime( '+8 days' )));
     }
 
     public function scopeRate($query, $rate){

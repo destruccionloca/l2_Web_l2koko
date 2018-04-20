@@ -4,10 +4,10 @@
             <div class="col-md-6">
                 {!! Form::open(["url" => route('site.index'), 'method' => "get"]) !!}
                 <span class="filter-title">Фильтр:</span>
-                <div id="div-rate" class="custom-select oko-filter-div" style="width:130px;">
+                <div id="div-rate" class="oko-select oko-filter-div" style="width:130px;">
                 {!! Form::select('rate', $inputs["rates"], old("rate"), ['id'=>'rate', "class" => "", "required" => ""]) !!}
                 </div>
-                <div id="div-chronicles" class="custom-select oko-filter-div" style="width:130px;">
+                <div id="div-chronicles" class="oko-select oko-filter-div" style="width:130px;">
                 {!! Form::select('chronicle', $inputs["chronicles"], old("chronicle"), ['id'=>'chronicle', "class" => "", "required" => ""]) !!}
                 </div>
                 <div class="drop-filter"></div>
@@ -114,6 +114,41 @@
                         @for($i = 4; $i >= 0; $i--)
                             @if(isset($servers["today"][$i]))
                                 @foreach($servers["today"][$i] as $server)
+                                    <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
+                                        @if($server->status->name == "Exlusive")
+                                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                        @elseif($server->status->name == "Silver")
+                                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                        @elseif($server->status->name == "Light")
+                                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                        @elseif($server->status->name == "Free")
+                                            <div class="img"></div>
+                                        @endif
+                                        <div class="name"><a target="_blank" href="{{$server->link}}"><span>{{$server->name}}</span></a></div>
+                                        <div class="reit"><span>{{$server->rate->name}}</span></div>
+                                        <div class="chronic"><span>{{$server->chronicle->name}}</span></div>
+                                        @if($server->start_at->format('d-m-Y') == $today)
+                                            <div class="date"><span>Сегодня</span></div>
+                                        @elseif($server->start_at->format('d-m-Y') == $yesterday)
+                                            <div class="date"><span>Вчера</span></div>
+                                        @elseif($server->start_at->format('d-m-Y') == $tomorrow)
+                                            <div class="date"><span>Завтра</span></div>
+                                        @else
+                                            <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
+                                        @endif
+                                        <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
+                                    </div>
+                                @endforeach
+                            @endif
+                        @endfor
+                    </div>
+                @endif
+                @if($servers["tomorrow"]->count() > 0)
+                    <div class="col-md-12 servers-tab no_padding">
+                        <div class="col-md-12 servers-tab-title"><span>Завтра</span></div>
+                        @for($i = 4; $i >= 0; $i--)
+                            @if(isset($servers["tomorrow"][$i]))
+                                @foreach($servers["tomorrow"][$i] as $server)
                                     <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
                                         @if($server->status->name == "Exlusive")
                                             <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>

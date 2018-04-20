@@ -11176,7 +11176,7 @@ input[type=submit] {
 
 /*the container must be positioned relative:*/
 
-.custom-select {
+.oko-select {
   position: relative;
   font-family: Arial;
 }
@@ -11188,7 +11188,7 @@ input[type=submit] {
   float: left;
 }
 
-.custom-select select {
+.oko-select select {
   display: none;
   /*hide original SELECT element:*/
 }
@@ -11249,6 +11249,10 @@ input[type=submit] {
   left: 0;
   right: 0;
   z-index: 99;
+  border-bottom-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+  height: 320px;
+  overflow-y: scroll;
 }
 
 /*hide the items when the select box is closed:*/
@@ -11259,5 +11263,10 @@ input[type=submit] {
 
 .select-items div:hover {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+.select-items div:last-child {
+  border-bottom-right-radius: 7px;
+  border-bottom-left-radius: 7px;
 }
 
