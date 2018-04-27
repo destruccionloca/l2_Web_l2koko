@@ -71,7 +71,6 @@
 </div>
 <div class="contaner-fluid">
     <div class="container d-flex justify-content-between flex-column flex-wrap flex-lg-row" id="main_container">
-
         <div class="col-lg-4 no_padding margin-tab">
             @if($servers["vipOpen"]->count() > 0)
                 <div class="col-md-12 servers-tab no_padding">
@@ -145,7 +144,7 @@
                 @endif
                 @if($servers["tomorrow"]->count() > 0)
                     <div class="col-md-12 servers-tab no_padding">
-                        <div class="col-md-12 servers-tab-title"><span>Завтра</span></div>
+                        <div class="col-md-12 servers-tab-title"><span>ЗАВТРА</span></div>
                         @for($i = 4; $i >= 0; $i--)
                             @if(isset($servers["tomorrow"][$i]))
                                 @foreach($servers["tomorrow"][$i] as $server)
@@ -417,5 +416,10 @@
                 @endforeach
             </div>
         </div>
+        @if(isset($seotext))
+            <div class="col-lg-8 no_padding margin-tab">
+                {!! $seotext !!}
+            </div>
+        @endif
     </div>
 </div>
