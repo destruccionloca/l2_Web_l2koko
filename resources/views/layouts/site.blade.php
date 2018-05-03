@@ -57,6 +57,11 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
                         @endforeach
                     </div>
                 </li>
+                @foreach($pages_menu as $page_)
+                    <li class="nav-item def-nav">
+                        <a class="nav-link" href="{{route("site.page.show", ["page" => $page_->alias])}}">{{$page_->title}}</a>
+                    </li>
+                @endforeach
                 <li class="nav-item add-nav">
                     <a class="nav-link" href="{{ route('site.server.create') }}" >Добавить сервер</a>
                 </li>
@@ -68,7 +73,7 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
     <div class="container">
         <div class="row header-pic-title justify-content-start align-items-end">
             <div class="col-4">
-                <h1>Новые сервера л2</h1>
+                <h1>{{ $h1 }}</h1>
                 <p>Анонсы игровых серверов Lineage 2</p>
             </div>
         </div>
@@ -156,7 +161,7 @@ L2 OKO - это не просто анонсер, это рекламная пл
             $.notify({
                 icon: 'fa fa-warning',
                 title: '<strong>Ошибка</strong>',
-                url: '{{session('url')}}',
+                {{--url: '{{session('url')}}',--}}
                 message: '{{session('error')}}'
             }, {
                 type: 'danger',

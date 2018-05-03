@@ -19,6 +19,7 @@ class IndexController extends SiteController
     protected $yesterday;
     protected $tomorrow;
     protected $nom_rep;
+    protected $seo_text;
 
     public function __construct(NominationsRepository $nom_rep)
     {
@@ -32,6 +33,8 @@ class IndexController extends SiteController
         $this->title = $this->settings['title'];
         $this->description = $this->settings['description'];
         $this->keywords = $this->settings['keywords'];
+        $this->h1 = $this->settings['h1'];
+        $this->seo_text = null;
         $this->nom_rep = $nom_rep;
         $this->today = Carbon::now()->format('d-m-Y');
         $this->yesterday = Carbon::now()->subDay()->format('d-m-Y');
@@ -44,6 +47,29 @@ class IndexController extends SiteController
         $chronicle_id = isset($request->chronicle) ? $request->chronicle : "all";
         $rates = Rate::orderBy('sort')->get();
         $chronicles = Chronicle::orderBy('sort')->get();
+        if($rate_id != "all" && $chronicle_id != "all") {
+            $temp_rate = Rate::find($rate_id);
+            $temp_chronicle = Chronicle::find($chronicle_id);
+            $this->title = preg_replace(["%rate%", "%chronicle%", "/\[R\]/", "/\[R\]/", "/\[R\]/", "/\[R\]/"],[$temp_rate->name, $temp_chronicle->name, "", "", "", ""],$this->settings['filter_title']);
+            $this->description = preg_replace(["%rate%", "%chronicle%", "/\[R\]/", "/\[R\]/", "/\[R\]/", "/\[R\]/"],[$temp_rate->name, $temp_chronicle->name, "", "", "", ""],$this->settings['filter_description']);
+            $this->keywords = preg_replace(["%rate%", "%chronicle%", "/\[R\]/", "/\[R\]/", "/\[R\]/", "/\[R\]/"],[$temp_rate->name, $temp_chronicle->name, "", "", "", ""],$this->settings['filter_keywords']);
+            $this->h1 = preg_replace(["%rate%", "%chronicle%", "/\[R\]/", "/\[\/R\]/", "/\[C\]/", "/\[\/C\]/"],[$temp_rate->name, $temp_chronicle->name, "", "", "", ""],$this->settings['filter_h1']);
+            $this->seo_text = preg_replace(["%rate%", "%chronicle%", "/\[R\]/", "/\[\/R\]/", "/\[C\]/", "/\[\/C\]/"],[$temp_rate->name, $temp_chronicle->name, "", "", "", ""],$this->settings['filter_seotext']);
+        } else if ($rate_id != "all") {
+            $temp_rate = Rate::find($rate_id);
+            $this->title = preg_replace(["%rate%", "/\[C\].*\[\/C\]/", "/\[R\]/", "/\[\/R\]/"], [$temp_rate->name, "", "", ""],$this->settings['filter_title']);
+            $this->description = preg_replace(["%rate%", "/\[C\].*\[\/C\]/", "/\[R\]/", "/\[\/R\]/"], [$temp_rate->name, "", "", ""],$this->settings['filter_description']);
+            $this->keywords = preg_replace(["%rate%", "/\[C\].*\[\/C\]/", "/\[R\]/", "/\[\/R\]/"], [$temp_rate->name, "", "", ""],$this->settings['filter_keywords']);
+            $this->h1 = preg_replace(["%rate%", "/\[C\].*\[\/C\]/", "/\[R\]/", "/\[\/R\]/"], [$temp_rate->name, "", "", ""],$this->settings['filter_h1']);
+            $this->seo_text = preg_replace(["%rate%", "/\[C\].*\[\/C\]/", "/\[R\]/", "/\[\/R\]/"], [$temp_rate->name, "", "", ""],$this->settings['filter_seotext']);
+        } else if ($chronicle_id != "all") {
+            $temp_chronicle = Chronicle::find($chronicle_id);
+            $this->title = preg_replace(["%chronicle%", "/\[R\].*\[\/R\]/", "/\[C\]/", "/\[\/C\]/"], [$temp_chronicle->name, "", "", ""],$this->settings['filter_title']);
+            $this->description = preg_replace(["%chronicle%", "/\[R\].*\[\/R\]/", "/\[C\]/", "/\[\/C\]/"], [$temp_chronicle->name, "", "", ""],$this->settings['filter_description']);
+            $this->keywords = preg_replace(["%chronicle%", "/\[R\].*\[\/R\]/", "/\[C\]/", "/\[\/C\]/"], [$temp_chronicle->name, "", "", ""],$this->settings['filter_keywords']);
+            $this->h1 = preg_replace(["%chronicle%", "/\[R\].*\[\/R\]/", "/\[C\]/", "/\[\/C\]/"], [$temp_chronicle->name, "", "", ""],$this->settings['filter_h1']);
+            $this->seo_text = preg_replace(["%chronicle%", "/\[R\].*\[\/R\]/", "/\[C\]/", "/\[\/C\]/"], [$temp_chronicle->name, "", "", ""],$this->settings['filter_seotext']);
+        }
         $ads = Ad::get();
         $partners = Partner::get();
         $this->inc_js = "
@@ -93,7 +119,7 @@ class IndexController extends SiteController
         $servers["opened"] = $this->getServers($server->Opened()->Active()->orderBy("start_at", "desc"), $rate_id, $chronicle_id);
         $servers["vipOpened"] = $this->getServers($server->OpenedVip()->orderBy("start_at", "desc"), $rate_id, $chronicle_id);
         $servers["vipOpen"] = $this->getServers($server->OpenVip()->orderBy("start_at"), $rate_id, $chronicle_id);
-        $this->content = view('main')->with(["servers" => $servers, "nominations" => $nominations, "date_week" => $date_week, "this_day" => $this_day, "this_month" => $this_month, "inputs" => $this->inputs, "ads" => $ads, "today" => $this->today, "yesterday" => $this->yesterday, "tomorrow" => $this->tomorrow])->render();
+        $this->content = view('main')->with(["servers" => $servers, "nominations" => $nominations, "date_week" => $date_week, "this_day" => $this_day, "this_month" => $this_month, "inputs" => $this->inputs, "ads" => $ads, "today" => $this->today, "yesterday" => $this->yesterday, "tomorrow" => $this->tomorrow, "seotext" => $this->seo_text])->render();
         return $this->renderOutput();
     }
 

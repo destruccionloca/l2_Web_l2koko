@@ -43,12 +43,13 @@ class PagesController extends DashboardController
     public function create()
     {
         $this->checkUser();
+        $types = ["service" => "В услуги", "main" => "В меню"];
         $this->inc_js = "
         <script>
             CKEDITOR.replace( 'editor' );
         </script>
         ";
-        $this->content = view("dashboard.page_create")->render();
+        $this->content = view("dashboard.page_create")->with(["types" => $types])->render();
         $this->title = 'Создание новой страницы';
         return $this->renderOutput();
     }
@@ -90,12 +91,13 @@ class PagesController extends DashboardController
     public function edit(Page $page)
     {
         $this->checkUser();
+        $types = ["service" => "В услуги", "main" => "В меню"];
         $this->inc_js = "
         <script>
             CKEDITOR.replace( 'editor' );
         </script>
         ";
-        $this->content = view('dashboard.page_create')->with(['page' => $page])->render();
+        $this->content = view('dashboard.page_create')->with(['page' => $page, "types" => $types])->render();
         $this->title = $page->title;
         return $this->renderOutput();
     }

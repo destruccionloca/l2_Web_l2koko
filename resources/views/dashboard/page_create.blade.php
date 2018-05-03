@@ -19,6 +19,10 @@
             {!! Form::text('keywords', isset($page->keywords)? $page->keywords : old("keywords"), ['id'=>'keywords', "class" => "form-control", "required" => ""]) !!}
         </div>
         <div class="form-group">
+            <label for="type">Тип</label>
+            {!! Form::select('type', $types, isset($page->type)? $page->type : old("type"), ['id'=>'type', "class" => "form-control", "required" => ""]) !!}
+        </div>
+        <div class="form-group">
             <label for="desc">Краткое описание</label>
             {!! Form::textarea('desc', isset($page->desc)? $page->desc : old("desc"), ['id'=>'desc', "class" => "form-control", "required" => ""]) !!}
         </div>

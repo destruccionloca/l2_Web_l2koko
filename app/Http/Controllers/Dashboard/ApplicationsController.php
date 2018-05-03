@@ -104,9 +104,7 @@ class ApplicationsController extends DashboardController
 
     public function toDelete(Application $application) {
         $this->checkUser();
-        $nomination = $application->nomination;
-        $nomination->server_id = null;
-        if($nomination->update()) {
+        if($application->forceDelete()) {
             return back()->with(['status' => 'Сервер удален из номинации']);
         } else {
             return back()->with(['error' => 'Ошибка удаления']);

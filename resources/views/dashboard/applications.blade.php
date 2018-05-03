@@ -83,7 +83,7 @@
                                             {!! Form::hidden('_method', "PUT") !!}
                                             {!! Form::close() !!}
                                         @endif
-                                        {!! Form::open(["url" => route('application.destroy',['application' => $application->id]), 'method' => "POST"]) !!}
+                                        {!! Form::open(["url" => route('application.delete',['application' => $application->id]), 'method' => "POST"]) !!}
                                         <div class="btn-group btn-group-sm" role="group" aria-label="Actions">
                                             <button type="submit" class="btn btn-danger" data-toggle="tooltip" title="Удалить">
                                                 <i class="fa fa-trash"></i>

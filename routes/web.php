@@ -52,7 +52,7 @@ Route::group(['prefix' => 'dashboard','middleware' => ['auth']],function() {
     Route::get('/settings/',['uses' => 'Dashboard\SettingsController@edit', 'as' => 'settings']);
     Route::put('/settings/',['uses' => 'Dashboard\SettingsController@update', 'as' => 'settings.update']);
     Route::put('/application/{application}/accept', ['uses' => 'Dashboard\ApplicationsController@toAccept', 'as' => 'application.accept']);
-    Route::delete('/application/{application}/accept', ['uses' => 'Dashboard\ApplicationsController@toDelete', 'as' => 'application.delete']);
+    Route::delete('/application/{application}', ['uses' => 'Dashboard\ApplicationsController@toDelete', 'as' => 'application.delete']);
     Route::get('/applications/{nomination}', ['uses' => 'Dashboard\NominationsController@showApplications', 'as' => 'nomination.applications']);
 
     Route::group(['prefix' => 'action'],function() {

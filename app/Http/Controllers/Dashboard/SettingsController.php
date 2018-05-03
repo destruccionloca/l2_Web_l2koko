@@ -15,12 +15,18 @@ class SettingsController extends DashboardController
     {
         parent::__construct(new \App\Repositories\ServersRepository(new \App\Server), new \App\Repositories\SettingsRepository(new \App\Setting()));
         $this->template = 'dashboard.index';
+        $this->inc_js_lib = array_add($this->inc_js_lib,'ckeditor',array('url' => '<script src='.$this->pub_path.'/ckeditor/ckeditor.js></script>'));
         $this->s_rep = $s_rep;
     }
 
     public function edit()
     {
         $this->checkUser();
+        $this->inc_js = "
+        <script>
+            CKEDITOR.replace( 'editor' );
+        </script>
+        ";
         $this->content = view('dashboard.setting_edit')->with(array("settings" => $this->settings))->render();
         $this->title = "Настройки";
         return $this->renderOutput();
