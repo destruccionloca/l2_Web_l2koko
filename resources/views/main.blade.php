@@ -10,7 +10,7 @@
                 <div id="div-chronicles" class="oko-select oko-filter-div" style="width:130px;">
                 {!! Form::select('chronicle', $inputs["chronicles"], old("chronicle"), ['id'=>'chronicle', "class" => "", "required" => ""]) !!}
                 </div>
-                <div class="drop-filter"></div>
+                <a href="/" class="drop-filter"></a>
                 {!! Form::submit("Поиск", ['class' => 'custom-select filter-but']) !!}
                 {!! Form::close() !!}
             </div>

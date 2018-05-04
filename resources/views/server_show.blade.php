@@ -21,7 +21,11 @@
         </div>
         <div class="row page-content-row">
                 <div class="col-12">
-                    <img class="img-fluid" src="/uploads/servers/server-{{$server->id}}{{$server->picture}}" alt="{{$server->name}}">
+                    @if (isset($server->picture))
+                        <img class="img-fluid" src="/uploads/servers/server-{{$server->id}}{{$server->picture}}" alt="{{$server->name}}">
+                    @else
+                        <img class="img-fluid" src="/uploads/servers/DEFAULT.png" alt="{{$server->name}}">
+                    @endif
                     <h2>{{$server->name}}</h2>
                     <dl class="row">
                         <dt class="col-sm-3">Хроники</dt>

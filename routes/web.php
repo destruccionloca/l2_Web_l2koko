@@ -13,6 +13,7 @@
 
 
 Route::get('/', ['uses' => 'IndexController@index', 'as' => 'site.index']);
+Route::get('/filter/{param1?}/{param2?}', ['uses' => 'IndexController@filter', 'as' => 'site.index.filter']);
 Route::get('/page/{page}', ['uses' => 'PagesController@show', 'as' => 'site.page.show']);
 Route::get('/addserver', ['uses' => 'ServerController@create', 'as' => 'site.server.create']);
 Route::get('/server/{server}', ['uses' => 'ServerController@show', 'as' => 'site.server.show']);

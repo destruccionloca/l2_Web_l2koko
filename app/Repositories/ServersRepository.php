@@ -56,17 +56,25 @@ class ServersRepository extends Repository
                 if ($request->hasFile('picture')) {
                     $image = $request->file('picture');
                     if ($image->isValid()) {
-                        $storeFolder = public_path() . '/' . '/uploads/servers/';   //2
-                        $img = Image::make($image);
-                        $img_type = $this->getTypeImg($img->mime());
-                        if ($img_type == ".err") {
-                            return ['status' => 'Сервер добавлен без изображениея'];
-                        }
+                        $storeFolder = public_path() . '/uploads/servers';   //2
                         $id = $this->model->id;
-                        $img->fit(537,240)->save($storeFolder . "server-" . $id . $img_type);
+                        $img_type = $this->getTypeImg($image->getMimeType());
+                        if($img_type == ".err") {
+                            return ['status' => 'Сервер обновлен без изображениея'];
+                        } else if ($img_type == ".svg") {
+                            $image->storeAs("/uploads/servers", "server-". $id . $img_type, "pub");
+                        } else {
+                            $img = Image::make($image);
+                            $img->save($storeFolder . "server-". $id . $img_type);
+                        }
+                        $img = Image::make($image);
+                        $img->fit(537,240)->insert($storeFolder . "/WATEMARK.png", "bottom-right")->save($storeFolder . "server-" . $id . $img_type);
                         $this->model->picture = $img_type;
                         $this->model->update();
                     }
+                } else {
+                    $this->model->picture = "dafault";
+                    $this->model->update();
                 }
                 return ['status' => 'Сервер добавлен'];
             } else {
@@ -106,14 +114,17 @@ class ServersRepository extends Repository
                 if ($request->hasFile('picture')) {
                     $image = $request->file('picture');
                     if ($image->isValid()) {
-                        $storeFolder = public_path() . '/' . '/uploads/servers/';   //2
-                        $img = Image::make($image);
-                        $img_type = $this->getTypeImg($img->mime());
+                        $storeFolder = public_path() . '/uploads/servers';   //2
+                        $id = $server->id;
+                        $img_type = $this->getTypeImg($image->getMimeType());
                         if($img_type == ".err") {
                             return ['status' => 'Сервер обновлен без изображениея'];
+                        } else if ($img_type == ".svg") {
+                            $image->storeAs("/uploads/servers", "server-". $id . $img_type, "pub");
+                        } else {
+                            $img = Image::make($image);
+                            $img->fit(537,240)->insert($storeFolder . "/WATEMARK.png", "bottom-right")->save($storeFolder . "/server-". $id . $img_type);
                         }
-                        $id = $server->id;
-                        $img->save($storeFolder . "server-". $id . $img_type);
                         $server->picture = $img_type;
                         $server->update();
                     }
@@ -125,7 +136,6 @@ class ServersRepository extends Repository
         }
     }
 
-
     private function getTypeImg($mime) {
         if ($mime == "image/gif") {
             return ".gif";
@@ -133,6 +143,8 @@ class ServersRepository extends Repository
             return ".jpg";
         } else if ($mime == "image/png") {
             return ".png";
+        } else if ($mime == "image/svg+xml") {
+            return ".svg";
         } else {
             return ".err";
         }
