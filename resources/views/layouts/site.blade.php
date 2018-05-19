@@ -38,7 +38,7 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
 ";"+Math.random();</script><!--/LiveInternet-->
 <div class="container">
     <nav class="navbar navbar-expand-md navbar-light">
-        <a class="navbar-brand" href="http://l2oko.ru"><img id="logo" src="{{ asset('images/logo.svg') }}"></a>
+        <a class="navbar-brand" href="https://l2oko.ru"><img id="logo" src="{{ asset('images/logo.svg') }}"></a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -114,7 +114,7 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
                     <a href="https://www.facebook.com/L2OKO-182049002357540/" target="_blank"><div class="face"><i class="fa fa-facebook"></i></div></a>
                 </div>
                 <div class="soc">
-                    <a href="http://t.me/l2oko" target="_blank"><div class="twitter"><i class="fa fa-telegram"></i></div></a>
+                    <a href="https://t.me/l2oko" target="_blank"><div class="twitter"><i class="fa fa-telegram"></i></div></a>
                 </div>
             </div>
         </div>

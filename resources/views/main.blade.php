@@ -2,13 +2,13 @@
     <div class="container">
         <div class="row main-filter">
             <div class="col-md-6">
-                {!! Form::open(["url" => route('site.index'), 'method' => "get"]) !!}
+                {!! Form::open(["url" => route('site.index'), 'method' => "get", 'id' => 'filter-form']) !!}
                 <span class="filter-title">Фильтр:</span>
                 <div id="div-rate" class="oko-select oko-filter-div" style="width:130px;">
-                {!! Form::select('rate', $inputs["rates"], old("rate"), ['id'=>'rate', "class" => "", "required" => ""]) !!}
+                {!! Form::select('rate', $inputs["rates"], isset($rate_name)? $rate_name : old("rate"), ['id'=>'rate', "class" => "", "required" => ""]) !!}
                 </div>
                 <div id="div-chronicles" class="oko-select oko-filter-div" style="width:130px;">
-                {!! Form::select('chronicle', $inputs["chronicles"], old("chronicle"), ['id'=>'chronicle', "class" => "", "required" => ""]) !!}
+                {!! Form::select('chronicle', $inputs["chronicles"], isset($chronicle_name)? $chronicle_name : old("chronicle"), ['id'=>'chronicle', "class" => "", "required" => ""]) !!}
                 </div>
                 <a href="/" class="drop-filter"></a>
                 {!! Form::submit("Поиск", ['class' => 'custom-select filter-but']) !!}
@@ -80,11 +80,11 @@
                             @foreach($servers["vipOpen"][$i] as $server)
                                 <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
                                     @if($server->status->name == "Exlusive")
-                                        <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                        <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.png"></div>
                                     @elseif($server->status->name == "Silver")
-                                        <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                        <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.png"></div>
                                     @elseif($server->status->name == "Light")
-                                        <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                        <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.png"></div>
                                     @elseif($server->status->name == "Free")
                                         <div class="img"></div>
                                     @endif
@@ -115,11 +115,11 @@
                                 @foreach($servers["today"][$i] as $server)
                                     <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
                                         @if($server->status->name == "Exlusive")
-                                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                            <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.png"></div>
                                         @elseif($server->status->name == "Silver")
-                                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                            <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.png"></div>
                                         @elseif($server->status->name == "Light")
-                                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                            <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.png"></div>
                                         @elseif($server->status->name == "Free")
                                             <div class="img"></div>
                                         @endif
@@ -150,11 +150,11 @@
                                 @foreach($servers["tomorrow"][$i] as $server)
                                     <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
                                         @if($server->status->name == "Exlusive")
-                                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                            <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.png"></div>
                                         @elseif($server->status->name == "Silver")
-                                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                            <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.png"></div>
                                         @elseif($server->status->name == "Light")
-                                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                            <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.png"></div>
                                         @elseif($server->status->name == "Free")
                                             <div class="img"></div>
                                         @endif
@@ -184,11 +184,11 @@
                         @foreach($servers["seven_days"][$i] as $server)
                             <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
                                 @if($server->status->name == "Exlusive")
-                                    <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                    <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.png"></div>
                                 @elseif($server->status->name == "Silver")
-                                    <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                    <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.png"></div>
                                 @elseif($server->status->name == "Light")
-                                    <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                    <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.png"></div>
                                 @elseif($server->status->name == "Free")
                                     <div class="img"></div>
                                 @endif
@@ -215,11 +215,11 @@
                         @foreach($servers["week"][$i] as $server)
                             <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
                                 @if($server->status->name == "Exlusive")
-                                    <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                    <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.png"></div>
                                 @elseif($server->status->name == "Silver")
-                                    <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                    <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.png"></div>
                                 @elseif($server->status->name == "Light")
-                                    <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                    <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.png"></div>
                                 @elseif($server->status->name == "Free")
                                     <div class="img"></div>
                                 @endif
@@ -251,11 +251,11 @@
                             @foreach($servers["vipOpened"][$i] as $server)
                                 <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
                                     @if($server->status->name == "Exlusive")
-                                        <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                        <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.png"></div>
                                     @elseif($server->status->name == "Silver")
-                                        <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                        <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.png"></div>
                                     @elseif($server->status->name == "Light")
-                                        <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                        <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.png"></div>
                                     @elseif($server->status->name == "Free")
                                         <div class="img"></div>
                                     @endif
@@ -286,11 +286,11 @@
                                 @foreach($servers["yesterday"][$i] as $server)
                                     <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
                                         @if($server->status->name == "Exlusive")
-                                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                            <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.png"></div>
                                         @elseif($server->status->name == "Silver")
-                                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                            <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.png"></div>
                                         @elseif($server->status->name == "Light")
-                                            <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                            <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.png"></div>
                                         @elseif($server->status->name == "Free")
                                             <div class="img"></div>
                                         @endif
@@ -320,11 +320,11 @@
                         @foreach($servers["opened"][$i] as $server)
                             <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
                                 @if($server->status->name == "Exlusive")
-                                    <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                    <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.png"></div>
                                 @elseif($server->status->name == "Silver")
-                                    <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                    <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.png"></div>
                                 @elseif($server->status->name == "Light")
-                                    <div class="img"><img src="images/{{mb_strtolower($server->status->name)}}.png"></div>
+                                    <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.png"></div>
                                 @elseif($server->status->name == "Free")
                                     <div class="img"></div>
                                 @endif
