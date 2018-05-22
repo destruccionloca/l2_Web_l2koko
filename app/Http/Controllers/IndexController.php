@@ -35,7 +35,7 @@ class IndexController extends SiteController
         $this->description = $this->settings['description'];
         $this->keywords = $this->settings['keywords'];
         $this->h1 = $this->settings['h1'];
-        $this->filter_url = explode("/",$this->settings['filter_url']);
+        $this->filter_url = explode("-",$this->settings['filter_url']);
         $this->seo_text = null;
         $this->nom_rep = $nom_rep;
         $this->today = Carbon::now()->format('d-m-Y');
@@ -80,7 +80,7 @@ class IndexController extends SiteController
                 e.preventDefault();
                 var rate = $('#rate').val();
                 var chronicle = $('#chronicle').val();                
-                document.location.href = 'http://l2oko.ru/filter/' + rate + '/' + chronicle;
+                document.location.href = 'http://l2oko.ru/filter/' + rate + '-' + chronicle;
             })
         });
         </script>
@@ -137,7 +137,7 @@ class IndexController extends SiteController
         return $this->renderOutput();
     }
 
-    public function filter(Server $server, $param1, $param2) {
+    public function filter(Server $server, $param1) {
         //Оптимизировать
         $this->inc_js = "
         <script>
@@ -146,12 +146,12 @@ class IndexController extends SiteController
                 e.preventDefault();
                 var rate = $('#rate').val();
                 var chronicle = $('#chronicle').val();                
-                document.location.href = 'http://l2oko.ru/filter/' + rate + '/' + chronicle;
+                document.location.href = 'http://l2oko.ru/filter/' + rate + '-' + chronicle;
             })
         });
         </script>
 e        ";
-        $models = $this->getModelsArray($param1, $param2);
+        $models = $this->getModelsArray(explode("-", $param1));
         $rate_id = (isset($models["rate"]) && $models["rate"]) ? $models["rate"]->id : "all";
         $rate_name = (isset($models["rate"]) && $models["rate"]) ? $models["rate"]->name : "all";
         $chronicle_id = (isset($models["chronicle"]) && $models["chronicle"]) ? $models["chronicle"]->id : "all";
@@ -221,8 +221,8 @@ e        ";
         return $this->renderOutput();
     }
 
-    private function getModelsArray($param1, $param2) {
-        return array($this->filter_url[0] => $this->getModel($this->filter_url[0], $param1), $this->filter_url[1] => $this->getModel($this->filter_url[1], $param2));
+    private function getModelsArray(array $param1) {
+        return array($this->filter_url[0] => $this->getModel($this->filter_url[0], $param1[0]), $this->filter_url[1] => $this->getModel($this->filter_url[1], $param1[1]));
     }
 
     private function getModel($model, $param) {

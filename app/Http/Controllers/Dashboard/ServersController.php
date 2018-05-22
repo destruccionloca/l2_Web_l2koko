@@ -120,9 +120,20 @@ class ServersController extends DashboardController
 //            return back()->with(array('error' => 'Доступ запрещен'));
 //        }
         $this->inc_js = "
-        <script>
+        <script> 
             var datepicker = $('#start_at').datepicker().data('datepicker');
             datepicker.selectDate(new Date(" . $server->start_at->format('Y, m-1, d, H, i, s') . "));
+            $('#pic-delete').click(function(e) {
+                e.preventDefault();
+                var alias = $('#ser-alias').val();
+                $.ajax({
+                  type: 'POST',
+                  url: '/dashboard/server/' + alias + '/pic-delete',
+                  success: function(data) {
+                                          
+                  },
+                });
+            })
         </script>
         ";
         $rates = $rate->get();

@@ -73,6 +73,9 @@
                                         <div class="options-overlay-content">
                                             <h3 class="h4 text-white mb-5">{{$server->name}}</h3>
                                             <h4 class="h6 text-white-op mb-15">{{$server->short_desc}}</h4>
+                                            <a id="delete-pic" class="btn btn-sm btn-rounded btn-alt-danger min-width-75" href="#">
+                                                <i class="fa fa-times"></i> Удалить
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
