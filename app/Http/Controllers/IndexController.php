@@ -73,6 +73,18 @@ class IndexController extends SiteController
             $this->seo_text = preg_replace(["%chronicle%", "/\[R\].*\[\/R\]/", "/\[C\]/", "/\[\/C\]/"], [$temp_chronicle->name, "", "", ""],$this->settings['filter_seotext']);
         }
         $ads = Ad::get();
+        $this->inc_js = "
+        <script>
+        jQuery(document).ready(function(){
+            $('#filter-form').submit(function(e){
+                e.preventDefault();
+                var rate = $('#rate').val();
+                var chronicle = $('#chronicle').val();                
+                document.location.href = 'http://l2oko.ru/filter/' + rate + '/' + chronicle;
+            })
+        });
+        </script>
+        ";
         $partners = Partner::get();
 //        $this->inc_js = "
 //        <script>
@@ -89,10 +101,10 @@ class IndexController extends SiteController
         $inp_rates = array("all" => "Все рейты");
         $inp_chronicles = array("all" => "Все хроники");
         foreach ($rates as $rate) {
-            $inp_rates = array_add($inp_rates, $rate->id, $rate->name);
+            $inp_rates = array_add($inp_rates, $rate->name, $rate->name);
         }
         foreach ($chronicles as $chronicle) {
-            $inp_chronicles = array_add($inp_chronicles, $chronicle->id, $chronicle->name);
+            $inp_chronicles = array_add($inp_chronicles, $chronicle->name, $chronicle->name);
         }
         $this->inputs = array_add($this->inputs, "rates", $inp_rates);
         $this->inputs = array_add($this->inputs, "chronicles", $inp_chronicles);
@@ -127,9 +139,23 @@ class IndexController extends SiteController
 
     public function filter(Server $server, $param1, $param2) {
         //Оптимизировать
+        $this->inc_js = "
+        <script>
+        jQuery(document).ready(function(){
+            $('#filter-form').submit(function(e){
+                e.preventDefault();
+                var rate = $('#rate').val();
+                var chronicle = $('#chronicle').val();                
+                document.location.href = 'http://l2oko.ru/filter/' + rate + '/' + chronicle;
+            })
+        });
+        </script>
+e        ";
         $models = $this->getModelsArray($param1, $param2);
-        $rate_id = isset($models["rate"]) ? $models["rate"]->id : "all";
-        $chronicle_id = isset($models["chronicle"]) ? $models["chronicle"]->id : "all";
+        $rate_id = (isset($models["rate"]) && $models["rate"]) ? $models["rate"]->id : "all";
+        $rate_name = (isset($models["rate"]) && $models["rate"]) ? $models["rate"]->name : "all";
+        $chronicle_id = (isset($models["chronicle"]) && $models["chronicle"]) ? $models["chronicle"]->id : "all";
+        $chronicle_name = (isset($models["chronicle"]) && $models["chronicle"]) ? $models["chronicle"]->name : "all";
         $rates = Rate::orderBy('sort')->get();
         $chronicles = Chronicle::orderBy('sort')->get();
         if($rate_id != "all" && $chronicle_id != "all") {
@@ -191,7 +217,7 @@ class IndexController extends SiteController
         $servers["opened"] = $this->getServers($server->Opened()->Active()->orderBy("start_at", "desc"), $rate_id, $chronicle_id);
         $servers["vipOpened"] = $this->getServers($server->OpenedVip()->orderBy("start_at", "desc"), $rate_id, $chronicle_id);
         $servers["vipOpen"] = $this->getServers($server->OpenVip()->orderBy("start_at"), $rate_id, $chronicle_id);
-        $this->content = view('main')->with(["servers" => $servers, "nominations" => $nominations, "date_week" => $date_week, "this_day" => $this_day, "this_month" => $this_month, "inputs" => $this->inputs, "ads" => $ads, "today" => $this->today, "yesterday" => $this->yesterday, "tomorrow" => $this->tomorrow, "seotext" => $this->seo_text])->render();
+        $this->content = view('main')->with(["servers" => $servers, "nominations" => $nominations, "date_week" => $date_week, "this_day" => $this_day, "this_month" => $this_month, "inputs" => $this->inputs, "ads" => $ads, "today" => $this->today, "yesterday" => $this->yesterday, "tomorrow" => $this->tomorrow, "seotext" => $this->seo_text, "rate_name" => $rate_name, "chronicle_name" => $chronicle_name])->render();
         return $this->renderOutput();
     }
 

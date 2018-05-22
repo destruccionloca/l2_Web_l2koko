@@ -68,7 +68,7 @@
                         <div class="row items-push">
                             <div class="col-md-4 animated fadeIn">
                                 <div class="options-container fx-item-zoom-in">
-                                    <img class="img-fluid options-item" src="/uploads/servers/server-{{$server->id}}{{$server->picture}}" alt="">
+                                    <img class="img-fluid options-item" src="/uploads/servers/server-{{$server->id}}{{$server->picture}}?time={{$server->updated_at->format('d_h_i_s')}}" alt="">
                                     <div class="options-overlay bg-black-op">
                                         <div class="options-overlay-content">
                                             <h3 class="h4 text-white mb-5">{{$server->name}}</h3>
