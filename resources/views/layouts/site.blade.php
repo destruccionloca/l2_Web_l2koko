@@ -38,7 +38,7 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
 ";"+Math.random();</script><!--/LiveInternet-->
 <div class="container">
     <nav class="navbar navbar-expand-md navbar-light">
-        <a class="navbar-brand" href="https://l2oko.ru"><img id="logo" src="{{ asset('images/logo.svg') }}"></a>
+        <a class="navbar-brand" href="https://l2oko.ru"><div id="logo" ></div></a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -72,7 +72,7 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
 <div class="contaner-fluid" id="header-pic" style="background-image: url({{ asset("images/bg_" . $main_pic["last"] . $main_pic["pic"])}});">
     <div class="container">
         <div class="row header-pic-title justify-content-start align-items-end">
-            <div class="col-4">
+            <div class="col-lg-4">
                 <h1>{{ $h1 }}</h1>
                 <p>Анонсы игровых серверов Lineage 2</p>
             </div>

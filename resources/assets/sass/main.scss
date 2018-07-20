@@ -1129,3 +1129,71 @@ input[type=submit] {
   border-bottom-right-radius: 7px;
   border-bottom-left-radius: 7px;
 }
+
+#logo {
+  float: left;
+  width: 161px;
+  height: 32px;
+  cursor: pointer;
+  background: url("../images/logo.png") no-repeat center center;
+}
+
+
+
+/*
+ Медиа запросы
+ */
+
+@media (max-width: 768px) {
+  /*
+    Шрифты
+ */
+  p {
+    font-size: 13px !important;
+  }
+  h4 {
+    font-size: 18px !important;
+  }
+  h3 {
+    font-size: 20px !important;
+  }
+  h2 {
+    font-size: 23px !important;
+  }
+  h1 {
+    font-size: 26px !important;
+  }
+  #header-pic {
+    background-position: left center;
+  }
+  #logo {
+    width: 57px;
+    height: 32px;
+    background: url("../images/logo_m.png") no-repeat center center;
+  }
+
+}
+
+@media (min-width: 768px) {
+  /*
+  Шрифты
+*/
+  p {
+    font-size: 13px !important;
+  }
+  h4 {
+    font-size: 20px !important;
+  }
+  h3 {
+    font-size: 24px !important;
+  }
+  h2 {
+    font-size: 32px !important;
+  }
+  h1 {
+    font-size: 40px !important;
+  }
+  #header-pic {
+    background-position: center center;
+ }
+}
