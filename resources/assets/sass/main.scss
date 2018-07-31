@@ -44,7 +44,7 @@ body {
 
 /* Header */
 .navbar {
-  height: 80px; }
+  padding: 10px }
 
 .navbar-nav {
   align-items: center; }
@@ -112,7 +112,7 @@ nav .active > a, nav .def-nav > a:hover {
 
 /* Filter */
 #filter {
-  height: 70px;
+  min-height: 70px;
   background-color: #fff;
   border-color: #e1e3e5;
   border-width: 1px 0;
@@ -128,7 +128,6 @@ nav .active > a, nav .def-nav > a:hover {
   font-weight: 700;
   font-size: 13px;
   color: #808080;
-  float: left;
   padding-top: 5px; }
 
 .filter-but {
@@ -1104,6 +1103,7 @@ input[type=submit] {
   font-weight: 700;
   font-size: 12px;
 }
+
 /*style items (options):*/
 .select-items {
   position: absolute;
@@ -1172,6 +1172,49 @@ input[type=submit] {
     background: url("../images/logo_m.png") no-repeat center center;
   }
 
+  #filter-form {
+    .select-selected{
+      margin-top: 5px;
+    }
+
+    .filter-but {
+      margin-top: 5px;
+    }
+
+    .drop-filter {
+      margin-top: 5px;
+    }
+  }
+
+  .filter-title {
+    width: 100%;
+    text-align: center;
+  }
+
+  .filter-week li {
+    line-height: 3;
+  }
+
+  .servers-tab-free .reit span, .servers-tab-free .name span, .servers-tab-free .chronic span, .servers-tab-free .date span  {
+    font-size: 9px;
+  }
+
+  .servers-tab-light .reit span, .servers-tab-light .name span, .servers-tab-light .chronic span, .servers-tab-light .date span  {
+    font-size: 9px;
+  }
+
+  .servers-tab-silver .reit span, .servers-tab-silver .name span, .servers-tab-silver .chronic span, .servers-tab-silver .date span  {
+    font-size: 9px;
+  }
+
+  .servers-tab-exlusive .reit span, .servers-tab-exlusive .name span, .servers-tab-exlusive .chronic span, .servers-tab-exlusive .date span  {
+    font-size: 9px;
+  }
+
+  .servers-tab-exlusive .name span, .servers-tab-silver .name span, .servers-tab-light .name span, .servers-tab-free .name span {
+    line-height: 0.9em;
+  }
+
 }
 
 @media (min-width: 768px) {
@@ -1196,4 +1239,71 @@ input[type=submit] {
   #header-pic {
     background-position: center center;
  }
+}
+
+#mobile-nav {
+  padding: 0;
+  width: 100%;
+  margin: 0;
+  a {
+    color: #5b595c;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.mobile-nav-item {
+  padding: 10px;
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 15px;
+  color: #5b595c;
+  cursor: pointer;
+}
+
+.mobile-nav-item:hover {
+  background-color: #b3b3b4;
+}
+
+.new-string {
+  width: 100%;
+}
+
+.sepor {
+  height: 150px;
+  width: 2px;
+  background-color: #5b595c;
+  opacity: 0.5;
+}
+
+@media (min-width: 992px) {
+  .col-35 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 35%;
+    flex: 0 0 35%;
+    max-width: 35% !important;
+  }
+
+  .col-26 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 26%;
+    flex: 0 0 26%;
+    max-width: 26% !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 992px ) {
+  .filter-week {
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 992px) {
+  .margin-tab {
+    margin-top: 15px;
+  }
 }

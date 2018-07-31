@@ -16,6 +16,10 @@ var x, i, j, selElmnt, a, b, c;
 x = document.getElementsByClassName("oko-select");
 for (i = 0; i < x.length; i++) {
     selElmnt = x[i].getElementsByTagName("select")[0];
+    if (windowSize())  {
+        selElmnt.setAttribute("class", "select-selected d-block");
+        continue;
+    }
     /*for each element, create a new DIV that will act as the selected item:*/
     a = document.createElement("DIV");
     a.setAttribute("class", "select-selected");
@@ -57,6 +61,11 @@ for (i = 0; i < x.length; i++) {
         this.classList.toggle("select-border");
     });
 }
+
+function windowSize(){
+    return $(window).width() <= '576';
+}
+
 function closeAllSelect(elmnt) {
     /*a function that will close all select boxes in the document,
     except the current select box:*/

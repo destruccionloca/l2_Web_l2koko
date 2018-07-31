@@ -1,21 +1,21 @@
 <div class="contaner-fluid" id="filter">
     <div class="container">
-        <div class="row main-filter">
-            <div class="col-md-6">
-                {!! Form::open(["url" => route('site.index'), 'method' => "get", 'id' => 'filter-form']) !!}
-                <span class="filter-title">Фильтр:</span>
-                <div id="div-rate" class="oko-select oko-filter-div" style="width:130px;">
-                {!! Form::select('rate', $inputs["rates"], isset($rate_name)? $rate_name : old("rate"), ['id'=>'rate', "class" => "", "required" => ""]) !!}
+        <div class="main-filter d-flex justify-content-between justify-content-md-center justify-content-lg-between flex-row flex-md-column flex-lg-row">
+            <div >
+                {!! Form::open(["url" => route('site.index'), 'method' => "get", 'id' => 'filter-form', "class" => 'd-flex flex-column flex-md-row justify-content-md-center']) !!}
+                <div id="div-rate" class="oko-select oko-filter-div " style="width:130px;">
+                {!! Form::select('rate', $inputs["rates"], isset($rate_name)? $rate_name : old("rate"), ['id'=>'rate', "class" => "", "required" => "", "style" => "width:130px;"]) !!}
                 </div>
                 <div id="div-chronicles" class="oko-select oko-filter-div" style="width:130px;">
-                {!! Form::select('chronicle', $inputs["chronicles"], isset($chronicle_name)? $chronicle_name : old("chronicle"), ['id'=>'chronicle', "class" => "", "required" => ""]) !!}
+                {!! Form::select('chronicle', $inputs["chronicles"], isset($chronicle_name)? $chronicle_name : old("chronicle"), ['id'=>'chronicle', "class" => "", "required" => "" , "style" => "width:130px;"]) !!}
                 </div>
+                {!! Form::submit("Фильтр", ['class' => 'custom-select filter-but']) !!}
                 <a href="/" class="drop-filter"></a>
-                {!! Form::submit("Поиск", ['class' => 'custom-select filter-but']) !!}
                 {!! Form::close() !!}
             </div>
-            <div class="col-md-6">
-                <span class="filter-title">Текущая неделя:</span>
+            <div class="d-block d-md-none sepor mx-4"></div>
+            <div class="d-flex justify-content-center flex-wrap">
+                <span class="filter-title  mt-md-3 mt-lg-1">Текущая неделя:</span>
                 <ul class="filter-week">
                     @foreach($date_week as $day => $day_servers)
                         <li data-toggle="modal" data-target="#week-{{$day}}" class="{{ ($day == $this_day)? "active" : ""}} px-2 py-2">{{$day}}</li>
@@ -71,7 +71,7 @@
 </div>
 <div class="contaner-fluid">
     <div class="container d-flex justify-content-between flex-column flex-wrap flex-lg-row" id="main_container">
-        <div class="col-lg-4 no_padding margin-tab">
+        <div class="col-lg-4 col-35 no_padding margin-tab">
             @if($servers["vipOpen"]->count() > 0)
                 <div class="col-md-12 servers-tab no_padding">
                     <div class="col-md-12 servers-tab-title"><span>VIP | СКОРО ОТКРОЮТСЯ</span></div>
@@ -126,15 +126,7 @@
                                         <div class="name"><a target="_blank" href="{{$server->link}}"><span>{{$server->name}}</span></a></div>
                                         <div class="reit"><span>{{$server->rate->name}}</span></div>
                                         <div class="chronic"><span>{{$server->chronicle->name}}</span></div>
-                                        @if($server->start_at->format('d-m-Y') == $today)
-                                            <div class="date"><span>Сегодня</span></div>
-                                        @elseif($server->start_at->format('d-m-Y') == $yesterday)
-                                            <div class="date"><span>Вчера</span></div>
-                                        @elseif($server->start_at->format('d-m-Y') == $tomorrow)
-                                            <div class="date"><span>Завтра</span></div>
-                                        @else
-                                            <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
-                                        @endif
+                                        <div class="date"><span><f style="font-weight: 700;color: #e41212;">START</f><br>{{$server->start_at->format('H:i')}}</span></div>
                                         <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
                                     </div>
                                 @endforeach
@@ -161,16 +153,8 @@
                                         <div class="name"><a target="_blank" href="{{$server->link}}"><span>{{$server->name}}</span></a></div>
                                         <div class="reit"><span>{{$server->rate->name}}</span></div>
                                         <div class="chronic"><span>{{$server->chronicle->name}}</span></div>
-                                        @if($server->start_at->format('d-m-Y') == $today)
-                                            <div class="date"><span>Сегодня</span></div>
-                                        @elseif($server->start_at->format('d-m-Y') == $yesterday)
-                                            <div class="date"><span>Вчера</span></div>
-                                        @elseif($server->start_at->format('d-m-Y') == $tomorrow)
-                                            <div class="date"><span>Завтра</span></div>
-                                        @else
-                                            <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
-                                        @endif
-                                        <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
+                                        <div class="date"><span><f style="font-weight: 700;color: #e41212;">START</f><br>{{$server->start_at->format('H:i')}}</span></div>
+                                            <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
                                     </div>
                                 @endforeach
                             @endif
@@ -242,7 +226,7 @@
                 @endfor
             </div>
         </div>
-        <div class="col-lg-4 no_padding margin-tab">
+        <div class="col-lg-4 col-35 no_padding margin-tab">
             @if($servers["vipOpened"]->count() > 0)
                 <div class="col-md-12 servers-tab no_padding">
                     <div class="col-md-12 servers-tab-title"><span>VIP | УЖЕ ОТКРЫЛИСЬ</span></div>
@@ -347,7 +331,7 @@
                 @endfor
             </div>
         </div>
-        <div class="col-lg-3 no_padding margin-tab">
+        <div class="col-lg-3 col-26 no_padding margin-tab">
             <div class="col-md-12 tab no_padding">
                 <div class="col-md-12 servers-tab-title"><span>НАШИ РЕКОМЕНДАЦИИ</span></div>
                 @foreach($nominations as $nomination)

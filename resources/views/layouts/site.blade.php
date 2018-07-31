@@ -37,33 +37,60 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
 ";h"+escape(document.title.substring(0,150))+
 ";"+Math.random();</script><!--/LiveInternet-->
 <div class="container">
-    <nav class="navbar navbar-expand-md navbar-light">
+    <nav class="navbar navbar-expand-md navbar-light justify-content-between flex-wrap">
         <a class="navbar-brand" href="https://l2oko.ru"><div id="logo" ></div></a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active def-nav">
-                    <a class="nav-link" href="/">Главная</a>
+
+        <ul class="navbar-nav d-none d-lg-flex">
+            <li class="nav-item active def-nav">
+                <a class="nav-link" href="/">Главная</a>
+            </li>
+            <li class="nav-item dropdown def-nav">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Реклама<span class="caret"></span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    @foreach($pages as $page)
+                        <a class="dropdown-item" href="{{route("site.page.show", ["page" => $page->alias])}}">{{$page->title}}</a>
+                    @endforeach
+                </div>
+            </li>
+            @foreach($pages_menu as $page_)
+                <li class="nav-item def-nav">
+                    <a class="nav-link" href="{{route("site.page.show", ["page" => $page_->alias])}}">{{$page_->title}}</a>
                 </li>
-                <li class="nav-item dropdown def-nav">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Реклама<span class="caret"></span>
+            @endforeach
+            <li class="nav-item add-nav">
+                <a class="nav-link" href="{{ route('site.server.create') }}" >Добавить сервер</a>
+            </li>
+        </ul>
+
+
+        <div class="d-inline-block d-lg-none" data-toggle="collapse" data-target="#mobile-nav" aria-controls="mobile-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <i style="cursor: pointer;color: #000000" class="fa fa-bars fa-2x"></i>
+        </div>
+
+        <div class="collapse mt-2" id="mobile-nav">
+            <ul class="mobile-navbar">
+                <li class="mobile-nav-item">
+                    <a  href="/">Главная</a>
+                </li>
+                <li class="mobile-nav-item" data-toggle="collapse" data-target="#nav-dropdown" aria-controls="nav-dropdown" aria-expanded="false" aria-label="Dropdown">
+                    <a href="#">
+                        Реклама <i class="fa fa-caret-down float-right"></i>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        @foreach($pages as $page)
-                            <a class="dropdown-item" href="{{route("site.page.show", ["page" => $page->alias])}}">{{$page->title}}</a>
-                        @endforeach
-                    </div>
                 </li>
+                <div class="collapse" id="nav-dropdown">
+                    @foreach($pages as $page)
+                        <a class="dropdown-item" href="{{route("site.page.show", ["page" => $page->alias])}}">{{$page->title}}</a>
+                    @endforeach
+                </div>
                 @foreach($pages_menu as $page_)
-                    <li class="nav-item def-nav">
-                        <a class="nav-link" href="{{route("site.page.show", ["page" => $page_->alias])}}">{{$page_->title}}</a>
+                    <li class="mobile-nav-item">
+                        <a href="{{route("site.page.show", ["page" => $page_->alias])}}">{{$page_->title}}</a>
                     </li>
                 @endforeach
-                <li class="nav-item add-nav">
-                    <a class="nav-link" href="{{ route('site.server.create') }}" >Добавить сервер</a>
+                <li class="mobile-nav-item add-nav">
+                    <a href="{{ route('site.server.create') }}" >Добавить сервер</a>
                 </li>
             </ul>
         </div>
@@ -72,7 +99,7 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
 <div class="contaner-fluid" id="header-pic" style="background-image: url({{ asset("images/bg_" . $main_pic["last"] . $main_pic["pic"])}});">
     <div class="container">
         <div class="row header-pic-title justify-content-start align-items-end">
-            <div class="col-lg-4">
+            <div class="col-lg-5">
                 <h1>{{ $h1 }}</h1>
                 <p>Анонсы игровых серверов Lineage 2</p>
             </div>
