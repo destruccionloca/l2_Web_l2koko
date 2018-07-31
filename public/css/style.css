@@ -10197,7 +10197,7 @@ nav .def-nav > a:hover {
   border-radius: 15px;
   float: left;
   margin-left: 15px;
-  background-image: url(/images/drop_filter.png?2d5896be47fd74263a83d6e76fb7ca2e);
+  background-image: url("../images/drop-filter.svg");
   background-repeat: no-repeat;
   background-position: center center;
 }
