@@ -10197,7 +10197,7 @@ nav .def-nav > a:hover {
   border-radius: 15px;
   float: left;
   margin-left: 15px;
-  background-image: url("../images/drop-filter.svg");
+  background-image: url(/fonts/drop-filter.svg?70c654f71a5404b969477bb3c0950668);
   background-repeat: no-repeat;
   background-position: center center;
 }
@@ -10267,12 +10267,6 @@ nav .def-nav > a:hover {
 
 .margin-tab .servers-tab:nth-child(n+2) {
   margin-top: 15px;
-}
-
-@media (max-width: 992px) {
-  .margin-tab {
-    margin-top: 15px;
-  }
 }
 
 .servers-tab > div {
@@ -10934,11 +10928,11 @@ nav .def-nav > a:hover {
   width: 161px;
   height: 44px;
   cursor: pointer;
-  background: url(/images/footer_logo.png?d1a7b6968487f107aad251db17206f9c) no-repeat center center;
+  background: url(/images/footer_logo.png?ead322dcae6ddb0f026531e8f6ce9322) no-repeat center center;
 }
 
 .footer-logo:hover {
-  background: url(/images/footer_logo_hover.png?e2327cc869ef49dbee2d4127cf78d71d) no-repeat center center;
+  background: url(/images/footer_logo_hover.png?03ece69c64d359266b8de30932af18ce) no-repeat center center;
 }
 
 .copi-text {
@@ -11343,28 +11337,39 @@ input[type=submit] {
     line-height: 3;
   }
 
-  .servers-tab-free .reit span, .servers-tab-free .name span, .servers-tab-free .chronic span, .servers-tab-free .date span  {
+  .servers-tab-free .reit span,
+  .servers-tab-free .name span,
+  .servers-tab-free .chronic span,
+  .servers-tab-free .date span {
     font-size: 9px;
   }
 
-  .servers-tab-light .reit span, .servers-tab-light .name span, .servers-tab-light .chronic span, .servers-tab-light .date span  {
+  .servers-tab-light .reit span,
+  .servers-tab-light .name span,
+  .servers-tab-light .chronic span,
+  .servers-tab-light .date span {
     font-size: 9px;
   }
 
-  .servers-tab-silver .reit span, .servers-tab-silver .name span, .servers-tab-silver .chronic span, .servers-tab-silver .date span  {
+  .servers-tab-silver .reit span,
+  .servers-tab-silver .name span,
+  .servers-tab-silver .chronic span,
+  .servers-tab-silver .date span {
     font-size: 9px;
   }
 
-  .servers-tab-exlusive .reit span, .servers-tab-exlusive .name span, .servers-tab-exlusive .chronic span, .servers-tab-exlusive .date span  {
+  .servers-tab-exlusive .reit span,
+  .servers-tab-exlusive .name span,
+  .servers-tab-exlusive .chronic span,
+  .servers-tab-exlusive .date span {
     font-size: 9px;
   }
 
-  .servers-tab-exlusive .name span, .servers-tab-silver .name span, .servers-tab-light .name span, .servers-tab-free .name span {
+  .servers-tab-exlusive .name span,
+  .servers-tab-silver .name span,
+  .servers-tab-light .name span,
+  .servers-tab-free .name span {
     line-height: 0.9em;
-  }
-
-  .filter-but, .drop-filter {
-    margin-left: 10px !important;
   }
 }
 
@@ -11396,8 +11401,6 @@ input[type=submit] {
   #header-pic {
     background-position: center center;
   }
-
-
 }
 
 #mobile-nav {
@@ -11457,8 +11460,15 @@ input[type=submit] {
   }
 }
 
-@media (min-width: 576px) and (max-width: 992px ) {
-    .filter-week {
-      margin-top: 15px !important;
-    }
+@media (min-width: 576px) and (max-width: 992px) {
+  .filter-week {
+    margin-top: 15px;
+  }
 }
+
+@media (max-width: 992px) {
+  .margin-tab {
+    margin-top: 15px;
+  }
+}
+
