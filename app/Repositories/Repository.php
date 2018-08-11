@@ -139,6 +139,21 @@ abstract class Repository {
 		$str = trim($str,'-');		
 		return $str;
 	}
+
+    public function getTypeImg($mime) {
+        if ($mime == "image/gif") {
+            return ".gif";
+        } else if ($mime == "image/jpeg") {
+            return ".jpg";
+        } else if ($mime == "image/png") {
+            return ".png";
+        } else if ($mime == "image/svg+xml") {
+            return ".svg";
+        } else {
+            return ".err";
+        }
+
+    }
 	
 	
 	

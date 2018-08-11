@@ -35,7 +35,13 @@ class ServerController extends SiteController
         <script>
                $(function() {
                    
-                    $(\"#rate\").mask(\"x9ZZZZZZZZ\");
+                    $(\"#rate\").mask(\"x9ZZZZZZZZ\", {
+                            translation: {
+                              'Z': {
+                                pattern: /[0-9]/, optional: true
+                              }
+                            }
+                          });
             
 //                    $(\"input\").blur(function() {
 //                        $(\"#info\").html(\"Unmasked value: \" + $(this).mask());

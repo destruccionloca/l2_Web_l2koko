@@ -21,7 +21,7 @@
         </div>
         <div class="row page-content-row">
                 <div class="col-12">
-                    @if (isset($server->picture))
+                    @if (isset($server->picture) && $server->picture != "default")
                         <img class="img-fluid" src="/uploads/servers/server-{{$server->id}}{{$server->picture}}?time={{$server->updated_at->format('d_h_i_s')}}" alt="{{$server->name}}">
                     @else
                         <img class="img-fluid" src="/uploads/servers/DEFAULT.png" alt="{{$server->name}}">

@@ -20,6 +20,10 @@ class NominationsRepository extends Repository
         $this->model = $nomination;
     }
 
+    /**
+     * @param $request
+     * @return array
+     */
     public function add($request) {
         if ($request->has("name")) {
             $data = $request->all();
@@ -44,17 +48,23 @@ class NominationsRepository extends Repository
                     $image = $request->file('picture');
                     if ($image->isValid()) {
                         $storeFolder = public_path() . '/uploads/nominations/';   //2
-                        $img = Image::make($image);
-                        $img_type = $this->getTypeImg($img->mime());
+                        $img_type = $this->getTypeImg($image->getMimeType());
+                        $id = $this->model->id;
                         if ($img_type == ".err") {
                             return ['status' => 'Номинация добавлена без изображениея'];
+                        } else if ($img_type == ".svg") {
+                            if(file_exists($storeFolder . "nomination-" . $id . $img_type)) {
+                                unlink($storeFolder . "nomination-" . $id . $img_type);
+                            }
+                            $image->storeAs("/uploads/nominations", "nomination-" . $id . $img_type, "pub");
+                        } else {
+                            if(file_exists($storeFolder . "nomination-" . $id . $img_type)) {
+                                unlink($storeFolder . "nomination-" . $id . $img_type);
+                            }
+                            $img = Image::make($image);
+                            $img->fit(54,54)->save($storeFolder . "nomination-" . $id . $img_type);
                         }
-                        $id = $this->model->id;
-                        if(file_exists($storeFolder . "nomination-" . $id . $img_type)) {
-                            unlink($storeFolder . "nomination-" . $id . $img_type);
-                        }
-                        $img->fit(54,54)->save($storeFolder . "nomination-" . $id . $img_type);
-                        $this->model->picture = $img_type;
+                        $this->model->picture = $img_type. "?ver=". random_int(1,1000);
                         $this->model->update();
                     }
                 }
@@ -93,17 +103,23 @@ class NominationsRepository extends Repository
                     $image = $request->file('picture');
                     if ($image->isValid()) {
                         $storeFolder = public_path() . '/uploads/nominations/';   //2
-                        $img = Image::make($image);
-                        $img_type = $this->getTypeImg($img->mime());
-                        if ($img_type == ".err") {
-                            return ['status' => 'Номинация обновлена без изображения'];
-                        }
+                        $img_type = $this->getTypeImg($image->getMimeType());
                         $id = $nomination->id;
-                        if(file_exists($storeFolder . "nomination-" . $id . $img_type)) {
-                           unlink($storeFolder . "nomination-" . $id . $img_type);
+                        if ($img_type == ".err") {
+                            return ['status' => 'Номинация добавлена без изображениея'];
+                        } else if ($img_type == ".svg") {
+                            if(file_exists($storeFolder . "nomination-" . $id . $img_type)) {
+                                unlink($storeFolder . "nomination-" . $id . $img_type);
+                            }
+                            $image->storeAs("/uploads/nominations", "nomination-" . $id . $img_type, "pub");
+                        } else {
+                            if(file_exists($storeFolder . "nomination-" . $id . $img_type)) {
+                                unlink($storeFolder . "nomination-" . $id . $img_type);
+                            }
+                            $img = Image::make($image);
+                            $img->fit(54,54)->save($storeFolder . "nomination-" . $id . $img_type);
                         }
-                        $img->fit(54,54)->save($storeFolder . "nomination-" . $id . $img_type);
-                        $nomination->picture = $img_type;
+                        $nomination->picture = $img_type. "?ver=". random_int(1,1000);
                         $nomination->update();
                     }
                 }
@@ -114,18 +130,6 @@ class NominationsRepository extends Repository
         }
     }
 
-    private function getTypeImg($mime) {
-        if ($mime == "image/gif") {
-            return ".gif";
-        } else if ($mime == "image/jpeg") {
-            return ".jpg";
-        } else if ($mime == "image/png") {
-            return ".png";
-        } else {
-            return ".err";
-        }
-
-    }
 
     public function one($alias, $attr = array()) {
         $server = parent::one($alias,$attr);

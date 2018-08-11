@@ -48,19 +48,6 @@ class SettingsRepository extends Repository {
 
         return array("status" => "Настройки обновлены");
     }
-
-    private function getTypeImg($mime) {
-        if ($mime == "image/gif") {
-            return ".gif";
-        } else if ($mime == "image/jpeg") {
-            return ".jpg";
-        } else if ($mime == "image/png") {
-            return ".png";
-        } else {
-            return ".err";
-        }
-
-    }
 }
 
 ?>

@@ -73,7 +73,7 @@ class ServersRepository extends Repository
                         $this->model->update();
                     }
                 } else {
-                    $this->model->picture = "dafault";
+                    $this->model->picture = "default";
                     $this->model->update();
                 }
                 return ['status' => 'Сервер добавлен'];
@@ -134,21 +134,6 @@ class ServersRepository extends Repository
                 return ['error' => 'Ошибка обновления'];
             }
         }
-    }
-
-    private function getTypeImg($mime) {
-        if ($mime == "image/gif") {
-            return ".gif";
-        } else if ($mime == "image/jpeg") {
-            return ".jpg";
-        } else if ($mime == "image/png") {
-            return ".png";
-        } else if ($mime == "image/svg+xml") {
-            return ".svg";
-        } else {
-            return ".err";
-        }
-
     }
 
     public function one($alias, $attr = array()) {

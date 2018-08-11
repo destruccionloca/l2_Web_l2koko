@@ -152,7 +152,6 @@ nav .active > a, nav .def-nav > a:hover {
   width: 30px;
   height: 30px;
   padding: 5px 10px;
-  border-radius: 15px;
   float: left;
   margin-left: 15px;
   background-image: url("../images/drop-filter.svg");
@@ -258,6 +257,8 @@ nav .active > a, nav .def-nav > a:hover {
     width: 10%;
     padding: 10px 0;
     float: left;
+    margin-left: -8px;
+    margin-top: -3px;
   }
 
   .name {
@@ -346,6 +347,8 @@ nav .active > a, nav .def-nav > a:hover {
     width: 10%;
     padding: 10px 0;
     float: left;
+    margin-left: -8px;
+    margin-top: -3px;
   }
 
   .name {
@@ -432,6 +435,8 @@ nav .active > a, nav .def-nav > a:hover {
     width: 10%;
     float: left;
     padding: 10px 0;
+    margin-left: -8px;
+    margin-top: -3px;
   }
 
   .name {
@@ -521,6 +526,8 @@ nav .active > a, nav .def-nav > a:hover {
     width: 10%;
     float: left;
     padding: 10px 0;
+    margin-left: -8px;
+    margin-top: -3px;
   }
 
   .name {
@@ -651,8 +658,6 @@ nav .active > a, nav .def-nav > a:hover {
     height: 54px;
     border-radius: 50%;
     margin: 3px;
-    -webkit-box-shadow: 0 0 0 1px rgba(76, 164, 212, 1);;
-    box-shadow: 0 0 0 1px rgba(76, 164, 212, 1);;
   }
  }
 
@@ -1135,9 +1140,8 @@ input[type=submit] {
   width: 161px;
   height: 32px;
   cursor: pointer;
-  background: url("../images/logo.png") no-repeat center center;
+  background: url("../images/logo.svg") no-repeat center center;
 }
-
 
 
 /*
@@ -1169,7 +1173,7 @@ input[type=submit] {
   #logo {
     width: 57px;
     height: 32px;
-    background: url("../images/logo_m.png") no-repeat center center;
+    background: url("../images/logo-mob.svg") no-repeat center center;
   }
 
   #filter-form {
@@ -1179,10 +1183,12 @@ input[type=submit] {
 
     .filter-but {
       margin-top: 5px;
+      margin-left: 10px;
     }
 
     .drop-filter {
       margin-top: 5px;
+      margin-left: 10px;
     }
   }
 

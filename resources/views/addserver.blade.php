@@ -125,7 +125,7 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-input-block d-flex align-items-center">
-                                <span class="form-input-title">Кратное описание проекта:</span>
+                                <span class="form-input-title">Краткое описание проекта:</span>
                             </div>
                         </div>
                         <div class="col-8">
@@ -188,7 +188,7 @@
             <div class="row page-content-row">
                 <div class="col-8">
                     <div class="form-input-block d-flex align-items-center">
-                        <input type="submit" value="Отправить">
+                        <input class="custom-select filter-but d-flex align-items-center" type="submit" value="Отправить">
                     </div>
                 </div>
             </div>

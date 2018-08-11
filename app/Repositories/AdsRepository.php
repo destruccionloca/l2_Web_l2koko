@@ -34,13 +34,16 @@ class AdsRepository extends Repository
                     $image = $request->file('picture');
                     if ($image->isValid()) {
                         $storeFolder = public_path() . '/' . '/uploads/ads/';   //2
-                        $img = Image::make($image);
-                        $img_type = $this->getTypeImg($img->mime());
-                        if ($img_type == ".err") {
-                            return ['status' => 'Партнер добавлен без изображения'];
-                        }
+                        $img_type = $this->getTypeImg($image->getMimeType());
                         $id = $this->model->id;
-                        $img->fit(280, 110)->save($storeFolder . "ad-" . $id . $img_type);
+                        if ($img_type == ".err") {
+                            return ['status' => 'Номинация добавлена без изображениея'];
+                        } else if ($img_type == ".svg") {
+                            $image->storeAs("/uploads/ads", "ad-" . $id . $img_type, "pub");
+                        } else {
+                            $img = Image::make($image);
+                            $img->fit(280, 110)->save($storeFolder . "ad-" . $id . $img_type);
+                        }
                         $this->model->picture = $img_type;
                         $this->model->update();
                     }
@@ -66,36 +69,26 @@ class AdsRepository extends Repository
                 if ($request->hasFile('picture')) {
                     $image = $request->file('picture');
                     if ($image->isValid()) {
-                        $storeFolder = public_path() . '/' . '/uploads/ads/';   //2
-                        $img = Image::make($image);
-                        $img_type = $this->getTypeImg($img->mime());
-                        if ($img_type == ".err") {
-                            return ['status' => 'Партнер добавлен без изображения'];
-                        }
+                        $storeFolder = public_path() . '/uploads/ads/';   //2
+                        $img_type = $this->getTypeImg($image->getMimeType());
                         $id = $ad->id;
-                        $img->fit(280, 110)->save($storeFolder . "ad-" . $id . $img_type);
+                        if ($img_type == ".err") {
+                            return ['status' => 'Номинация добавлена без изображениея'];
+                        } else if ($img_type == ".svg") {
+                            $image->storeAs("/uploads/ads", "ad-" . $id . $img_type, "pub");
+                        } else {
+                            $img = Image::make($image);
+                            $img->fit(280, 110)->save($storeFolder . "ad-" . $id . $img_type);
+                        }
                         $ad->picture = $img_type;
                         $ad->update();
                     }
                 }
-                return ['status' => 'Реклаиный блок обновлен'];
+                return ['status' => 'Рекламный блок обновлен'];
             } else {
                 return ['error' => 'Ошибка обновления'];
             }
         }
-    }
-
-    private function getTypeImg($mime) {
-        if ($mime == "image/gif") {
-            return ".gif";
-        } else if ($mime == "image/jpeg") {
-            return ".jpg";
-        } else if ($mime == "image/png") {
-            return ".png";
-        } else {
-            return ".err";
-        }
-
     }
 
 }
