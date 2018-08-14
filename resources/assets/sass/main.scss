@@ -44,7 +44,7 @@ body {
 
 /* Header */
 .navbar {
-  padding: 10px }
+  padding: 6px }
 
 .navbar-nav {
   align-items: center; }
@@ -52,7 +52,9 @@ body {
 nav li {
   font-family: "Roboto";
   font-weight: 400;
-  font-size: 13px; }
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px; }
 
 #navbarNav {
   flex-direction: row;
@@ -80,7 +82,7 @@ nav .active > a, nav .def-nav > a:hover {
   margin-left: 20px;
   border-radius: 7px;
   padding: 0 10px;
-  background-color: #a5c715;}
+  background-color: #e41313;}
 
 .add-nav a {
   color: #fff !important; }
@@ -95,7 +97,8 @@ nav .active > a, nav .def-nav > a:hover {
   height: 250px;
   h1 {
     font-family: "Roboto";
-    font-weight: 100;
+    font-weight: 700;
+    letter-spacing: 2px;
     font-size: 40px;
     color: #fff;
     line-height: 29px;
@@ -104,7 +107,9 @@ nav .active > a, nav .def-nav > a:hover {
     font-family: "Roboto";
     font-weight: 100;
     font-size: 19px;
-    color: #fff;
+    color: #ffffffab;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     line-height: 13px;
   }
 }
@@ -126,9 +131,12 @@ nav .active > a, nav .def-nav > a:hover {
 .filter-title {
   font-family: "Roboto";
   font-weight: 700;
-  font-size: 13px;
   color: #808080;
-  padding-top: 5px; }
+  padding-top: 5px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
 .filter-but {
   font-family: "Roboto";
@@ -156,7 +164,9 @@ nav .active > a, nav .def-nav > a:hover {
   margin-left: 15px;
   background-image: url("../images/drop-filter.svg");
   background-repeat: no-repeat;
-  background-position: center center; }
+  background-position: center center;
+  background-size: 18px;
+}
 
 .filter-week {
   margin-left: 10px;
@@ -172,12 +182,14 @@ nav .active > a, nav .def-nav > a:hover {
   /* ╨Я╨╛╨╗╤П ╨▓╨╛╨║╤А╤Г╨│ ╤В╨╡╨║╤Б╤В╨░ */
   border-radius: 50px;
   background-color: transparent;
-  border: #919191 1px solid;
   color: #919191;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 14px;
-  cursor: pointer; }
+  cursor: pointer;
+  border: #919191 1px solid;
+  box-shadow: 0 0 8px -3px #404040;
+}
 
 .filter-week li:hover {
   background-color: #1889c7;
@@ -202,9 +214,8 @@ nav .active > a, nav .def-nav > a:hover {
 
 .servers-tab {
   border-radius: 10px;
-  background-color: #f5f7fa;
-  //float: left;
-  box-shadow: 0px 0px 8px -3px #404040;
+  background-color: #f9fafb;
+  box-shadow: 0px 0px 0px -3px #404040;
   @include clearfix;
 }
 
@@ -215,8 +226,9 @@ nav .active > a, nav .def-nav > a:hover {
   //float: left;
   width: 100%;
   height: 50px;
-  border: #e1e3e6 solid;
-  border-width: 0 0 1px 0; }
+  border-width: 0 0 1px 0;
+  border: #f3f3f3 solid;
+}
 
 .servers-tab > div:last-child {
   //float: left;
@@ -229,17 +241,20 @@ nav .active > a, nav .def-nav > a:hover {
   padding: 15px 25px; }
 
 .servers-tab-pre-title {
-  background-color: #f5f5f5;
+  background-color: #f9fafb;
   padding: 15px 25px; }
 
 .servers-tab-title span {
   font-family: "Roboto";
   font-weight: 700;
-  font-size: 16px;
-  color: #3c4152;
   padding-left: 10px;
   border: solid #1689c7;
-  border-width: 0 0 0 3px; }
+  border-width: 0 0 0 3px;
+  text-transform: uppercase;
+  font-size: 10px;
+  color: #868686;
+  letter-spacing: 2px;
+}
 
 .servers-tab-pre-title span {
   font-family: "Roboto";
@@ -249,7 +264,7 @@ nav .active > a, nav .def-nav > a:hover {
 
 /* VIP */
 .servers-tab-exlusive {
-  background-color: #5a6779;
+  background-color: #2a679c;
   div {
     height: 50px;
   }
@@ -262,9 +277,9 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .name {
-    width: 36%;
+    width: 46%;
     float: left;
-    padding: 15px 0 15px 0;
+    padding: 15px 0 15px 5px;
     overflow: hidden;
   }
 
@@ -289,9 +304,10 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .chronic {
-    width: 17%;
+    width: 22%;
     float: left;
-    padding: 15px 0 15px 0;
+    padding: 7px 0 15px 0;
+    text-align: center;
   }
 
   .chronic span {
@@ -302,7 +318,7 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .date {
-    width: 12%;
+    width: 15%;
     float: left;
     padding: 5px 15px 0;
   }
@@ -315,7 +331,7 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .i {
-    width: 10%;
+    width: 7%;
     float: left;
     padding: 15px 11px 10px;
   }
@@ -325,10 +341,11 @@ nav .active > a, nav .def-nav > a:hover {
     font-weight: 600;
     font-size: 18px;
     color: #ffdf41;
-    background-color: #46505e;
     border-radius: 50%;
     padding: 5px 13px;
     cursor: pointer;
+    background-color: #2c6ba0;
+    box-shadow: 0px 0px 8px -3px #404040;
   }
 
   .i span:hover {
@@ -352,9 +369,9 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .name {
-    width: 36%;
+    width: 46%;
     float: left;
-    padding: 15px 0 15px 0;
+    padding: 15px 0 15px 5px;
     overflow: hidden;
   }
 
@@ -379,9 +396,10 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .chronic {
-    width: 17%;
+    width: 22%;
     float: left;
-    padding: 15px 0 15px 0;
+    padding: 7px 0 15px 0;
+    text-align: center;
   }
 
   .chronic span {
@@ -392,7 +410,7 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .date {
-    width: 12%;
+    width: 15%;
     float: left;
     padding: 5px 15px 0;
   }
@@ -405,7 +423,7 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .i {
-    width: 10%;
+    width: 7%;
     float: left;
     padding: 15px 0 15px 10px;
   }
@@ -415,10 +433,11 @@ nav .active > a, nav .def-nav > a:hover {
     font-weight: 600;
     font-size: 18px;
     color: #a6a6a6;
-    background-color: #e6e6e6;
     border-radius: 50%;
     padding: 5px 13px;
     cursor: pointer;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 8px -3px #404040;
   }
 
   .i span:hover {
@@ -440,9 +459,9 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .name {
-    width: 36%;
+    width: 46%;
     float: left;
-    padding: 15px 0 15px 0;
+    padding: 15px 0 15px 5px;
     overflow: hidden;
   }
 
@@ -467,9 +486,10 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .chronic {
-    width: 17%;
+    width: 22%;
     float: left;
-    padding: 15px 0 15px 0;
+    padding: 7px 0 15px 0;
+    text-align: center;
   }
 
   .chronic span {
@@ -480,7 +500,7 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .date {
-    width: 12%;
+    width: 15%;
     float: left;
     padding: 5px 15px 0;
   }
@@ -493,7 +513,7 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .i {
-    width: 10%;
+    width: 7%;
     float: left;
     padding: 15px 11px 10px;
   }
@@ -505,9 +525,10 @@ nav .active > a, nav .def-nav > a:hover {
     color: #e6e8ea;
     background-color: transparent;
     border-radius: 50%;
-    border: solid 1px #e6e8ea;
     padding: 4px 12px;
     cursor: pointer;
+    border: solid 1px #ffffff;
+    box-shadow: 0px 0px 8px -3px #404040;
   }
 
   .i span:hover {
@@ -531,9 +552,9 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .name {
-    width: 36%;
+    width: 46%;
     float: left;
-    padding: 15px 0 15px 0;
+    padding: 15px 0 15px 5px;
     overflow: hidden;
   }
 
@@ -558,9 +579,10 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .chronic {
-    width: 17%;
+    width: 22%;
     float: left;
-    padding: 15px 0 15px 0;
+    padding: 7px 0 15px 0;
+    text-align: center;
   }
 
   .chronic span {
@@ -571,7 +593,7 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .date {
-    width: 12%;
+    width: 15%;
     float: left;
     padding: 5px 15px 0;
   }
@@ -584,7 +606,7 @@ nav .active > a, nav .def-nav > a:hover {
   }
 
   .i {
-    width: 10%;
+    width: 7%;
     float: left;
     padding: 15px 0 15px 10px;
   }
@@ -596,9 +618,10 @@ nav .active > a, nav .def-nav > a:hover {
     color: #e6e8ea;
     background-color: transparent;
     border-radius: 50%;
-    border: solid 1px #e6e8ea;
     padding: 4px 12px;
     cursor: pointer;
+    border: solid 1px #ffffff;
+    box-shadow: 0px 0px 8px -3px #404040;
   }
 
   .i span:hover {
@@ -609,12 +632,14 @@ nav .active > a, nav .def-nav > a:hover {
 /* Recommendation */
 
 .tab {
-  background-color: #f5f7fa;
   border-radius: 10px;
   min-height: 200px;
   float: left;
-  border: solid 1px #f0f1f2;
-  box-shadow: 0px 0px 8px -3px #404040; }
+  background-color: #f9fafb;
+  border: solid 0px #fff;
+  -webkit-box-shadow: 0px 0px 8px -3px #404040;
+  box-shadow: 0px 0px 0px -3px #404040;
+}
 
 .tab:nth-child(n+2) {
   margin-top: 15px; }
@@ -694,14 +719,18 @@ nav .active > a, nav .def-nav > a:hover {
 .recom_title {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  font-size: 12px;
-  color: #3c4152; }
+  font-size: 9px;
+  color: #8f8f8f;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
 
 .recom_name {
   font-family: "Roboto";
   font-weight: 700;
-  font-size: 15px;
-  color: #1789c7; }
+  font-size: 13px;
+  color: #0988f8;
+}
 
 .ad-img {
   img {
@@ -741,7 +770,7 @@ nav .active > a, nav .def-nav > a:hover {
   color: #a0a0a0; }
 
 .footer {
-  background: #242930; }
+  background: #f8f8f8; }
 .footer::after {
   display: block;
   content: "";
@@ -757,9 +786,12 @@ nav .active > a, nav .def-nav > a:hover {
 .footer-menu {
   font-family: "Roboto";
   font-weight: 400;
-  font-size: 16px;
+  font-size: 13px;
   padding: 5px;
-  color: #fff; }
+  color: #595f68;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
 
 .soc {
   float: right;
@@ -1031,18 +1063,20 @@ nav .active > a, nav .def-nav > a:hover {
 input[type=submit] {
   font-family: "Roboto";
   font-weight: 700;
-  font-size: 12px;
-  background-color: #a5c715;
   cursor: pointer;
   border-radius: 7px;
   color: #fff;
   height: 32px;
-  width: 80px;
   float: left;
   margin-left: 15px;
   display: inline-block;
   vertical-align: middle;
   line-height: 1;
+  font-size: 10px;
+  background-color: #0888f8;
+  width: 70px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .badge-info {
@@ -1081,12 +1115,12 @@ input[type=submit] {
   right: 10px;
   width: 0;
   height: 0;
-  border: 6px solid transparent;
-  border-color: #fff transparent transparent transparent;
+  border: 3px solid transparent;
+  border-color: #ffffff transparent transparent transparent;
 }
 /*point the arrow upwards when the select box is open (active):*/
 .select-selected.select-arrow-active:after {
-  border-color: transparent transparent #fff transparent;
+  border-color: transparent transparent #ffffff transparent;
   top: 7px;
 }
 
@@ -1097,22 +1131,25 @@ input[type=submit] {
 }
 /*style the items (options), including the selected item:*/
 .select-items div,.select-selected {
-  color: #ffffff;
   padding: 6px 16px;
-  border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
   cursor: pointer;
-  border-radius: 7px;
   height: 32px;
   font-family: "Roboto";
   font-weight: 700;
-  font-size: 12px;
+  color: #fff;
+  border: 1px solid #a0727200;
+  border-color: #ffffff #ffffff rgb(224, 224, 224) #ffffff;
+  border-radius: 0px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
 }
 
 /*style items (options):*/
 .select-items {
   position: absolute;
-  background-color: #1889c7;
+  background-color: #ffffff;
   top: 100%;
   left: 0;
   right: 0;
@@ -1135,12 +1172,36 @@ input[type=submit] {
   border-bottom-left-radius: 7px;
 }
 
+.navbar-brand {
+  padding-top: .01rem;
+  padding-bottom: .01rem;
+
+}
+
+.dropdown-menu {
+  font-size: 10px;
+}
+
+.custom-select {
+  background-image: none !important;
+}
+
+.seo-img img {
+  width: 65px;
+}
+
+.block-seo li {
+  list-style-type: none;
+}
+
+.block-seo {
+  color: #a6a6a6;
+}
+
 #logo {
-  float: left;
-  width: 161px;
-  height: 32px;
-  cursor: pointer;
-  background: url("../images/logo.svg") no-repeat center center;
+  width: 200px;
+  height: 52px;
+  background-size: 200px;
 }
 
 
@@ -1173,7 +1234,7 @@ input[type=submit] {
   #logo {
     width: 57px;
     height: 32px;
-    background: url("../images/logo-mob.svg") no-repeat center center;
+    background: url("../images/logo-mob.svg?ver-3") no-repeat center center;
   }
 
   #filter-form {
@@ -1195,6 +1256,7 @@ input[type=submit] {
   .filter-title {
     width: 100%;
     text-align: center;
+
   }
 
   .filter-week li {

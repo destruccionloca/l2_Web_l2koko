@@ -109,19 +109,91 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
 <!-- START CONTENT -->
 @yield('content')
 <!-- END CONTENT -->
-<div class="container-fluid partners">
+{{--<div class="container-fluid partners">--}}
+    {{--<div class="container">--}}
+        {{--<div class="row justify-content-center partners-text">--}}
+            {{--<hr class="col col-lg-2">--}}
+            {{--<span class="col-auto our-partners">Наши партнеры</span>--}}
+            {{--<hr class="col col-lg-2">--}}
+        {{--</div>--}}
+        {{--<div class="row justify-content-start partners-text">--}}
+            {{--@foreach($partners as $partner)--}}
+                {{--<div class="col-3 partner-img">--}}
+                    {{--<a href="{{$partner->link}}" target="_blank"><img class="img-fluid" src="/uploads/partners/partner-{{$partner->id}}{{$partner->picture}}"></a>--}}
+                {{--</div>--}}
+            {{--@endforeach--}}
+        {{--</div>--}}
+    {{--</div>--}}
+{{--</div>--}}
+<div class="container-fluid block-seo">
     <div class="container">
-        <div class="row justify-content-center partners-text">
-            <hr class="col col-lg-2">
-            <span class="col-auto our-partners">Наши партнеры</span>
-            <hr class="col col-lg-2">
-        </div>
-        <div class="row justify-content-start partners-text">
-            @foreach($partners as $partner)
-                <div class="col-3 partner-img">
-                    <a href="{{$partner->link}}" target="_blank"><img class="img-fluid" src="/uploads/partners/partner-{{$partner->id}}{{$partner->picture}}"></a>
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <h2>СЕРВЕРА Л2</h2>
+                <h3>СЕРВИС L2OKO</h3>
+                <p>
+                    Л2 ОКО помогает игрокам быть в курсе актуальной информации по новым серверам Lineage 2, чтобы начать игру в регламентированное время открытия. Функции кросспостинга в социальные сети, позволяют игрокам быть в курсе открытия новых серверов даже не заходя на сайт. Удобные фильтры позволяют в считанные секунды найти нужный сервер по хроникам и рейтам.
+                    Для владельцев серверов л2, у нас представлены привилегии на предмет выделения в списковой форме серверов, а также массовые рассылки в социальные сети (VKontakte, Facebook, Telegram) посредством моментального автопостинга.
+                    Для партнеров у нас разрабатывается первая в своем роде рекламная биржа (Аналог биржи Вконтакте), на стыке интересов игровых серверов и партнеров входящих в состав проекта, что дает новые возможности рекламной площадки консолидировать в себе методы распространения информации.
+                </p>
+                <h3>АНОНСЫ СЕРВЕРОВ ЛА2</h3>
+                <p>
+                    L2 OKO - это не просто анонсер, это рекламная площадка, которая увеличивает посещаемость серверов, помогает игрокам узнавать об открытии всех серверов Lineage 2, серверам привлекать игроков, а так же позволяет зарабатывать партнерам проекта. Мы стремимся сделать открытие новых серверов л2 максимально заметным, качественным и успешным, в плане посещаемости и регистраций.
+                    Спасибо что выбираете нас!
+                </p>
+            </div>
+            <div class="col-4">
+                <div class="seo-img">
+                    <img src="https://l2oko.ru/fonts/gamers-icons.svg">
                 </div>
-            @endforeach
+                <h3>ИГРОКАМ Л2</h3>
+                <ul class="">
+                    <li>Актуальные анонсы</li>
+                    <li>Удобный фильтр</li>
+                    <li>Недельный календарь</li>
+                    <li>Выборка лучших серверов л2</li>
+                    <li>Удобные блоки с серверами</li>
+                    <li>Понятный интерфейс</li>
+                    <li>Карточки серверов</li>
+                    <li>Дата и время выхода</li>
+                    <li>Адаптивный дизайн</li>
+                    <li>Подписка на обновления</li>
+                    <li>Кросспостинг в соц. сети</li>
+                </ul>
+            </div>
+            <div class="col-4">
+                <div class="seo-img">
+                    <img src="https://l2oko.ru/fonts/vladelcam-icons.svg">
+                </div>
+                <h3>СЕРВЕРАМ Л2</h3>
+                <ul class="">
+                    <li>Реклама сервера</li>
+                    <li>Переходы игроков</li>
+                    <li>Личная карточка сервера</li>
+                    <li>Кросспостинг анонса</li>
+                    <li>Брендирование</li>
+                    <li>Баннерная реклама</li>
+                    <li>Выделение в списке</li>
+                    <li>Участие в номинациях</li>
+                    <li>Акции</li>
+                    <li>Скидки</li>
+                </ul>
+            </div>
+            <div class="col-4">
+                <div class="seo-img">
+                    <img src="https://l2oko.ru/fonts/partners-icons.svg">
+                </div>
+                <h3>ПАРТНЕРАМ Л2 ОКО</h3>
+                <ul class="">
+                    <li>Возможность зарабатывать</li>
+                    <li>Владельцам групп, клиенты</li>
+                    <li>Пиаробмен</li>
+                    <li>Размещение логотипа</li>
+                    <li>Привилегии партнерства</li>
+                    <li>Акции</li>
+                    <li>Скидки</li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
@@ -145,14 +217,14 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
                 </div>
             </div>
         </div>
-        <div class="row footer-info">
-			<!-- Yandex.Metrika counter --> <script type="text/javascript" > (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter46281285 = new Ya.Metrika2({ id:46281285, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/tag.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks2"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/46281285" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
-            <span class="info-top">L2 OKO - это удобный сервис по поиску новых серверов Л2.</span>
-            <span class="info">Сервис помогает быть в курсе актуальной информации по новым серверам л2, чтобы начать игру в регламентированное время открытия. Функции кросспостинга в социальные сети, позволяет игрокам быть в курсе открытия новых серверов л2, даже не заходя на сайт. Удобные фильтры позволяют в считанные секунды найти нужный сервер л2 по хроникам и рейтам. 
-Для владельцев серверов л2, у нас представлены привилегии на предмет выделения в списковой форме серверов, а также массовые рассылки в социальные сети (VKontakte, Facebook, Telegram) посредством моментального автопостинга. 
-Для партнеров у нас разрабатывается первая в своем роде рекламная биржа (Аналог биржи Вконтакте), на стыке интересов игровых серверов и партнеров входящих в состав проекта, что дает новые возможности рекламной площадки консолидировать в себе методы распространения информации. 
-L2 OKO - это не просто анонсер, это рекламная площадка, которая увеличивает посещаемость серверов, помогает пользователям в одном месте, узнавать об открытии всех серверов Lineage 2, а так же позволяет зарабатывать партнерам проекта. Мы стремимся сделать открытие новых серверов л2 максимально заметным, качественным и успешным, в плане посещаемости и регистраций.</span>
-        </div>
+        <!-- Yandex.Metrika counter --> <script type="text/javascript" > (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter46281285 = new Ya.Metrika2({ id:46281285, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/tag.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks2"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/46281285" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+        {{--<div class="row footer-info">--}}
+            {{--<span class="info-top">L2 OKO - это удобный сервис по поиску новых серверов Л2.</span>--}}
+            {{--<span class="info">Сервис помогает быть в курсе актуальной информации по новым серверам л2, чтобы начать игру в регламентированное время открытия. Функции кросспостинга в социальные сети, позволяет игрокам быть в курсе открытия новых серверов л2, даже не заходя на сайт. Удобные фильтры позволяют в считанные секунды найти нужный сервер л2 по хроникам и рейтам. --}}
+{{--Для владельцев серверов л2, у нас представлены привилегии на предмет выделения в списковой форме серверов, а также массовые рассылки в социальные сети (VKontakte, Facebook, Telegram) посредством моментального автопостинга. --}}
+{{--Для партнеров у нас разрабатывается первая в своем роде рекламная биржа (Аналог биржи Вконтакте), на стыке интересов игровых серверов и партнеров входящих в состав проекта, что дает новые возможности рекламной площадки консолидировать в себе методы распространения информации. --}}
+{{--L2 OKO - это не просто анонсер, это рекламная площадка, которая увеличивает посещаемость серверов, помогает пользователям в одном месте, узнавать об открытии всех серверов Lineage 2, а так же позволяет зарабатывать партнерам проекта. Мы стремимся сделать открытие новых серверов л2 максимально заметным, качественным и успешным, в плане посещаемости и регистраций.</span>--}}
+        {{--</div>--}}
         <div class="row footer-copi">
             <div class="col-10">
                 <div class="footer-logo" src="{{ asset('images/footer_logo.png') }}"></div>
