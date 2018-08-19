@@ -99,7 +99,7 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
 <div class="contaner-fluid" id="header-pic" style="background-image: url({{ asset("images/bg_" . $main_pic["last"] . $main_pic["pic"])}});">
     <div class="container">
         <div class="row header-pic-title justify-content-start align-items-end">
-            <div class="col-lg-5">
+            <div class="col-lg-10">
                 <h1>{{ $h1 }}</h1>
                 <p>Анонсы игровых серверов Lineage 2</p>
             </div>
@@ -125,96 +125,67 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
         {{--</div>--}}
     {{--</div>--}}
 {{--</div>--}}
-<div class="container-fluid block-seo">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <h2>СЕРВЕРА Л2</h2>
-                <h3>СЕРВИС L2OKO</h3>
-                <p>
-                    Л2 ОКО помогает игрокам быть в курсе актуальной информации по новым серверам Lineage 2, чтобы начать игру в регламентированное время открытия. Функции кросспостинга в социальные сети, позволяют игрокам быть в курсе открытия новых серверов даже не заходя на сайт. Удобные фильтры позволяют в считанные секунды найти нужный сервер по хроникам и рейтам.
-                    Для владельцев серверов л2, у нас представлены привилегии на предмет выделения в списковой форме серверов, а также массовые рассылки в социальные сети (VKontakte, Facebook, Telegram) посредством моментального автопостинга.
-                    Для партнеров у нас разрабатывается первая в своем роде рекламная биржа (Аналог биржи Вконтакте), на стыке интересов игровых серверов и партнеров входящих в состав проекта, что дает новые возможности рекламной площадки консолидировать в себе методы распространения информации.
-                </p>
-                <h3>АНОНСЫ СЕРВЕРОВ ЛА2</h3>
-                <p>
-                    L2 OKO - это не просто анонсер, это рекламная площадка, которая увеличивает посещаемость серверов, помогает игрокам узнавать об открытии всех серверов Lineage 2, серверам привлекать игроков, а так же позволяет зарабатывать партнерам проекта. Мы стремимся сделать открытие новых серверов л2 максимально заметным, качественным и успешным, в плане посещаемости и регистраций.
-                    Спасибо что выбираете нас!
-                </p>
-            </div>
-            <div class="col-4">
-                <div class="seo-img">
-                    <img src="https://l2oko.ru/fonts/gamers-icons.svg">
-                </div>
-                <h3>ИГРОКАМ Л2</h3>
-                <ul class="">
-                    <li>Актуальные анонсы</li>
-                    <li>Удобный фильтр</li>
-                    <li>Недельный календарь</li>
-                    <li>Выборка лучших серверов л2</li>
-                    <li>Удобные блоки с серверами</li>
-                    <li>Понятный интерфейс</li>
-                    <li>Карточки серверов</li>
-                    <li>Дата и время выхода</li>
-                    <li>Адаптивный дизайн</li>
-                    <li>Подписка на обновления</li>
-                    <li>Кросспостинг в соц. сети</li>
-                </ul>
-            </div>
-            <div class="col-4">
-                <div class="seo-img">
-                    <img src="https://l2oko.ru/fonts/vladelcam-icons.svg">
-                </div>
-                <h3>СЕРВЕРАМ Л2</h3>
-                <ul class="">
-                    <li>Реклама сервера</li>
-                    <li>Переходы игроков</li>
-                    <li>Личная карточка сервера</li>
-                    <li>Кросспостинг анонса</li>
-                    <li>Брендирование</li>
-                    <li>Баннерная реклама</li>
-                    <li>Выделение в списке</li>
-                    <li>Участие в номинациях</li>
-                    <li>Акции</li>
-                    <li>Скидки</li>
-                </ul>
-            </div>
-            <div class="col-4">
-                <div class="seo-img">
-                    <img src="https://l2oko.ru/fonts/partners-icons.svg">
-                </div>
-                <h3>ПАРТНЕРАМ Л2 ОКО</h3>
-                <ul class="">
-                    <li>Возможность зарабатывать</li>
-                    <li>Владельцам групп, клиенты</li>
-                    <li>Пиаробмен</li>
-                    <li>Размещение логотипа</li>
-                    <li>Привилегии партнерства</li>
-                    <li>Акции</li>
-                    <li>Скидки</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+
 <div class="container-fluid footer">
     <div class="container">
-        <div class="row footer-menu-block">
-            <div class="col-md-9">
-                <a href="https://l2oko.ru/page/uslugi " target="_blank" class="footer-menu">Реклама</a>
-                <a href="https://l2oko.ru/page/partneram" target="_blank" class="footer-menu">Партнерам</a>
-                <a href="{{ route('site.server.create') }}"  class="footer-menu" >Добавить сервер</a>
+        <div class="row footer-up-block">
+            <div class="col-4 d-flex justify-content-start footer-logo">
+                <img src="{{ asset('fonts/footer-logo.svg') }}">
             </div>
-            <div class="col-md-3">
-                <div class="soc">
-                    <a href="https://vk.com/l2oko" target="_blank"><div class="vk"><i class="fa fa-vk"></i></div></a>
+            <div class="col-4 d-flex justify-content-center footer-up">
+                <div class="to-up d-flex flex-column">
+                    <img src="{{ asset('fonts/up.svg') }}">
+                    <span>Вверх</span>
                 </div>
-                <div class="soc">
-                    <a href="https://www.facebook.com/L2OKO-182049002357540/" target="_blank"><div class="face"><i class="fa fa-facebook"></i></div></a>
-                </div>
-                <div class="soc">
-                    <a href="https://t.me/l2oko" target="_blank"><div class="twitter"><i class="fa fa-telegram"></i></div></a>
-                </div>
+            </div>
+            <div class="col-4 d-flex justify-content-end footer-soc">
+                <a href="#" target="_blank"><img src="{{ asset('fonts/mail.svg') }}"></a>
+                <a href="#" target="_blank"><img src="{{ asset('fonts/skype.svg') }}"></a>
+                <a href="#" target="_blank"><img src="{{ asset('fonts/vk.svg') }}"></a>
+            </div>
+        </div>
+        <div class="row footer-first-menu">
+            <div class="col-4 d-flex justify-content-start footer-h1">
+                <h5>l2oko.ru - l2 анонсер № 1</h5>
+            </div>
+            <div class="col-4 d-flex justify-content-center footer-but-add">
+                <a class="btn btn-danger">Добавить сервер</a>
+            </div>
+            <div class="col-4 d-flex justify-content-end footer-menu">
+                <a href="" target="_blank">Главная</a>
+                <a href="" target="_blank">Контакты</a>
+                <a href="" target="_blank">Карта сайта</a>
+            </div>
+        </div>
+        <div class="row footer-second-menu">
+            <div class="col-3 d-flex justify-content-start">
+                <img src="{{ asset('fonts/ssl.svg') }}">
+                <img src="{{ asset('fonts/webmoney.svg') }}">
+            </div>
+            <div class="col-9 d-flex justify-content-end footer-menu">
+                <a href="" target="_blank">Выделение</a>
+                <a href="" target="_blank">Брендирование</a>
+                <a href="" target="_blank">Баннеры</a>
+                <a href="" target="_blank">Кросспостинг</a>
+                <a href="" target="_blank">Список лучших</a>
+            </div>
+        </div>
+        <div class="row footer-copi">
+            <div class="col-9 d-flex justify-content-start flex-column copi">
+                <p>
+                    Копирование материалов запрещено. Copyright &copy; l2oko 2017-2018. All rights reserved.
+                </p>
+                <p>
+                    Lineage ll is a trademark of NCsoft Corporation. Copyright &copy; NCsoft Corporation 2005-2018. All rights reserved.
+                </p>
+            </div>
+            <div class="col-3 d-flex justify-content-end flex-column contact">
+                <p>
+                    dev by <a href="">trick</a>
+                </p>
+                <p>
+                    adv by <a href="">wspn</a>
+                </p>
             </div>
         </div>
         <!-- Yandex.Metrika counter --> <script type="text/javascript" > (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter46281285 = new Ya.Metrika2({ id:46281285, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/tag.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks2"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/46281285" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
@@ -225,15 +196,6 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
 {{--Для партнеров у нас разрабатывается первая в своем роде рекламная биржа (Аналог биржи Вконтакте), на стыке интересов игровых серверов и партнеров входящих в состав проекта, что дает новые возможности рекламной площадки консолидировать в себе методы распространения информации. --}}
 {{--L2 OKO - это не просто анонсер, это рекламная площадка, которая увеличивает посещаемость серверов, помогает пользователям в одном месте, узнавать об открытии всех серверов Lineage 2, а так же позволяет зарабатывать партнерам проекта. Мы стремимся сделать открытие новых серверов л2 максимально заметным, качественным и успешным, в плане посещаемости и регистраций.</span>--}}
         {{--</div>--}}
-        <div class="row footer-copi">
-            <div class="col-10">
-                <div class="footer-logo" src="{{ asset('images/footer_logo.png') }}"></div>
-                <span class="copi-text">L2OKO.RU — новые сервера Lineage 2 © 2017 - 2018 </span>
-            </div>
-            <div class="col-2">
-                <img class="img-fluid" src="{{ asset('images/mkarts.png') }}">
-            </div>
-        </div>
     </div>
 </div>
 <!--JS-->
