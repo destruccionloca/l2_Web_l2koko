@@ -26,6 +26,8 @@ class Pagescontroller extends SiteController
         $this->title = $page->title;
         $this->description = $page->desc;
         $this->keywords = $page->keywords;
+        $this->h1 = $page->h1;
+        $this->p = $page->p;
         $this->content = view('page')->with(["page" => $page])->render();
         return $this->renderOutput();
     }

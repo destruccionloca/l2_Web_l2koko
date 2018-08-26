@@ -47,6 +47,9 @@ class PagesRepository extends Repository
             'keywords' => $data['keywords'],
             'alias' => $data['alias'],
             'type' => $data['type'],
+            'h1' => $data['h1'],
+            'h2' => $data['h2'],
+            'p' => $data['p'],
         ]);
 
         return ['status' => 'Страница добавлена'];
@@ -77,6 +80,9 @@ class PagesRepository extends Repository
             'alias' => $data['alias'],
             'keywords' => $data['keywords'],
             'type' => $data['type'],
+            'h1' => $data['h1'],
+            'h2' => $data['h2'],
+            'p' => $data['p'],
         ]);
 
         return ['status' => 'Статья обновлена'];

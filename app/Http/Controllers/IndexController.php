@@ -35,6 +35,7 @@ class IndexController extends SiteController
         $this->description = $this->settings['description'];
         $this->keywords = $this->settings['keywords'];
         $this->h1 = $this->settings['h1'];
+        $this->p = $this->settings['p'];
         $this->filter_url = explode("-",$this->settings['filter_url']);
         $this->seo_text = null;
         $this->nom_rep = $nom_rep;
@@ -45,6 +46,7 @@ class IndexController extends SiteController
 
     public function index(Server $server, Request $request)
     {
+        $this_no_filter = true;
         $rate_id = isset($request->rate) ? $request->rate : "all";
         $chronicle_id = isset($request->chronicle) ? $request->chronicle : "all";
         $rates = Rate::orderBy('sort')->get();
@@ -82,6 +84,7 @@ class IndexController extends SiteController
                 var chronicle = $('#chronicle').val();                
                 document.location.href = 'http://l2oko.ru/filter/' + rate + '-' + chronicle;
             })
+            
         });
         </script>
         ";
@@ -128,12 +131,12 @@ class IndexController extends SiteController
         $servers["yesterday"] = $this->getServers($server->Yesterday()->Active()->orderBy("start_at", "desc"), $rate_id, $chronicle_id);
         $servers["tomorrow"] = $this->getServers($server->Tomorrow()->Active()->orderBy("start_at"), $rate_id, $chronicle_id);
         $servers["today"] = $this->getServers($server->Today()->Active()->orderBy("start_at"), $rate_id, $chronicle_id);
-        $servers["week"] = $this->getServers($server->Week()->Active()->orderBy("start_at"), $rate_id, $chronicle_id);
-        $servers["seven_days"] = $this->getServers($server->SevenDays()->Active()->orderBy("start_at"), $rate_id, $chronicle_id);
-        $servers["opened"] = $this->getServers($server->Opened()->Active()->orderBy("start_at", "desc"), $rate_id, $chronicle_id);
+        $servers["week"] = $this->getServers($server->Week()->Active()->NotVip()->orderBy("start_at"), $rate_id, $chronicle_id);
+        $servers["seven_days"] = $this->getServers($server->SevenDays()->NotVip()->Active()->orderBy("start_at"), $rate_id, $chronicle_id);
+        $servers["opened"] = $this->getServers($server->Opened()->NotVip()->Active()->orderBy("start_at", "desc"), $rate_id, $chronicle_id);
         $servers["vipOpened"] = $this->getServers($server->OpenedVip()->orderBy("start_at", "desc"), $rate_id, $chronicle_id);
         $servers["vipOpen"] = $this->getServers($server->OpenVip()->orderBy("start_at"), $rate_id, $chronicle_id);
-        $this->content = view('main')->with(["servers" => $servers, "nominations" => $nominations, "date_week" => $date_week, "this_day" => $this_day, "this_month" => $this_month, "inputs" => $this->inputs, "ads" => $ads, "today" => $this->today, "yesterday" => $this->yesterday, "tomorrow" => $this->tomorrow, "seotext" => $this->seo_text])->render();
+        $this->content = view('main')->with(["servers" => $servers, "nominations" => $nominations, "date_week" => $date_week, "this_day" => $this_day, "this_month" => $this_month, "inputs" => $this->inputs, "ads" => $ads, "today" => $this->today, "yesterday" => $this->yesterday, "tomorrow" => $this->tomorrow, "seotext" => $this->seo_text, "this_no_filter" => $this_no_filter])->render();
         return $this->renderOutput();
     }
 
@@ -150,7 +153,8 @@ class IndexController extends SiteController
             })
         });
         </script>
-e        ";
+        ";
+        $this_no_filter = false;
         $models = $this->getModelsArray(explode("-", $param1));
         $rate_id = (isset($models["rate"]) && $models["rate"]) ? $models["rate"]->id : "all";
         $rate_name = (isset($models["rate"]) && $models["rate"]) ? $models["rate"]->name : "all";
@@ -212,12 +216,12 @@ e        ";
         $servers["yesterday"] = $this->getServers($server->Yesterday()->Active()->orderBy("start_at", "desc"), $rate_id, $chronicle_id);
         $servers["tomorrow"] = $this->getServers($server->Tomorrow()->Active()->orderBy("start_at"), $rate_id, $chronicle_id);
         $servers["today"] = $this->getServers($server->Today()->Active()->orderBy("start_at"), $rate_id, $chronicle_id);
-        $servers["week"] = $this->getServers($server->Week()->Active()->orderBy("start_at"), $rate_id, $chronicle_id);
-        $servers["seven_days"] = $this->getServers($server->SevenDays()->Active()->orderBy("start_at"), $rate_id, $chronicle_id);
-        $servers["opened"] = $this->getServers($server->Opened()->Active()->orderBy("start_at", "desc"), $rate_id, $chronicle_id);
+        $servers["week"] = $this->getServers($server->Week()->Active()->NotVip()->orderBy("start_at"), $rate_id, $chronicle_id);
+        $servers["seven_days"] = $this->getServers($server->SevenDays()->NotVip()->Active()->orderBy("start_at"), $rate_id, $chronicle_id);
+        $servers["opened"] = $this->getServers($server->Opened()->Active()->NotVip()->orderBy("start_at", "desc"), $rate_id, $chronicle_id);
         $servers["vipOpened"] = $this->getServers($server->OpenedVip()->orderBy("start_at", "desc"), $rate_id, $chronicle_id);
         $servers["vipOpen"] = $this->getServers($server->OpenVip()->orderBy("start_at"), $rate_id, $chronicle_id);
-        $this->content = view('main')->with(["servers" => $servers, "nominations" => $nominations, "date_week" => $date_week, "this_day" => $this_day, "this_month" => $this_month, "inputs" => $this->inputs, "ads" => $ads, "today" => $this->today, "yesterday" => $this->yesterday, "tomorrow" => $this->tomorrow, "seotext" => $this->seo_text, "rate_name" => $rate_name, "chronicle_name" => $chronicle_name])->render();
+        $this->content = view('main')->with(["servers" => $servers, "nominations" => $nominations, "date_week" => $date_week, "this_day" => $this_day, "this_month" => $this_month, "inputs" => $this->inputs, "ads" => $ads, "today" => $this->today, "yesterday" => $this->yesterday, "tomorrow" => $this->tomorrow, "seotext" => $this->seo_text, "rate_name" => $rate_name, "chronicle_name" => $chronicle_name, "this_no_filter" => $this_no_filter])->render();
         return $this->renderOutput();
     }
 

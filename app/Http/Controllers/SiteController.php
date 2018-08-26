@@ -47,6 +47,8 @@ class SiteController extends Controller
 
     protected $h1;
 
+    protected $p;
+
     protected $vars;
 
     public function __construct(ServersRepository $s_rep, SettingsRepository $settings, PagesRepository $page_rep, PartnersRepository $par_rep)
@@ -83,6 +85,7 @@ class SiteController extends Controller
         $this->vars = array_add($this->vars,'description',$this->description);
         $this->vars = array_add($this->vars,'keywords',$this->keywords);
         $this->vars = array_add($this->vars,'h1',$this->h1);
+        $this->vars = array_add($this->vars,'p',$this->p);
         $this->vars = array_add($this->vars,'main_pic', ["pic" => $this->settings['main_pic'], "last" => $this->settings['last_upd']]);
         $this->vars = array_add($this->vars, 'user', $this->user);
         $this->vars = array_add($this->vars, 'pages', $this->page_rep->get('*', false, false, ["type", "service"]));

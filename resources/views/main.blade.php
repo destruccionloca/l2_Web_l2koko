@@ -42,7 +42,7 @@
                                                     @elseif($day_server->status->name == "Free")
                                                         <div class="img"></div>
                                                     @endif
-                                                    <div class="name"><a target="_blank" href="{{$day_server->link}}"><span>{{$day_server->name}}</span></a></div>
+                                                    <div class="name"><a target="_blank" href="{{route("site.server.show", ["server" => $day_server->alias])}}"><span>{{$day_server->name}}</span></a></div>
                                                     <div class="chronic"><span>{{$day_server->chronicle->name}}</span><br/><span>{{$day_server->rate->name}}</span></div>
                                                     <div class="date"><span>{{$day_server->start_at->format('d.m H:i')}}</span></div>
                                                         <a href="{{route("site.server.show", ["server" => $day_server->alias])}}"> <div class="i"><span>i</span></div></a>
@@ -62,39 +62,14 @@
 </div>
 <div class="contaner-fluid">
     <div class="container d-flex justify-content-between flex-column flex-wrap flex-lg-row" id="main_container">
-        <div class="col-lg-4 col-35 no_padding margin-tab">
-            @if($servers["vipOpen"]->count() > 0)
-                <div class="col-md-12 servers-tab no_padding">
-                    <div class="col-md-12 servers-tab-title"><span>VIP | СКОРО ОТКРОЮТСЯ</span></div>
-                    @for($i = 4; $i >= 0; $i--)
-                        @if(isset($servers["vipOpen"][$i]))
-                            @foreach($servers["vipOpen"][$i] as $server)
-                                <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
-                                    @if($server->status->name == "Exlusive")
-                                        <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
-                                    @elseif($server->status->name == "Silver")
-                                        <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
-                                    @elseif($server->status->name == "Light")
-                                        <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
-                                    @elseif($server->status->name == "Free")
-                                        <div class="img"></div>
-                                    @endif
-                                    <div class="name"><a target="_blank" href="{{$server->link}}"><span>{{$server->name}}</span></a></div>
-                                    <div class="chronic"><span>{{$server->chronicle->name}}</span><br/><span>{{$server->rate->name}}</span></div>
-                                    <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
-                                    <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
-                                </div>
-                            @endforeach
-                        @endif
-                    @endfor
-                </div>
-            @endif
-                @if($servers["today"]->count() > 0)
+        <div class="col-lg-8 no_padding d-flex justify-content-between flex-column flex-wrap flex-lg-row col-70">
+            <div class="col-lg-6 no_padding margin-tab col-49">
+                @if($servers["vipOpen"]->count() > 0)
                     <div class="col-md-12 servers-tab no_padding">
-                        <div class="col-md-12 servers-tab-title"><span>СЕГОДНЯ</span></div>
+                        <div class="col-md-12 servers-tab-title"><span>VIP | СКОРО ОТКРОЮТСЯ</span></div>
                         @for($i = 4; $i >= 0; $i--)
-                            @if(isset($servers["today"][$i]))
-                                @foreach($servers["today"][$i] as $server)
+                            @if(isset($servers["vipOpen"][$i]))
+                                @foreach($servers["vipOpen"][$i] as $server)
                                     <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
                                         @if($server->status->name == "Exlusive")
                                             <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
@@ -105,7 +80,7 @@
                                         @elseif($server->status->name == "Free")
                                             <div class="img"></div>
                                         @endif
-                                        <div class="name"><a target="_blank" href="{{$server->link}}"><span>{{$server->name}}</span></a></div>
+                                        <div class="name"><a target="_blank" href="{{route("site.server.show", ["server" => $server->alias])}}"><span>{{$server->name}}</span></a></div>
                                         <div class="chronic"><span>{{$server->chronicle->name}}</span><br/><span>{{$server->rate->name}}</span></div>
                                         <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
                                         <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
@@ -115,86 +90,63 @@
                         @endfor
                     </div>
                 @endif
-                @if($servers["tomorrow"]->count() > 0)
-                    <div class="col-md-12 servers-tab no_padding">
-                        <div class="col-md-12 servers-tab-title"><span>ЗАВТРА</span></div>
-                        @for($i = 4; $i >= 0; $i--)
-                            @if(isset($servers["tomorrow"][$i]))
-                                @foreach($servers["tomorrow"][$i] as $server)
-                                    <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
-                                        @if($server->status->name == "Exlusive")
-                                            <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
-                                        @elseif($server->status->name == "Silver")
-                                            <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
-                                        @elseif($server->status->name == "Light")
-                                            <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
-                                        @elseif($server->status->name == "Free")
-                                            <div class="img"></div>
-                                        @endif
-                                        <div class="name"><a target="_blank" href="{{$server->link}}"><span>{{$server->name}}</span></a></div>
-                                        <div class="chronic"><span>{{$server->chronicle->name}}</span><br/><span>{{$server->rate->name}}</span></div>
-                                        <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
+                    @if($servers["today"]->count() > 0)
+                        <div class="col-md-12 servers-tab no_padding">
+                            <div class="col-md-12 servers-tab-title"><span>СЕГОДНЯ</span></div>
+                            @for($i = 4; $i >= 0; $i--)
+                                @if(isset($servers["today"][$i]))
+                                    @foreach($servers["today"][$i] as $server)
+                                        <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
+                                            @if($server->status->name == "Exlusive")
+                                                <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
+                                            @elseif($server->status->name == "Silver")
+                                                <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
+                                            @elseif($server->status->name == "Light")
+                                                <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
+                                            @elseif($server->status->name == "Free")
+                                                <div class="img"></div>
+                                            @endif
+                                            <div class="name"><a target="_blank" href="{{route("site.server.show", ["server" => $server->alias])}}"><span>{{$server->name}}</span></a></div>
+                                            <div class="chronic"><span>{{$server->chronicle->name}}</span><br/><span>{{$server->rate->name}}</span></div>
+                                            <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
                                             <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
-                                    </div>
-                                @endforeach
-                            @endif
-                        @endfor
-                    </div>
-                @endif
-            <div class="col-md-12 servers-tab no_padding">
-                <div class="col-md-12 servers-tab-title"><span>СКОРО ОТКРОЮТСЯ</span></div>
-                @for($i = 4; $i >= 0; $i--)
-                    @if(isset($servers["seven_days"][$i]))
-                        @foreach($servers["seven_days"][$i] as $server)
-                            <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
-                                @if($server->status->name == "Exlusive")
-                                    <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
-                                @elseif($server->status->name == "Silver")
-                                    <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
-                                @elseif($server->status->name == "Light")
-                                    <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
-                                @elseif($server->status->name == "Free")
-                                    <div class="img"></div>
+                                        </div>
+                                    @endforeach
                                 @endif
-                                <div class="name"><a target="_blank" href="{{$server->link}}"><span>{{$server->name}}</span></a></div>
-                                <div class="chronic"><span>{{$server->chronicle->name}}</span><br/><span>{{$server->rate->name}}</span></div>
-                                <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
-                                <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
-                            </div>
-                        @endforeach
+                            @endfor
+                        </div>
                     @endif
-                @endfor
-                <div class="col-md-12 servers-tab-pre-title"><span>ЧЕРЕЗ НЕДЕЛЮ И БОЛЕЕ:</span></div>
-                @for($i = 4; $i >= 0; $i--)
-                    @if(isset($servers["week"][$i]))
-                        @foreach($servers["week"][$i] as $server)
-                            <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
-                                @if($server->status->name == "Exlusive")
-                                    <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
-                                @elseif($server->status->name == "Silver")
-                                    <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
-                                @elseif($server->status->name == "Light")
-                                    <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
-                                @elseif($server->status->name == "Free")
-                                    <div class="img"></div>
+                    @if($servers["tomorrow"]->count() > 0)
+                        <div class="col-md-12 servers-tab no_padding">
+                            <div class="col-md-12 servers-tab-title"><span>ЗАВТРА</span></div>
+                            @for($i = 4; $i >= 0; $i--)
+                                @if(isset($servers["tomorrow"][$i]))
+                                    @foreach($servers["tomorrow"][$i] as $server)
+                                        <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
+                                            @if($server->status->name == "Exlusive")
+                                                <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
+                                            @elseif($server->status->name == "Silver")
+                                                <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
+                                            @elseif($server->status->name == "Light")
+                                                <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
+                                            @elseif($server->status->name == "Free")
+                                                <div class="img"></div>
+                                            @endif
+                                            <div class="name"><a target="_blank" href="{{route("site.server.show", ["server" => $server->alias])}}"><span>{{$server->name}}</span></a></div>
+                                            <div class="chronic"><span>{{$server->chronicle->name}}</span><br/><span>{{$server->rate->name}}</span></div>
+                                            <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
+                                                <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
+                                        </div>
+                                    @endforeach
                                 @endif
-                                    <div class="name"><a target="_blank" href="{{$server->link}}"><span>{{$server->name}}</span></a></div>
-                                <div class="chronic"><span>{{$server->chronicle->name}}</span><br/><span>{{$server->rate->name}}</span></div>
-                                <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
-                                <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
-                            </div>
-                        @endforeach
+                            @endfor
+                        </div>
                     @endif
-                @endfor
-            </div>
-        </div>
-        <div class="col-lg-4 col-35 no_padding margin-tab">
-            @if($servers["vipOpened"]->count() > 0)
                 <div class="col-md-12 servers-tab no_padding">
-                    <div class="col-md-12 servers-tab-title"><span>VIP | УЖЕ ОТКРЫЛИСЬ</span></div>
+                    <div class="col-md-12 servers-tab-title"><span>СКОРО ОТКРОЮТСЯ</span></div>
                     @for($i = 4; $i >= 0; $i--)
-                        @if(isset($servers["vipOpened"][$i]))
-                            @foreach($servers["vipOpened"][$i] as $server)
+                        @if(isset($servers["seven_days"][$i]))
+                            @foreach($servers["seven_days"][$i] as $server)
                                 <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
                                     @if($server->status->name == "Exlusive")
                                         <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
@@ -205,7 +157,29 @@
                                     @elseif($server->status->name == "Free")
                                         <div class="img"></div>
                                     @endif
-                                    <div class="name"><a target="_blank" href="{{$server->link}}"><span>{{$server->name}}</span></a></div>
+                                    <div class="name"><a target="_blank" href="{{route("site.server.show", ["server" => $server->alias])}}"><span>{{$server->name}}</span></a></div>
+                                    <div class="chronic"><span>{{$server->chronicle->name}}</span><br/><span>{{$server->rate->name}}</span></div>
+                                    <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
+                                    <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
+                                </div>
+                            @endforeach
+                        @endif
+                    @endfor
+                    <div class="col-md-12 servers-tab-pre-title"><span>ЧЕРЕЗ НЕДЕЛЮ И БОЛЕЕ:</span></div>
+                    @for($i = 4; $i >= 0; $i--)
+                        @if(isset($servers["week"][$i]))
+                            @foreach($servers["week"][$i] as $server)
+                                <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
+                                    @if($server->status->name == "Exlusive")
+                                        <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
+                                    @elseif($server->status->name == "Silver")
+                                        <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
+                                    @elseif($server->status->name == "Light")
+                                        <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
+                                    @elseif($server->status->name == "Free")
+                                        <div class="img"></div>
+                                    @endif
+                                        <div class="name"><a target="_blank" href="{{route("site.server.show", ["server" => $server->alias])}}"><span>{{$server->name}}</span></a></div>
                                     <div class="chronic"><span>{{$server->chronicle->name}}</span><br/><span>{{$server->rate->name}}</span></div>
                                     <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
                                     <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
@@ -214,13 +188,14 @@
                         @endif
                     @endfor
                 </div>
-            @endif
-            @if($servers["yesterday"]->count() > 0)
-                <div class="col-md-12 servers-tab no_padding">
-                        <div class="col-md-12 servers-tab-title"><span>ОТКРЫЛИСЬ ВЧЕРА</span></div>
+            </div>
+            <div class="col-lg-6 no_padding margin-tab col-49">
+                @if($servers["vipOpened"]->count() > 0)
+                    <div class="col-md-12 servers-tab no_padding">
+                        <div class="col-md-12 servers-tab-title"><span>VIP | УЖЕ ОТКРЫЛИСЬ</span></div>
                         @for($i = 4; $i >= 0; $i--)
-                            @if(isset($servers["yesterday"][$i]))
-                                @foreach($servers["yesterday"][$i] as $server)
+                            @if(isset($servers["vipOpened"][$i]))
+                                @foreach($servers["vipOpened"][$i] as $server)
                                     <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
                                         @if($server->status->name == "Exlusive")
                                             <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
@@ -231,7 +206,7 @@
                                         @elseif($server->status->name == "Free")
                                             <div class="img"></div>
                                         @endif
-                                            <div class="name"><a target="_blank" href="{{$server->link}}"><span>{{$server->name}}</span></a></div>
+                                        <div class="name"><a target="_blank" href="{{route("site.server.show", ["server" => $server->alias])}}"><span>{{$server->name}}</span></a></div>
                                         <div class="chronic"><span>{{$server->chronicle->name}}</span><br/><span>{{$server->rate->name}}</span></div>
                                         <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
                                         <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
@@ -239,32 +214,139 @@
                                 @endforeach
                             @endif
                         @endfor
+                    </div>
+                @endif
+                @if($servers["yesterday"]->count() > 0)
+                    <div class="col-md-12 servers-tab no_padding">
+                            <div class="col-md-12 servers-tab-title"><span>ОТКРЫЛИСЬ ВЧЕРА</span></div>
+                            @for($i = 4; $i >= 0; $i--)
+                                @if(isset($servers["yesterday"][$i]))
+                                    @foreach($servers["yesterday"][$i] as $server)
+                                        <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
+                                            @if($server->status->name == "Exlusive")
+                                                <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
+                                            @elseif($server->status->name == "Silver")
+                                                <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
+                                            @elseif($server->status->name == "Light")
+                                                <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
+                                            @elseif($server->status->name == "Free")
+                                                <div class="img"></div>
+                                            @endif
+                                                <div class="name"><a target="_blank" href="{{route("site.server.show", ["server" => $server->alias])}}"><span>{{$server->name}}</span></a></div>
+                                            <div class="chronic"><span>{{$server->chronicle->name}}</span><br/><span>{{$server->rate->name}}</span></div>
+                                            <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
+                                            <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
+                                        </div>
+                                    @endforeach
+                                @endif
+                            @endfor
+                    </div>
+                @endif
+                <div class="col-md-12 servers-tab no_padding">
+                    <div class="col-md-12 servers-tab-title"><span>УЖЕ ОТКРЫЛИСЬ</span></div>
+                    @for($i = 4; $i >= 0; $i--)
+                        @if(isset($servers["opened"][$i]))
+                            @foreach($servers["opened"][$i] as $server)
+                                <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
+                                    @if($server->status->name == "Exlusive")
+                                        <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
+                                    @elseif($server->status->name == "Silver")
+                                        <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
+                                    @elseif($server->status->name == "Light")
+                                        <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
+                                    @elseif($server->status->name == "Free")
+                                        <div class="img"></div>
+                                    @endif
+                                    <div class="name"><a target="_blank" href="{{route("site.server.show", ["server" => $server->alias])}}"><span>{{$server->name}}</span></a></div>
+                                    <div class="chronic"><span>{{$server->chronicle->name}}</span><br/><span>{{$server->rate->name}}</span></div>
+                                    <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
+                                    <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
+                                </div>
+                            @endforeach
+                        @endif
+                    @endfor
+                </div>
+            </div>
+
+            @if(isset($seotext))
+                <div class="col-lg-8 no_padding margin-tab">
+                    {!! $seotext !!}
                 </div>
             @endif
-            <div class="col-md-12 servers-tab no_padding">
-                <div class="col-md-12 servers-tab-title"><span>УЖЕ ОТКРЫЛИСЬ</span></div>
-                @for($i = 4; $i >= 0; $i--)
-                    @if(isset($servers["opened"][$i]))
-                        @foreach($servers["opened"][$i] as $server)
-                            <div class="col-md-12 servers-tab-{{mb_strtolower($server->status->name)}} paddding_for_tab">
-                                @if($server->status->name == "Exlusive")
-                                    <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
-                                @elseif($server->status->name == "Silver")
-                                    <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
-                                @elseif($server->status->name == "Light")
-                                    <div class="img"><img src="https://l2oko.ru/images/{{mb_strtolower($server->status->name)}}.svg"></div>
-                                @elseif($server->status->name == "Free")
-                                    <div class="img"></div>
-                                @endif
-                                    <div class="name"><a target="_blank" href="{{$server->link}}"><span>{{$server->name}}</span></a></div>
-                                <div class="chronic"><span>{{$server->chronicle->name}}</span><br/><span>{{$server->rate->name}}</span></div>
-                                <div class="date"><span>{{$server->start_at->format('d.m H:i')}}</span></div>
-                                <a href="{{route("site.server.show", ["server" => $server->alias])}}"> <div class="i"><span>i</span></div></a>
+            @if($this_no_filter)
+                <div class="container-fluid block-seo">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-12">
+                                <h2>СЕРВЕРА Л2</h2>
+                                <h3>СЕРВИС L2OKO</h3>
+                                <p>
+                                    Л2 ОКО помогает игрокам быть в курсе актуальной информации по новым серверам Lineage 2, чтобы начать игру в регламентированное время открытия. Функции кросспостинга в социальные сети, позволяют игрокам быть в курсе открытия новых серверов даже не заходя на сайт. Удобные фильтры позволяют в считанные секунды найти нужный сервер по хроникам и рейтам.
+                                    Для владельцев серверов л2, у нас представлены привилегии на предмет выделения в списковой форме серверов, а также массовые рассылки в социальные сети (VKontakte, Facebook, Telegram) посредством моментального автопостинга.
+                                    Для партнеров у нас разрабатывается первая в своем роде рекламная биржа (Аналог биржи Вконтакте), на стыке интересов игровых серверов и партнеров входящих в состав проекта, что дает новые возможности рекламной площадки консолидировать в себе методы распространения информации.
+                                </p>
+                                <h3>АНОНСЫ СЕРВЕРОВ ЛА2</h3>
+                                <p>
+                                    L2 OKO - это не просто анонсер, это рекламная площадка, которая увеличивает посещаемость серверов, помогает игрокам узнавать об открытии всех серверов Lineage 2, серверам привлекать игроков, а так же позволяет зарабатывать партнерам проекта. Мы стремимся сделать открытие новых серверов л2 максимально заметным, качественным и успешным, в плане посещаемости и регистраций.
+                                    Спасибо что выбираете нас!
+                                </p>
                             </div>
-                        @endforeach
-                    @endif
-                @endfor
-            </div>
+                            <div class="col-4">
+                                <div class="seo-img">
+                                    <img src="https://l2oko.ru/fonts/gamers-icons.svg">
+                                </div>
+                                <h3>ИГРОКАМ Л2</h3>
+                                <ul class="">
+                                    <li>Актуальные анонсы</li>
+                                    <li>Удобный фильтр</li>
+                                    <li>Недельный календарь</li>
+                                    <li>Выборка лучших серверов л2</li>
+                                    <li>Удобные блоки с серверами</li>
+                                    <li>Понятный интерфейс</li>
+                                    <li>Карточки серверов</li>
+                                    <li>Дата и время выхода</li>
+                                    <li>Адаптивный дизайн</li>
+                                    <li>Подписка на обновления</li>
+                                    <li>Кросспостинг в соц. сети</li>
+                                </ul>
+                            </div>
+                            <div class="col-4">
+                                <div class="seo-img">
+                                    <img src="https://l2oko.ru/fonts/vladelcam-icons.svg">
+                                </div>
+                                <h3>СЕРВЕРАМ Л2</h3>
+                                <ul class="">
+                                    <li>Реклама сервера</li>
+                                    <li>Переходы игроков</li>
+                                    <li>Личная карточка сервера</li>
+                                    <li>Кросспостинг анонса</li>
+                                    <li>Брендирование</li>
+                                    <li>Баннерная реклама</li>
+                                    <li>Выделение в списке</li>
+                                    <li>Участие в номинациях</li>
+                                    <li>Акции</li>
+                                    <li>Скидки</li>
+                                </ul>
+                            </div>
+                            <div class="col-4">
+                                <div class="seo-img">
+                                    <img src="https://l2oko.ru/fonts/partners-icons.svg">
+                                </div>
+                                <h3>ПАРТНЕРАМ Л2 ОКО</h3>
+                                <ul class="">
+                                    <li>Возможность зарабатывать</li>
+                                    <li>Владельцам групп, клиенты</li>
+                                    <li>Пиаробмен</li>
+                                    <li>Размещение логотипа</li>
+                                    <li>Привилегии партнерства</li>
+                                    <li>Акции</li>
+                                    <li>Скидки</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
         <div class="col-lg-3 col-26 no_padding margin-tab">
             <div class="col-md-12 tab no_padding">
@@ -275,7 +357,7 @@
                         <div class="recom_cont"><span class="recom_title">{{$nomination->name}}:</span>
                             <br />
                             @if(isset($nomination->server))
-                                <a href="{{$nomination->server->link}}" target="_blank"><span class="recom_name">{{$nomination->server->name}}</span></a>
+                                <a href="{{route("site.server.show", ["server" => $nomination->server->alias])}}" target="_blank"><span class="recom_name">{{$nomination->server->name}}</span></a>
                             @else
                                 <span class="recom_name">Место свободно</span>
                                 <br />
@@ -332,83 +414,6 @@
                     <a href="{{$ad->link}}" target="_blank"><img alt="{{$ad->alt}}" class="img-fluid" src="/uploads/ads/ad-{{$ad->id}}{{$ad->picture}}"></a>
                 </div>
                 @endforeach
-            </div>
-        </div>
-        @if(isset($seotext))
-            <div class="col-lg-8 no_padding margin-tab">
-                {!! $seotext !!}
-            </div>
-        @endif
-    </div>
-</div>
-<div class="container-fluid block-seo">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <h2>СЕРВЕРА Л2</h2>
-                <h3>СЕРВИС L2OKO</h3>
-                <p>
-                    Л2 ОКО помогает игрокам быть в курсе актуальной информации по новым серверам Lineage 2, чтобы начать игру в регламентированное время открытия. Функции кросспостинга в социальные сети, позволяют игрокам быть в курсе открытия новых серверов даже не заходя на сайт. Удобные фильтры позволяют в считанные секунды найти нужный сервер по хроникам и рейтам.
-                    Для владельцев серверов л2, у нас представлены привилегии на предмет выделения в списковой форме серверов, а также массовые рассылки в социальные сети (VKontakte, Facebook, Telegram) посредством моментального автопостинга.
-                    Для партнеров у нас разрабатывается первая в своем роде рекламная биржа (Аналог биржи Вконтакте), на стыке интересов игровых серверов и партнеров входящих в состав проекта, что дает новые возможности рекламной площадки консолидировать в себе методы распространения информации.
-                </p>
-                <h3>АНОНСЫ СЕРВЕРОВ ЛА2</h3>
-                <p>
-                    L2 OKO - это не просто анонсер, это рекламная площадка, которая увеличивает посещаемость серверов, помогает игрокам узнавать об открытии всех серверов Lineage 2, серверам привлекать игроков, а так же позволяет зарабатывать партнерам проекта. Мы стремимся сделать открытие новых серверов л2 максимально заметным, качественным и успешным, в плане посещаемости и регистраций.
-                    Спасибо что выбираете нас!
-                </p>
-            </div>
-            <div class="col-4">
-                <div class="seo-img">
-                    <img src="https://l2oko.ru/fonts/gamers-icons.svg">
-                </div>
-                <h3>ИГРОКАМ Л2</h3>
-                <ul class="">
-                    <li>Актуальные анонсы</li>
-                    <li>Удобный фильтр</li>
-                    <li>Недельный календарь</li>
-                    <li>Выборка лучших серверов л2</li>
-                    <li>Удобные блоки с серверами</li>
-                    <li>Понятный интерфейс</li>
-                    <li>Карточки серверов</li>
-                    <li>Дата и время выхода</li>
-                    <li>Адаптивный дизайн</li>
-                    <li>Подписка на обновления</li>
-                    <li>Кросспостинг в соц. сети</li>
-                </ul>
-            </div>
-            <div class="col-4">
-                <div class="seo-img">
-                    <img src="https://l2oko.ru/fonts/vladelcam-icons.svg">
-                </div>
-                <h3>СЕРВЕРАМ Л2</h3>
-                <ul class="">
-                    <li>Реклама сервера</li>
-                    <li>Переходы игроков</li>
-                    <li>Личная карточка сервера</li>
-                    <li>Кросспостинг анонса</li>
-                    <li>Брендирование</li>
-                    <li>Баннерная реклама</li>
-                    <li>Выделение в списке</li>
-                    <li>Участие в номинациях</li>
-                    <li>Акции</li>
-                    <li>Скидки</li>
-                </ul>
-            </div>
-            <div class="col-4">
-                <div class="seo-img">
-                    <img src="https://l2oko.ru/fonts/partners-icons.svg">
-                </div>
-                <h3>ПАРТНЕРАМ Л2 ОКО</h3>
-                <ul class="">
-                    <li>Возможность зарабатывать</li>
-                    <li>Владельцам групп, клиенты</li>
-                    <li>Пиаробмен</li>
-                    <li>Размещение логотипа</li>
-                    <li>Привилегии партнерства</li>
-                    <li>Акции</li>
-                    <li>Скидки</li>
-                </ul>
             </div>
         </div>
     </div>

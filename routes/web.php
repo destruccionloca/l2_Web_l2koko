@@ -46,8 +46,8 @@ Route::group(['prefix' => 'dashboard','middleware' => ['auth']],function() {
     Route::resource('/ad', 'Dashboard\AdsController');
     Route::resource('/rate', 'Dashboard\RatesController');
     Route::resource('/chronicle', 'Dashboard\ChroniclesController');
-    Route::get('/delete/{chronicle}',['uses' => 'Dashboard\ChroniclesController@destroy', 'as' => 'chronicle.delete']);
-    Route::get('/delete/{rate}',['uses' => 'Dashboard\RatesController@destroy', 'as' => 'rate.delete']);
+    Route::get('/delete/chronicle/{chronicle}',['uses' => 'Dashboard\ChroniclesController@destroy', 'as' => 'chronicle.delete']);
+    Route::get('/delete/rate/{rate}',['uses' => 'Dashboard\RatesController@destroy', 'as' => 'rate.delete']);
     Route::post('/rate/sort', ['uses' => 'Dashboard\RatesController@sort','as' => 'rate.sort']);
     Route::post('/chronicle/sort', ['uses' => 'Dashboard\ChroniclesController@sort','as' => 'chronicle.sort']);
     Route::get('/settings/',['uses' => 'Dashboard\SettingsController@edit', 'as' => 'settings']);

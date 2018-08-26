@@ -2,7 +2,23 @@
 <html>
 <head>
     <title>{{ $title }}</title>
-    <link rel="icon" href="/public/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
     <meta charset="utf-8">
     <meta name="description" content="{{ $description }}" />
     <meta name="keywords" content="{{ $keywords }}" />
@@ -101,7 +117,7 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
         <div class="row header-pic-title justify-content-start align-items-end">
             <div class="col-lg-10">
                 <h1>{{ $h1 }}</h1>
-                <p>Анонсы игровых серверов Lineage 2</p>
+                <p>{{ $p }}</p>
             </div>
         </div>
     </div>
@@ -133,15 +149,15 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
                 <img src="{{ asset('fonts/footer-logo.svg') }}">
             </div>
             <div class="col-4 d-flex justify-content-center footer-up">
-                <div class="to-up d-flex flex-column">
+                <a href="#logo" class="to-up d-flex flex-column">
                     <img src="{{ asset('fonts/up.svg') }}">
                     <span>Вверх</span>
-                </div>
+                </a>
             </div>
             <div class="col-4 d-flex justify-content-end footer-soc">
-                <a href="#" target="_blank"><img src="{{ asset('fonts/mail.svg') }}"></a>
+                <a href="malito:admin@l2oko.ru" target="_blank"><img src="{{ asset('fonts/mail.svg') }}"></a>
                 <a href="#" target="_blank"><img src="{{ asset('fonts/skype.svg') }}"></a>
-                <a href="#" target="_blank"><img src="{{ asset('fonts/vk.svg') }}"></a>
+                <a href="https://vk.com/l2oko" target="_blank"><img src="{{ asset('fonts/vk.svg') }}"></a>
             </div>
         </div>
         <div class="row footer-first-menu">
@@ -149,12 +165,12 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
                 <h5>l2oko.ru - l2 анонсер № 1</h5>
             </div>
             <div class="col-4 d-flex justify-content-center footer-but-add">
-                <a class="btn btn-danger">Добавить сервер</a>
+                <a href="https://l2oko.ru/addserver" class="btn btn-danger">Добавить сервер</a>
             </div>
             <div class="col-4 d-flex justify-content-end footer-menu">
-                <a href="" target="_blank">Главная</a>
-                <a href="" target="_blank">Контакты</a>
-                <a href="" target="_blank">Карта сайта</a>
+                <a href="https://l2oko.ru" >Главная</a>
+                <a href="https://l2oko.ru/page/kontakty" >Контакты</a>
+                <a href="" >Карта сайта</a>
             </div>
         </div>
         <div class="row footer-second-menu">
@@ -163,11 +179,11 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
                 <img src="{{ asset('fonts/webmoney.svg') }}">
             </div>
             <div class="col-9 d-flex justify-content-end footer-menu">
-                <a href="" target="_blank">Выделение</a>
-                <a href="" target="_blank">Брендирование</a>
-                <a href="" target="_blank">Баннеры</a>
-                <a href="" target="_blank">Кросспостинг</a>
-                <a href="" target="_blank">Список лучших</a>
+                <a href="https://l2oko.ru/page/vydelenie" >Выделение</a>
+                <a href="https://l2oko.ru/page/brendirovanie">Брендирование</a>
+                <a href="https://l2oko.ru/page/bannery" >Баннеры</a>
+                <a href="https://l2oko.ru/page/krossposting" >Кросспостинг</a>
+                <a href="https://l2oko.ru/page/spisok_luchshikh" >Список лучших</a>
             </div>
         </div>
         <div class="row footer-copi">
@@ -180,11 +196,11 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
                 </p>
             </div>
             <div class="col-3 d-flex justify-content-end flex-column contact">
-                <p>
-                    dev by <a href="">trick</a>
+                <p style="text-transform: uppercase">
+                    dev by <a target="_blank" href="https://vk.com/andreev_trick">trick</a>
                 </p>
-                <p>
-                    adv by <a href="">wspn</a>
+                <p style="text-transform: uppercase">
+                    adv by <a target="_blank" style="text-transform: uppercase" href="http://wspn.ru/">wspn</a>
                 </p>
             </div>
         </div>
@@ -201,6 +217,32 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
 <!--JS-->
 @yield('include_js_lib')
 @yield('include_js')
+<script>
+    jQuery(document).ready(function(){
+        // Add scrollspy to <body>
+        // Add smooth scrolling on all links inside the navbar
+        $(".to-up").on('click', function(event) {
+            // Make sure this.hash has a value before overriding default behavior
+            if (this.hash !== "") {
+                // Prevent default anchor click behavior
+                event.preventDefault();
+
+                // Store hash
+                var hash = this.hash;
+
+                // Using jQuery's animate() method to add smooth page scroll
+                // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                }, 800, function(){
+
+                    // Add hash (#) to URL when done scrolling (default click behavior)
+                    window.location.hash = hash;
+                });
+            }  // End if
+        });
+    });
+</script>
 <!--END JS -->
 
 @if (session('status'))

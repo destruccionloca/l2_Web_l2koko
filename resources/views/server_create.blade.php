@@ -14,11 +14,11 @@
 </div>
 <div class="contaner-fluid">
     <div class="container page-content clearboth">
-        <div class="row">
-            <div class="col-12 page-title-2 align-items-center d-flex">
-                <span class="unactive">Главная / </span><span class="active ml-1">Добавить сервер</span>
-            </div>
-        </div>
+        {{--<div class="row">--}}
+            {{--<div class="col-12 page-title-2 align-items-center d-flex">--}}
+                {{--<span class="unactive">Главная / </span><span class="active ml-1">Добавить сервер</span>--}}
+            {{--</div>--}}
+        {{--</div>--}}
         {!! Form::open(["url" => route('site.server.store'),  'method' => "POST", "files" => "true"]) !!}
         <div class="row page-content-row">
             <!-- ERRORS -->

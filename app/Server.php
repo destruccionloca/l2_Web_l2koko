@@ -77,6 +77,10 @@ class Server extends Model
         return $query->whereModerated('0');
     }
 
+    public function scopeNotVip($query) {
+        $query->where("status_id", "<", "3");
+    }
+
     public function chronicle() {
         return $this->belongsTo('App\Chronicle');
     }

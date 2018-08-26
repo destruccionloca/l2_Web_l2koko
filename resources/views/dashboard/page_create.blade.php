@@ -23,12 +23,24 @@
             {!! Form::select('type', $types, isset($page->type)? $page->type : old("type"), ['id'=>'type', "class" => "form-control", "required" => ""]) !!}
         </div>
         <div class="form-group">
-            <label for="desc">Краткое описание</label>
+            <label for="desc">Описание (desc)</label>
             {!! Form::textarea('desc', isset($page->desc)? $page->desc : old("desc"), ['id'=>'desc', "class" => "form-control", "required" => ""]) !!}
         </div>
         <div class="form-group">
             <label for="text">Текст</label>
             {!! Form::textarea('text', isset($page->text)? $page->text : old("text"), ['id'=>'editor', "class" => "form-control", "required" => ""]) !!}
+        </div>
+        <div class="form-group">
+            <label for="keywords">h1</label>
+            {!! Form::text('h1', isset($page->h1)? $page->h1 : old("h1"), ['id'=>'h1', "class" => "form-control", "required" => ""]) !!}
+        </div>
+        <div class="form-group">
+            <label for="keywords">p</label>
+            {!! Form::text('p', isset($page->p)? $page->p : old("p"), ['id'=>'p', "class" => "form-control", "required" => ""]) !!}
+        </div>
+        <div class="form-group">
+            <label for="keywords">Заголовок</label>
+            {!! Form::text('h2', isset($page->h2)? $page->h2 : old("h2"), ['id'=>'h2', "class" => "form-control", "required" => ""]) !!}
         </div>
         <div class="form-group">
         @if (isset($page))
