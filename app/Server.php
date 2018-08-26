@@ -20,7 +20,10 @@ class Server extends Model
         'social_fb',
         'social_tw',
         'social_icq',
-        'name'
+        'name',
+        'h1',
+        'p',
+        'title'
     ];
 
 

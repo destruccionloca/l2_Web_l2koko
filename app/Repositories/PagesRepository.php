@@ -32,7 +32,7 @@ class PagesRepository extends Repository
 //        }
         $data = $request->all();
         if(empty($data['alias'])) {
-            $data['alias'] = $this->transliterate($data['title']);
+            $data['alias'] = $this->transliterate($data['name']);
         }
         if($this->one($data['alias'],FALSE)) {
             $request->merge(array('alias' => $data['alias']));
@@ -50,6 +50,7 @@ class PagesRepository extends Repository
             'h1' => $data['h1'],
             'h2' => $data['h2'],
             'p' => $data['p'],
+            'name' => $data['name'],
         ]);
 
         return ['status' => 'Страница добавлена'];
@@ -62,7 +63,7 @@ class PagesRepository extends Repository
 //        }
         $data = $request->all();
         if(empty($data['alias'])) {
-            $data['alias'] = $this->transliterate($data['title']);
+            $data['alias'] = $this->transliterate($data['name']);
         }
 
         $result = $this->one($data['alias'],FALSE);
@@ -83,6 +84,7 @@ class PagesRepository extends Repository
             'h1' => $data['h1'],
             'h2' => $data['h2'],
             'p' => $data['p'],
+            'name' => $data['name'],
         ]);
 
         return ['status' => 'Статья обновлена'];

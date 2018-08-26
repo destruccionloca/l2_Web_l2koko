@@ -75,7 +75,9 @@ class ServerController extends SiteController
     }
 
     public function show(Server $server) {
-        $this->title = $server->name;
+        $this->title = $server->title;
+        $this->h1 = $server->h1;
+        $this->p = $server->p;
         $this->content = view('server_show')->with(["server" => $server])->render();
         return $this->renderOutput();
     }

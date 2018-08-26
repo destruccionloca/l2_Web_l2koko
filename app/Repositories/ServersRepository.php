@@ -52,6 +52,9 @@ class ServersRepository extends Repository
             $this->model->social_tw = $data["tw"];
             $this->model->social_icq = $data["icq"];
             $this->model->alias = $data["alias"];
+            $this->model->title = $data["title"];
+            $this->model->h1 = $data["h1"];
+            $this->model->p = $data["p"];
             if ($this->model->save()) {
                 if ($request->hasFile('picture')) {
                     $image = $request->file('picture');
@@ -110,6 +113,9 @@ class ServersRepository extends Repository
             $server->social_tw = $data["tw"];
             $server->social_icq = $data["icq"];
             $server->alias = $data["alias"];
+            $server->title = $data["title"];
+            $server->h1 = $data["h1"];
+            $server->p = $data["p"];
             if($server->save()) {
                 if ($request->hasFile('picture')) {
                     $image = $request->file('picture');

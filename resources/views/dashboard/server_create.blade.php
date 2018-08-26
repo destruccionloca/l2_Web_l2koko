@@ -63,6 +63,18 @@
                     {!! Form::text('icq', isset($server->social_icq)? $server->social_icq : old("icq"), ['id'=>'icq', "class" => "form-control", "placeholder" => "2346223453"]) !!}
                 </div>
                 <div class="form-group">
+                    <label for="h1">h1</label>
+                    {!! Form::text('h1', isset($server->h1)? $server->h1 : old("h1"), ['id'=>'h1', "class" => "form-control"]) !!}
+                </div>
+                <div class="form-group">
+                    <label for="p">p</label>
+                    {!! Form::text('p', isset($server->p)? $server->p : old("p"), ['id'=>'p', "class" => "form-control"]) !!}
+                </div>
+                <div class="form-group">
+                    <label for="title">title</label>
+                    {!! Form::text('title', isset($server->title)? $server->title : old("title"), ['id'=>'title', "class" => "form-control"]) !!}
+                </div>
+                <div class="form-group">
                     <label class="col-12">Изображение для кросспостинга</label>
                         @if(isset($server->picture))
                         <div class="row items-push">
