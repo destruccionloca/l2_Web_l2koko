@@ -47,14 +47,14 @@ class ServersRepository extends Repository
             $this->model->rate_id = $data["rate_id"];
             $this->model->link = $data["link"];
             $this->model->email = $data["email"];
-            $this->model->social_vk = $data["vk"];
-            $this->model->social_fb = $data["fb"];
-            $this->model->social_tw = $data["tw"];
-            $this->model->social_icq = $data["icq"];
+            $this->model->social_vk = isset($data["vk"])? $data["vk"]: null;
+            $this->model->social_fb = isset($data["fb"])? $data["fb"]: null;;
+            $this->model->social_tw = isset($data["tw"])? $data["tw"]: null;
+            $this->model->social_icq = isset($data["icq"])? $data["icq"]: null;
             $this->model->alias = $data["alias"];
-            $this->model->title = $data["title"];
-            $this->model->h1 = $data["h1"];
-            $this->model->p = $data["p"];
+            $this->model->title = isset($data["title"])? $data["title"]: null;
+            $this->model->h1 = isset($data["h1"])? $data["h1"]: null;
+            $this->model->p = isset($data["p"])? $data["p"]: null;
             if ($this->model->save()) {
                 if ($request->hasFile('picture')) {
                     $image = $request->file('picture');
@@ -108,14 +108,14 @@ class ServersRepository extends Repository
             $server->status_id = $data["status_id"];
             $server->link = $data["link"];
             $server->email = $data["email"];
-            $server->social_vk = $data["vk"];
-            $server->social_fb = $data["fb"];
-            $server->social_tw = $data["tw"];
-            $server->social_icq = $data["icq"];
+            $server->social_vk = isset($data["vk"])? $data["vk"]: null;
+            $server->social_fb = isset($data["fb"])? $data["fb"]: null;
+            $server->social_tw = isset($data["tw"])? $data["tw"]: null;
+            $server->social_icq = isset($data["icq"])? $data["icq"]: null;
             $server->alias = $data["alias"];
-            $server->title = $data["title"];
-            $server->h1 = $data["h1"];
-            $server->p = $data["p"];
+            $server->title = isset($data["title"])? $data["title"]: null;
+            $server->h1 = isset($data["h1"])? $data["h1"]: null;
+            $server->p = isset($data["p"])? $data["p"]: null;
             if($server->save()) {
                 if ($request->hasFile('picture')) {
                     $image = $request->file('picture');

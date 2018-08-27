@@ -36,7 +36,7 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-input-block d-flex align-items-center">
-                                <span class="form-input-title">Название проекта</span>
+                                <span class="form-input-title">Название проекта</span> <span class="text-danger">*</span>
                             </div>
                         </div>
                         <div class="col-8">
@@ -48,7 +48,7 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-input-block d-flex align-items-center">
-                                <span class="form-input-title">Сслыка на проект:</span>
+                                <span class="form-input-title">Адрес сайта (URL)</span><span class="text-danger">*</span>
                             </div>
                         </div>
                         <div class="col-8">
@@ -60,7 +60,7 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-input-block d-flex align-items-center">
-                                <span class="form-input-title">Хроники</span>
+                                <span class="form-input-title">Хроники</span><span class="text-danger">*</span>
                             </div>
                         </div>
                         <div class="col-8">
@@ -72,7 +72,7 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-input-block d-flex align-items-center">
-                                <span class="form-input-title">Рейт</span>
+                                <span class="form-input-title">Рейт</span><span class="text-danger">*</span>
                             </div>
                         </div>
                         <div class="col-8">
@@ -85,7 +85,7 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-input-block d-flex align-items-center">
-                                <span class="form-input-title">Дата открытия</span>
+                                <span class="form-input-title">Дата и время открытия</span><span class="text-danger">*</span>
                             </div>
                         </div>
                         <div class="col-8">
@@ -97,7 +97,7 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-input-block d-flex align-items-center">
-                                <span class="form-input-title">E-mail</span>
+                                <span class="form-input-title">E-mail</span><span class="text-danger">*</span>
                             </div>
                         </div>
                         <div class="col-8">
@@ -106,18 +106,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="form-input-block d-flex align-items-center">
-                                <span class="form-input-title">Группа Вконтакте</span>
-                            </div>
-                        </div>
-                        <div class="col-8">
-                            <div class="form-input-block d-flex align-items-center">
-                                {!! Form::url('vk', old("vk"), ['id'=>'vk', "class" => "form-input", "placeholder" => "https://vk.com/l2oko"]) !!}
-                            </div>
-                        </div>
-                    </div>
+                    {{--<div class="row">--}}
+                        {{--<div class="col-4">--}}
+                            {{--<div class="form-input-block d-flex align-items-center">--}}
+                                {{--<span class="form-input-title">Группа Вконтакте</span>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="col-8">--}}
+                            {{--<div class="form-input-block d-flex align-items-center">--}}
+                                {{--{!! Form::url('vk', old("vk"), ['id'=>'vk', "class" => "form-input", "placeholder" => "https://vk.com/l2oko"]) !!}--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                 </div>
                 <div class="col-4"></div>
             </div>
@@ -126,7 +126,7 @@
                     <div class="row p-1">
                         <div class="col-4">
                             <div class="form-input-block d-flex align-items-center">
-                                <span class="form-input-title">Описание проекта:</span>
+                                <span class="form-input-title">Описание проекта</span>
                             </div>
                         </div>
                         <div class="col-8">
@@ -135,54 +135,54 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row p-1">
-                        <div class="col-4">
-                            <div class="form-input-block d-flex align-items-center">
-                                <span class="form-input-title">Краткое описание проекта:</span>
-                            </div>
-                        </div>
-                        <div class="col-8">
-                            <div class="form-input-block d-flex align-items-center">
-                                {!! Form::textarea('short_desc', isset($server->short_desc)? $server->short_desc : old("short_desc"), ['id'=>'short_desc', "class" => "form-textarea"]) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="form-input-block d-flex align-items-center">
-                                <span class="form-input-title">Facebook</span>
-                            </div>
-                        </div>
-                        <div class="col-8">
-                            <div class="form-input-block d-flex align-items-center">
-                                {!! Form::url('fb', old("fb"), ['id'=>'fb', "class" => "form-input", "placeholder" => "https://www.facebook.com/l2oko/"]) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="form-input-block d-flex align-items-center">
-                                <span class="form-input-title">Twitter</span>
-                            </div>
-                        </div>
-                        <div class="col-8">
-                            <div class="form-input-block d-flex align-items-center">
-                                {!! Form::url('tw', old("tw"), ['id'=>'tw', "class" => "form-input", "placeholder" => "https://twitter.com/l2oko/"]) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="form-input-block d-flex align-items-center">
-                                <span class="form-input-title">ICQ</span>
-                            </div>
-                        </div>
-                        <div class="col-8">
-                            <div class="form-input-block d-flex align-items-center">
-                                {!! Form::text('icq', old("icq"), ['id'=>'icq', "class" => "form-input", "placeholder" => "123521351265"]) !!}
-                            </div>
-                        </div>
-                    </div>
+                    {{--<div class="row p-1">--}}
+                        {{--<div class="col-4">--}}
+                            {{--<div class="form-input-block d-flex align-items-center">--}}
+                                {{--<span class="form-input-title">Краткое описание проекта:</span>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="col-8">--}}
+                            {{--<div class="form-input-block d-flex align-items-center">--}}
+                                {{--{!! Form::textarea('short_desc', isset($server->short_desc)? $server->short_desc : old("short_desc"), ['id'=>'short_desc', "class" => "form-textarea"]) !!}--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="row">--}}
+                        {{--<div class="col-4">--}}
+                            {{--<div class="form-input-block d-flex align-items-center">--}}
+                                {{--<span class="form-input-title">Facebook</span>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="col-8">--}}
+                            {{--<div class="form-input-block d-flex align-items-center">--}}
+                                {{--{!! Form::url('fb', old("fb"), ['id'=>'fb', "class" => "form-input", "placeholder" => "https://www.facebook.com/l2oko/"]) !!}--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="row">--}}
+                        {{--<div class="col-4">--}}
+                            {{--<div class="form-input-block d-flex align-items-center">--}}
+                                {{--<span class="form-input-title">Twitter</span>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="col-8">--}}
+                            {{--<div class="form-input-block d-flex align-items-center">--}}
+                                {{--{!! Form::url('tw', old("tw"), ['id'=>'tw', "class" => "form-input", "placeholder" => "https://twitter.com/l2oko/"]) !!}--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="row">--}}
+                        {{--<div class="col-4">--}}
+                            {{--<div class="form-input-block d-flex align-items-center">--}}
+                                {{--<span class="form-input-title">ICQ</span>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="col-8">--}}
+                            {{--<div class="form-input-block d-flex align-items-center">--}}
+                                {{--{!! Form::text('icq', old("icq"), ['id'=>'icq', "class" => "form-input", "placeholder" => "123521351265"]) !!}--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                     <div class="row">
                         <div class="col-4">
                             <div class="form-input-block d-flex align-items-center">
