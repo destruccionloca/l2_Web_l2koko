@@ -956,39 +956,43 @@ nav .active > a, nav .def-nav > a:hover {
   color: #3c4152; }
 
 .form-input {
-  border: solid 1px #e1e3e5;
-  border-radius: 15px;
+  border: solid 3px #e1e3e5;
+  border-radius: 5px;
   height: 30px;
   width: 300px;
   padding-left: 10px;
   padding-right: 5px;
   font-family: "Roboto";
-  font-weight: 300;
-  font-size: 15px;
-  color: #3c4152; }
+  font-weight: 400;
+  font-size: 14px;
+  color: #000000; }
 
 .form-select {
-  border: solid 1px #e1e3e5;
-  border-radius: 15px;
+  border: solid 3px #e1e3e5;
+  border-radius: 5px;
   height: 30px;
   width: 300px;
   padding-left: 5px;
   padding-right: 15px;
   font-family: "Roboto";
-  font-weight: 300;
-  font-size: 15px;
-  color: #3c4152; }
+  font-weight: 400;
+  font-size: 14px;
+  color: #000000; }
 
 .form-textarea {
-  border: solid 1px #e1e3e5;
-  border-radius: 15px;
+  border: solid 3px #e1e3e5;
+  border-radius: 5px;
   width: 300px;
   padding-left: 5px;
   padding-right: 15px;
   font-family: "Roboto", sans-serif;
-  font-weight: 600;
-  font-size: 15px;
-  color: #3c4152; }
+  font-weight: 400;
+  font-size: 14px;
+  color: #000000; }
+
+.form-input::placeholder, .form-select::placeholder, .form-textarea::placeholder {
+  color: #e1e3e5;
+}
 
 .page-content-row {
   padding: 15px 0;

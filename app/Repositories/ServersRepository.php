@@ -34,7 +34,7 @@ class ServersRepository extends Repository
                 return ['error' => 'Сервер с таким названием уже существует'];
             }
             $this->model->description = $data["description"];
-            $this->model->short_desc = $data["short_desc"];
+            $this->model->short_desc = isset($data["short_desc"])? $data["short_desc"]: null;
             $this->model->start_at = Carbon::createFromFormat('d.m.Y H:i', $data['start_at']);
             $this->model->chronicle_id = $data["chronicle_id"];
             if ($from == "front_side") {
@@ -101,7 +101,7 @@ class ServersRepository extends Repository
                 return ['error' => 'Статья с таким названием уже существует'];
             }
             $server->description = $data["description"];
-            $server->short_desc = $data["short_desc"];
+            $server->short_desc = isset($data["short_desc"])? $data["short_desc"]: null;
             $server->start_at = Carbon::createFromFormat( 'd.m.Y H:i' ,$data['start_at']);
             $server->chronicle_id = $data["chronicle_id"];
             $server->rate_id = $data["rate_id"];

@@ -25,10 +25,13 @@ class ServerController extends SiteController
         $this->description = $this->settings['description'];
         $this->keywords = $this->settings['keywords'];
         $this->inc_js_lib = array_add($this->inc_js_lib,'mask',array('url' => '<script src='.$this->pub_path.'/js/jquery.maskedinput.min.js></script>'));
-
     }
 
     public function create() {
+        $this->title = $this->settings['add_server_title'];
+        $this->h1 = $this->settings['add_server_h1'];
+        $this->p = $this->settings['add_server_p'];
+        $this->description = $this->settings['add_server_desc'];
         $rates = Rate::orderBy('sort')->get();
         $chronicles = Chronicle::orderBy('sort')->get();
         $this->inc_js = "
@@ -61,7 +64,7 @@ class ServerController extends SiteController
         }
         $this->inputs = array_add($this->inputs, "rates", $inp_rates);
         $this->inputs = array_add($this->inputs, "chronicles", $inp_chronicles);
-        $this->content = view('server_create')->with(["inputs" => $this->inputs])->render();
+        $this->content = view('server_create')->with(["inputs" => $this->inputs, "h2" => $this->settings['add_server_h2']])->render();
         return $this->renderOutput();
     }
 
@@ -78,6 +81,7 @@ class ServerController extends SiteController
         $this->title = $server->title;
         $this->h1 = $server->h1;
         $this->p = $server->p;
+        $this->description = $server->description;
         $this->content = view('server_show')->with(["server" => $server])->render();
         return $this->renderOutput();
     }

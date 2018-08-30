@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row main-filter">
             <div class="col-md-12">
-                <div class="page-title"><hr><span>Добавить сервер:</span></div>
+                <div class="page-title"><hr><span>{{ $h2  }}</span></div>
             </div>
             {{--<div class="col-md-6">--}}
                 {{--<div class="page-but" data-toggle="modal" data-target="#myModal">Добавить услугу</div>--}}
@@ -90,7 +90,7 @@
                         </div>
                         <div class="col-8">
                             <div class="form-input-block d-flex align-items-center">
-                                {!! Form::text('start_at', old("start_at"), ['id'=>'start_at', "class" => "form-input datepicker-here", "required" => "", "data-timepicker" => "true"]) !!}
+                                {!! Form::text('start_at', old("start_at"), ['id'=>'start_at', "class" => "form-input datepicker-here", "required" => "", "data-timepicker" => "true", "placeholder" => "Выбрать"]) !!}
                             </div>
                         </div>
                     </div>
@@ -126,12 +126,12 @@
                     <div class="row p-1">
                         <div class="col-4">
                             <div class="form-input-block d-flex align-items-center">
-                                <span class="form-input-title">Описание проекта</span>
+                                <span class="form-input-title">Описание проекта<br/>(необязательно)</span>
                             </div>
                         </div>
                         <div class="col-8">
                             <div class="form-input-block d-flex align-items-center">
-                                {!! Form::textarea('description', isset($server->description)? $server->description : old("description"), ['id'=>'description', "class" => "form-textarea"]) !!}
+                                {!! Form::textarea('description', isset($server->description)? $server->description : old("description"), ['id'=>'description', "class" => "form-textarea", "placeholder" => "Чем вы отличаетесь от других?"]) !!}
                             </div>
                         </div>
                     </div>
@@ -186,7 +186,7 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-input-block d-flex align-items-center">
-                                <span class="form-input-title">Изображение</span>
+                                <span class="form-input-title">Изображение<br/>(537x240 px)</span>
                             </div>
                         </div>
                         <div class="col-8">
@@ -201,7 +201,7 @@
             <div class="row page-content-row">
                 <div class="col-8">
                     <div class="form-input-block d-flex align-items-center">
-                        <input class="custom-select filter-but align-items-center" type="submit" value="Отправить">
+                        <input class="custom-select filter-but align-items-center" type="submit" value="Отправить" style="width: 95px">
                     </div>
                 </div>
             </div>
