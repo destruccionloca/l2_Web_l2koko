@@ -7,7 +7,7 @@
             {!! Form::open(["url" => route('settings'), 'method' => "post", "id" => "settings", "files" => "true"]) !!}
             <div class="col-md-12">
                 @foreach($settings as $key => $value)
-                    @if($key == "main_pic" || $key == "last_upd" || $key == "filter_seotext")
+                    @if($key == "main_pic" || $key == "last_upd" || $key == "filter_seotext" || $key == "right_text")
                         @continue
                     @endif
                 <div class="form-group">
@@ -18,6 +18,10 @@
                 <div class="form-group">
                     <label for="text">Seo текст</label>
                     {!! Form::textarea('filter_seotext', isset($settings['filter_seotext'])? $settings['filter_seotext'] : old("filter_seotext"), ['id'=>'editor', "class" => "form-control", "required" => ""]) !!}
+                </div>
+                <div class="form-group">
+                    <label for="right_text">Текст справа</label>
+                    {!! Form::textarea('right_text', isset($settings['right_text'])? $settings['right_text'] : old("right_text"), ['id'=>'right_text', "class" => "form-control", "required" => ""]) !!}
                 </div>
                 <div class="form-group">
                     <label class="col-12">Изображение на главной (1920x285)</label>

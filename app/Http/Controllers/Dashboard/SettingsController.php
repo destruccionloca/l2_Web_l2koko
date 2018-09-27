@@ -25,6 +25,7 @@ class SettingsController extends DashboardController
         $this->inc_js = "
         <script>
             CKEDITOR.replace( 'editor' );
+            CKEDITOR.replace( 'right_text' );
         </script>
         ";
         $this->content = view('dashboard.setting_edit')->with(array("settings" => $this->settings))->render();

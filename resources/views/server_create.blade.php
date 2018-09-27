@@ -20,7 +20,7 @@
             {{--</div>--}}
         {{--</div>--}}
         {!! Form::open(["url" => route('site.server.store'),  'method' => "POST", "files" => "true"]) !!}
-        <div class="row page-content-row">
+        <div class="row page-content-row border-bot-no no_padding mt-3">
             <!-- ERRORS -->
             @if (count($errors) > 0)
                     <div class="col-8">
@@ -31,8 +31,13 @@
                             </ul>
                     </div>
             @endif
+            <div class="col-md-6 d-sm-block d-md-none">
+                <p>
+                    {!! $right_text !!}
+                </p>
+            </div>
             <!-- END ERRORS -->
-                <div class="col-8">
+                <div class="col-md-6 border-right-add">
                     <div class="row">
                         <div class="col-4">
                             <div class="form-input-block d-flex align-items-center">
@@ -85,7 +90,7 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-input-block d-flex align-items-center">
-                                <span class="form-input-title">Дата и время открытия</span><span class="text-danger">*</span>
+                                <span class="form-input-title">Дата и время открытия<span class="text-danger">*</span></span>
                             </div>
                         </div>
                         <div class="col-8">
@@ -119,10 +124,14 @@
                         {{--</div>--}}
                     {{--</div>--}}
                 </div>
-                <div class="col-4"></div>
+                <div class="col-md-6 d-none d-md-block">
+                    <p>
+                    {!! $right_text !!}
+                    </p>
+                </div>
             </div>
-            <div class="row page-content-row">
-                <div class="col-8">
+            <div class="row page-content-row border-bot-no no_padding">
+                <div class="col-md-6 border-right-add">
                     <div class="row p-1">
                         <div class="col-4">
                             <div class="form-input-block d-flex align-items-center">
@@ -186,7 +195,7 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-input-block d-flex align-items-center">
-                                <span class="form-input-title">Изображение<br/>(537x240 px)</span>
+                                <span class="form-input-title">Изображение<br/>(537x240 px) </span>
                             </div>
                         </div>
                         <div class="col-8">
@@ -196,10 +205,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4"></div>
+                <div class="col-md-4"></div>
             </div>
-            <div class="row page-content-row">
-                <div class="col-8">
+            <div class="row page-content-row no_padding mb-3">
+                <div class="col-6 border-right-add">
                     <div class="form-input-block d-flex align-items-center">
                         <input class="custom-select filter-but align-items-center" type="submit" value="Отправить" style="width: 95px">
                     </div>

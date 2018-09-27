@@ -82,7 +82,7 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
 
 
         <div class="d-inline-block d-lg-none" data-toggle="collapse" data-target="#mobile-nav" aria-controls="mobile-nav" aria-expanded="false" aria-label="Toggle navigation">
-            <i style="cursor: pointer;color: #000000" class="fa fa-bars fa-2x"></i>
+            <img src="{{ asset('images/menu-icon.svg') }}">
         </div>
 
         <div class="collapse mt-2" id="mobile-nav">
@@ -105,8 +105,8 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
                         <a href="{{route("site.page.show", ["page" => $page_->alias])}}">{{$page_->title}}</a>
                     </li>
                 @endforeach
-                <li class="mobile-nav-item add-nav">
-                    <a href="{{ route('site.server.create') }}" >Добавить сервер</a>
+                <li class="mobile-nav-item d-flex justify-content-center">
+                    <a class="btn btn-danger add-nav" href="{{ route('site.server.create') }}" >Добавить сервер</a>
                 </li>
             </ul>
         </div>
@@ -145,40 +145,40 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
 <div class="container-fluid footer">
     <div class="container">
         <div class="row footer-up-block">
-            <div class="col-4 d-flex justify-content-start footer-logo">
-                <img src="{{ asset('fonts/footer-logo.svg') }}">
-            </div>
-            <div class="col-4 d-flex justify-content-center footer-up">
+            <div class="col-12 d-flex justify-content-center footer-up">
                 <a href="#logo" class="to-up d-flex flex-column">
                     <img src="{{ asset('fonts/up.svg') }}">
                     <span>Вверх</span>
                 </a>
             </div>
-            <div class="col-4 d-flex justify-content-end footer-soc">
-                <a href="malito:admin@l2oko.ru" target="_blank"><img src="{{ asset('fonts/mail.svg') }}"></a>
-                <a href="#" target="_blank"><img src="{{ asset('fonts/skype.svg') }}"></a>
-                <a href="https://vk.com/l2oko" target="_blank"><img src="{{ asset('fonts/vk.svg') }}"></a>
+            <div class="col-6 d-flex justify-content-start footer-logo">
+                <img src="{{ asset('fonts/footer-logo.svg') }}">
+            </div>
+            <div class="col-6 d-flex justify-content-end footer-soc">
+                <a class="mt-2" href="mailto:info@l2oko.ru" target="_blank"><img src="{{ asset('fonts/mail.svg') }}"></a>
+                <a class="mt-2" href="#" target="_blank"><img src="{{ asset('fonts/skype.svg') }}"></a>
+                <a class="mt-2" href="https://vk.com/l2oko" target="_blank"><img src="{{ asset('fonts/vk.svg') }}"></a>
             </div>
         </div>
         <div class="row footer-first-menu">
-            <div class="col-4 d-flex justify-content-start footer-h1">
+            <div class="col-sm-4 d-flex justify-content-start footer-h1">
                 <h5>l2oko.ru - l2 анонсер № 1</h5>
             </div>
-            <div class="col-4 d-flex justify-content-center footer-but-add">
+            <div class="col-sm-4 d-flex justify-content-center footer-but-add">
                 <a href="https://l2oko.ru/addserver" class="btn btn-danger">Добавить сервер</a>
             </div>
-            <div class="col-4 d-flex justify-content-end footer-menu">
+            <div class="col-md-4 d-flex justify-content-end footer-menu flex-wrap">
                 <a href="https://l2oko.ru" >Главная</a>
                 <a href="https://l2oko.ru/page/kontakty" >Контакты</a>
                 <a href="" >Карта сайта</a>
             </div>
         </div>
         <div class="row footer-second-menu">
-            <div class="col-3 d-flex justify-content-start">
+            <div class="col-sm-3 d-flex justify-content-start">
                 <img src="{{ asset('fonts/ssl.svg') }}">
                 <img src="{{ asset('fonts/webmoney.svg') }}">
             </div>
-            <div class="col-9 d-flex justify-content-end footer-menu">
+            <div class="col-md-9 d-flex justify-content-end footer-menu flex-wrap">
                 <a href="https://l2oko.ru/page/vydelenie" >Выделение</a>
                 <a href="https://l2oko.ru/page/brendirovanie">Брендирование</a>
                 <a href="https://l2oko.ru/page/bannery" >Баннеры</a>

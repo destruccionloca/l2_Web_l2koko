@@ -24,7 +24,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header p-4">
-                                        <h5 class="modal-title-my" id="weekLabel-{{$day}}">Дата открытия серверов: <span class="modal-mes">{{$this_month}}</span> <span class="modal-day">{{$day}}</span></h5>
+                                        <h5 class="modal-title-my" id="weekLabel-{{$day}}">Дата открытия серверов: <span class="modal-day">{{$day}}</span> <span class="modal-mes">{{$this_month}}</span></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <div >&times;</div>
                                         </button>
@@ -291,7 +291,7 @@
                                     Спасибо что выбираете нас!
                                 </p>
                             </div>
-                            <div class="col-4">
+                            <div class="col-md-4">
                                 <div class="seo-img">
                                     <img src="https://l2oko.ru/fonts/gamers-icons.svg">
                                 </div>
@@ -310,7 +310,7 @@
                                     <li>Кросспостинг в соц. сети</li>
                                 </ul>
                             </div>
-                            <div class="col-4">
+                            <div class="col-md-4">
                                 <div class="seo-img">
                                     <img src="https://l2oko.ru/fonts/vladelcam-icons.svg">
                                 </div>
@@ -328,7 +328,7 @@
                                     <li>Скидки</li>
                                 </ul>
                             </div>
-                            <div class="col-4">
+                            <div class="col-md-4">
                                 <div class="seo-img">
                                     <img src="https://l2oko.ru/fonts/partners-icons.svg">
                                 </div>

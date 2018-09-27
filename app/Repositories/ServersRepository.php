@@ -10,19 +10,35 @@ namespace App\Repositories;
 
 
 use App\Server;
+use App\Mail\Servers;
 use Image;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+use App\Rate;
+use App\Chronicle;
+use App\Repositories\SettingsRepository;
 
 class ServersRepository extends Repository
 {
+    protected $settings;
+    protected $mails;
 
     public function __construct(Server $server) {
         $this->model = $server;
+        $setting  = new SettingsRepository(new \App\Setting);
+        $settings_col = $setting->get(["name", "param"]);
+        foreach ($settings_col as $setting_col) {
+            $this->settings[$setting_col->name] = $setting_col->param;
+        }
+        $this->mails = explode(";", $this->settings["mails"]);
     }
 
     public function add($request, $from = "back_side") {
         if ($request->has("name")) {
+            setlocale(LC_TIME, 'ru_RU.utf8');
             $data = $request->all();
+            $rate = Rate::find($data["rate_id"]);
+            $chronicle = Chronicle::find($data["chronicle_id"]);
             $this->model->name = $data["name"];
             if (empty($data['alias'])) {
                 $data['alias'] = $this->transliterate($data['name']);
@@ -48,13 +64,14 @@ class ServersRepository extends Repository
             $this->model->link = $data["link"];
             $this->model->email = $data["email"];
             $this->model->social_vk = isset($data["vk"])? $data["vk"]: null;
-            $this->model->social_fb = isset($data["fb"])? $data["fb"]: null;;
+            $this->model->social_fb = isset($data["fb"])? $data["fb"]: null;
             $this->model->social_tw = isset($data["tw"])? $data["tw"]: null;
             $this->model->social_icq = isset($data["icq"])? $data["icq"]: null;
             $this->model->alias = $data["alias"];
-            $this->model->title = isset($data["title"])? $data["title"]: null;
-            $this->model->h1 = isset($data["h1"])? $data["h1"]: null;
-            $this->model->p = isset($data["p"])? $data["p"]: null;
+            $this->model->title = isset($data["title"])? $data["title"]: $data["name"];
+            $this->model->h1 = isset($data["h1"])? $data["h1"] : $data["name"] . " - " . $chronicle->name . " " . $rate->name;
+            $this->model->p = isset($data["p"])? $data["p"] : "Открытие " . $this->model->start_at->format('d') . " " . $this->monthTrans($this->model->start_at->formatLocalized('%B')) . " В " . $this->model->start_at->format('H:i');
+            $this->model->h2 = isset($data["h2"])? $data["h2"] : $data['link'];
             if ($this->model->save()) {
                 if ($request->hasFile('picture')) {
                     $image = $request->file('picture');
@@ -71,7 +88,7 @@ class ServersRepository extends Repository
                             $img->save($storeFolder . "server-". $id . $img_type);
                         }
                         $img = Image::make($image);
-                        $img->fit(537,240)->insert($storeFolder . "/WATEMARK.png", "bottom-right")->save($storeFolder . "server-" . $id . $img_type);
+                        $img->fit(537,240)->insert($storeFolder . "/WATEMARK.png", "bottom-right")->save($storeFolder . "/server-" . $id . $img_type);
                         $this->model->picture = $img_type;
                         $this->model->update();
                     }
@@ -79,6 +96,7 @@ class ServersRepository extends Repository
                     $this->model->picture = "default";
                     $this->model->update();
                 }
+                $this->sendMail($this->model->name);
                 return ['status' => 'Сервер добавлен'];
             } else {
                 return ['error' => 'Ошибка добаления'];
@@ -88,6 +106,7 @@ class ServersRepository extends Repository
 
     public function update($request, $server) {
         if ($request->has("name")) {
+            setlocale(LC_TIME, 'ru_RU.utf8');
             $data = $request->all();
             $server->name = $data["name"];
             if(empty($data['alias'])) {
@@ -113,9 +132,10 @@ class ServersRepository extends Repository
             $server->social_tw = isset($data["tw"])? $data["tw"]: null;
             $server->social_icq = isset($data["icq"])? $data["icq"]: null;
             $server->alias = $data["alias"];
-            $server->title = isset($data["title"])? $data["title"]: null;
-            $server->h1 = isset($data["h1"])? $data["h1"]: null;
-            $server->p = isset($data["p"])? $data["p"]: null;
+            $server->title = isset($data["title"])? $data["title"]: $data["name"];
+            $server->h1 = isset($data["h1"])? $data["h1"]: $data["name"] . " - " . $server->chronicle->name . " " . $server->rate->name;
+            $server->p = isset($data["p"])? $data["p"] : "Открытие " . $server->start_at->format('d') ." ". $this->monthTrans($server->start_at->formatLocalized('%B')) . " В " . $server->start_at->format('H:i');
+            $server->h2 = isset($data["h2"])? $data["h2"] : $data['link'];
             if($server->save()) {
                 if ($request->hasFile('picture')) {
                     $image = $request->file('picture');
@@ -142,9 +162,24 @@ class ServersRepository extends Repository
         }
     }
 
+    private function monthTrans($month){
+        $m = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+        $m_ = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+        for ($i = 0; $i < count($m); $i++) {
+            if ($month == $m[$i]) {
+                return $m_[$i];
+            }
+        }
+    }
+
     public function one($alias, $attr = array()) {
         $server = parent::one($alias,$attr);
         return $server;
     }
 
+    private function sendMail($server){
+        foreach ($this->mails as $mail) {
+            Mail::to($mail)->send(new Servers(["server" => $server]));
+        }
+    }
 }

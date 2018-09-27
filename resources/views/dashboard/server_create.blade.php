@@ -67,6 +67,10 @@
                     {!! Form::text('h1', isset($server->h1)? $server->h1 : old("h1"), ['id'=>'h1', "class" => "form-control"]) !!}
                 </div>
                 <div class="form-group">
+                    <label for="h2">h2</label>
+                    {!! Form::text('h2', isset($server->h2)? $server->h2 : old("h2"), ['id'=>'h2', "class" => "form-control"]) !!}
+                </div>
+                <div class="form-group">
                     <label for="p">p</label>
                     {!! Form::text('p', isset($server->p)? $server->p : old("p"), ['id'=>'p', "class" => "form-control"]) !!}
                 </div>

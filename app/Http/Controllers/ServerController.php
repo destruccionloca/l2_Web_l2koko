@@ -38,13 +38,13 @@ class ServerController extends SiteController
         <script>
                $(function() {
                    
-                    $(\"#rate\").mask(\"x9ZZZZZZZZ\", {
-                            translation: {
-                              'Z': {
-                                pattern: /[0-9]/, optional: true
-                              }
-                            }
-                          });
+//                    $(\"#rate\").mask(\"x9ZZZZZZZZ\", {
+//                            translation: {
+//                              'Z': {
+//                                pattern: /[0-9]/, optional: true
+//                              }
+//                            }
+//                          });
             
 //                    $(\"input\").blur(function() {
 //                        $(\"#info\").html(\"Unmasked value: \" + $(this).mask());
@@ -64,7 +64,7 @@ class ServerController extends SiteController
         }
         $this->inputs = array_add($this->inputs, "rates", $inp_rates);
         $this->inputs = array_add($this->inputs, "chronicles", $inp_chronicles);
-        $this->content = view('server_create')->with(["inputs" => $this->inputs, "h2" => $this->settings['add_server_h2']])->render();
+        $this->content = view('server_create')->with(["inputs" => $this->inputs, "h2" => $this->settings['add_server_h2'], "right_text" => $this->settings["right_text"]])->render();
         return $this->renderOutput();
     }
 

@@ -227,11 +227,21 @@ class ServersController extends DashboardController
         return redirect('/dashboard/servers/')->with($result);
     }
 
-    private function crossPost($server, $token, $group_id, $tags = array()) {
+    private function crossPost(Server $server, $token, $group_id, $tags = array()) {
         $vkAPI = new Vk();
         $vkAPI->setAccessToken(["access_token" => $token]);
-        (isset($server->picture)) ? $image = '/var/www/alexroot/data/www/l2oko.ru/public/uploads/servers/server-'. $server->id . $server->picture : $image = "/var/www/alexroot/data/www/l2oko.ru/public/uploads/servers/DEFAULT.png";
-        if ($server->picture == "default") $image = "/var/www/alexroot/data/www/l2oko.ru/public/uploads/servers/DEFAULT.png";
+        if(isset($server->picture)) {
+            if ($server->picture == "default"){
+                $image = "/var/www/alexroot/data/www/l2oko.ru/public/uploads/servers/DEFAULT.png";
+            } else {
+                $image = '/var/www/alexroot/data/www/l2oko.ru/public/uploads/servers/server-'. $server->id . $server->picture;
+                if(!file_exists($image)) {
+                    $image = "/var/www/alexroot/data/www/l2oko.ru/public/uploads/servers/DEFAULT.png";
+                }
+            }
+        } else {
+            $image = "/var/www/alexroot/data/www/l2oko.ru/public/uploads/servers/DEFAULT.png";
+        }
         $text = $server->name. "\n" . $server->chronicle->name . "\n" . $server->rate->name . "\n" . $server->link. "\nОткрытие " . $server->start_at;
         if ($vkAPI->postToPublic($group_id, $text, $image, $tags)) {
 

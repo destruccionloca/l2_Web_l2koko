@@ -75,9 +75,12 @@ nav li {
 
 .def-nav {
   color: #1a1a1a;
-  margin: 0 15px; }
+  margin: 0 15px;
+}
+
 .def-nav .nav-link {
-  padding: 0 0 3px 0 !important; }
+  padding: 0 0 3px 0 !important;
+}
 
 nav .active > a, nav .def-nav > a:hover {
   background-color: transparent;
@@ -92,14 +95,13 @@ nav .active > a, nav .def-nav > a:hover {
   margin-left: 20px; }
 
 .add-nav {
-  margin-left: 20px;
-  border-radius: 7px;
-  padding: 0 10px;
-  background-color: #e41313;}
-
-.add-nav a {
-  color: #fff !important; }
-
+  font-size: 10px;
+  margin: 10px 0;
+  background-color: #e41313;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fff !important;
+}
 #header-pic {
   height: 275px;
   background-position: center center;
@@ -999,6 +1001,14 @@ nav .active > a, nav .def-nav > a:hover {
   border-bottom: solid 1px #e1e3e5;
 }
 
+.border-bot-no {
+  border-bottom: transparent;
+}
+
+.border-right-add {
+  border-right: solid 1px #e1e3e5;
+}
+
 .page-content-row:last-child {
   border-bottom: transparent;
 }
@@ -1260,10 +1270,9 @@ input[type=submit] {
   #header-pic {
     background-position: left center;
   }
-  #logo {
-    width: 57px;
-    height: 32px;
-    background: url("../images/logo-mob.svg?ver-3") no-repeat center center;
+
+  .navbar {
+    padding: 20px;
   }
 
   #filter-form {
@@ -1357,13 +1366,13 @@ input[type=submit] {
   margin: 0;
   font-family: "Roboto";
   font-weight: 400;
-  font-size: 15px;
+  font-size: 10px;
   color: #5b595c;
   cursor: pointer;
 }
 
 .mobile-nav-item:hover {
-  background-color: #b3b3b4;
+  background-color: transparent;
 }
 
 .new-string {

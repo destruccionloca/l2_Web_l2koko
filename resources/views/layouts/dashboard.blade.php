@@ -377,8 +377,7 @@ MAIN CONTENT LAYOUT
             $.notify({
                 icon: 'fa fa-warning',
                 title: '<strong>Ошибка</strong>',
-                url: '{{session('url')}}',
-                message: '{{session('error')}}'
+                message: '{{ session('error') }}'
             }, {
                 type: 'danger',
                 timer: 100000,

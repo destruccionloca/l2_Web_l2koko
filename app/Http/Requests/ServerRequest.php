@@ -30,9 +30,9 @@ class ServerRequest extends FormRequest
             'start_at' => 'required|date',
             'link' => 'required|url|max:190',
             'email' => 'required|email|max:190|unique:servers,email',
-            'vk' => 'url|max:190',
-            'fb' => 'url|max:190',
-            'tw' => 'url|max:190',
+            'vk' => 'max:190',
+            'fb' => 'max:190',
+            'tw' => 'max:190',
             'picture' => 'file|image'
         ];
     }

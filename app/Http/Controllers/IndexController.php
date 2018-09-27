@@ -82,7 +82,7 @@ class IndexController extends SiteController
                 e.preventDefault();
                 var rate = $('#rate').val();
                 var chronicle = $('#chronicle').val();                
-                document.location.href = 'http://l2oko.ru/filter/' + rate + '-' + chronicle;
+                document.location.href = 'http://l2oko.ru/lineage-2-servera/' + rate + '-' + chronicle;
             })
             
         });
@@ -126,7 +126,7 @@ class IndexController extends SiteController
         setlocale(LC_TIME, 'ru_RU.utf8');
         $this_day = $date->format('d');
 //        $this_month = iconv("cp1251", "UTF-8", $date->formatLocalized('%B'));
-        $this_month = $date->formatLocalized('%B');
+        $this_month = $this->monthTrans($date->formatLocalized('%B'));
         $nominations = $this->nom_rep->get("*");
         $servers["yesterday"] = $this->getServers($server->Yesterday()->Active()->orderBy("start_at", "desc"), $rate_id, $chronicle_id);
         $servers["tomorrow"] = $this->getServers($server->Tomorrow()->Active()->orderBy("start_at"), $rate_id, $chronicle_id);
@@ -149,7 +149,7 @@ class IndexController extends SiteController
                 e.preventDefault();
                 var rate = $('#rate').val();
                 var chronicle = $('#chronicle').val();                
-                document.location.href = 'http://l2oko.ru/filter/' + rate + '-' + chronicle;
+                document.location.href = 'http://l2oko.ru/lineage-2-servera/' + rate + '-' + chronicle;
             })
         });
         </script>
@@ -211,7 +211,7 @@ class IndexController extends SiteController
         setlocale(LC_TIME, 'ru_RU.utf8');
         $this_day = $date->format('d');
 //        $this_month = iconv("cp1251", "UTF-8", $date->formatLocalized('%B'));
-        $this_month = $date->formatLocalized('%B');
+        $this_month = $this->monthTrans($date->formatLocalized('%B'));
         $nominations = $this->nom_rep->get("*");
         $servers["yesterday"] = $this->getServers($server->Yesterday()->Active()->orderBy("start_at", "desc"), $rate_id, $chronicle_id);
         $servers["tomorrow"] = $this->getServers($server->Tomorrow()->Active()->orderBy("start_at"), $rate_id, $chronicle_id);
@@ -313,5 +313,15 @@ class IndexController extends SiteController
             $group = $this->randomizeDuplicate($group);
         }
         return $groups;
+    }
+
+    private function monthTrans($month){
+        $m = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+        $m_ = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
+        for ($i = 0; $i < count($m); $i++) {
+            if ($month == $m[$i]) {
+                return $m_[$i];
+            }
+        }
     }
 }
