@@ -16,7 +16,7 @@
                 </div>
                 <div class="form-group">
                     <label for="description">Описание</label>
-                    {!! Form::textarea('description', isset($server->description)? $server->description : old("description"), ['id'=>'description', "class" => "form-control"]) !!}
+                    {!! Form::textarea('description', isset($server->description)? $server->description : old("description"), ['id'=>'description', "class" => "form-control", "required" => ""]) !!}
                 </div>
                 <div class="form-group">
                     <label for="short_desc">Краткое описание</label>

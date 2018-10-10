@@ -20,11 +20,13 @@ class ServerController extends SiteController
             new \App\Repositories\PagesRepository(new \App\Page()),
             new \App\Repositories\PartnersRepository(new \App\Partner())
         );
+        setlocale(LC_TIME, 'ru_RU.utf8');
         $this->template = 'index';
         $this->title = $this->settings['title'];
         $this->description = $this->settings['description'];
         $this->keywords = $this->settings['keywords'];
-        $this->inc_js_lib = array_add($this->inc_js_lib,'mask',array('url' => '<script src='.$this->pub_path.'/js/jquery.maskedinput.min.js></script>'));
+//        $this->inc_js_lib = array_add($this->inc_js_lib,'mask',array('url' => '<script src='.$this->pub_path.'/js/jquery.maskedinput.min.js></script>'));
+        $this->inc_js_lib = array_add($this->inc_js_lib,'ckeditor',array('url' => '<script src='.$this->pub_path.'/ckeditor/ckeditor.js></script>'));
     }
 
     public function create() {
@@ -36,21 +38,10 @@ class ServerController extends SiteController
         $chronicles = Chronicle::orderBy('sort')->get();
         $this->inc_js = "
         <script>
-               $(function() {
-                   
-//                    $(\"#rate\").mask(\"x9ZZZZZZZZ\", {
-//                            translation: {
-//                              'Z': {
-//                                pattern: /[0-9]/, optional: true
-//                              }
-//                            }
-//                          });
-            
-//                    $(\"input\").blur(function() {
-//                        $(\"#info\").html(\"Unmasked value: \" + $(this).mask());
-//                    }).dblclick(function() {
-//                        $(this).unmask();
-//                    });
+               $(function() {                 
+                   CKEDITOR.replace( 'description', {
+                       customConfig: 'custom.js'
+                })
                 });
         </script>
         ";
@@ -78,11 +69,11 @@ class ServerController extends SiteController
     }
 
     public function show(Server $server) {
-        $this->title = $server->title;
+        $this->title = $server->title . " - " . $server->chronicle->name . " " . $server->rate->name . " - " . $server->p;
         $this->h1 = $server->h1;
         $this->p = $server->p;
         $this->description = $server->description;
-        $this->content = view('server_show')->with(["server" => $server])->render();
+        $this->content = view('server_show')->with(["server" => $server, "seo_text" => $this->replaceSeo($this->settings['server_seo_text'], $server)])->render();
         return $this->renderOutput();
     }
 
@@ -94,5 +85,20 @@ class ServerController extends SiteController
             $string .= substr($chars, rand(1, $numChars) - 1, 1);
         }
         return $string;
+    }
+
+    private function monthTrans($month){
+        $m = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+        $m_ = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+        for ($i = 0; $i < count($m); $i++) {
+            if ($month == $m[$i]) {
+                return $m_[$i];
+            }
+        }
+    }
+
+    private function replaceSeo($seo_text, Server $server) {
+       $data = $server->start_at->format('d') . " " . $this->monthTrans($server->start_at->formatLocalized('%B')) . " " . $server->start_at->format('Y в, H:i');
+       return preg_replace(["%rate%", "%chronicle%", "%name%", "%date%", "%desc%", "/\[R\]/", "/\[\/R\]/", "/\[C\]/", "/\[\/C\]/", "/\[N\]/", "/\[\/N\]/", "/\[D\]/", "/\[\/D\]/", "/\[DC\]/", "/\[\/DC\]/" ],[ $server->rate->name, $server->chronicle->name, $server->name, $data, $server->description, "", "", "", "", "", "", "", "", "", ""], $seo_text);
     }
 }

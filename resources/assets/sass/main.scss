@@ -1116,6 +1116,18 @@ input[type=submit] {
   border-radius: 3px;
 }
 
+.btn-server {
+  border-color: #0988f8;
+  color: #0988f8;
+}
+
+.btn-server:hover {
+  background-color: #0988f8;
+  border-color: #0988f8;
+  color: #fff;
+}
+
+
 /*the container must be positioned relative:*/
 .oko-select {
   position: relative;

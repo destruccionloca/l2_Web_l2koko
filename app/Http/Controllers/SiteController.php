@@ -56,6 +56,7 @@ class SiteController extends Controller
         $this->ser_rep = $s_rep;
         $this->page_rep = $page_rep;
         $this->par_rep = $par_rep;
+        $this->pub_path = asset("assets");
         $this->inc_css_lib = array(
             'animate' => array('url' => '<link rel="stylesheet" href="'.asset("css/animate.css").'">'),
             'font-awesome' => array('url' => '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">'),

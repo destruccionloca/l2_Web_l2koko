@@ -26,6 +26,7 @@ class SettingsController extends DashboardController
         <script>
             CKEDITOR.replace( 'editor' );
             CKEDITOR.replace( 'right_text' );
+            CKEDITOR.replace( 'server_seo_text' );
         </script>
         ";
         $this->content = view('dashboard.setting_edit')->with(array("settings" => $this->settings))->render();

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Page;
 use Illuminate\Http\Request;
 
-class Pagescontroller extends SiteController
+class PagesController extends SiteController
 {
     public function __construct()
     {

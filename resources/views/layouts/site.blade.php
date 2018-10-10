@@ -75,8 +75,8 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
                     <a class="nav-link" href="{{route("site.page.show", ["page" => $page_->alias])}}">{{$page_->title}}</a>
                 </li>
             @endforeach
-            <li class="nav-item add-nav">
-                <a class="nav-link" href="{{ route('site.server.create') }}" >Добавить сервер</a>
+            <li class="nav-item">
+                <a class="btn btn-danger add-nav" href="{{ route('site.server.create') }}" >Добавить сервер</a>
             </li>
         </ul>
 
@@ -87,25 +87,25 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
 
         <div class="collapse mt-2" id="mobile-nav">
             <ul class="mobile-navbar">
-                <li class="mobile-nav-item">
+                <li class="mobile-nav-item d-flex justify-content-start">
                     <a  href="/">Главная</a>
                 </li>
-                <li class="mobile-nav-item" data-toggle="collapse" data-target="#nav-dropdown" aria-controls="nav-dropdown" aria-expanded="false" aria-label="Dropdown">
+                <li class="mobile-nav-item d-flex justify-content-start" data-toggle="collapse" data-target="#nav-dropdown" aria-controls="nav-dropdown" aria-expanded="false" aria-label="Dropdown">
                     <a href="#">
                         Реклама <i class="fa fa-caret-down float-right"></i>
                     </a>
                 </li>
                 <div class="collapse" id="nav-dropdown">
                     @foreach($pages as $page)
-                        <a class="dropdown-item" href="{{route("site.page.show", ["page" => $page->alias])}}">{{$page->title}}</a>
+                        <a class="dropdown-item d-flex justify-start" href="{{route("site.page.show", ["page" => $page->alias])}}">{{$page->title}}</a>
                     @endforeach
                 </div>
                 @foreach($pages_menu as $page_)
-                    <li class="mobile-nav-item">
+                    <li class="mobile-nav-item d-flex justify-content-start">
                         <a href="{{route("site.page.show", ["page" => $page_->alias])}}">{{$page_->title}}</a>
                     </li>
                 @endforeach
-                <li class="mobile-nav-item d-flex justify-content-center">
+                <li class="mobile-nav-item d-flex justify-content-start">
                     <a class="btn btn-danger add-nav" href="{{ route('site.server.create') }}" >Добавить сервер</a>
                 </li>
             </ul>

@@ -20,30 +20,56 @@
             {{--</div>--}}
         {{--</div>--}}
         <div class="row page-content-row">
-                <div class="col-12">
-                    @if (isset($server->picture) && $server->picture != "default")
-                        <img class="img-fluid" src="/uploads/servers/server-{{$server->id}}{{$server->picture}}?time={{$server->updated_at->format('d_h_i_s')}}" alt="{{$server->name}}">
-                    @else
-                        <img class="img-fluid" src="/uploads/servers/DEFAULT.png" alt="{{$server->name}}">
-                    @endif
-                    <h2>{{$server->name}}</h2>
-                    <dl class="row">
-                        <dt class="col-sm-3">Хроники</dt>
-                        <dd class="col-sm-9">{{$server->chronicle->name}}</dd>
+                    <div class="col-md-6">
+                        @if (isset($server->picture) && $server->picture != "default")
+                            <img class="img-fluid" src="/uploads/servers/server-{{$server->id}}{{$server->picture}}?time={{$server->updated_at->format('d_h_i_s')}}" alt="{{$server->name}}">
+                        @else
+                            <img class="img-fluid" src="/uploads/servers/DEFAULT.png" alt="{{$server->name}}">
+                        @endif
+                    </div>
+                    <div class="col-md-6">
+                            <h2>{{$server->name}}</h2>
+                            <dl class="row">
+                                <dt class="col-sm-3">Хроники</dt>
+                                <dd class="col-sm-9">{{$server->chronicle->name}}</dd>
 
-                        <dt class="col-sm-3">Рейт</dt>
-                        <dd class="col-sm-9">{{$server->rate->name}}</dd>
+                                <dt class="col-sm-3">Рейт</dt>
+                                <dd class="col-sm-9">{{$server->rate->name}}</dd>
 
-                        <dt class="col-sm-3">Дата открытия</dt>
-                        <dd class="col-sm-9">{{$server->start_at}}</dd>
-
-                        <dt class="col-sm-3">Описание</dt>
-                        <dd class="col-sm-9">{{$server->description}}</dd>
-                    </dl>
-                    <a href="{{$server->link}}" target="_blank" class="btn btn-outline-info">Перейти</a>
+                                <dt class="col-sm-3">Дата открытия</dt>
+                                <dd class="col-sm-9">{{$server->p}}</dd>
+                            </dl>
+                            <a href="{{$server->link}}" target="_blank" class="btn btn-outline-info btn-server">НА САЙТ СЕРВЕРА</a>
+                    </div>
                 </div>
+            <div class="row page-content-row">
+                <div class="col-md-6">
+                    {!! $seo_text !!}
+                </div>
+                <div class="col-md-6">
+                    <div id="disqus_thread"></div>
+                    <script>
+
+                        /**
+                         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                        /*
+                        var disqus_config = function () {
+                        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                        };
+                        */
+                        (function() { // DON'T EDIT BELOW THIS LINE
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://l2oko-ru.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                </div>
+            </div>
         </div>
     </div>
-
 </div>
 </div>

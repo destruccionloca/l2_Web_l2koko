@@ -46,7 +46,7 @@
                         </div>
                         <div class="col-8">
                             <div class="form-input-block d-flex align-items-center">
-                                {!! Form::text('name', old("name"), ['id'=>'name', "class" => "form-input", "required" => "", "placeholder" => "L2oko.ru"]) !!}
+                                {!! Form::text('name', old("name"), ['id'=>'name', "class" => "form-input", "required" => "", "placeholder" => "L2OKO", "style" => "text-transform: uppercase"]) !!}
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                         </div>
                         <div class="col-8">
                             <div class="form-input-block d-flex align-items-center">
-                                {!! Form::url('link', old("link"), ['id'=>'link', "class" => "form-input", "required" => "", "placeholder" => "http://l2oko.ru"]) !!}
+                                {!! Form::url('link', old("link"), ['id'=>'link', "class" => "form-input", "required" => "", "placeholder" => "https://l2oko.ru"]) !!}
                             </div>
                         </div>
                     </div>
@@ -135,12 +135,12 @@
                     <div class="row p-1">
                         <div class="col-4">
                             <div class="form-input-block d-flex align-items-center">
-                                <span class="form-input-title">Описание проекта<br/>(необязательно)</span>
+                                <span class="form-input-title">Описание проекта</span><span class="text-danger">*</span>
                             </div>
                         </div>
                         <div class="col-8">
                             <div class="form-input-block d-flex align-items-center">
-                                {!! Form::textarea('description', isset($server->description)? $server->description : old("description"), ['id'=>'description', "class" => "form-textarea", "placeholder" => "Чем вы отличаетесь от других?"]) !!}
+                                {!! Form::textarea('description', isset($server->description)? $server->description : old("description", "- Особенности сервера<br/> - Бонусы при открытии<br/>- Фишки<br/>и т.д."), ['id'=>'description', "class" => "form-textarea", "required" => ""]) !!}
                             </div>
                         </div>
                     </div>
@@ -195,7 +195,7 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-input-block d-flex align-items-center">
-                                <span class="form-input-title">Изображение<br/>(537x240 px) </span>
+                                <span class="form-input-title">Обложка сервера<br/>(537x240 px) </span>
                             </div>
                         </div>
                         <div class="col-8">
@@ -210,7 +210,7 @@
             <div class="row page-content-row no_padding mb-3">
                 <div class="col-6 border-right-add">
                     <div class="form-input-block d-flex align-items-center">
-                        <input class="custom-select filter-but align-items-center" type="submit" value="Отправить" style="width: 95px">
+                        <input class="custom-select filter-but align-items-center" type="submit" value="Отправить" style="width: 95px; margin-left: 0 !important;">
                     </div>
                 </div>
             </div>
