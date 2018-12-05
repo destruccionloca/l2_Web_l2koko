@@ -37,6 +37,7 @@ class ServersRepository extends Repository
         if ($request->has("name")) {
             setlocale(LC_TIME, 'ru_RU.utf8');
             $data = $request->all();
+            $data["name"] = strtoupper($data["name"]);
             $rate = Rate::find($data["rate_id"]);
             $chronicle = Chronicle::find($data["chronicle_id"]);
             $this->model->name = $data["name"];
@@ -68,9 +69,9 @@ class ServersRepository extends Repository
             $this->model->social_tw = isset($data["tw"])? $data["tw"]: null;
             $this->model->social_icq = isset($data["icq"])? $data["icq"]: null;
             $this->model->alias = $data["alias"];
-            $this->model->title = isset($data["title"])? $data["title"]: $data["name"];
+            $this->model->title = isset($data["title"])? $data["title"] : $data["name"];
             $this->model->h1 = isset($data["h1"])? $data["h1"] : $data["name"] . " - " . $chronicle->name . " " . $rate->name;
-            $this->model->p = isset($data["p"])? $data["p"] : "Открытие " . $this->model->start_at->format('d') . " " . $this->monthTrans($this->model->start_at->formatLocalized('%B')) . " В " . $this->model->start_at->format('H:i');
+            $this->model->p = isset($data["p"])? $data["p"] : "Открытие " . $this->model->start_at->format('d') . " " . $this->monthTrans($this->model->start_at->formatLocalized('%B')) . ", в " . $this->model->start_at->format('H:i');
             $this->model->h2 = isset($data["h2"])? $data["h2"] : $data['link'];
             if ($this->model->save()) {
                 if ($request->hasFile('picture')) {
@@ -108,6 +109,7 @@ class ServersRepository extends Repository
         if ($request->has("name")) {
             setlocale(LC_TIME, 'ru_RU.utf8');
             $data = $request->all();
+            $data["name"] = strtoupper($data["name"]);
             $server->name = $data["name"];
             if(empty($data['alias'])) {
                 $data['alias'] = $this->transliterate($data['name']);
@@ -134,7 +136,7 @@ class ServersRepository extends Repository
             $server->alias = $data["alias"];
             $server->title = isset($data["title"])? $data["title"]: $data["name"];
             $server->h1 = isset($data["h1"])? $data["h1"]: $data["name"] . " - " . $server->chronicle->name . " " . $server->rate->name;
-            $server->p = isset($data["p"])? $data["p"] : "Открытие " . $server->start_at->format('d') ." ". $this->monthTrans($server->start_at->formatLocalized('%B')) . " В " . $server->start_at->format('H:i');
+            $server->p = isset($data["p"])? $data["p"] : "Открытие " . $server->start_at->format('d') ." ". $this->monthTrans($server->start_at->formatLocalized('%B')) . ", в " . $server->start_at->format('H:i');
             $server->h2 = isset($data["h2"])? $data["h2"] : $data['link'];
             if($server->save()) {
                 if ($request->hasFile('picture')) {

@@ -98,7 +98,7 @@ class ServerController extends SiteController
     }
 
     private function replaceSeo($seo_text, Server $server) {
-       $data = $server->start_at->format('d') . " " . $this->monthTrans($server->start_at->formatLocalized('%B')) . " " . $server->start_at->format('Y в, H:i');
-       return preg_replace(["%rate%", "%chronicle%", "%name%", "%date%", "%desc%", "/\[R\]/", "/\[\/R\]/", "/\[C\]/", "/\[\/C\]/", "/\[N\]/", "/\[\/N\]/", "/\[D\]/", "/\[\/D\]/", "/\[DC\]/", "/\[\/DC\]/" ],[ $server->rate->name, $server->chronicle->name, $server->name, $data, $server->description, "", "", "", "", "", "", "", "", "", ""], $seo_text);
+       $data = $server->start_at->format('d') . " " . $this->monthTrans($server->start_at->formatLocalized('%B')) . " " . $server->start_at->format('Y, в H:i');
+       return preg_replace(["%rate%", "%chronicle%", "%name%", "%date%", "%description%", "/\[R\]/", "/\[\/R\]/", "/\[C\]/", "/\[\/C\]/", "/\[N\]/", "/\[\/N\]/", "/\[D\]/", "/\[\/D\]/", "/\[DC\]/", "/\[\/DC\]/" ],[ $server->rate->name, $server->chronicle->name, $server->name, $data, $server->description, "", "", "", "", "", "", "", "", "", ""], $seo_text);
     }
 }

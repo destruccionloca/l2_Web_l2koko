@@ -30,7 +30,7 @@ class ServerUpdRequest extends FormRequest
             'chronicle_id' => 'required',
             'rate_id' => 'required',
             'start_at' => 'required|date',
-            'description' => 'required|min:100|max:2000',
+            'description' => 'required|min:100|max:20000',
             'link' => 'required|url|max:190',
             'email' => 'required|email|max:190|unique:servers,email,' . $server->id,
             'vk' => 'max:190',

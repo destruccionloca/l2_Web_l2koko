@@ -41,7 +41,7 @@ class Server extends Model
     }
 
     public function scopeOpened($query) {
-        return $query->whereDate('start_at', "<", date("Y-m-d"));
+        return $query->whereDate('start_at', "<", date("Y-m-d"))->whereDate('start_at', '>', date("Y-m-d", strtotime("-30 days")));
     }
 
     public function scopeOpenVip($query) {
@@ -49,7 +49,7 @@ class Server extends Model
     }
 
     public function scopeOpenedVip($query) {
-        return $query->whereDate('start_at', "<", date("Y-m-d"))->whereModerated('1')->where("status_id", ">", "2");
+        return $query->whereDate('start_at', "<", date("Y-m-d"))->whereModerated('1')->where("status_id", ">", "2")->whereDate('start_at', '>', date("Y-m-d", strtotime("-30 days")));
     }
 
     public function scopeDay($query, $date) {

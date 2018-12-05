@@ -51,6 +51,11 @@ class IndexController extends SiteController
         $chronicle_id = isset($request->chronicle) ? $request->chronicle : "all";
         $rates = Rate::orderBy('sort')->get();
         $chronicles = Chronicle::orderBy('sort')->get();
+//        foreach ($chronicles as $chronicle) {
+//            foreach ($rates as $rate) {
+//                dump("$chronicle->name-$rate->name");
+//            }
+//        }
         if($rate_id != "all" && $chronicle_id != "all") {
             $temp_rate = Rate::find($rate_id);
             $temp_chronicle = Chronicle::find($chronicle_id);

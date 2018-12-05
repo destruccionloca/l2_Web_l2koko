@@ -11235,6 +11235,16 @@ input[type=submit] {
   color: #fff;
 }
 
+.server-seo {
+  color: #999999 !important;
+}
+
+.server-seo ol,
+.server-seo ul,
+.server-seo dl {
+  padding-left: 1rem;
+}
+
 /*the container must be positioned relative:*/
 
 .oko-select {
@@ -11513,8 +11523,11 @@ input[type=submit] {
   color: #5b595c;
 }
 
-#mobile-nav a:hover {
+#mobile-nav a:hover,
+#mobile-nav a:focus,
+#mobile-nav a:active {
   text-decoration: none;
+  background-color: transparent;
 }
 
 .mobile-nav-item {

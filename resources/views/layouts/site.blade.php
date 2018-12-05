@@ -92,7 +92,7 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
                 </li>
                 <li class="mobile-nav-item d-flex justify-content-start" data-toggle="collapse" data-target="#nav-dropdown" aria-controls="nav-dropdown" aria-expanded="false" aria-label="Dropdown">
                     <a href="#">
-                        Реклама <i class="fa fa-caret-down float-right"></i>
+                        Реклама <i class="fa fa-caret-down"></i>
                     </a>
                 </li>
                 <div class="collapse" id="nav-dropdown">
@@ -170,7 +170,7 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
             <div class="col-md-4 d-flex justify-content-end footer-menu flex-wrap">
                 <a href="https://l2oko.ru" >Главная</a>
                 <a href="https://l2oko.ru/page/kontakty" >Контакты</a>
-                <a href="" >Карта сайта</a>
+                <a href="https://l2oko.ru/sitemap.xml" >Карта сайта</a>
             </div>
         </div>
         <div class="row footer-second-menu">

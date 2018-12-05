@@ -1,5 +1,4 @@
 @extends('layouts.auth')
-
 @section('content')
                 <!-- Header -->
                 <div class="py-30 px-5 text-center">

@@ -36,14 +36,14 @@
                                 <dt class="col-sm-3">Рейт</dt>
                                 <dd class="col-sm-9">{{$server->rate->name}}</dd>
 
-                                <dt class="col-sm-3">Дата открытия</dt>
+                                <dt class="col-sm-3">Дата</dt>
                                 <dd class="col-sm-9">{{$server->p}}</dd>
                             </dl>
                             <a href="{{$server->link}}" target="_blank" class="btn btn-outline-info btn-server">НА САЙТ СЕРВЕРА</a>
                     </div>
                 </div>
             <div class="row page-content-row">
-                <div class="col-md-6">
+                <div class="col-md-6 server-seo">
                     {!! $seo_text !!}
                 </div>
                 <div class="col-md-6">
